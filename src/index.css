@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1420px;
+  padding: 0 24px;
+}
+
+.bgGradient {
+  background: linear-gradient(180deg, #ffeccb 0%, rgba(255, 236, 203, 0) 100%);
+}
+
+.btn1 {
+  font-family: "Poppins", sans-serif;
+  background: #DCC397;
+  height: 46px;
+  border-radius: 32px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  padding: 0 26px;
+  transition: all 0.3s;
+}
+
+.btn2 {
+  font-family: "Poppins", sans-serif;
+  border: 2px solid #000929;
+  background-color: #ffffffa6;
+  height: 46px;
+  border-radius: 32px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000929;
+  font-weight: 500;
+  padding: 0 26px;
+  transition: all 0.3s;
+}
+
+.btn1:hover {
+  background: #bca478;
+}
+
+.btn2:hover {
+  color: #DCC397;
+  border-color: #DCC397;
+}
+
+.bannerSlider .sliderInner div {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .btn1,
+  .btn2 {
+    height: 40px;
+    font-size: 14px;
+    padding: 0 18px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header .btn1 {
+    height: 32px;
+    font-size: 12px;
+    padding: 0 14px;
+  }
+}
