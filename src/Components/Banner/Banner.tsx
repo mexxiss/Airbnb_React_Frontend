@@ -10,6 +10,7 @@ import img3 from "../../assets/images/img3.png";
 import img4 from "../../assets/images/img4.png";
 import img5 from "../../assets/images/img5.png";
 import Slider from "react-slick";
+import { Select } from "@mantine/core";
 
 const Banner = () => {
   const settings = {
@@ -32,7 +33,7 @@ const Banner = () => {
   };
   return (
     <>
-      <div className="bgGradient min-h-[80vh] pb-10">
+      <div className="banner bgGradient min-h-[80vh] pb-10">
         <div className="relative md:pb-16 xl:pb-0">
           <div className="bannerSlider absolute top-0 right-0 h-1/2 md:h-full w-[calc(100%)] xl:w-[calc(50%)]">
             <div className="absolute w-full h-full left-0 top-0 bg-[#ffffff38] z-10 lg:hidden"></div>
@@ -78,15 +79,13 @@ const Banner = () => {
                           >
                             Area
                           </label>
-                          <div className="flex items-center">
-                            <input
-                              type="text"
-                              className="p-0 border-none w-full focus:ring-0 font-semibold text-lg tex-text1"
-                              value="Citywalk"
+                          <div className="">
+                            <Select
+                              placeholder='Select City'
+                              data={['Dubai', 'Al Furjan', 'Dubai South', 'Dubai Hills']}
+                              className=''
+                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
                             />
-                            <span>
-                              <KeyboardArrowDownOutlined />
-                            </span>
                           </div>
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] block"></div>
@@ -97,15 +96,13 @@ const Banner = () => {
                           >
                             Bedrooms
                           </label>
-                          <div className="flex items-center">
-                            <input
-                              type="text"
-                              className="p-0 border-none w-full focus:ring-0 font-semibold text-lg tex-text1"
-                              value="Two Bed"
+                          <div className="">
+                            <Select
+                              placeholder='Select Bedrooms'
+                              data={['One Bed', 'Two Beds', 'Three Beds', 'Four Beds']}
+                              className=''
+                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
                             />
-                            <span>
-                              <KeyboardArrowDownOutlined />
-                            </span>
                           </div>
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] block"></div>
@@ -116,15 +113,13 @@ const Banner = () => {
                           >
                             Furnishing
                           </label>
-                          <div className="flex items-center">
-                            <input
-                              type="text"
-                              className="p-0 border-none w-full focus:ring-0 font-semibold text-lg tex-text1"
-                              value="Premium"
+                          <div className="">
+                            <Select
+                              placeholder='Select'
+                              data={['Premium', 'Standard']}
+                              className=''
+                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
                             />
-                            <span>
-                              <KeyboardArrowDownOutlined />
-                            </span>
                           </div>
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] md:hidden lg:block"></div>

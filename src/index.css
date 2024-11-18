@@ -57,6 +57,26 @@ body {
   height: 100%;
 }
 
+.mantine-Select-root .mantine-Select-wrapper {
+  width: 100%;
+}
+
+.mantine-Select-root input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.mantine-Select-root input::placeholder {
+  color: #5f5f5f;
+}
+
+.banner .mantine-Select-root input {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
@@ -69,6 +89,7 @@ body {
     padding: 0 18px;
   }
 }
+
 @media (max-width: 576px) {
   .container {
     padding: 0 16px;

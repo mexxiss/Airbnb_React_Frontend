@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Layout from "./Layout/Layout.tsx";
 import Home from "./Pages/Home/Home.tsx";
 import Pricing from "./Pages/Pricing/Pricing.tsx";
+import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
+import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -19,6 +21,14 @@ const App = () => {
         {
           path: "/pricing",
           element: <Pricing />,
+        },
+        {
+          path: "/about-us",
+          element: <AboutUs />,
+        },
+        {
+          path: "/contact-us",
+          element: <ContactUs />,
         },
       ],
     },

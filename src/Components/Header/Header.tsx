@@ -34,14 +34,14 @@ const Header = () => {
               </li>
             </ul>
             <ul className="flex items-center gap-8">
-              <li className="hidden sm:block">
+              {/* <li className="hidden sm:block">
                 <button className="text-text1 opacity-70 duration-300 text-sm flex items-center gap-2">
                   <span>
                     <img src={icon3} className="w-5" />
                   </span>{" "}
                   Translate
                 </button>
-              </li>
+              </li> */}
               <li>
                 <button className="text-text1 opacity-70 duration-300 text-xs xs:text-sm flex items-center gap-1 xs:gap-2">
                   <span>

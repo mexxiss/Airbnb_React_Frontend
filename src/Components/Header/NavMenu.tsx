@@ -106,7 +106,7 @@ const NavMenu = () => {
         </li>
         <li className="group">
           <NavLink
-            to="/service"
+            to="/about-us"
             className={({ isActive }) =>
               `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
@@ -132,7 +132,7 @@ const NavMenu = () => {
         </li>
         <li className="group">
           <NavLink
-            to="/service"
+            to="/contact-us"
             className={({ isActive }) =>
               `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
