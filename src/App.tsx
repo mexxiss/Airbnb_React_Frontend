@@ -7,6 +7,7 @@ import Home from "./Pages/Home/Home.tsx";
 import Pricing from "./Pages/Pricing/Pricing.tsx";
 import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
 import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
+import Gallery from "./Pages/Gallery/Gallery.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const App = () => {
         {
           path: "/contact-us",
           element: <ContactUs />,
+        },
+        {
+          path: "/gallery",
+          element: <Gallery />,
         },
       ],
     },
