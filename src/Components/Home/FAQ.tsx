@@ -8,7 +8,7 @@ const FAQ = () => {
         <div className="lg:flex">
           <div className="lg:w-2/5">
             <div className="text-center lg:text-left">
-              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
+              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]">
                 Airbnb management dubai FAQs
               </h4>
               <p className="text-lg text-primary mt-2">
