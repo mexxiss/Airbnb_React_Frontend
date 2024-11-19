@@ -21,6 +21,7 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
 
   const closeMenu = () => {
     setMenuShow(false);
+    setIsOpen(false)
   };
 
   const toggledrp = () => {
@@ -75,22 +76,26 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
                   >
                     <ul className="flex flex-col gap-3">
                       <li>
-                        <Link to="/" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300">
+                        <Link to="/services/cleaning-maintenance" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
+                          onClick={closeMenu}>
                           Cleaning & Maintenance
                         </Link>
                       </li>
                       <li>
-                        <Link to="/" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300">
+                        <Link to="/services/interior-design" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
+                          onClick={closeMenu}>
                           Interior Design
                         </Link>
                       </li>
                       <li>
-                        <Link to="/" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300">
+                        <Link to="/services/listing-management" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
+                          onClick={closeMenu}>
                           Listing Management
                         </Link>
                       </li>
                       <li>
-                        <Link to="/" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300">
+                        <Link to="/services/management-support" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
+                          onClick={closeMenu}>
                           Management Support
                         </Link>
                       </li>
@@ -136,7 +141,7 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
               </li>
               <li>
                 <NavLink
-                  to="/contact-us"
+                  to="/estimate-revenue"
                   className={({ isActive }) =>
                     `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`

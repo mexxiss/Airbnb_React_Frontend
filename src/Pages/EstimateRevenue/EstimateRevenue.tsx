@@ -199,6 +199,7 @@ const EstimateRevenue = () => {
                     </div>
                 </div>
             </div>
+            
             <FAQ />
         </>
     )
