@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useEffect, useRef } from "react";
 import img7 from "../../assets/images/img7.png";
 import Slider from "react-slick";
 import {
@@ -7,14 +7,25 @@ import {
 } from "@mui/icons-material";
 
 const ReviewSec = () => {
-  let sliderRef = useRef(null);
+  let sliderRef = useRef<Slider | null>(null);;
+
+  useEffect(() => {
+    if (sliderRef.current) {
+    }
+  }, []);
 
   const next = () => {
-    sliderRef.current.slickNext();
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
   };
+
   const previous = () => {
-    sliderRef.current.slickPrev();
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
   };
+
   const settings = {
     dots: true,
     infinite: true,

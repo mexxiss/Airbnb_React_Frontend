@@ -1,8 +1,7 @@
 import {
-  ArrowRightRounded,
   KeyboardArrowDownOutlined,
 } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const NavMenu = () => {

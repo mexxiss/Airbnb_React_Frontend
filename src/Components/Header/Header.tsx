@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/icons/logo.png";
 import icon1 from "../../assets/icons/icon1.png";
 import icon2 from "../../assets/icons/icon2.png";
-import icon3 from "../../assets/icons/icon3.png";
+// import icon3 from "../../assets/icons/icon3.png";
 import icon4 from "../../assets/icons/icon4.png";
 import NavMenu from "./NavMenu.jsx";
 import MobileMenu from "./MobileMenu.jsx";

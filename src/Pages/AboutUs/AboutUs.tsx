@@ -1,10 +1,10 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import icon27 from "../../assets/icons/icon27.png";
 import img1 from "../../assets/images/img1.png";
 import img2 from "../../assets/images/img2.png";
 import img3 from "../../assets/images/img3.png";
-import img4 from "../../assets/images/img4.png";
+// import img4 from "../../assets/images/img4.png";
 import bg1 from "../../assets/images/bg1.jpg";
 import FAQ from '../../Components/Home/FAQ';
 import WeList from '../../Components/Home/WeList';

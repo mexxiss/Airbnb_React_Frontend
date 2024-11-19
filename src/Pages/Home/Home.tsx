@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Banner from '../../Components/Banner/Banner.tsx'
 import BrandFeature from '../../Components/BrandFeature/BrandFeature.tsx'
 import About from '../../Components/About/About.tsx'

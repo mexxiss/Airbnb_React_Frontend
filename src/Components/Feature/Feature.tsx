@@ -1,5 +1,3 @@
-import { TrendingFlatRounded } from "@mui/icons-material";
-import React from "react";
 import icon12 from "../../assets/icons/icon12.png";
 import icon13 from "../../assets/icons/icon13.png";
 import icon14 from "../../assets/icons/icon14.png";

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import icon27 from "../../assets/icons/icon27.png";
 import icon28 from "../../assets/icons/icon28.png";

@@ -1,4 +1,4 @@
-import React from "react";
+
 import icon25 from "../../assets/icons/icon25.png";
 import whiteLogo from "../../assets/icons/whiteLogo.png";
 import { Link } from "react-router-dom";
@@ -49,25 +49,25 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">About Us</h6>
               <ul className="mt-5 space-y-4 text-[#B7B7B7]">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Media</Link>
+                  <Link to="/">Media</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Blog</Link>
+                  <Link to="/">Blog</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Retirement Visa UAE</Link>
+                  <Link to="/">Retirement Visa UAE</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Videos</Link>
+                  <Link to="/">Videos</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>airbnb dubai</Link>
+                  <Link to="/">airbnb dubai</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>terms & conditions</Link>
+                  <Link to="/">terms & conditions</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Airbnb Requirements and Fees Dubai</Link>
+                  <Link to="/">Airbnb Requirements and Fees Dubai</Link>
                 </li>
               </ul>
             </div>
@@ -75,25 +75,25 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">Main</h6>
               <ul className="mt-5 space-y-4 text-[#B7B7B7]">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Services</Link>
+                  <Link to="/">Services</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Gallery</Link>
+                  <Link to="/gallery">Gallery</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Pricing</Link>
+                  <Link to="/pricing">Pricing</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>About Us</Link>
+                  <Link to="/about-us">About Us</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Estimate Revenue</Link>
+                  <Link to="/">Estimate Revenue</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>Contact</Link>
+                  <Link to="/contact-us">Contact</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link>How to Videos</Link>
+                  <Link to="/">How to Videos</Link>
                 </li>
               </ul>
             </div>
@@ -101,25 +101,25 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">Follow us</h6>
               <ul className="mt-5 text-[#B7B7B7] flex sm:flex-col items-center sm:items-start gap-4">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link className="flex items-center gap-2">
+                  <Link to="/" className="flex items-center gap-2">
                     <FacebookOutlined />{" "}
                     <span className="hidden sm:inline-block">Facebook</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link className="flex items-center gap-2">
+                  <Link to="/" className="flex items-center gap-2">
                     <LinkedIn />{" "}
                     <span className="hidden sm:inline-block">LinkedIn</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link className="flex items-center gap-2">
+                  <Link to="/" className="flex items-center gap-2">
                     <X />{" "}
                     <span className="hidden sm:inline-block">Twitter</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link className="flex items-center gap-2">
+                  <Link to="/" className="flex items-center gap-2">
                     <Instagram />{" "}
                     <span className="hidden sm:inline-block">Instagram</span>
                   </Link>

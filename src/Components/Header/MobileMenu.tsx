@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/icons/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { CloseOutlined, KeyboardArrowDownOutlined } from "@mui/icons-material";
 
-const MobileMenu = ({ menuShow, setMenuShow }) => {
+interface Iprops {
+  menuShow: boolean;
+  setMenuShow: (value: boolean) => void;
+}
+const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
   const [isOpen, setIsOpen] = useState(false);
   const customStyle = ["overflow-hidden", "xl:overflow-auto"];
 
@@ -25,16 +29,14 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
   return (
     <>
       <div
-        className={`fixed w-full h-full top-0 left-0 z-[99] xl:hidden ${
-          !menuShow ? "opacity-0 invisible duration-150 " : "duration-300 "
-        }`}
+        className={`fixed w-full h-full top-0 left-0 z-[99] xl:hidden ${!menuShow ? "opacity-0 invisible duration-150 " : "duration-300 "
+          }`}
       >
         <div
-          className={`w-max flex relative z-[999] 2xl:hidden md:w-fit ${
-            menuShow
-              ? "translate-x-0 duration-300 "
-              : "-translate-x-full duration-150"
-          }`}
+          className={`w-max flex relative z-[999] 2xl:hidden md:w-fit ${menuShow
+            ? "translate-x-0 duration-300 "
+            : "-translate-x-full duration-150"
+            }`}
         >
           {/* Main menu Section */}
           <div className="bg-white w-[240px] sm:w-[320px] top-0 left-0 h-screen relative z-20 overflow-auto py-4 main_menu">
@@ -46,8 +48,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -69,9 +70,8 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 </button>
                 {isOpen && (
                   <div
-                    className={`pl-5 overflow-hidden duration-150 mt-2 ${
-                      isOpen ? "h-auto" : "h-0"
-                    }`}
+                    className={`pl-5 overflow-hidden duration-150 mt-2 ${isOpen ? "h-auto" : "h-0"
+                      }`}
                   >
                     <ul className="flex flex-col gap-3">
                       <li>
@@ -102,8 +102,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/gallery"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -115,8 +114,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/pricing"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -128,8 +126,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/about-us"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -141,8 +138,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/contact-us"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -154,8 +150,7 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
                 <NavLink
                   to="/contact-us"
                   className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${
-                      isActive && "bg-[#060c260f]"
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
                   }
                   onClick={closeMenu}
@@ -176,11 +171,10 @@ const MobileMenu = ({ menuShow, setMenuShow }) => {
 
         {/* Bg Overlay */}
         <div
-          className={`fixed w-full h-full top-0 left-0 bg-black z-[99] bg-opacity-40 xl:hidden ${
-            menuShow
-              ? "opacity-100 visible  duration-300"
-              : "invisible opacity-0  duration-100"
-          }  ${menuShow && "backdrop-blur-[2px]  delay-100"}`}
+          className={`fixed w-full h-full top-0 left-0 bg-black z-[99] bg-opacity-40 xl:hidden ${menuShow
+            ? "opacity-100 visible  duration-300"
+            : "invisible opacity-0  duration-100"
+            }  ${menuShow && "backdrop-blur-[2px]  delay-100"}`}
           onClick={closeMenu}
         ></div>
       </div>

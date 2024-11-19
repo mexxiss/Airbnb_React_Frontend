@@ -19,7 +19,7 @@ body {
 
 .btn1 {
   font-family: "Poppins", sans-serif;
-  background: #DCC397;
+  background: #a58143;
   height: 46px;
   border-radius: 32px;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ body {
 }
 
 .btn1:hover {
-  background: #bca478;
+  background: #896a35;
 }
 
 .btn2:hover {
