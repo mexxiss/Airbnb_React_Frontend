@@ -8,6 +8,8 @@ import Pricing from "./Pages/Pricing/Pricing.tsx";
 import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
 import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
 import Gallery from "./Pages/Gallery/Gallery.tsx";
+import EstimateRevenue from "./Pages/EstimateRevenue/EstimateRevenue.tsx";
+import CleaningMaintenance from "./Pages/Services/CleaningMaintenance.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -34,6 +36,14 @@ const App = () => {
         {
           path: "/gallery",
           element: <Gallery />,
+        },
+        {
+          path: "/estimate-revenue",
+          element: <EstimateRevenue />,
+        },
+        {
+          path: "/services/cleaning-maintenance",
+          element: <CleaningMaintenance />,
         },
       ],
     },

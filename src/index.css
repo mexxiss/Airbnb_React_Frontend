@@ -1,11 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@300;400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
+@font-face {
   font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Light.ttf") format("truetype");
+  /* Adjust the path as needed */
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  /* Adjust the path as needed */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("truetype");
+  /* Adjust the path as needed */
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  /* Adjust the path as needed */
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  /* Adjust the path as needed */
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  /* Variable fonts often support a range of weights */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  /* Variable fonts often support a range of weights */
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif !important;
 }
 
 .container {
@@ -49,8 +103,8 @@ body {
 }
 
 .btn2:hover {
-  color: #DCC397;
-  border-color: #DCC397;
+  color: #dcc397;
+  border-color: #dcc397;
 }
 
 .bannerSlider .sliderInner div {
@@ -75,6 +129,10 @@ body {
 .banner .mantine-Select-root input {
   font-size: 18px;
   font-weight: 500;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }
 
 @media (max-width: 768px) {

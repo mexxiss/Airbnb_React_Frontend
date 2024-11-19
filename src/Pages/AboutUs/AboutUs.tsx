@@ -30,7 +30,7 @@ const AboutUs = () => {
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
                             <span className="">
-                                <Link to="/">Home</Link>
+                                <Link to="/" className="hover:underline">Home</Link>
                             </span>
                             <span>
                                 <img src={icon27} className="w-4" />

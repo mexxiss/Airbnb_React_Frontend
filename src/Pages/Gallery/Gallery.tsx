@@ -32,7 +32,7 @@ const Gallery = () => {
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
                             <span className="">
-                                <Link to="/">Home</Link>
+                                <Link to="/" className="hover:underline">Home</Link>
                             </span>
                             <span>
                                 <img src={icon27} className="w-4" />
@@ -55,6 +55,11 @@ const Gallery = () => {
                                 </li>
                             ))}
                         </ul>
+                    </div>
+                    <div className="mt-16">
+                        <div className="flex">
+                            <div className=""></div>
+                        </div>
                     </div>
                 </div>
             </div>

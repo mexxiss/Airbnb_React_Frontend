@@ -30,7 +30,7 @@ const ContactUs = () => {
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
                             <span className="">
-                                <Link to="/">Home</Link>
+                                <Link to="/" className="hover:underline">Home</Link>
                             </span>
                             <span>
                                 <img src={icon27} className="w-4" />
@@ -116,7 +116,7 @@ const ContactUs = () => {
                                                 placeholder='Subject'
                                                 data={['React', 'Angular', 'Vue', 'Svelte']}
                                                 className='bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12'
-                                                    rightSection={<KeyboardArrowDownOutlined className='text-[#DCC397]' />}
+                                                rightSection={<KeyboardArrowDownOutlined className='text-[#DCC397]' />}
                                             />
 
                                         </div>

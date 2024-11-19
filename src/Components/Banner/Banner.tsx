@@ -115,7 +115,7 @@ const Banner = () => {
                           </label>
                           <div className="">
                             <Select
-                              placeholder='Select'
+                              placeholder='Furnishing'
                               data={['Premium', 'Standard']}
                               className=''
                               rightSection={<KeyboardArrowDownOutlined className='text-black' />}
