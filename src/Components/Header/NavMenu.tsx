@@ -2,7 +2,7 @@ import {
   KeyboardArrowDownOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

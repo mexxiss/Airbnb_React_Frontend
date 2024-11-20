@@ -4,9 +4,10 @@ import icon1 from "../../assets/icons/icon1.png";
 import icon2 from "../../assets/icons/icon2.png";
 // import icon3 from "../../assets/icons/icon3.png";
 import icon4 from "../../assets/icons/icon4.png";
-import NavMenu from "./NavMenu.jsx";
-import MobileMenu from "./MobileMenu.jsx";
+import NavMenu from "./NavMenu.tsx";
+import MobileMenu from "./MobileMenu.tsx";
 import { MenuOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [menuShow, setMenuShow] = useState(false);
@@ -43,12 +44,12 @@ const Header = () => {
                 </button>
               </li> */}
               <li>
-                <button className="text-text1 opacity-70 duration-300 text-xs xs:text-sm flex items-center gap-1 xs:gap-2">
+                <Link to="/login" className="text-text1 opacity-70 duration-300 text-xs xs:text-sm flex items-center gap-1 xs:gap-2">
                   <span>
                     <img src={icon4} className="w-4 xs:w-5" />
                   </span>{" "}
                   Log in
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -77,7 +78,7 @@ const Header = () => {
               <NavMenu />
             </div>
             <div>
-              <button className="btn1">BOOK NOW</button>
+              <Link to="/booking/home" className="btn1 flex items-center">BOOK NOW</Link>
             </div>
           </div>
         </div>
