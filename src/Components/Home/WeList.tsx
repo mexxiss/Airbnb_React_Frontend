@@ -8,7 +8,7 @@ import logo6 from "../../assets/images/logo6.png";
 
 const WeList = () => {
   return (
-    <div className="bg-[#FFFBF4] py-16">
+    <div className="bg-primary py-16">
       <div className="container mx-auto">
         <div>
           <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 text-center">

@@ -1,31 +1,6 @@
-import {
-    KeyboardArrowDownOutlined,
-} from "@mui/icons-material";
-import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavMenu = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isServiceActive, setIsServiceActive] = useState(false);
-    const location = useLocation()
-
-    const handleMouseEnter = () => {
-        setIsOpen(true);
-    };
-
-    useEffect(() => {
-        const serviceRoutes = [
-            "/services/cleaning-maintenance",
-            "/services/interior-design",
-            "/services/listing-management",
-            "/services/management-support",
-        ];
-        setIsServiceActive(serviceRoutes.some((route) => location.pathname.includes(route)));
-    }, [location]);
-
-    const handleMouseLeave = () => {
-        setIsOpen(false);
-    };
 
     return (
         <>

@@ -44,7 +44,7 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className="py-16 bg-[#FFFBF4]">
+    <div className="py-16 bg-primary">
       <div className="container mx-auto">
         <div className="text-center max-w-[640px] mx-auto">
           <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">

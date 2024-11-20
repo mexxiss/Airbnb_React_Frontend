@@ -1,15 +1,9 @@
-import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
-import { useState } from "react"
 import { Link } from "react-router-dom";
 import img12 from '../../assets/images/img12.png'
 import logo from '../../assets/icons/logo.png'
 import whiteLogo from '../../assets/icons/whiteLogo.png'
 
 const ForgotPassword = () => {
-    const [isPasswordShow, setIsPasswordShow] = useState(false);
-    const handlePasswordToggle = () => {
-        setIsPasswordShow(!isPasswordShow);
-    }
     return (
         <div className="bg-white relative">
             <div className="absolute right-0 top-0 h-full lg:w-1/2 2xl:w-[40%]">
