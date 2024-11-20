@@ -60,7 +60,7 @@ const InteriorDesign = () => {
 
             <div className='relative pt-16 lg:pt-0 md:-mt-24 lg:-mt-14 overflow-hidden'>
                 <div className="container mx-auto">
-                    <div className='relative py-12  before:absolute before:bg-[#fff8ec] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
+                    <div className='relative py-12  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
                         <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                             What’s Included
                         </h4>

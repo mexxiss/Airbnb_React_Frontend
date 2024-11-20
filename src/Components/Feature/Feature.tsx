@@ -51,7 +51,7 @@ const Feature = () => {
                 ${
                   index === 1
                     ? "bg-primary text-white"
-                    : "bg-primary text-text1"
+                    : "bg-[#fff6e7] text-text1"
                 }`}
               >
                 <div className="h-full flex flex-col justify-between py-6 lg:py-8 border-b-[3px] border-primary">

@@ -58,7 +58,7 @@ const ManagementSupport = () => {
 
             <div className='relative pt-16 lg:pt-0 md:-mt-24 lg:-mt-12 overflow-hidden'>
                 <div className="container mx-auto">
-                    <div className='relative py-12  before:absolute before:bg-[#fff8ec] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
+                    <div className='relative py-12  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
 
                         <div className="mt-8 grid sm:grid-cols-2 gap-8">
                             <div>
