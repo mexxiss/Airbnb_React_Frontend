@@ -194,7 +194,7 @@ const Banner = () => {
                 <div className="flex gap-14">
                   <div>
                     <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative">
-                      <span className="flex items-center justify-center bg-[#FBD28B] rounded-full w-full h-full">
+                      <span className="flex items-center justify-center bg-[#e4c38a] rounded-full w-full h-full">
                         <img src={icon6} className="w-8" />
                       </span>
                       <span className="bg-primary rounded-lg absolute -right-0.5 -bottom-0.5 w-6 h-6 flex items-center justify-center">
@@ -210,7 +210,7 @@ const Banner = () => {
                   </div>
                   <div>
                     <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative">
-                      <span className="flex items-center justify-center bg-[#FBD28B] rounded-full w-full h-full">
+                      <span className="flex items-center justify-center bg-[#e4c38a] rounded-full w-full h-full">
                         <img src={icon7} className="w-8" />
                       </span>
                       <span className="bg-primary rounded-lg absolute -right-0.5 -bottom-0.5 w-6 h-6 flex items-center justify-center">
@@ -230,56 +230,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      {/* <div className="-mt-32">
-        <div className="container mx-auto">
-          <div className="max-w-[1300px] mx-auto bg-white rounded-md shadow-[0px_4px_15px_rgba(0,0,0,0.25)] p-5">
-            <h4 className="text-5xl ">Estimate your revenue</h4>
-            <div className="flex gap-4 mt-8">
-              <div className="w-full">
-                <div className="border border-gray-400 rounded py-2 px-3 h-12 flex items-center">
-                  <input
-                    type="text"
-                    className="p-0 border-none focus:ring-0 text-lg font-medium font-futura w-full"
-                    placeholder="Area"
-                  />
-                  <span>
-                    <ArrowDropDownRounded />
-                  </span>
-                </div>
-              </div>
-              <div className="w-full">
-                <div className="border border-gray-400 rounded py-2 px-3 h-12 flex items-center">
-                  <input
-                    type="text"
-                    className="p-0 border-none focus:ring-0 text-lg font-medium font-futura w-full"
-                    placeholder="Studio"
-                  />
-                  <span>
-                    <ArrowDropDownRounded />
-                  </span>
-                </div>
-              </div>
-              <div className="w-full">
-                <div className="border border-gray-400 rounded py-2 px-3 h-12 flex items-center">
-                  <input
-                    type="Premium"
-                    className="p-0 border-none focus:ring-0 text-lg font-medium font-futura w-full"
-                    placeholder="Studio"
-                  />
-                  <span>
-                    <ArrowDropDownRounded />
-                  </span>
-                </div>
-              </div>
-              <div className="w-full">
-                <button className="text-lg uppercase border-2 border-primary bg-primary text-white h-12 py-2.5 px-6 rounded">
-                  Calculate
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };

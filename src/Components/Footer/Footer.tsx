@@ -75,7 +75,7 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">Main</h6>
               <ul className="mt-5 space-y-4 text-[#B7B7B7]">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Services</Link>
+                  <Link to="/services/cleaning-maintenance">Services</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
                   <Link to="/gallery">Gallery</Link>
@@ -87,7 +87,7 @@ const Footer = () => {
                   <Link to="/about-us">About Us</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Estimate Revenue</Link>
+                  <Link to="/estimate-revenue">Estimate Revenue</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
                   <Link to="/contact-us">Contact</Link>

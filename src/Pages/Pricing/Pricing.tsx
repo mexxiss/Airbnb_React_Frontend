@@ -55,7 +55,7 @@ const Pricing = () => {
           <div className="plans mt-16 sm:mt-20 md:mt-16">
             <div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div className="py-6 lg:py-10 px-5 lg:px-8 bg-[#f9f2e3] rounded-3xl">
+                <div className="py-6 lg:py-10 px-5 lg:px-8 bg-[#fff6e7] rounded-3xl">
                   <h4 className="text-2xl font-semibold text-[#282938]">On-Boarding</h4>
                   <p className="my-4 text-2xl xl:text-3xl 2xl:text-4xl text-[#282938] font-medium">Free</p>
                   <p className="text-[#282938] font-medium text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -153,7 +153,7 @@ const Pricing = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="py-6 lg:py-10 px-5 lg:px-8 bg-[#f9f2e3] rounded-3xl">
+                <div className="py-6 lg:py-10 px-5 lg:px-8 bg-[#fff6e7] rounded-3xl">
                   <h4 className="text-2xl font-semibold text-[#282938]">Extra services</h4>
                   <p className="my-4 text-2xl xl:text-3xl 2xl:text-4xl text-[#282938] font-medium">Price on Request</p>
                   <p className="text-[#282938] font-medium text-sm md:text-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

@@ -44,7 +44,7 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className="py-16 bg-[#FFFBF4]">
+    <div className="py-16 bg-[#fff6e7]">
       <div className="container mx-auto">
         <div className="text-center max-w-[640px] mx-auto">
           <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
@@ -56,7 +56,7 @@ const HowItWorks = () => {
           </p>
         </div>
         <div className="mt-12">
-          <div className="grid grid-cols-2 gap-x-6 sm:gap-x-0 sm:flex flex-wrap items-center justify-between gap-y-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 md:gap-x-0 md:flex flex-wrap items-center xl:justify-between gap-y-10">
             {data.map((item, index) => (
               <div className="md:w-1/3 xl:w-1/4 md:even:mt-14">
                 <div className="flex flex-col items-center justify-center gap-3 max-w-[200px] w-full h-[180px] sm:h-[200px] rounded-full rounded-tr-none shadow-xl bg-white mx-auto p-3 lg:p-6 relative">

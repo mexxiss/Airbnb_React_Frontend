@@ -42,7 +42,7 @@ const About = () => {
               <div className="flex flex-col sm:flex-row gap-5 md:gap-[30px]">
                 {" "}
                 <div className="min-w-16 w-16 h-16 md:min-w-20 md:w-20 md:h-20 rounded-full border border-border1 p-1 relative">
-                  <span className="flex items-center justify-center bg-[#FBD28B] rounded-full w-full h-full">
+                  <span className="flex items-center justify-center bg-primary rounded-full w-full h-full">
                     <img src={icon11} className="w-8 md:w-10" />
                   </span>
                 </div>

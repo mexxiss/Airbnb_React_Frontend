@@ -54,7 +54,7 @@ const EstimateRevenue = () => {
                 </div>
             </div>
 
-            <div className="mt-10 md:mt-16 py-14 lg:mt-20 bg-[#fff8ec]">
+            <div className="mt-10 md:mt-16 py-14 lg:mt-20 bg-[#fff6e7]">
                 <div className="container mx-auto">
                     <div className='max-w-[1080px] mx-auto'>
                         <h3 className="text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] font-semibold text-[#1F1607] font-light] sm:leading-[50px] 2xl:leading-[58px]">
@@ -172,7 +172,7 @@ const EstimateRevenue = () => {
 
             <div className='relative pt-16 lg:pt-0 lg:-mt-14 overflow-hidden'>
                 <div className="container mx-auto">
-                    <div className='relative py-12  before:absolute before:bg-[#fff8ec] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
+                    <div className='relative py-12  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
                         <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                             How to maximise returns
                         </h4>
@@ -199,6 +199,7 @@ const EstimateRevenue = () => {
                     </div>
                 </div>
             </div>
+            
             <FAQ />
         </>
     )

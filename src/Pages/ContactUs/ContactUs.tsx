@@ -46,7 +46,7 @@ const ContactUs = () => {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div className='py-4 sm:py-7 px-6 bg-white rounded-xl shadow-[0px_0px_20px_0px_#0000001A]'>
                             <div className="flex flex-col h-full">
-                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#FFFBF4]'>
+                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#fff6e7]'>
                                     <img src={icon28} className='w-8' />
                                 </div>
                                 <div className='mt-4'>
@@ -60,7 +60,7 @@ const ContactUs = () => {
                         </div>
                         <div className='py-4 sm:py-7 px-6 bg-white rounded-xl shadow-[0px_0px_20px_0px_#0000001A]'>
                             <div className="flex flex-col h-full">
-                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#FFFBF4]'>
+                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#fff6e7]'>
                                     <img src={icon29} className='w-8' />
                                 </div>
                                 <div className='mt-4'>
@@ -74,7 +74,7 @@ const ContactUs = () => {
                         </div>
                         <div className='py-4 sm:py-7 px-6 bg-white rounded-xl shadow-[0px_0px_20px_0px_#0000001A]'>
                             <div className="flex flex-col h-full">
-                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#FFFBF4]'>
+                                <div className='w-20 h-20 rounded-full flex items-center justify-center bg-[#fff6e7]'>
                                     <img src={icon30} className='w-8' />
                                 </div>
                                 <div className='mt-4'>

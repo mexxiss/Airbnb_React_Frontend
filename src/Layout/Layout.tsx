@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Components/Header/Header.jsx";
-import Footer from "../Components/Footer/Footer.jsx";
+
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { IHomeContentData } from "../types/homeContentTypes.js";
@@ -14,6 +13,9 @@ interface IResp {
   statusCode: number | null;
   message: string | null;
 }
+import Header from "../Components/Header/Header.tsx";
+import Footer from "../Components/Footer/Footer.tsx";
+
 
 const Layout = () => {
   const dispatch = useDispatch();

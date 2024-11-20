@@ -23,9 +23,9 @@ export default {
     },
     extend: {
       colors: {
-        'primary': '#DCC397',
+        'primary': '#bb9e6c',
         'secondary': '#100A55',
-        'text1': '#000929',
+        'text1': '#1F1607',
         'text2': '#777777',
         'border1': '#E0DEF7',
       },
