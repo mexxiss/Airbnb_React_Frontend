@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import logo from "../../assets/icons/logo.png";
-import { Link, NavLink } from "react-router-dom";
-import { CloseOutlined, KeyboardArrowDownOutlined } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
+import { CloseOutlined } from "@mui/icons-material";
 
 interface Iprops {
   menuShow: boolean;
