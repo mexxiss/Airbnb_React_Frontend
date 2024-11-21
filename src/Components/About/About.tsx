@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { icon10, icon11 } from "../../assets/icons/index.ts";
+
 import { RootState } from "../../store/store";
 
 const About = () => {
@@ -18,46 +19,24 @@ const About = () => {
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 my-8 sm:my-12">
-            <div className="bg-white bg-opacity-20 rounded-3xl p-6 md:p-8">
-              <div className="flex flex-col sm:flex-row gap-5 md:gap-[30px]">
-                <div className="min-w-16 w-16 h-16 md:min-w-20 md:w-20 md:h-20 rounded-full flex items-center justify-center bg-[#3A2705]">
-                  <img src={icon10} className="w-8 md:w-10" />
-                </div>
-                <div>
-                  <h4 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4 font-jakarta">
-                    Short Let Management
-                  </h4>
-                  <p className="md:text-lg text-[#C6C4D6] font-jakarta">
-                    We help homeowners unlock their property’s earning
-                    potential, thanks to recent changes in Dubai’s tourism
-                    policies. Our team handles everything from listing and
-                    hosting to maintenance and 24/7 guest management, ensuring a
-                    seamless short-term rental experience.
-                  </p>
+            {homeContent?.what_people_says?.facts.map((fact, index) => (
+              <div key={index} className="bg-white bg-opacity-20 rounded-3xl p-6 md:p-8">
+                <div className="flex flex-col sm:flex-row gap-5 md:gap-[30px]">
+                  <div className="min-w-16 w-16 h-16 md:min-w-20 md:w-20 md:h-20 rounded-full flex items-center justify-center bg-[#3A2705]">
+                    <img src={fact.icon} className="w-8 md:w-10" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4 font-jakarta">
+                      {fact.title}
+                    </h4>
+                    <p className="md:text-lg text-[#C6C4D6] font-jakarta">
+                      {fact.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="bg-white rounded-3xl p-6 md:p-8">
-              <div className="flex flex-col sm:flex-row gap-5 md:gap-[30px]">
-                {" "}
-                <div className="min-w-16 w-16 h-16 md:min-w-20 md:w-20 md:h-20 rounded-full border border-border1 p-1 relative">
-                  <span className="flex items-center justify-center bg-primary rounded-full w-full h-full">
-                    <img src={icon11} className="w-8 md:w-10" />
-                  </span>
-                </div>
-                <div>
-                  <h4 className="text-2xl md:text-3xl font-bold text-text1 mb-2 md:mb-4 font-jakarta">
-                    Vacation Rental Management
-                  </h4>
-                  <p className="md:text-lg text-text2 font-jakarta">
-                    We manage all aspects of host management, from listing your
-                    property on Airbnb to interior design, staging, cleaning,
-                    and maintenance, ensuring a hassle-free experience. Keep
-                    reading for more details.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
+
           </div>
           <hr className="border-primary" />
           <div className="mt-8 sm:mt-12">

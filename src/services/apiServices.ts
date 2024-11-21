@@ -1,15 +1,10 @@
 import axiosInstance from "./axiosInstance";
+import { FetchGalleryParams, IGallaryData } from "../types/gallaryTypes";
 
 export interface FetchPropertiesParams {
   page: number;
   limit: number;
 }
-
-export interface FetchGalleryParams {
-  showAll: boolean;
-  key: string;
-}
-
 
 export const fetchProperties = async ({
   page,
@@ -27,7 +22,7 @@ export const fetchHomeContent = async () => {
   return response.data; 
 };
 
-export const fetchGallary = async ({showAll, key}:FetchGalleryParams) => {
+export const fetchGallary = async ({showAll, key}: FetchGalleryParams) => {
   const response = await axiosInstance.get(`/gallery?all=${showAll}&key=${key}`);
   console.log(response.data);
   return response.data;
