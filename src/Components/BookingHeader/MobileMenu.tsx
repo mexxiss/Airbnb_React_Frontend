@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import logo from "../../assets/icons/logo.png";
-import { Link, NavLink } from "react-router-dom";
-import { CloseOutlined, KeyboardArrowDownOutlined } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
+import { CloseOutlined } from "@mui/icons-material";
 
 interface Iprops {
   menuShow: boolean;
   setMenuShow: (value: boolean) => void;
 }
 const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
-  const [isOpen, setIsOpen] = useState(false);
   const customStyle = ["overflow-hidden", "xl:overflow-auto"];
 
   useEffect(() => {
@@ -21,11 +20,6 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
 
   const closeMenu = () => {
     setMenuShow(false);
-    setIsOpen(false)
-  };
-
-  const toggledrp = () => {
-    setIsOpen(!isOpen);
   };
   return (
     <>
@@ -47,7 +41,7 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
             <ul className="flex flex-col gap-3 mt-6 text-text1">
               <li>
                 <NavLink
-                  to="/"
+                  to="/booking/home"
                   className={({ isActive }) =>
                     `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
@@ -58,102 +52,8 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
                 </NavLink>
               </li>
               <li>
-                <button
-                  className={`w-full text-left text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 flex items-center justify-between 
-                  ${isOpen && "bg-[#060c260f]"}
-                  `}
-                  onClick={toggledrp}
-                >
-                  <span className="opacity-80">Service</span>
-                  <span className={`duration-300 ${isOpen && "rotate-180"}`}>
-                    <KeyboardArrowDownOutlined />
-                  </span>
-                </button>
-                {isOpen && (
-                  <div
-                    className={`pl-5 overflow-hidden duration-150 mt-2 ${isOpen ? "h-auto" : "h-0"
-                      }`}
-                  >
-                    <ul className="flex flex-col gap-3">
-                      <li>
-                        <Link to="/services/cleaning-maintenance" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
-                          onClick={closeMenu}>
-                          Cleaning & Maintenance
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/services/interior-design" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
-                          onClick={closeMenu}>
-                          Interior Design
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/services/listing-management" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
-                          onClick={closeMenu}>
-                          Listing Management
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/services/management-support" className="px-4 w-full inline-block opacity-70 hover:opacity-100 duration-300"
-                          onClick={closeMenu}>
-                          Management Support
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li>
                 <NavLink
-                  to="/gallery"
-                  className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
-                    }`
-                  }
-                  onClick={closeMenu}
-                >
-                  <span className="opacity-80">Gallery</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/pricing"
-                  className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
-                    }`
-                  }
-                  onClick={closeMenu}
-                >
-                  <span className="opacity-80">Pricing</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about-us"
-                  className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
-                    }`
-                  }
-                  onClick={closeMenu}
-                >
-                  <span className="opacity-80">About Us</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/estimate-revenue"
-                  className={({ isActive }) =>
-                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
-                    }`
-                  }
-                  onClick={closeMenu}
-                >
-                  <span className="opacity-80">Estimate Revenue</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact-us"
+                  to="/booking/contact-us"
                   className={({ isActive }) =>
                     `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
                     }`
@@ -161,6 +61,30 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
                   onClick={closeMenu}
                 >
                   <span className="opacity-80">Contact Us</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/booking/services"
+                  className={({ isActive }) =>
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
+                    }`
+                  }
+                  onClick={closeMenu}
+                >
+                  <span className="opacity-80">Service</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/booking/privacy-policy"
+                  className={({ isActive }) =>
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
+                    }`
+                  }
+                  onClick={closeMenu}
+                >
+                  <span className="opacity-80">Privacy Policy</span>
                 </NavLink>
               </li>
             </ul>

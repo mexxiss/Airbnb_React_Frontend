@@ -6,6 +6,7 @@ import icon2 from "../../assets/icons/icon2.png";
 import NavMenu from "./NavMenu.tsx";
 import MobileMenu from "./MobileMenu.tsx";
 import { MenuOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const [menuShow, setMenuShow] = useState(false);
@@ -43,22 +44,22 @@ const Header = () => {
                 <div className="container mx-auto">
                     <div className="flex items-center justify-between sm:bg-white sm:shadow-[0px_2px_15px_0px_#0000001A] sm:px-4 md:px-6 sm:md-8 py-3.5 rounded-b-xl rounded-tr-xl">
                         <div className="flex items-center gap-3">
-                            <button
-                                className="xl:hidden"
-                                onClick={() => setMenuShow(true)}
-                            >
-                                <MenuOutlined className="!text-2xl sm:!text-3xl md:!text-4xl text-text2" />
-                            </button>
-                            <div className="logo">
+                            <Link to="/" className="logo">
                                 <img
                                     src={logo}
                                     className="max-w-[80px] sm:max-w-[120px] md:max-w-[150px]"
                                 />
-                            </div>
+                            </Link>
                         </div>
                         <div>
                             <NavMenu />
                         </div>
+                        <button
+                            className="xl:hidden"
+                            onClick={() => setMenuShow(true)}
+                        >
+                            <MenuOutlined className="!text-2xl sm:!text-3xl md:!text-4xl text-primary" />
+                        </button>
                     </div>
                 </div>
             </div>

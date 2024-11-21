@@ -5,7 +5,6 @@ export interface FetchPropertiesParams {
   limit: number;
 }
 
-//property apis
 export const fetchProperties = async ({
   page,
   limit,
