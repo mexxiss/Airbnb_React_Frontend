@@ -64,7 +64,7 @@ const Gallery = () => {
             img: img7,
             cate: "all"
         },
-    ] 
+    ]
     return (
         <>
 
