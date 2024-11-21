@@ -1,19 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import icon27 from "../../assets/icons/icon27.png";
 import bg1 from "../../assets/images/bg1.jpg";
-import img1 from "../../assets/images/img1.png";
-import img2 from "../../assets/images/img2.png";
-import img3 from "../../assets/images/img3.png";
-import img4 from "../../assets/images/img4.png";
-import img5 from "../../assets/images/img5.png";
-import img10 from "../../assets/images/img10.png";
-import img12 from "../../assets/images/img12.png";
-import img7 from "../../assets/images/img7.png";
+// import img1 from "../../assets/images/img1.png";
+// import img2 from "../../assets/images/img2.png";
+// import img3 from "../../assets/images/img3.png";
+// import img4 from "../../assets/images/img4.png";
+// import img5 from "../../assets/images/img5.png";
+// import img10 from "../../assets/images/img10.png";
+// import img12 from "../../assets/images/img12.png";
+// import img7 from "../../assets/images/img7.png";
 import { Link } from "react-router-dom";
+import { FetchGalleryParams, IGallaryData } from "../../types/gallaryTypes";
+import { useDispatch } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+import { fetchGallary } from "../../services/apiServices";
+import { setGallary } from "../../store/features/gallarySlice";
+
+interface IResponse {
+  success: boolean | null;
+  data: IGallaryData[] | null;
+  statusCode: number | null;
+  message: string | null;
+}
 
 const Gallery = () => {
   const [isActive, SetIsActive] = useState("all");
-  // comment
+  const dispatch = useDispatch();
+
+  const queryParams: FetchGalleryParams = {showAll: isActive === "all", key: isActive === "all" ? null : isActive};
+
+  const { isLoading, isError, error, data } = useQuery<IResponse>({
+    queryKey: ["gallaryData", queryParams], 
+    queryFn: () => fetchGallary(queryParams)
+  });
+
+  const finalData = data?.data;
+  useEffect(() => {
+    dispatch(setGallary(finalData as IGallaryData[]));
+  }, [data]);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError && error instanceof Error) return <p>Error: {error.message}</p>
+
   const cate = [
     "all",
     "bedroom",
@@ -23,48 +51,7 @@ const Gallery = () => {
     "pool",
     "dubai",
   ];
-  const data = [
-    {
-      id: 1,
-      img: img1,
-      cate: "all",
-    },
-    {
-      id: 2,
-      img: img2,
-      cate: "all",
-    },
-    {
-      id: 3,
-      img: img3,
-      cate: "all",
-    },
-    {
-      id: 4,
-      img: img4,
-      cate: "all",
-    },
-    {
-      id: 5,
-      img: img5,
-      cate: "all",
-    },
-    {
-      id: 6,
-      img: img10,
-      cate: "all",
-    },
-    {
-      id: 7,
-      img: img12,
-      cate: "all",
-    },
-    {
-      id: 8,
-      img: img7,
-      cate: "all",
-    },
-  ];
+
   return (
     <>
       {/* banner */}
@@ -116,13 +103,13 @@ const Gallery = () => {
           </div>
           <div className="mt-10">
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {data.map((e, index) => (
+              {finalData?.map((e:any, index:any) => (
                 <div
                   key={index}
                   className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
                 >
                   <img
-                    src={e.img}
+                    src={e.img_url}
                     className="w-full h-full object-cover object-center"
                   />
                 </div>
