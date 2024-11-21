@@ -17,8 +17,12 @@ export const fetchProperties = async ({
 };
 
 //home content api
-
 export const fetchHomeContent = async () => {
   const response = await axiosInstance.get("/home-content");
   return response.data; // Ensure this matches your API response structure
 };
+
+export const fetchGallary = async () => {
+  const response = await axiosInstance.get('/');
+  return response.data;
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
+import { icon27 } from '../../assets/icons';
+import { bg1 } from '../../assets/images';
 import { Link } from 'react-router-dom';
 
 const Gallery = () => {

@@ -1,14 +1,9 @@
-import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
-import img11 from "../../assets/images/img11.png";
-import FAQ from '../../Components/Home/FAQ';
-import logo1 from "../../assets/images/logo1.png";
-import logo2 from "../../assets/images/logo2.png";
-import logo3 from "../../assets/images/logo3.png";
-import logo4 from "../../assets/images/logo4.png";
-import logo5 from "../../assets/images/logo5.png";
-import logo6 from "../../assets/images/logo6.png";
+import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { icon27} from '../../assets/icons';
+import { bg1, img11, logo1, logo2, logo3, logo4, logo5, logo6 } from '../../assets/images';
+
+const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 
 const ListingManagement = () => {
     return (
@@ -147,7 +142,9 @@ const ListingManagement = () => {
                 </div>
             </div>
 
-            <FAQ />
+            <Suspense fallback={<div>Loading...</div>}>
+                <FAQ />
+            </Suspense>
         </>
     )
 }

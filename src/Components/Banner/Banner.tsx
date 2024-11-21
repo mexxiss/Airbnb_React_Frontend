@@ -12,6 +12,7 @@ import { GetCountries, GetState, GetCity } from "react-country-state-city";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+
 const Banner = () => {
   const [cities, setCities] = useState<string[]>([]);
   const homeContent = useSelector((state: RootState) => state.homeContent.data);
