@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import { icon10, icon11 } from "../../assets/icons/index.ts";
+
 import { RootState } from "../../store/store";
 
 const About = () => {
