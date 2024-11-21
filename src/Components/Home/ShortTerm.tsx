@@ -1,5 +1,5 @@
-import {img1} from "../../assets/images";
-import {star, icon26} from "../../assets/icons";
+import {img1} from "../../assets/images/index.ts";
+import {star, icon26} from "../../assets/icons/index.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/icons/logo.png";
+import {logo} from "../../assets/icons/index.ts";
 import { Link, NavLink } from "react-router-dom";
 import { CloseOutlined, KeyboardArrowDownOutlined } from "@mui/icons-material";
 

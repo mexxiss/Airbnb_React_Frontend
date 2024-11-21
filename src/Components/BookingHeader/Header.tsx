@@ -1,8 +1,5 @@
 import { useState } from "react";
-import logo from "../../assets/icons/logo.png";
-import icon1 from "../../assets/icons/icon1.png";
-import icon2 from "../../assets/icons/icon2.png";
-// import icon3 from "../../assets/icons/icon3.png";
+import {logo, icon1, icon2} from "../../assets/icons/index.ts";
 import NavMenu from "./NavMenu.tsx";
 import MobileMenu from "./MobileMenu.tsx";
 import { MenuOutlined } from "@mui/icons-material";

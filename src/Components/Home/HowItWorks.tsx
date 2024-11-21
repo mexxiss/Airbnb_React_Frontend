@@ -1,12 +1,4 @@
-
-import icon12 from "../../assets/icons/icon12.png";
-import icon15 from "../../assets/icons/icon15.png";
-import icon18 from "../../assets/icons/icon18.png";
-import icon19 from "../../assets/icons/icon19.png";
-import icon20 from "../../assets/icons/icon20.png";
-import icon21 from "../../assets/icons/icon21.png";
-import icon22 from "../../assets/icons/icon22.png";
-import icon23 from "../../assets/icons/icon23.png";
+import {icon12, icon15, icon18, icon19, icon20, icon21, icon22, icon23} from "../../assets/icons/index.ts";
 
 const HowItWorks = () => {
   const data = [

@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import { icon27, icon28, icon29, icon30, icon31, icon5} from '../../assets/icons';
-import { bg1, img8, map } from '../../assets/images';
+import { icon27, icon28, icon29, icon30, icon31, icon5} from '../../assets/icons/index.ts';
+import { bg1, img8, map } from '../../assets/images/index.ts';
 
 import { Select } from '@mantine/core';
 import { KeyboardArrowDownOutlined } from '@mui/icons-material';

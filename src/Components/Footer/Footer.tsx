@@ -1,6 +1,4 @@
-
-import icon25 from "../../assets/icons/icon25.png";
-import whiteLogo from "../../assets/icons/whiteLogo.png";
+import {icon25, whiteLogo} from "../../assets/icons/index.ts"
 import { Link } from "react-router-dom";
 import {
   Call,

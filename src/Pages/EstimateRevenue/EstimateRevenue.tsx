@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { icon27, icon28, icon29, icon31 } from '../../assets/icons';
-import { bg1, img8, img9 } from '../../assets/images';
+import { icon27, icon28, icon29, icon31 } from '../../assets/icons/index.ts';
+import { bg1, img8, img9 } from '../../assets/images/index.ts';
 
 const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 import { Select } from '@mantine/core';
