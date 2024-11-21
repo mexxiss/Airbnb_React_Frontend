@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
-import FAQ from '../../Components/Home/FAQ';
-import img1 from "../../assets/images/img1.png";
-import star from "../../assets/icons/star.png";
-import icon26 from "../../assets/icons/icon26.png";
+import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { icon26, icon27, star } from '../../assets/icons';
+import { bg1, img1} from '../../assets/images';
+
+const FAQ = lazy(() => import('../../Components/Home/FAQ'));
+// import icon27 from "../../assets/icons/icon27.png";
+// import bg1 from "../../assets/images/bg1.jpg";
+// import FAQ from '../../Components/Home/FAQ';
+// import img1 from "../../assets/images/img1.png"
+// import star from "../../assets/icons/star.png";
+// import icon26 from "../../assets/icons/icon26.png";
 
 const CleaningMaintenance = () => {
     return (
@@ -116,8 +121,10 @@ const CleaningMaintenance = () => {
                     </div>
                 </div>
             </div>
-
-            <FAQ />
+            <Suspense fallback={<div>Loading...</div>}>
+                <FAQ />
+            </Suspense>
+            
         </>
     )
 }

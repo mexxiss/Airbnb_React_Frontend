@@ -1,11 +1,12 @@
-
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
-import Pointer from "../../assets/icons/Pointer.png";
 import { Link } from "react-router-dom";
+import { Suspense, lazy } from 'react';
+import { icon27, Pointer } from '../../assets/icons';
+import { bg1 } from '../../assets/images';
+
+const FAQ = lazy(() => import('../../Components/Home/FAQ'));
+
 // import { ArrowRightRounded } from "@mui/icons-material";
 // import Slider from "react-slick";
-import FAQ from "../../Components/Home/FAQ";
 
 const Pricing = () => {
 
@@ -184,7 +185,9 @@ const Pricing = () => {
             </div>
           </div>
 
-          <FAQ />
+          <Suspense fallback={<div>Loading...</div>}>
+                <FAQ />
+            </Suspense>
         </div>
       </div>
     </>

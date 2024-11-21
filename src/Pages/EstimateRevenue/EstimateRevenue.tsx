@@ -1,14 +1,11 @@
-import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
+import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { icon27, icon28, icon29, icon31 } from '../../assets/icons';
+import { bg1, img8, img9 } from '../../assets/images';
+
+const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 import { Select } from '@mantine/core';
 import { KeyboardArrowDownOutlined } from '@mui/icons-material';
-import icon28 from "../../assets/icons/icon28.png";
-import icon29 from "../../assets/icons/icon29.png";
-import icon31 from "../../assets/icons/icon31.png";
-import img8 from "../../assets/images/img8.png";
-import img9 from "../../assets/images/img9.png";
-import FAQ from '../../Components/Home/FAQ';
 
 const EstimateRevenue = () => {
     return (
@@ -199,8 +196,9 @@ const EstimateRevenue = () => {
                     </div>
                 </div>
             </div>
-            
-            <FAQ />
+            <Suspense fallback={<div>Loading...</div>}>
+                <FAQ />
+            </Suspense>
         </>
     )
 }

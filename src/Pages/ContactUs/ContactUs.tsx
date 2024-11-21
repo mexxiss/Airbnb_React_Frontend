@@ -1,14 +1,8 @@
 
-import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import icon28 from "../../assets/icons/icon28.png";
-import icon29 from "../../assets/icons/icon29.png";
-import icon30 from "../../assets/icons/icon30.png";
-import icon31 from "../../assets/icons/icon31.png";
-import icon5 from "../../assets/icons/icon5.png";
-import bg1 from "../../assets/images/bg1.jpg";
-import img8 from "../../assets/images/img8.png";
-import map from "../../assets/images/map.png";
+import { Link } from 'react-router-dom';
+import { icon27, icon28, icon29, icon30, icon31, icon5} from '../../assets/icons';
+import { bg1, img8, map } from '../../assets/images';
+
 import { Select } from '@mantine/core';
 import { KeyboardArrowDownOutlined } from '@mui/icons-material';
 

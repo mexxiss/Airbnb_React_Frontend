@@ -1,9 +1,10 @@
-
-import img1 from "../../assets/images/img1.png";
-import star from "../../assets/icons/star.png";
-import icon26 from "../../assets/icons/icon26.png";
+import {img1} from "../../assets/images";
+import {star, icon26} from "../../assets/icons";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const ShortTerm = () => {
+  const homeContent = useSelector((state: RootState) => state.homeContent.data);
   return (
     <div className="py-16 md:py-20 lg:py-24">
       <div className="container mx-auto">
@@ -47,11 +48,11 @@ const ShortTerm = () => {
             </p>
             <div className="mt-10 sm:mt-14 shadow-[10px_10px_40px_0px_#00092926] bg-white rounded-2xl py-4 px-4 xs:px-8 flex items-center gap-6 xs:gap-8 justify-center lg:-translate-x-1/2 max-w-[600px] mx-auto lg:w-full">
               <div className="lg:flex gap-2 mx-auto text-center lg:text-left">
-                <p className="text-4xl sm:text-6xl font-semibold text-primary">250+</p>
+                <p className="text-4xl sm:text-6xl font-semibold text-primary">{homeContent?.properties_sale}</p>
                 <p className="text-lg text-[#505864] ">Property Sale</p>
               </div>
               <div className="lg:flex gap-2 mx-auto text-center lg:text-left">
-                <p className="text-4xl sm:text-6xl font-semibold text-primary">550+</p>
+                <p className="text-4xl sm:text-6xl font-semibold text-primary">{homeContent?.property_rent}</p>
                 <p className="text-lg text-[#505864] ">Apartment Rent</p>
               </div>
             </div>

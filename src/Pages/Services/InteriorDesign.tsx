@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
-import img10 from "../../assets/images/img10.png";
-import FAQ from '../../Components/Home/FAQ';
+import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { icon27} from '../../assets/icons';
+import { bg1, img10 } from '../../assets/images';
+
+const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 
 const InteriorDesign = () => {
     return (
@@ -135,7 +136,9 @@ const InteriorDesign = () => {
                 </div>
             </div>
 
-            <FAQ />
+            <Suspense fallback={<div>Loading...</div>}>
+                <FAQ />
+            </Suspense>
         </div>
     )
 }

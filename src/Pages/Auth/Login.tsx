@@ -1,9 +1,8 @@
 import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
 import { useState } from "react"
 import { Link } from "react-router-dom";
-import img12 from '../../assets/images/img12.png'
-import logo from '../../assets/icons/logo.png'
-import whiteLogo from '../../assets/icons/whiteLogo.png'
+import { logo, whiteLogo } from '../../assets/icons';
+import { img12 } from '../../assets/images';
 
 const Login = () => {
     const [isPasswordShow, setIsPasswordShow] = useState(false);
