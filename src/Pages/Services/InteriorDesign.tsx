@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { icon27} from '../../assets/icons/index.ts';
+import { icon27 } from '../../assets/icons/index.ts';
 import { bg1, img10 } from '../../assets/images/index.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
 
 const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 
 const InteriorDesign = () => {
+    const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
     return (
         <div>
-
-            {/* banner */}
             <div
                 className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
                 style={{
@@ -52,7 +54,7 @@ const InteriorDesign = () => {
                                 <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                                     Airbnb Interior Design
                                 </h4>
-                                <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>If your Airbnb property is not furnished, our in-house interior design team can help. We provide Airbnb interior design services for all holiday homes, ensuring the properties are perfect for short-term rental. That means beautiful in photos, yet still functional by design. We have built up our know-how over the years, so we know exactly what works, and offer different holiday home interior packages suitable for any budget.</p>
+                                <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>{homeContent?.interior_design_page?.description}</p>
                             </div>
                         </div>
                     </div>
@@ -66,33 +68,19 @@ const InteriorDesign = () => {
                             What’s Included
                         </h4>
                         <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Full Project</h6>
-                                <div className='text-[#4D5461] md:text-lg mt-3'>
-                                    <p>Our in-house Maintenance Team ensures that properties are ready for guests, responding to all issues raised and doing regular inspections. Some general maintenance issues include A/C fixes, water heater replacements, painting touch-ups, light bulb changes, leak fixes and more.</p>
-                                    <ul className='mt-3 list-disc pl-6 flex flex-col gap-1'>
-                                        <li> Furniture items, such as beds, couches and chairs</li>
-                                        <li> Kitchen items, like cups, plates and cutlery</li>
-                                        <li> Decorative items, such as vases and art</li>
-                                        <li> Lights</li>
-                                        <li> Carpets</li>
-                                        <li> Bathroom items</li>
-                                        <li> Guest essentials, such as a vacuum cleaner, hair dryer, pillows and duvets</li>
-                                    </ul>
+                            {homeContent?.interior_design_page?.what_inclued.map((item, index) => (
+                                <div key={index}>
+                                    <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>{item.title}</h6>
+                                    <div className='text-[#4D5461] md:text-lg mt-3'>
+                                        <p>{item.description}</p>
+                                        <ul className='mt-3 list-disc pl-6 flex flex-col gap-1'>
+                                            {item?.others?.map((other, key) => (
+                                                <li key={key}> {other}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Styling Project</h6>
-                                <div className='text-[#4D5461] md:text-lg mt-3'>
-                                    <p>We call it a ‘Styling Project’ if it’s anything less than a full furnishing project. Maybe your property is partly furnished, or you only need help with the décor or guest essentials. We work with you on your budget to ensure the property is ready for short-term rental. For smaller styling projects, our turnaround is one week.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Premium Interior Design Services</h6>
-                                <div className='text-[#4D5461] md:text-lg mt-3'>
-                                    <p>We also provide interior design services for personal projects, on a case-by-case basis. Please contact us for more details.</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -103,20 +91,14 @@ const InteriorDesign = () => {
                     <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                         How it works?
                     </h4>
-                    <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                        <div>
-                            <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>1. Initial inspection</h6>
-                            <p className='text-[#4D5461] mt-3 leading-6'>For any property we furnish, we start with the initial inspection, where we check the space to understand what is possible/needed. We also show comparable properties and design ideas from our latest projects.</p>
-                        </div>
-                        <div>
-                            <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>2. Design Agreement</h6>
-                            <p className='text-[#4D5461] mt-3 leading-6'>For any property we furnish, we start with the initial inspection, where we check the space to understand what is possible/needed. We also show comparable properties and design ideas from our latest projects.</p>
-                        </div>
-                        <div>
-                            <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>3. Implementation</h6>
-                            <p className='text-[#4D5461] mt-3 leading-6'>Our interior design team begins the project with clear deadlines to have it up and running (and making you money!) ASAP.</p>
-                        </div>
-                    </div>
+                    <ul className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        {homeContent?.interior_design_page?.how_it_works.map((item, index) => (
+                            <li key={index}>
+                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>{index+1}. {item.title}</h6>
+                                <p className='text-[#4D5461] mt-3 leading-6'>{item.description}</p>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
 
