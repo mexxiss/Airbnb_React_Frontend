@@ -22,7 +22,7 @@ const Banner = () => {
         // Fetch all countries (to find UAE)
         const countries = await GetCountries();
 
-        // Find UAE country object
+        // Find UAE country object 
         const uaeCountry = countries.find(
           (country) => country.name === "United Arab Emirates"
         );
