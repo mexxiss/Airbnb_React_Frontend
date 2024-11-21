@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import img7 from "../../assets/images/img7.png";
+import { img7 } from "../../assets/images/index.ts";
 import Slider from "react-slick";
 import {
   KeyboardArrowLeftOutlined,

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import icon27 from "../../assets/icons/icon27.png";
-import bg1 from "../../assets/images/bg1.jpg";
+import {icon27} from "../../assets/icons/index.ts";
+import {bg1} from "../../assets/images/index.ts";
 import { CalendarMonthOutlined, CleaningServicesOutlined, GroupsOutlined, KingBedOutlined, RoomServiceOutlined, WifiOutlined } from '@mui/icons-material';
 
 const Service = () => {

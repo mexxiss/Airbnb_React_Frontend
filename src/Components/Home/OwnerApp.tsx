@@ -1,6 +1,5 @@
-
-import img6 from "../../assets/images/img6.png";
-import icon24 from "../../assets/icons/icon24.png";
+import { img6 } from "../../assets/images/index.ts";
+import { icon24 } from "../../assets/icons/index.ts";
 
 const OwnerApp = () => {
   return (

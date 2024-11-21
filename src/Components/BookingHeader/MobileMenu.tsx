@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import logo from "../../assets/icons/logo.png";
+import {logo} from "../../assets/icons/index.ts";
 import { NavLink } from "react-router-dom";
 import { CloseOutlined } from "@mui/icons-material";
 

@@ -4,10 +4,10 @@ import Header from "../Components/Header/Header.tsx";
 import Footer from "../Components/Footer/Footer.tsx";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { IHomeContentData } from "../types/homeContentTypes.js";
-import { fetchHomeContent } from "../services/apiServices.js";
+import { IHomeContentData } from "../types/homeContentTypes.ts";
+import { fetchHomeContent } from "../services/apiServices.ts";
 import { useEffect } from "react";
-import { setHomeContent } from "../store/features/homeContentSlice.js";
+import { setHomeContent } from "../store/features/homeContentSlice.ts";
 
 interface IResp {
   success: boolean | null;

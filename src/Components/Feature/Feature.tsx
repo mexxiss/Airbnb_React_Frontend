@@ -1,10 +1,4 @@
-import icon12 from "../../assets/icons/icon12.png";
-import icon13 from "../../assets/icons/icon13.png";
-import icon14 from "../../assets/icons/icon14.png";
-import icon15 from "../../assets/icons/icon15.png";
-import icon16 from "../../assets/icons/icon16.png";
-import icon17 from "../../assets/icons/icon17.png";
-import icon5 from "../../assets/icons/icon5.png";
+import {icon17, icon5} from "../../assets/icons/index.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 

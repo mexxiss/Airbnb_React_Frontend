@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { logo, whiteLogo } from '../../assets/icons';
-import { img12 } from '../../assets/images';
+import { logo, whiteLogo } from '../../assets/icons/index.ts';
+import { img12 } from '../../assets/images/index.ts';
 
 const ForgotPassword = () => {
     return (

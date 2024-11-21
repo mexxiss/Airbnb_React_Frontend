@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosInstance";
-import { FetchGalleryParams, IGallaryData } from "../types/gallaryTypes";
+import { FetchGalleryParams } from "../types/gallaryTypes";
 
 export interface FetchPropertiesParams {
   page: number;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { icon27} from '../../assets/icons';
-import { bg1, img10 } from '../../assets/images';
+import { icon27} from '../../assets/icons/index.ts';
+import { bg1, img10 } from '../../assets/images/index.ts';
 
 const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 

@@ -7,8 +7,8 @@ const WeList = lazy(() => import('../../Components/Home/WeList'));
 const ShortTerm = lazy(() => import('../../Components/Home/ShortTerm'));
 const ReviewSec = lazy(() => import('../../Components/Home/ReviewSec'));
 const BrandFeature = lazy(() => import('../../Components/BrandFeature/BrandFeature'));
-import { icon27 } from '../../assets/icons';
-import { bg1, img1, img2, img3 } from '../../assets/images';
+import { icon27 } from '../../assets/icons/index.ts';
+import { bg1, img1, img2, img3 } from '../../assets/images/index.ts';
 // import img4 from "../../assets/images/img4.png";
 
 const AboutUs = () => {
