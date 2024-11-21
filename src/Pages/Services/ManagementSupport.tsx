@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { icon27} from '../../assets/icons/index.ts';
+import { icon27 } from '../../assets/icons/index.ts';
 import { bg1, img9 } from '../../assets/images/index.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
 
 const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 
 const ManagementSupport = () => {
+    const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
     return (
         <>
 
@@ -49,9 +53,9 @@ const ManagementSupport = () => {
                         <div className="md:w-1/2 lg:w-[50%] order-2 md:order-1 mt-8 md:mt-0">
                             <div>
                                 <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
-                                    Property Management Support Teams
+                                    {homeContent?.management_support?.title}
                                 </h4>
-                                <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>Property management is a big job, so we’ve separated our service into teams for better efficiency and follow up. This ensures our owners, and our guests get the maximum support. Learn all about our property management support teams here.</p>
+                                <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>{homeContent?.management_support?.description}</p>
                             </div>
                         </div>
                     </div>
@@ -63,23 +67,12 @@ const ManagementSupport = () => {
                     <div className='relative py-12  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10'>
 
                         <div className="mt-8 grid sm:grid-cols-2 gap-8">
-                            <div>
-                                <h6 className='text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]'>Guest Support Team</h6>
-                                <p className='text-[#4D5461] mt-3 leading-6'>The Guest Support Team deals with all guest-related matters – from the initial inquiry to the physical check-in, as well as support throughout the stay. The team is 24/7 and speaks multiple languages, ensuring the absolute best support for our guests.</p>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]'>Admin Support Team</h6>
-                                <p className='text-[#4D5461] mt-3 leading-6'>The Admin Support Team handles all the airbnb requirements and government compliance, and the back end of the business including building access, permits, DET check-ins and check-outs, security deposits, platform issues etc.</p>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]'>Client Support Team</h6>
-                                <p className='text-[#4D5461] mt-3 leading-6'>The Client Support Team handles all host-related matters. Whether it’s helping with an Owner Stay or explaining a Monthly Statement – the team is available to answer any questions. This team is also responsible for renewing permits, and ensuring our KYC is up to date.</p>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]'>Revenue Support Team</h6>
-                                <p className='text-[#4D5461] mt-3 leading-6'>The Revenue Support Team is involved in the revenue management of the property – which means ensuring the pricing is correct throughout the year and our owners make the most money. The team amends pricing based on demand and supply – using a combination of algorithms and manual adjustments. We also price differently depending on the channel used (ex. Airbnb versus Booking.com). Read more about our pricing strategies here.
-                                </p>
-                            </div>
+                            {homeContent?.management_support?.bottom_content.map((item, index) => (
+                                <div key={index}>
+                                    <h6 className='text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]'>{item.title}</h6>
+                                    <p className='text-[#4D5461] mt-3 leading-6'>{item.description}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

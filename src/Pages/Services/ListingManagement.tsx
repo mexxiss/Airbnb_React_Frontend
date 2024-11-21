@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { icon27} from '../../assets/icons/index.ts';
+import { icon27 } from '../../assets/icons/index.ts';
 import { bg1, img11, logo1, logo2, logo3, logo4, logo5, logo6 } from '../../assets/images/index.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
 
 const FAQ = lazy(() => import('../../Components/Home/FAQ'));
 
 const ListingManagement = () => {
+    const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
     return (
         <>
             {/* banner */}
@@ -51,7 +55,7 @@ const ListingManagement = () => {
                                     <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                                         Listing Management
                                     </h4>
-                                    <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>The listings team creates, lists, and updates your property listing on various platforms where we advertise. This includes taking and editing top-quality photos and creating property-specific descriptions to make your home stand out among the rest. Once everything is live, the team continues to monitor all platforms and make updates when necessary.</p>
+                                    <p className='mt-3 font-montserrat md:text-lg text-[#60410C]'>{homeContent?.listing_management?.description}</p>
                                 </div>
                             </div>
                         </div>
@@ -108,18 +112,12 @@ const ListingManagement = () => {
                             What’s Included
                         </h4>
                         <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Photography and Editing</h6>
-                                <p className='text-[#4D5461] md:text-lg mt-3'>Our in-house photographers take beautiful photos of the property, including all views and building amenities. The photos are edited for the best flow, emphasising the most important features of the property.</p>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Property Descriptions</h6>
-                                <p className='text-[#4D5461] md:text-lg mt-3'>The listings team writes catchy and unique Airbnb property descriptions, along with any area-specific references. Then the team lists the property on the multiple advertising channels, editing them to suit the channel used.</p>
-                            </div>
-                            <div>
-                                <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>Updating Listings</h6>
-                                <p className='text-[#4D5461] md:text-lg mt-3'>The listings team continuously checks properties and the channels to ensure information is correct throughout. They also update listings if required, in the event of pool closures, works in buildings or property upgrades - as an example. This ensures guests are aware of any new information. The team is also responsible for responding to guest reviews.</p>
-                            </div>
+                            {homeContent?.listing_management?.what_inclued.map((item, index) => (
+                                <div key={index}>
+                                    <h6 className='text-xl md:text-2xl font-medium text-[#1F1607]'>{item.title}</h6>
+                                    <p className='text-[#4D5461] md:text-lg mt-3'>{item.description}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

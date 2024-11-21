@@ -2,10 +2,11 @@
 interface CleaningWhatPeopleSay {
   title: string;
   description: string;
+  _id: string
 }
 
 interface CleaningMaintenanceItem {
-  whats_people_say: CleaningWhatPeopleSay[];
+  what_inclued: CleaningWhatPeopleSay[];
 }
 
 // Interior Design

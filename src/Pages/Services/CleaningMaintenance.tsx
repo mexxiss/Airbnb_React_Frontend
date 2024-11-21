@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { icon26, icon27, star } from "../../assets/icons/index.ts";
 import { bg1, img1 } from "../../assets/images/index.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store.ts";
 const FAQ = lazy(() => import("../../Components/Home/FAQ"));
 
 const CleaningMaintenance = () => {
+  const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
   return (
     <>
       {/* banner */}
@@ -88,13 +92,13 @@ const CleaningMaintenance = () => {
               <div className="shadow-[10px_10px_40px_0px_#00092926] bg-white rounded-2xl py-4 px-4 xs:px-8 flex items-center gap-6 xs:gap-8 justify-center -translate-y-1/2  lg:w-full sm:max-w-[80%] mx-auto">
                 <div className="2xl:flex gap-2 mx-auto text-center 2xl:text-left">
                   <p className="text-4xl sm:text-6xl font-semibold text-primary">
-                    250+
+                    {homeContent?.properties_sale}
                   </p>
                   <p className="text-lg text-[#505864] ">Property Sale</p>
                 </div>
                 <div className="2xl:flex gap-2 mx-auto text-center 2xl:text-left">
                   <p className="text-4xl sm:text-6xl font-semibold text-primary">
-                    550+
+                    {homeContent?.apartment_rent}
                   </p>
                   <p className="text-lg text-[#505864] ">Apartment Rent</p>
                 </div>
@@ -105,40 +109,16 @@ const CleaningMaintenance = () => {
                 What’s Included
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
-                <li>
-                  <h6 className="text-[#1F1607] text-xl font-medium">
-                    General Maintenance
-                  </h6>
-                  <p className="text-[#4D5461] mt-2">
-                    Our in-house Maintenance Team ensures that properties are
-                    ready for guests, responding to all issues raised and doing
-                    regular inspections. Some general maintenance issues include
-                    A/C fixes, water heater replacements, painting touch-ups,
-                    light bulb changes, leak fixes and more.
-                  </p>
-                </li>
-                <li>
-                  <h6 className="text-[#1F1607] text-xl font-medium">
-                    Refilling of Essentials
-                  </h6>
-                  <p className="text-[#4D5461] mt-2">
-                    We provide and refill (at every check-in) all Guest
-                    Amenities such as towels, linens, shampoo, conditioner, body
-                    wash, soap, water, coffee, tea, sugar, toilet paper and
-                    more.
-                  </p>
-                </li>
-                <li>
-                  <h6 className="text-[#1F1607] text-xl font-medium">
-                    General and Deep Cleaning
-                  </h6>
-                  <p className="text-[#4D5461] mt-2">
-                    We provide General Cleanings and Deep Cleanings of
-                    properties, with the help of our fully trained and licensed
-                    Cleaning Team. The team also provides extra cleaning
-                    services for guests, if required.
-                  </p>
-                </li>
+                {homeContent?.cleaning_maintenance?.what_inclued.map((item, index) => (
+                  <li key={index}>
+                    <h6 className="text-[#1F1607] text-xl font-medium">
+                      {item.title}
+                    </h6>
+                    <p className="text-[#4D5461] mt-2">
+                      {item.description}
+                    </p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
