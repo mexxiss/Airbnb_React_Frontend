@@ -1,8 +1,10 @@
-
+import { useSelector } from "react-redux";
 import icon10 from "../../assets/icons/icon10.png";
 import icon11 from "../../assets/icons/icon11.png";
+import { RootState } from "../../store/store";
 
 const About = () => {
+  const homeContent = useSelector((state: RootState) => state.homeContent.data);
   return (
     <>
       <div className="relative bg-[#4D360E] py-20">
@@ -13,12 +15,7 @@ const About = () => {
               <span className="text-primary">us</span>
             </h2>
             <p className="text-[#B7B5CC] font-medium lg:max-w-[600px] xl:max-w-[750px] lg:text-justify mx-auto lg:mx-0 mt-3 lg:mt-0">
-              Established in 2017, we manage over 650 short-let properties
-              across Dubai and the UAE. With deep local expertise and strong
-              vendor relationships, we deliver top-tier service and maximize
-              profits for homeowners. Our experienced team is committed to
-              providing a smooth, stress-free experience for both property
-              owners and guests.
+              {homeContent?.what_people_says?.description}
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 my-8 sm:my-12">
@@ -68,7 +65,7 @@ const About = () => {
             <div className="flex items-center justify-center gap-4 sm:gap-10 lg:gap-14 text-center">
               <div>
                 <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
-                  7.4%
+                  {homeContent?.property_return_rate}%
                 </h4>
                 <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Property Return Rate
@@ -77,7 +74,7 @@ const About = () => {
               <div className="min-w-px w-px h-16 bg-[#b3b1c1] block"></div>
               <div>
                 <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
-                  3,856
+                  {homeContent?.property_rent}
                 </h4>
                 <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Property in Rent
@@ -86,7 +83,7 @@ const About = () => {
               <div className="min-w-px w-px h-16 bg-[#b3b1c1] block"></div>
               <div>
                 <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
-                  2,540
+                  {homeContent?.daily_complete_transactions}
                 </h4>
                 <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Daily Completed Transactions

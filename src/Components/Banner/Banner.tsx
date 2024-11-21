@@ -4,15 +4,60 @@ import icon6 from "../../assets/icons/icon6.png";
 import icon7 from "../../assets/icons/icon7.png";
 import icon8 from "../../assets/icons/icon8.png";
 import icon9 from "../../assets/icons/icon9.png";
-import img1 from "../../assets/images/img1.png";
-import img2 from "../../assets/images/img2.png";
-import img3 from "../../assets/images/img3.png";
 // import img4 from "../../assets/images/img4.png";
 // import img5 from "../../assets/images/img5.png";
 import Slider from "react-slick";
 import { Select } from "@mantine/core";
-
+import { GetCountries, GetState, GetCity } from "react-country-state-city";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 const Banner = () => {
+  const [cities, setCities] = useState<string[]>([]);
+  const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        // Fetch all countries (to find UAE)
+        const countries = await GetCountries();
+
+        // Find UAE country object
+        const uaeCountry = countries.find(
+          (country) => country.name === "United Arab Emirates"
+        );
+
+        if (!uaeCountry) {
+          console.error("United Arab Emirates not found!");
+
+          return;
+        }
+
+        // Get all states (Emirates) in the UAE using country ID
+        const uaeStates = await GetState(uaeCountry.id);
+
+        const allCities = await Promise.all(
+          uaeStates.map(async (state) => {
+            // Get cities in each state
+            const citiesInState = await GetCity(uaeCountry.id, state.id);
+            return {
+              state: state.name, // State name (Emirate)
+              cities: citiesInState.map((city) => city.name), // City names in the state
+            };
+          })
+        );
+        const finalCities = allCities.map((cities) =>
+          cities.cities.map((city) => city)
+        );
+        setCities(finalCities.flat()); // Update the state with cities of all Emirates
+      } catch (error) {
+        console.error("Error fetching cities:", error);
+      }
+    };
+
+    fetchCities();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -31,6 +76,7 @@ const Banner = () => {
       },
     ],
   };
+
   return (
     <>
       <div className="banner bgGradient min-h-[80vh] pb-10">
@@ -39,15 +85,11 @@ const Banner = () => {
             <div className="absolute w-full h-full left-0 top-0 bg-[#ffffff38] z-10 lg:hidden"></div>
             <div className="h-full sliderInner">
               <Slider {...settings}>
-                <div className="h-full">
-                  <img src={img1} className="h-full object-cover" />
-                </div>
-                <div className="h-full">
-                  <img src={img2} className="h-full object-cover" />
-                </div>
-                <div className="h-full">
-                  <img src={img3} className="h-full object-cover" />
-                </div>
+                {homeContent?.banner_images.map((img, i) => (
+                  <div className="h-full">
+                    <img src={img} key={i} className="h-full object-cover" />
+                  </div>
+                ))}
               </Slider>
             </div>
           </div>
@@ -81,10 +123,12 @@ const Banner = () => {
                           </label>
                           <div className="">
                             <Select
-                              placeholder='Select City'
-                              data={['Dubai', 'Al Furjan', 'Dubai South', 'Dubai Hills']}
-                              className=''
-                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
+                              placeholder="Select City"
+                              data={cities}
+                              className=""
+                              rightSection={
+                                <KeyboardArrowDownOutlined className="text-black" />
+                              }
                             />
                           </div>
                         </div>
@@ -98,10 +142,23 @@ const Banner = () => {
                           </label>
                           <div className="">
                             <Select
-                              placeholder='Select Bedrooms'
-                              data={['One Bed', 'Two Beds', 'Three Beds', 'Four Beds']}
-                              className=''
-                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
+                              placeholder="Select Bedrooms"
+                              data={[
+                                "One Bed",
+                                "Two Beds",
+                                "Three Beds",
+                                "Four Beds",
+                                "Five Beds",
+                                "six Beds",
+                                "Seven Beds",
+                                "Eight Beds",
+                                "Nine Beds",
+                                "Ten Beds",
+                              ]}
+                              className=""
+                              rightSection={
+                                <KeyboardArrowDownOutlined className="text-black" />
+                              }
                             />
                           </div>
                         </div>
@@ -115,16 +172,20 @@ const Banner = () => {
                           </label>
                           <div className="">
                             <Select
-                              placeholder='Furnishing'
-                              data={['Premium', 'Standard']}
-                              className=''
-                              rightSection={<KeyboardArrowDownOutlined className='text-black' />}
+                              placeholder="Furnishing"
+                              data={["Premium", "Standard"]}
+                              className=""
+                              rightSection={
+                                <KeyboardArrowDownOutlined className="text-black" />
+                              }
                             />
                           </div>
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] md:hidden lg:block"></div>
                       </div>
-                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto">Calculate</button>
+                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto">
+                        Calculate
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -141,7 +202,7 @@ const Banner = () => {
                       </span>
                     </div>
                     <h4 className="text-primary font-bold text-2xl mt-4">
-                      50k+ customers
+                      {homeContent?.total_customers}+ customers
                     </h4>
                     <p className="text-text1 font-medium">
                       believe in our service
@@ -157,7 +218,7 @@ const Banner = () => {
                       </span>
                     </div>
                     <h4 className="text-primary font-bold text-2xl mt-4">
-                      10k+ properties
+                      {homeContent?.total_properties}+ properties
                     </h4>
                     <p className="text-text1 font-medium">
                       and house ready for occupancy
