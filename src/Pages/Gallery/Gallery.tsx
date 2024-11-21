@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import icon27 from "../../assets/icons/icon27.png";
 import bg1 from "../../assets/images/bg1.jpg";
+import img1 from "../../assets/images/img1.png";
+import img2 from "../../assets/images/img2.png";
+import img3 from "../../assets/images/img3.png";
+import img4 from "../../assets/images/img4.png";
+import img5 from "../../assets/images/img5.png";
+import img10 from "../../assets/images/img10.png";
+import img12 from "../../assets/images/img12.png";
+import img7 from "../../assets/images/img7.png";
 import { Link } from 'react-router-dom';
 
 const Gallery = () => {
@@ -15,12 +23,54 @@ const Gallery = () => {
         "pool",
         "dubai",
     ]
+    const data = [
+        {
+            id: 1,
+            img: img1,
+            cate: "all"
+        },
+        {
+            id: 2,
+            img: img2,
+            cate: "all"
+        },
+        {
+            id: 3,
+            img: img3,
+            cate: "all"
+        },
+        {
+            id: 4,
+            img: img4,
+            cate: "all"
+        },
+        {
+            id: 5,
+            img: img5,
+            cate: "all"
+        },
+        {
+            id: 6,
+            img: img10,
+            cate: "all"
+        },
+        {
+            id: 7,
+            img: img12,
+            cate: "all"
+        },
+        {
+            id: 8,
+            img: img7,
+            cate: "all"
+        },
+    ]
     return (
         <>
 
             {/* banner */}
             <div
-                className="py-28 pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
+                className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
                 style={{
                     backgroundImage: `linear-gradient(#FFF1D9CC, #FFF1D9CC), url(${bg1})`,
                 }}
@@ -56,9 +106,13 @@ const Gallery = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="mt-16">
-                        <div className="flex">
-                            <div className=""></div>
+                    <div className="mt-10">
+                        <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                            {data.map((e, index) => (
+                                <div key={index} className='max-h-60 lg:h-64 rounded-xl overflow-hidden'>
+                                    <img src={e.img} className='w-full h-full object-cover object-center' />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

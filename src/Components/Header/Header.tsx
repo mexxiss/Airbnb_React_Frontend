@@ -67,12 +67,12 @@ const Header = () => {
               >
                 <MenuOutlined className="!text-2xl sm:!text-3xl md:!text-4xl text-text2" />
               </button>
-              <div className="logo">
+              <Link to="/" className="logo">
                 <img
                   src={logo}
                   className="max-w-[80px] sm:max-w-[120px] md:max-w-[150px]"
                 />
-              </div>
+              </Link>
             </div>
             <div>
               <NavMenu />
