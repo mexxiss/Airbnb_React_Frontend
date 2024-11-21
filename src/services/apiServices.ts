@@ -5,6 +5,12 @@ export interface FetchPropertiesParams {
   limit: number;
 }
 
+export interface FetchGalleryParams {
+  showAll: boolean;
+  key: string;
+}
+
+
 export const fetchProperties = async ({
   page,
   limit,
@@ -18,10 +24,11 @@ export const fetchProperties = async ({
 //home content api
 export const fetchHomeContent = async () => {
   const response = await axiosInstance.get("/home-content");
-  return response.data; // Ensure this matches your API response structure
+  return response.data; 
 };
 
-export const fetchGallary = async () => {
-  const response = await axiosInstance.get('/');
+export const fetchGallary = async ({showAll, key}:FetchGalleryParams) => {
+  const response = await axiosInstance.get(`/gallery?all=${showAll}&key=${key}`);
+  console.log(response.data);
   return response.data;
 }

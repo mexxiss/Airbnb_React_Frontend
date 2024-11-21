@@ -1,4 +1,4 @@
-import {lazy, Suspense} from 'react';
+import {lazy, Suspense, useEffect} from 'react';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,6 +8,7 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.tsx";
 import BookingLayout from './Layout/BookingLayout.tsx';
 import Login from "./Pages/Auth/Login.tsx";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.tsx";
+import { fetchGallary } from './services/apiServices.ts';
 
 const Home = lazy(() => import("./Pages/Home/Home.tsx"));
 const Pricing = lazy(() => import("./Pages/Pricing/Pricing.tsx"));
@@ -25,6 +26,13 @@ const Service = lazy(() => import("./Components/Booking/Service.tsx"));
 const BookingContact = lazy(() => import("./Components/Booking/BookingContact.tsx"));
 
 const App = () => {
+  useEffect(() => {
+    fetchGallary({
+      showAll: true, // showAll is a boolean
+      key: "bedrooms", // key is a string
+    });
+  }, []);
+
   const router = createBrowserRouter([
     {
       path: "/",
