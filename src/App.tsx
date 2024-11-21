@@ -1,29 +1,41 @@
-import {lazy, Suspense, useEffect} from 'react';
+import { lazy, Suspense, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Layout from "./Layout/Layout.tsx";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.tsx";
-import BookingLayout from './Layout/BookingLayout.tsx';
+import BookingLayout from "./Layout/BookingLayout.tsx";
 import Login from "./Pages/Auth/Login.tsx";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.tsx";
-import { fetchGallary } from './services/apiServices.ts';
+import { fetchGallary } from "./services/apiServices.ts";
 
 const Home = lazy(() => import("./Pages/Home/Home.tsx"));
 const Pricing = lazy(() => import("./Pages/Pricing/Pricing.tsx"));
 const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs.tsx"));
 const ContactUs = lazy(() => import("./Pages/ContactUs/ContactUs.tsx"));
 const Gallery = lazy(() => import("./Pages/Gallery/Gallery.tsx"));
-const EstimateRevenue = lazy(() => import("./Pages/EstimateRevenue/EstimateRevenue.tsx"));
+const EstimateRevenue = lazy(
+  () => import("./Pages/EstimateRevenue/EstimateRevenue.tsx")
+);
 
 // Lazy loading services
-const CleaningMaintenance = lazy(() => import("./Pages/Services/CleaningMaintenance.tsx"));
-const InteriorDesign = lazy(() => import("./Pages/Services/InteriorDesign.tsx"));
-const ManagementSupport = lazy(() => import("./Pages/Services/ManagementSupport.tsx"));
-const ListingManagement = lazy(() => import("./Pages/Services/InteriorDesign.tsx"));
+const CleaningMaintenance = lazy(
+  () => import("./Pages/Services/CleaningMaintenance.tsx")
+);
+const InteriorDesign = lazy(
+  () => import("./Pages/Services/InteriorDesign.tsx")
+);
+const ManagementSupport = lazy(
+  () => import("./Pages/Services/ManagementSupport.tsx")
+);
+const ListingManagement = lazy(
+  () => import("./Pages/Services/ListingManagement.tsx")
+);
 const Service = lazy(() => import("./Components/Booking/Service.tsx"));
-const BookingContact = lazy(() => import("./Components/Booking/BookingContact.tsx"));
+const BookingContact = lazy(
+  () => import("./Components/Booking/BookingContact.tsx")
+);
 
 const App = () => {
   useEffect(() => {
