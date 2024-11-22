@@ -125,7 +125,7 @@ const CleaningMaintenance = () => {
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ />
+        <FAQ title="Cleaning & Maintenance FAQs" />
       </Suspense>
     </>
   );

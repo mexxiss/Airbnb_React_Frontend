@@ -5,3 +5,7 @@ export interface IFaqData {
     __v: number, 
     page: string[]
 }
+
+export interface IFaqParams {
+    page: string | null
+}

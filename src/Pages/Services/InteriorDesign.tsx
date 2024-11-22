@@ -119,7 +119,7 @@ const InteriorDesign = () => {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ />
+                <FAQ title='Interior Design FAQs' />
             </Suspense>
         </div>
     )
