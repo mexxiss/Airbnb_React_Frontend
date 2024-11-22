@@ -25,11 +25,12 @@ interface ITypesResponse {
 }
 
 const Gallery = () => {
-  const [isActive, SetIsActive] = useState("674055ff3756c3c8f2e7e686");
+  const [isActive, SetIsActive] = useState("All");
+  const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
   const dispatch = useDispatch();
 
   const queryParams: FetchGalleryParams = {
-    type: isActive,
+    type: isActive !== "All" ? isActive : "",
   };
 
   const { isLoading: isGallaryLoading, isError: isGallaryError, error: gallaryError, data: gallaryData } = useQuery<IResponse>({
@@ -37,20 +38,26 @@ const Gallery = () => {
     queryFn: () => fetchGallary(queryParams),
   });
 
-  const { isLoading: isTypesLoading, isError: isTypesError, error: typesError, data: typesData} = useQuery<ITypesResponse>({
+  const { isLoading: isTypesLoading, isError: isTypesError, error: typesError, data: typesData } = useQuery<ITypesResponse>({
     queryKey: ["gallaryTypesData"],
     queryFn: () => fetchGallaryTypes()
   })
 
   const finalGallaryData = gallaryData?.data;
-  const finalTypesData = typesData?.data;
 
   useEffect(() => {
     dispatch(setGallary(finalGallaryData as IGallaryData[]));
   }, [gallaryData]);
 
   useEffect(() => {
-    dispatch(setGallaryTypes(finalTypesData as IGallaryTypesData[]));
+    if (typesData?.data) {
+      const updatedTypesData = [
+        { _id: "All", name: "All", __v: 0 },
+        ...typesData.data, 
+      ];
+      setFinalTypesData(updatedTypesData); 
+      dispatch(setGallaryTypes(updatedTypesData as IGallaryTypesData[])); 
+    }
   }, [typesData])
 
   if (isGallaryError && gallaryError instanceof Error) return <p>Error: {gallaryError.message}</p>;
@@ -92,11 +99,10 @@ const Gallery = () => {
               {!isTypesLoading && finalTypesData?.map((e: any, index: any) => (
                 <li key={index}>
                   <button
-                    className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${
-                      isActive === e?._id
-                        ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
-                        : "text-[#1F1607] font-normal"
-                    }`}
+                    className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${isActive === e?._id
+                      ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
+                      : "text-[#1F1607] font-normal"
+                      }`}
                     onClick={() => SetIsActive(e?._id)}
                   >
                     {e?.name}
@@ -109,23 +115,23 @@ const Gallery = () => {
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {isGallaryLoading
                 ? Array(4)
-                    .fill(0)
-                    .map((_, index) => (
-                      <div key={index}>
-                        <GallerySkeleton />
-                      </div>
-                    ))
-                : finalGallaryData?.map((e: any, index: any) => (
-                    <div
-                      key={index}
-                      className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
-                    >
-                      <img
-                        src={e.img_url}
-                        className="w-full h-full object-cover object-center"
-                      />
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index}>
+                      <GallerySkeleton />
                     </div>
-                  ))}
+                  ))
+                : finalGallaryData?.map((e: any, index: any) => (
+                  <div
+                    key={index}
+                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                  >
+                    <img
+                      src={e.img_url}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

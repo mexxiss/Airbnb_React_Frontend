@@ -7,5 +7,5 @@ export interface IGallaryData {
     key: string | null;
 }
 export interface FetchGalleryParams {
-    type: string
+    type: string | null
 }
