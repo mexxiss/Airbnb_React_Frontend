@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import {icon27} from "../../assets/icons/index.ts";
-import {bg1} from "../../assets/images/index.ts";
+import { icon27 } from "../../assets/icons/index.ts";
+import { bg1 } from "../../assets/images/index.ts";
 import { Link } from "react-router-dom";
 import { FetchGalleryParams, IGallaryData } from "../../types/gallaryTypes";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { fetchGallary } from "../../services/apiServices";
 import { setGallary } from "../../store/features/gallarySlice";
+import Loader from "../../Components/Loader/Loader.tsx";
+import GallerySkeleton from "../../Components/LoadingShimmers/GallerySkeleton.tsx";
 
 interface IResponse {
   success: boolean | null;
@@ -19,11 +21,14 @@ const Gallery = () => {
   const [isActive, SetIsActive] = useState("all");
   const dispatch = useDispatch();
 
-  const queryParams: FetchGalleryParams = {showAll: isActive === "all", key: isActive === "all" ? null : isActive};
+  const queryParams: FetchGalleryParams = {
+    showAll: isActive === "all",
+    key: isActive === "all" ? null : isActive,
+  };
 
   const { isLoading, isError, error, data } = useQuery<IResponse>({
-    queryKey: ["gallaryData", queryParams], 
-    queryFn: () => fetchGallary(queryParams)
+    queryKey: ["gallaryData", queryParams],
+    queryFn: () => fetchGallary(queryParams),
   });
 
   const finalData = data?.data;
@@ -31,8 +36,7 @@ const Gallery = () => {
     dispatch(setGallary(finalData as IGallaryData[]));
   }, [data]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError && error instanceof Error) return <p>Error: {error.message}</p>
+  if (isError && error instanceof Error) return <p>Error: {error.message}</p>;
 
   const cate = [
     "all",
@@ -95,17 +99,25 @@ const Gallery = () => {
           </div>
           <div className="mt-10">
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {finalData?.map((e:any, index:any) => (
-                <div
-                  key={index}
-                  className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
-                >
-                  <img
-                    src={e.img_url}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              ))}
+              {isLoading
+                ? Array(4)
+                    .fill(0)
+                    .map((e, index) => (
+                      <div key={index}>
+                        <GallerySkeleton />
+                      </div>
+                    ))
+                : finalData?.map((e: any, index: any) => (
+                    <div
+                      key={index}
+                      className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                    >
+                      <img
+                        src={e.img_url}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
+                  ))}
             </div>
           </div>
         </div>
