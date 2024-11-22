@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IGallaryData } from "../../types/gallaryTypes";
+import { IGallaryData } from "../../types/gallarytypes";
 
 interface GallaryState {
     data: IGallaryData[] | null;
