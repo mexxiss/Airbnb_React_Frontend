@@ -12,8 +12,6 @@ const ManagementSupport = () => {
 
     return (
         <>
-
-            {/* banner */}
             <div
                 className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
                 style={{
