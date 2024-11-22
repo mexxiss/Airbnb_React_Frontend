@@ -197,7 +197,7 @@ const EstimateRevenue = () => {
                 </div>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ />
+                <FAQ title='Estimate Revenue FAQs' />
             </Suspense>
         </>
     )

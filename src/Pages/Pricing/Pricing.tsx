@@ -186,7 +186,7 @@ const Pricing = () => {
           </div>
 
           <Suspense fallback={<div>Loading...</div>}>
-                <FAQ />
+                <FAQ title="Pricing FAQs" />
             </Suspense>
         </div>
       </div>

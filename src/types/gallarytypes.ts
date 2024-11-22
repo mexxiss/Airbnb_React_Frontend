@@ -1,8 +1,11 @@
+import { IGallaryTypesData } from "./gallaryTabTypes"
+
 export interface IGallaryData {
-    key: string,
-    img_url: string
+    _id: string,
+    type: IGallaryTypesData,
+    img_url: string,
+    key: string | null;
 }
 export interface FetchGalleryParams {
-    showAll: boolean;
-    key: string | null;
+    type: string
 }

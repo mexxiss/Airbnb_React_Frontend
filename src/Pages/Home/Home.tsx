@@ -1,6 +1,3 @@
-import { Suspense, lazy } from "react";
-import Loader from "../../Components/Loader/Loader.tsx";
-
 import Banner from "../../Components/Banner/Banner.tsx";
 import BrandFeature from "../../Components/BrandFeature/BrandFeature.tsx";
 import About from "../../Components/About/About.tsx";
@@ -24,7 +21,7 @@ const Home = () => {
       <ReviewSec />
       <ShortTerm />
       <WeList />
-      <FAQ />
+      <FAQ title="Airbnd Management Dubai FAQs"/>
     </div>
   );
 };

@@ -77,7 +77,7 @@ const ManagementSupport = () => {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ />
+                <FAQ title='Management Support FAQs'/>
             </Suspense>
         </>
     )

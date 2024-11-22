@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { icon27 } from "../../assets/icons/index.ts";
 import { bg1 } from "../../assets/images/index.ts";
 import { Link } from "react-router-dom";
-import { FetchGalleryParams, IGallaryData } from "../../types/gallaryTypes";
+import { FetchGalleryParams, IGallaryData } from "../../types/gallarytypes";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { fetchGallary } from "../../services/apiServices";
+import { fetchGallary, fetchGallaryTypes } from "../../services/apiServices";
 import { setGallary } from "../../store/features/gallarySlice";
-import Loader from "../../Components/Loader/Loader.tsx";
 import GallerySkeleton from "../../Components/LoadingShimmers/GallerySkeleton.tsx";
+import { IGallaryTypesData } from "../../types/gallaryTabTypes.ts";
+import { setGallaryTypes } from "../../store/features/gallaryTypesSlice.ts";
 
 interface IResponse {
   success: boolean | null;
@@ -16,37 +17,44 @@ interface IResponse {
   statusCode: number | null;
   message: string | null;
 }
+interface ITypesResponse {
+  success: boolean | null;
+  data: IGallaryTypesData[] | null;
+  statusCode: number | null;
+  message: string | null;
+}
 
 const Gallery = () => {
-  const [isActive, SetIsActive] = useState("all");
+  const [isActive, SetIsActive] = useState("674055ff3756c3c8f2e7e686");
   const dispatch = useDispatch();
 
   const queryParams: FetchGalleryParams = {
-    showAll: isActive === "all",
-    key: isActive === "all" ? null : isActive,
+    type: isActive,
   };
 
-  const { isLoading, isError, error, data } = useQuery<IResponse>({
+  const { isLoading: isGallaryLoading, isError: isGallaryError, error: gallaryError, data: gallaryData } = useQuery<IResponse>({
     queryKey: ["gallaryData", queryParams],
     queryFn: () => fetchGallary(queryParams),
   });
 
-  const finalData = data?.data;
+  const { isLoading: isTypesLoading, isError: isTypesError, error: typesError, data: typesData} = useQuery<ITypesResponse>({
+    queryKey: ["gallaryTypesData"],
+    queryFn: () => fetchGallaryTypes()
+  })
+
+  const finalGallaryData = gallaryData?.data;
+  const finalTypesData = typesData?.data;
+
   useEffect(() => {
-    dispatch(setGallary(finalData as IGallaryData[]));
-  }, [data]);
+    dispatch(setGallary(finalGallaryData as IGallaryData[]));
+  }, [gallaryData]);
 
-  if (isError && error instanceof Error) return <p>Error: {error.message}</p>;
+  useEffect(() => {
+    dispatch(setGallaryTypes(finalTypesData as IGallaryTypesData[]));
+  }, [typesData])
 
-  const cate = [
-    "all",
-    "bedroom",
-    "kitchen",
-    "living room",
-    "balcony",
-    "pool",
-    "dubai",
-  ];
+  if (isGallaryError && gallaryError instanceof Error) return <p>Error: {gallaryError.message}</p>;
+  if (isTypesError && typesError instanceof Error) return <p>Error: {typesError.message}</p>;
 
   return (
     <>
@@ -81,17 +89,17 @@ const Gallery = () => {
         <div className="container mx-auto">
           <div>
             <ul className="flex overflow-auto justify-between items-center border-b-2 border-[#AEAEAE]">
-              {cate.map((e, index) => (
+              {!isTypesLoading && finalTypesData?.map((e: any, index: any) => (
                 <li key={index}>
                   <button
                     className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${
-                      isActive === e
+                      isActive === e?._id
                         ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
                         : "text-[#1F1607] font-normal"
                     }`}
-                    onClick={() => SetIsActive(e)}
+                    onClick={() => SetIsActive(e?._id)}
                   >
-                    {e}
+                    {e?.name}
                   </button>
                 </li>
               ))}
@@ -99,15 +107,15 @@ const Gallery = () => {
           </div>
           <div className="mt-10">
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {isLoading
+              {isGallaryLoading
                 ? Array(4)
                     .fill(0)
-                    .map((e, index) => (
+                    .map((_, index) => (
                       <div key={index}>
                         <GallerySkeleton />
                       </div>
                     ))
-                : finalData?.map((e: any, index: any) => (
+                : finalGallaryData?.map((e: any, index: any) => (
                     <div
                       key={index}
                       className="max-h-60 lg:h-64 rounded-xl overflow-hidden"

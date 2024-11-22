@@ -1,6 +1,7 @@
 import axiosInstance from "./axiosInstance";
-import { FetchGalleryParams } from "../types/gallaryTypes";
+import { FetchGalleryParams } from "../types/gallarytypes";
 import { ContactResponse } from "../types/contactTypes";
+import { IFaqParams } from "../types/faqTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -23,16 +24,25 @@ export const fetchHomeContent = async () => {
   return response.data;
 };
 
-export const fetchGallary = async ({ showAll, key }: FetchGalleryParams) => {
+export const fetchGallary = async ({ type }: FetchGalleryParams) => {
   const response = await axiosInstance.get(
-    `/gallery?all=${showAll}&key=${key}`
+    `/gallery?type=${type}`
   );
-  console.log(response.data);
   return response.data;
 };
 
-// Fetch Contact function
+export const fetchGallaryTypes = async() => {
+  const response = await axiosInstance.get("/gallery-types");
+  return response.data;
+}
+
 export const fetchContact = async (): Promise<ContactResponse> => {
   const response = await axiosInstance.get<ContactResponse>(`/contact-us`);
   return response.data;
 };
+
+
+export const fetchFaqs = async ({ page }: IFaqParams) => {
+  const response = await axiosInstance.get(`/faqs?page=${page}`);
+  return response.data;
+}
