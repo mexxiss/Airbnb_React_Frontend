@@ -9,33 +9,22 @@ import BookingLayout from "./Layout/BookingLayout.tsx";
 import Login from "./Pages/Auth/Login.tsx";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.tsx";
 import { fetchGallary } from "./services/apiServices.ts";
+import Loader from "./Components/Loader/Loader.tsx";
 
-const Home = lazy(() => import("./Pages/Home/Home.tsx"));
-const Pricing = lazy(() => import("./Pages/Pricing/Pricing.tsx"));
-const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs.tsx"));
-const ContactUs = lazy(() => import("./Pages/ContactUs/ContactUs.tsx"));
-const Gallery = lazy(() => import("./Pages/Gallery/Gallery.tsx"));
-const EstimateRevenue = lazy(
-  () => import("./Pages/EstimateRevenue/EstimateRevenue.tsx")
-);
+import Home from "./Pages/Home/Home.tsx";
+import Pricing from "./Pages/Pricing/Pricing.tsx";
+import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
+import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
+import Gallery from "./Pages/Gallery/Gallery.tsx";
+import EstimateRevenue from "./Pages/EstimateRevenue/EstimateRevenue.tsx";
 
 // Lazy loading services
-const CleaningMaintenance = lazy(
-  () => import("./Pages/Services/CleaningMaintenance.tsx")
-);
-const InteriorDesign = lazy(
-  () => import("./Pages/Services/InteriorDesign.tsx")
-);
-const ManagementSupport = lazy(
-  () => import("./Pages/Services/ManagementSupport.tsx")
-);
-const ListingManagement = lazy(
-  () => import("./Pages/Services/ListingManagement.tsx")
-);
-const Service = lazy(() => import("./Components/Booking/Service.tsx"));
-const BookingContact = lazy(
-  () => import("./Components/Booking/BookingContact.tsx")
-);
+import CleaningMaintenance from "./Pages/Services/CleaningMaintenance.tsx";
+import InteriorDesign from "./Pages/Services/InteriorDesign.tsx";
+import ManagementSupport from "./Pages/Services/ManagementSupport.tsx";
+import ListingManagement from "./Pages/Services/ListingManagement.tsx";
+import Service from "./Components/Booking/Service.tsx";
+import BookingContact from "./Components/Booking/BookingContact.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -124,11 +113,7 @@ const App = () => {
       ],
     },
   ]);
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <RouterProvider router={router} />
-    </Suspense>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

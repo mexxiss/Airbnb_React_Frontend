@@ -1,5 +1,5 @@
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
-import {icon6, icon7, icon8, icon9} from "../../assets/icons/index.ts"
+import { icon6, icon7, icon8, icon9 } from "../../assets/icons/index.ts";
 import Slider from "react-slick";
 import { Select } from "@mantine/core";
 import { GetCountries, GetState, GetCity } from "react-country-state-city";
@@ -170,7 +170,9 @@ const Banner = () => {
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] md:hidden lg:block"></div>
                       </div>
-                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto">Calculate</button>
+                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto">
+                        Calculate
+                      </button>
                     </div>
                   </div>
                 </div>
