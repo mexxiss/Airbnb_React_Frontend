@@ -25,24 +25,34 @@ export const fetchHomeContent = async () => {
 };
 
 export const fetchGallary = async ({ type }: FetchGalleryParams) => {
-  const response = await axiosInstance.get(
-    `/gallery?type=${type}`
-  );
+  const response = await axiosInstance.get(`/gallery?type=${type}`);
   return response.data;
 };
 
-export const fetchGallaryTypes = async() => {
+export const fetchGallaryTypes = async () => {
   const response = await axiosInstance.get("/gallery-types");
   return response.data;
-}
+};
 
 export const fetchContact = async (): Promise<ContactResponse> => {
   const response = await axiosInstance.get<ContactResponse>(`/contact-us`);
   return response.data;
 };
 
-
 export const fetchFaqs = async ({ page }: IFaqParams) => {
   const response = await axiosInstance.get(`/faqs?page=${page}`);
   return response.data;
-}
+};
+
+// post contact query api
+
+export const postContactQuery = async (data: {
+  fullname: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}) => {
+  const response = await axiosInstance.post("/contact-us/query", data);
+  return response.data;
+};
