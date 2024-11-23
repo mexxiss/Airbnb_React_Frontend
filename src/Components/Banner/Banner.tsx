@@ -73,7 +73,7 @@ const Banner = () => {
             <div className="h-full sliderInner">
               <Slider {...settings}>
                 {homeContent?.banner_images.map((img, i) => (
-                  <div className="h-full">
+                  <div className="h-full" key={i}>
                     <img src={img} key={i} className="h-full object-cover" />
                   </div>
                 ))}

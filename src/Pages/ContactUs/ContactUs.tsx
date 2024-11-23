@@ -14,10 +14,12 @@ import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { ContactResponse, ContactData } from "../../types/contactTypes.ts";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { setContact } from "../../store/features/contactUsSlice.ts";
 import { fetchContact } from "../../services/apiServices.ts";
 import { RootState } from "../../store/store.ts";
+import ContactForm from "./Form/ContactForm.tsx";
+import GoogleMapsComponent from "../../Components/GoogleMap/GoogleMapsComponent.tsx";
 
 const ContactUs = () => {
   const dispatch = useDispatch();
@@ -26,14 +28,27 @@ const ContactUs = () => {
     queryKey: ["contact"],
     queryFn: fetchContact,
   });
-  const finaldata = data?.data as ContactData;
+
+  // Memoizing the finalData to avoid unnecessary recalculations
+  const finalData = useMemo(() => data?.data as ContactData, [data]);
+
+  const dispatchContact = useCallback(() => {
+    if (finalData) {
+      dispatch(setContact(finalData));
+    }
+  }, [dispatch, finalData]);
+
   useEffect(() => {
-    dispatch(setContact(finaldata));
-  }, [data]);
+    if (finalData) {
+      dispatchContact();
+    }
+  }, [finalData, dispatchContact]);
 
-  if (isError && error instanceof Error) return <p>Error: {error.message}</p>;
+  if (isError && error instanceof Error) {
+    return <p>Error: {error.message}</p>;
+  }
 
-  const contactus = useSelector((state: RootState) => state.contactus.data);
+  const contactUs = useSelector((state: RootState) => state.contactus.data);
 
   return (
     <>
@@ -77,8 +92,11 @@ const ContactUs = () => {
                     Email Address
                   </p>
                   <ul className="flex flex-col gap-1">
-                    {contactus?.emails?.map((email) => (
-                      <li className="text-[#AEAEAE] md:text-lg font-montserrat">
+                    {contactUs?.emails?.map((email) => (
+                      <li
+                        key={email}
+                        className="text-[#AEAEAE] md:text-lg font-montserrat"
+                      >
                         {email}
                       </li>
                     ))}
@@ -96,8 +114,11 @@ const ContactUs = () => {
                     Phone Number
                   </p>
                   <ul className="flex flex-col gap-1">
-                    {contactus?.phones.map((phone) => (
-                      <li className="text-[#AEAEAE] md:text-lg font-montserrat">
+                    {contactUs?.phones.map((phone) => (
+                      <li
+                        key={phone}
+                        className="text-[#AEAEAE] md:text-lg font-montserrat"
+                      >
                         {phone}
                       </li>
                     ))}
@@ -116,7 +137,7 @@ const ContactUs = () => {
                   </p>
                   <ul className="flex flex-col gap-1">
                     <li className="text-[#AEAEAE] md:text-lg font-montserrat">
-                      {contactus?.location?.address}
+                      {contactUs?.location?.address}
                     </li>
                   </ul>
                 </div>
@@ -126,85 +147,12 @@ const ContactUs = () => {
         </div>
       </div>
 
-      <div className="py-14 md:py-16 lg:py-20">
-        <div className="container mx-auto">
-          <div className="flex items-center">
-            <div className="w-full lg:w-3/5 lg:pr-16">
-              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607]">
-                Send Us Message
-              </h4>
-              <div className="mt-10 contact_us">
-                <form action="">
-                  <div className="grid xs:grid-cols-2 gap-4">
-                    <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
-                      <input
-                        type="text"
-                        className="w-full p-0 border-none focus:ring-0 bg-transparent"
-                        placeholder="Full Name"
-                      />
-                      <span>
-                        <img src={icon31} className="w-4" />
-                      </span>
-                    </div>
-                    <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
-                      <input
-                        type="text"
-                        className="w-full p-0 border-none focus:ring-0 bg-transparent"
-                        placeholder="Email Address"
-                      />
-                      <span>
-                        <img src={icon28} className="w-4" />
-                      </span>
-                    </div>
-                    <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
-                      <input
-                        type="text"
-                        className="w-full p-0 border-none focus:ring-0 bg-transparent"
-                        placeholder="Phone Number"
-                      />
-                      <span>
-                        <img src={icon29} className="w-4" />
-                      </span>
-                    </div>
-                    <div className="">
-                      <Select
-                        placeholder="Subject"
-                        data={["React", "Angular", "Vue", "Svelte"]}
-                        className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12"
-                        rightSection={
-                          <KeyboardArrowDownOutlined className="text-[#DCC397]" />
-                        }
-                      />
-                    </div>
-                    <div className=" xs:col-span-2">
-                      <textarea
-                        className="bg-[#fef4e3] rounded-xl w-full px-6 py-3 border-none focus:ring-0 min-h-32"
-                        placeholder="Write Your Message"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div className="mt-6">
-                    <button className="btn1 flex items-center  gap-2">
-                      Send Message{" "}
-                      <span>
-                        <img src={icon5} className="w-4" />
-                      </span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="lg:block hidden w-2/5 pl-6 lg:pl-0">
-              <img src={img8} alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContactForm />
 
       {/* map */}
       <div>
         <div>
-          <img src={map} alt="" />
+          <GoogleMapsComponent />
         </div>
       </div>
     </>
