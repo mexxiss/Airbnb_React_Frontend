@@ -29,9 +29,7 @@ const Gallery = () => {
   const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
   const dispatch = useDispatch();
 
-  const queryParams: FetchGalleryParams = {
-    type: isActive !== "All" ? isActive : "",
-  };
+  const queryParams: FetchGalleryParams = isActive !== "All" ? { type: isActive } : {type: ""};
 
   const { isLoading: isGallaryLoading, isError: isGallaryError, error: gallaryError, data: gallaryData } = useQuery<IResponse>({
     queryKey: ["gallaryData", queryParams],
