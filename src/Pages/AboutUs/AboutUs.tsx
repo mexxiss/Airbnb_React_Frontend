@@ -62,7 +62,7 @@ const AboutUs = () => {
                 <ReviewSec />
                 <ShortTerm />
                 <WeList />
-                <FAQ />
+                <FAQ title='About Us FAQs' />
             </Suspense>
         </>
     )

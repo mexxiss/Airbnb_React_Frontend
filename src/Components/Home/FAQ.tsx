@@ -21,7 +21,8 @@ const pathMap: { [key: string]: string } = {
   "/services/listing-management": "listing management",
   "/services/management-support": "management support",
   "/": "home",
-  "/estimate-revenue": "estimate revenue"
+  "/estimate-revenue": "estimate revenue",
+  "/about-us": "home"
 };
 
 const FAQ = ({ title }: { title: string }) => {
@@ -31,7 +32,7 @@ const FAQ = ({ title }: { title: string }) => {
   const queryParams: IFaqParams = {
     page: pathMap[location.pathname]
   }
-
+  console.log()
   const { isLoading, isError, error, data } = useQuery<IResponse>({
     queryKey: ["faqData", queryParams],
     queryFn: () => fetchFaqs(queryParams),
