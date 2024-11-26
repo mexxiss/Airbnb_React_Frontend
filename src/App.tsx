@@ -33,6 +33,7 @@ import Settings from "./Pages/UserPanel/Settings.tsx";
 import ChangePassword from "./Pages/UserPanel/ChangePassword.tsx";
 import PersonalDetails from "./Pages/UserPanel/PersonalDetails.tsx";
 import PropertyDetails from "./Pages/UserPanel/PropertyDetails.tsx";
+import UtilityDetails from "./Pages/UserPanel/UtilityDetails.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -155,6 +156,10 @@ const App = () => {
         {
           path: "settings/property-details",
           element: <PropertyDetails />,
+        },
+        {
+          path: "settings/property-details/update-utility-details",
+          element: <UtilityDetails />,
         },
       ],
     },
