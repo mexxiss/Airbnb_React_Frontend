@@ -15,6 +15,13 @@ export interface ContactData {
     country: string;
     pincode: string;
     address: string;
+    coordinates: [
+      {
+        lat: number;
+        long: number;
+        _id: string;
+      }
+    ];
   };
   _id: string;
   __v: number;

@@ -11,6 +11,7 @@ import { store, persistor } from "./store/store";
 import { ToastContainer } from "react-toastify";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-phone-input-2/lib/style.css";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
