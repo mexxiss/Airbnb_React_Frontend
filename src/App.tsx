@@ -24,6 +24,15 @@ import ManagementSupport from "./Pages/Services/ManagementSupport.tsx";
 import ListingManagement from "./Pages/Services/ListingManagement.tsx";
 import Service from "./Components/Booking/Service.tsx";
 import BookingContact from "./Components/Booking/BookingContact.tsx";
+import UserPanel from "./Layout/UserPanel.tsx";
+import Properties from "./Pages/UserPanel/Properties.tsx";
+import Calender from "./Pages/UserPanel/Calender.tsx";
+import Statements from "./Pages/UserPanel/Statements.tsx";
+import Maintenance from "./Pages/UserPanel/Maintenance.tsx";
+import Settings from "./Pages/UserPanel/Settings.tsx";
+import ChangePassword from "./Pages/UserPanel/ChangePassword.tsx";
+import PersonalDetails from "./Pages/UserPanel/PersonalDetails.tsx";
+import PropertyDetails from "./Pages/UserPanel/PropertyDetails.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -111,6 +120,44 @@ const App = () => {
         },
       ],
     },
+    {
+      path: "user-panel",
+      element: <UserPanel />,
+      children: [
+        {
+          path: "properties",
+          element: <Properties />,  
+        },
+        {
+          path: "calender",
+          element: <Calender />,  
+        },
+        {
+          path: "statements",
+          element: <Statements />,  
+        },
+        {
+          path: "maintenance",
+          element: <Maintenance />,  
+        },
+        {
+          path: "settings",
+          element: <Settings />,  
+        },
+        {
+          path: "settings/change-password",
+          element: <ChangePassword />,  
+        },
+        {
+          path: "settings/personal-details",
+          element: <PersonalDetails />,  
+        },
+        {
+          path: "settings/property-details",
+          element: <PropertyDetails />,  
+        },
+      ]
+    }
   ]);
   return <RouterProvider router={router} />;
 };
