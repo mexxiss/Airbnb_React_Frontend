@@ -127,31 +127,31 @@ const App = () => {
       children: [
         {
           path: "properties",
-          element: <Properties />,  
+          element: <Properties />,
         },
         {
-          path: "calender",
-          element: <Calender />,  
+          path: "calender/:id",
+          element: <Calender />,
         },
         {
-          path: "statements",
-          element: <Statements />,  
+          path: "statements/:id",
+          element: <Statements />,
         },
         {
-          path: "maintenance",
-          element: <Maintenance />,  
+          path: "maintenance/:id",
+          element: <Maintenance />,
         },
         {
-          path: "settings",
-          element: <Settings />,  
+          path: "settings/:id?",
+          element: <Settings />,
         },
         {
           path: "settings/change-password",
-          element: <ChangePassword />,  
+          element: <ChangePassword />,
         },
         {
           path: "settings/personal-details",
-          element: <PersonalDetails />,  
+          element: <PersonalDetails />,
         },
         {
           path: "settings/property-details",
@@ -160,9 +160,9 @@ const App = () => {
         {
           path: "settings/property-details/update-utility-details",
           element: <UtilityDetails />,
-       },
-      ]
-    }
+        },
+      ],
+    },
   ]);
   return <RouterProvider router={router} />;
 };
