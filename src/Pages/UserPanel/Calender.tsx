@@ -8,10 +8,10 @@ const Calender = () => {
         <div>
           <Calendar />
         </div>
-        <div className="flex items-end gap-6 my-5">
+        <div className="flex items-end gap-6 my-10">
           <p className="text-5xl text-gray-400">Future Occupancy</p>
           <div className="flex items-center gap-6 ">
-            <span className="inline-block py-1 px-4 text-sm tracking-wider text-white bg-primary rounded-full uppercase">
+            <span className="inline-block py-1 px-4 text-sm tracking-wider text-white bg-primary bg-opacity-50 rounded-full uppercase">
               Occupied
             </span>
             <span className="inline-block py-1 px-4 text-sm tracking-wider text-gray-500 border border-gray-500 rounded-full uppercase">
@@ -52,7 +52,7 @@ const Calender = () => {
             </ul>
           </div>
         </div>
-        <div className="">
+        <div className="mt-10">
           <p className="text-5xl text-gray-400">Occupancy Rate</p>
         </div>
         <hr className="my-5" />
