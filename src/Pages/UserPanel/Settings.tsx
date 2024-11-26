@@ -1,8 +1,15 @@
 import { KeyboardArrowRightOutlined } from "@mui/icons-material";
-import { Link, useParams } from "react-router-dom";
+import { Link, matchPath, useLocation, useParams } from "react-router-dom";
 
 const Settings = () => {
   const { id } = useParams();
+  const location = useLocation();
+
+  console.log({ location });
+
+  const match = matchPath("/settings/:id", `/settings/${id}`);
+  console.log({ match });
+
   return (
     <div>
       <div className="flex flex-col gap-3">
@@ -40,7 +47,7 @@ const Settings = () => {
             <KeyboardArrowRightOutlined />
           </div>
         </div>
-        {id && (
+        {match?.params?.id && match.params.id !== "undefined" && (
           <div className="border border-primary flex justify-between relative">
             <Link
               to="/user-panel/settings/property-details"
@@ -54,6 +61,7 @@ const Settings = () => {
             </div>
           </div>
         )}
+
         <div className="border border-primary flex justify-between relative">
           <Link
             to="/user-panel/settings/change-password"

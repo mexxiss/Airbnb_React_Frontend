@@ -78,7 +78,7 @@ const Sidebar = () => {
         )}
         <li>
           <NavLink
-            to={`/user-panel/settings/${id}`}
+            to={`/user-panel/settings/${id ?? ""}`}
             className={({ isActive }) =>
               `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
                 isActive
