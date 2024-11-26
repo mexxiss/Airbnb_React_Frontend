@@ -6,6 +6,7 @@ import gallaryReducer from "./features/gallarySlice";
 import contactReducer from "./features/contactUsSlice";
 import faqsReducer from "./features/faqSlice";
 import gallaryTypesReducer from "./features/gallaryTypesSlice";
+import countryReducer from "./features/countrySlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   gallary: gallaryReducer,
   contactus: contactReducer,
   faqs: faqsReducer,
-  gallaryTypes: gallaryTypesReducer
+  gallaryTypes: gallaryTypesReducer,
+  country: countryReducer,
 });
 
 export default rootReducer;

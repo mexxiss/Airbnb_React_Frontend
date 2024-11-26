@@ -1,5 +1,5 @@
 import * as yup from "yup";
-// Define validation schema using yup
+
 export const schema = yup.object().shape({
   fullname: yup.string().required("Full name is required"),
   email: yup
@@ -8,11 +8,13 @@ export const schema = yup.object().shape({
     .required("Email is required"),
   phone: yup
     .string()
-    .matches(
-      /^5[02456]\d{7}$/,
-      "Invalid Dubai phone number (9 digits, starting with 50, 52, 54, 55, or 56)"
-    )
-    .required("Phone number is required"),
+    .required("Phone number is required")
+    .test("is-valid-phone", "Invalid phone number", (value) => {
+      if (!value) return false;
+      const formattedValue = value.startsWith("+") ? value : `+${value}`;
+      const phoneRegex = /^\+\d{1,4}\d{6,14}$/;
+      return phoneRegex.test(formattedValue);
+    }),
   subject: yup.string().required("Subject is required"),
   message: yup.string().required("Message is required"),
 });

@@ -56,3 +56,25 @@ export const postContactQuery = async (data: {
   const response = await axiosInstance.post("/contact-us/query", data);
   return response.data;
 };
+
+export const fetchCountryCode = async (
+  lat: number,
+  lng: number
+): Promise<string | null> => {
+  try {
+    const response = await axiosInstance.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${
+        import.meta.env.VITE_GOOGLE_API_KEY
+      }`
+    );
+
+    const country = response.data.results.find((result: any) =>
+      result.types.includes("country")
+    )?.address_components[0]?.short_name;
+
+    return country || null; // Return country code or null if not found
+  } catch (error) {
+    console.error("Error fetching country code:", error);
+    return null;
+  }
+};

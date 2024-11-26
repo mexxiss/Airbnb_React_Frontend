@@ -9,6 +9,7 @@ import { img8 } from "../../../assets/images";
 import { schema } from "../../../utils/validations/contactFormValidation";
 import { postContactQuery } from "../../../services/apiServices";
 import { showToast } from "../../../utils/toaster/toastWrapper";
+import PhoneInputComponent from "../../../Components/PhoneInput/PhoneInputComponent";
 
 interface FormInputs {
   fullname: string;
@@ -20,9 +21,9 @@ interface FormInputs {
 
 const ContactForm: React.FC = () => {
   const {
+    control,
     register,
     handleSubmit,
-    setValue,
     reset,
     formState: { errors },
   } = useForm<FormInputs>({
@@ -96,7 +97,7 @@ const ContactForm: React.FC = () => {
                   </div>
 
                   {/* Phone */}
-                  <div className="">
+                  {/* <div className="">
                     <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
                       <input
                         type="text"
@@ -114,8 +115,13 @@ const ContactForm: React.FC = () => {
                         {errors.phone.message}
                       </p>
                     )}
-                  </div>
-
+                  </div> */}
+                  <PhoneInputComponent
+                    name="phone"
+                    control={control}
+                    defaultCountry="in"
+                    errorMessage={errors.phone?.message}
+                  />
                   {/* Subject */}
                   <div className="">
                     <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">

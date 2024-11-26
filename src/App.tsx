@@ -9,7 +9,6 @@ import BookingLayout from "./Layout/BookingLayout.tsx";
 import Login from "./Pages/Auth/Login.tsx";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.tsx";
 import { fetchGallary } from "./services/apiServices.ts";
-import Loader from "./Components/Loader/Loader.tsx";
 
 import Home from "./Pages/Home/Home.tsx";
 import Pricing from "./Pages/Pricing/Pricing.tsx";
