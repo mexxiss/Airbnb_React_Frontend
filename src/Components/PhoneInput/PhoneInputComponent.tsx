@@ -1,5 +1,6 @@
 import React from "react";
 import PhoneInput from "react-phone-input-2";
+import { icon29 } from "../../assets/icons";
 
 import { Controller, Control } from "react-hook-form";
 
@@ -17,7 +18,7 @@ const PhoneInputComponent: React.FC<PhoneInputProps> = ({
   errorMessage,
 }) => {
   return (
-    <div className="">
+    <div className="phoneInput">
       <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
         <Controller
           name={name}
@@ -37,6 +38,9 @@ const PhoneInputComponent: React.FC<PhoneInputProps> = ({
             </>
           )}
         />
+        <span>
+          <img src={icon29} className="w-4" />
+        </span>
       </div>
       {errorMessage && (
         <p className="text-red-500 text-sm ml-3 mt-1">{errorMessage}</p>

@@ -132,9 +132,9 @@ const ContactForm: React.FC = () => {
                         placeholder="Subject"
                       />
 
-                      <span>
+                      {/* <span>
                         <img src={icon29} className="w-4" />
-                      </span>
+                      </span> */}
                     </div>
                     {/* <Select
                       placeholder="Subject"
