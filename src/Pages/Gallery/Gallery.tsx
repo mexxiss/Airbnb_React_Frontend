@@ -77,7 +77,7 @@ const Gallery = () => {
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
               <span className="">
-                <Link to="/" className="hover:underline">
+                <Link to="/" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
                   Home
                 </Link>
               </span>

@@ -67,7 +67,7 @@ const UtilityDetails = () => {
             <div>
                 <ul className="text-sm text-gray-500 flex items-center gap-1">
                     <li>
-                        <Link to="/user-panel/settings" className="hover:underline">
+                        <Link to="/user-panel/settings" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
                             Settings
                         </Link>
                     </li>
@@ -75,7 +75,7 @@ const UtilityDetails = () => {
                         <KeyboardArrowRightOutlined className="!text-xl" />
                     </li>
                     <li>
-                        <Link to="/user-panel/settings/property-details" className="hover:underline">
+                        <Link to="/user-panel/settings/property-details" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
                             Property Details
                         </Link>
                     </li>
@@ -83,13 +83,13 @@ const UtilityDetails = () => {
                         <KeyboardArrowRightOutlined className="!text-xl" />
                     </li>
                     <li>
-                        <span className="text-gray-800">Utility Details</span>
+                        <span className="text-gray-800 inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">Utility Details</span>
                     </li>
                 </ul>
             </div>
 
             <div className="mt-8">
-                <h4 className="text-4xl text-gray-600">B110 - B202 Wavez Residence, Dubai Land, Dubai, UAE.</h4>
+                <h4 className="text-xl xs:text-2xl sm:text-3xl xl:text-4xl text-gray-600">B110 - B202 Wavez Residence, Dubai Land, Dubai, UAE.</h4>
                 <hr className="my-5 border-primary" />
                 <div className="">
                     <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-5">

@@ -22,7 +22,7 @@ const PersonalDetails = () => {
             <div>
                 <ul className="text-sm text-gray-500 flex items-center gap-1">
                     <li>
-                        <Link to="/user-panel/settings" className="hover:underline">
+                        <Link to="/user-panel/settings" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
                             Settings
                         </Link>
                     </li>
@@ -30,21 +30,21 @@ const PersonalDetails = () => {
                         <KeyboardArrowRightOutlined className="!text-xl" />
                     </li>
                     <li>
-                        <span className="text-gray-800">Personal Details</span>
+                        <span className="text-gray-800 inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">Personal Details</span>
                     </li>
                 </ul>
             </div>
             <div className="mt-8">
-                <h4 className="text-5xl text-gray-600">Personal Details</h4>
+                <h4 className="text-3xl lg:text-4xl xl:text-5xl text-gray-600">Personal Details</h4>
                 <hr className="my-5 border-primary" />
                 <div className="py-6 px-5 border border-primary bg-primary bg-opacity-5">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h6 className="text-3xl text-primary">Personal Details</h6>
-                            <p className="mt-1 text-gray-600">Please fill in your details</p>
+                            <h6 className="text-xl sm:text-2xl md:text-3xl text-primary">Personal Details</h6>
+                            <p className="mt-1 text-gray-600 text-sm sm:text-base">Please fill in your details</p>
                         </div>
                         <div>
-                            <button className="border border-primary text-primary bg-white px-8 py-2 uppercase tracking-wide">Edit</button>
+                            <button className="border border-primary text-primary bg-white px-3 sm:px-8 py-1 sm:py-2 uppercase tracking-wide text-sm sm:text-base">Edit</button>
                         </div>
                     </div>
                     {/* Personal Details Form */}

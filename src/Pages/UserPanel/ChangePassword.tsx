@@ -23,7 +23,7 @@ const ChangePassword = () => {
             <div>
                 <ul className="text-sm text-gray-500 flex items-center gap-1">
                     <li>
-                        <Link to="/user-panel/settings" className="hover:underline">
+                        <Link to="/user-panel/settings" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
                             Settings
                         </Link>
                     </li>
@@ -31,7 +31,7 @@ const ChangePassword = () => {
                         <KeyboardArrowRightOutlined className="!text-xl" />
                     </li>
                     <li>
-                        <span className="text-gray-800">Change Password</span>
+                        <span className="text-gray-800 inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">Change Password</span>
                     </li>
                 </ul>
             </div>

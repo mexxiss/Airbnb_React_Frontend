@@ -21,7 +21,7 @@ const Service = () => {
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
                             <span className="">
-                                <Link to="/booking/home" className="hover:underline">Home</Link>
+                                <Link to="/booking/home" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">Home</Link>
                             </span>
                             <span>
                                 <img src={icon27} className="w-4" />

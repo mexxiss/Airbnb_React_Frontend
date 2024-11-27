@@ -34,6 +34,9 @@ import ChangePassword from "./Pages/UserPanel/ChangePassword.tsx";
 import PersonalDetails from "./Pages/UserPanel/PersonalDetails.tsx";
 import PropertyDetails from "./Pages/UserPanel/PropertyDetails.tsx";
 import UtilityDetails from "./Pages/UserPanel/UtilityDetails.tsx";
+import Help from "./Pages/UserPanel/Help.tsx";
+import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
+import FAQ from "./Pages/UserPanel/FAQ.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -127,31 +130,31 @@ const App = () => {
       children: [
         {
           path: "properties",
-          element: <Properties />,  
+          element: <Properties />,
         },
         {
           path: "calender",
-          element: <Calender />,  
+          element: <Calender />,
         },
         {
           path: "statements",
-          element: <Statements />,  
+          element: <Statements />,
         },
         {
           path: "maintenance",
-          element: <Maintenance />,  
+          element: <Maintenance />,
         },
         {
           path: "settings",
-          element: <Settings />,  
+          element: <Settings />,
         },
         {
           path: "settings/change-password",
-          element: <ChangePassword />,  
+          element: <ChangePassword />,
         },
         {
           path: "settings/personal-details",
-          element: <PersonalDetails />,  
+          element: <PersonalDetails />,
         },
         {
           path: "settings/property-details",
@@ -160,7 +163,19 @@ const App = () => {
         {
           path: "settings/property-details/update-utility-details",
           element: <UtilityDetails />,
-       },
+        },
+        {
+          path: "help",
+          element: <Help />,
+        },
+        {
+          path: "help/contact-support",
+          element: <ContactSupport />,
+        },
+        {
+          path: "help/faq",
+          element: <FAQ />,
+        },
       ]
     }
   ]);
