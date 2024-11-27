@@ -1,5 +1,5 @@
 import * as yup from "yup";
-const EMAIL_REGEX = /^[a-z1-9-.]{3,25}@([a-z]+.)[a-z]{2,4}$/;
+const EMAIL_REGEX = /^[a-z1-9-_.]{3,25}@([a-z]+\.)[a-z]{2,4}$/;
 export const schema = yup.object().shape({
   fullname: yup.string().required("Full name is required"),
   email: yup
