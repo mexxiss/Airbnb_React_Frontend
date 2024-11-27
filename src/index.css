@@ -151,6 +151,26 @@ body {
 .phoneInput .react-tel-input input:focus {
   box-shadow: none !important;
 }
+[type="radio"] {
+  box-shadow: none;
+  --tw-ring-shadow: none !important;
+}
+[type="radio"]:checked {
+  background-color: #bb9e6c !important;
+}
+.swal2-actions {
+  width: 80%;
+  margin: 20px auto 0;
+}
+.swal2-actions .swal2-cancel {
+  background: transparent !important;
+  border: 1px solid #bb9e6c;
+  color: #bb9e6c;
+  flex: 1;
+}
+.swal2-actions .swal2-confirm {
+  flex: 1;
+}
 
 @media (max-width: 768px) {
   .container {
