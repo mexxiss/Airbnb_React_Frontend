@@ -26,7 +26,8 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink to="/user-panel/settings" className={({ isActive }) => `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive ? "border-[#fff3dd] bg-[#d5b67f]" : "border-transparent"}`}><SettingsOutlined /> Settings</NavLink>
-        </li><li className='px-4'>
+        </li>
+        <li className='px-4'>
           <hr className='my-8' />
         </li>
         <li>

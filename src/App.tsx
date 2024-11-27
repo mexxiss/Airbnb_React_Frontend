@@ -39,13 +39,6 @@ import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
 import FAQ from "./Pages/UserPanel/FAQ.tsx";
 
 const App = () => {
-  useEffect(() => {
-    fetchGallary({
-      showAll: true, // showAll is a boolean
-      key: "bedrooms", // key is a string
-    });
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
