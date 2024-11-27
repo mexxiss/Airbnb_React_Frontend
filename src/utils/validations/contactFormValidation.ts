@@ -1,11 +1,12 @@
 import * as yup from "yup";
-
+const EMAIL_REGEX = /^[a-z1-9-.]{3,25}@([a-z]+.)[a-z]{2,4}$/;
 export const schema = yup.object().shape({
   fullname: yup.string().required("Full name is required"),
   email: yup
     .string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .required("Please enter your email")
+    .email()
+    .matches(EMAIL_REGEX, "Invalid email: example@mail.abc"),
   phone: yup
     .string()
     .required("Phone number is required")

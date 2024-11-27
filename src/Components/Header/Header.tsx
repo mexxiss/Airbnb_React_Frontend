@@ -69,8 +69,7 @@ const Header = () => {
 
   useEffect(() => {
     fetchLocationAndCountry()
-      .then(({ lat, lng }) => {
-        console.log({ lat, lng });
+      .then(() => {
         query?.refetch();
       })
       .catch((error) => {
@@ -82,9 +81,7 @@ const Header = () => {
     return <p>Error fetching country data.</p>;
   }
 
-  const { countryCode, phone } = useSelector(
-    (state: RootState) => state.country
-  );
+  const { phone } = useSelector((state: RootState) => state.country);
 
   return (
     <div className="header relative before:absolute before:left-0 before:top-0 before:w-full before:h-[calc(100%_-_50px)] before:bg-[#F5F5F6]">
@@ -105,7 +102,7 @@ const Header = () => {
                   <span className="md:flex items-center justify-center px-2.5 py-2 h-14 bg-primary hidden ">
                     <img src={icon2} className="w-5" />
                   </span>{" "}
-                  hello@example.com
+                  {contactUs?.emails[0]}
                 </button>
               </li>
             </ul>

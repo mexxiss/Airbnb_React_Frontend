@@ -40,29 +40,6 @@ const BookingContact = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-            {/* banner */}
-            <div
-                className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
-                style={{
-                    backgroundImage: `linear-gradient(#FFF1D9CC, #FFF1D9CC), url(${bg1})`,
-                }}
-            >
-                <div className="container mx-auto">
-                    <div className="flex items-center justify-center flex-col gap-4">
-                        <h2 className="text-[42px] sm:text-5xl xl:text-[60px] font-bold text-center text-[#1F1607] font-light] ">
-                            Get in touch
-                        </h2>
-                        <p className="flex items-center gap-4 text-[#4C360E]">
-                            <span className="">
-                                <Link to="/" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">Home</Link>
-                            </span>
-                            <span>
-                                <img src={icon27} className="w-4" />
-                            </span>
-                            <span>Contact</span>
-                        </p>
-=======
       <div className="py-14 md:py-16 lg:py-20">
         <div className="container mx-auto">
           <div className="flex items-center">
@@ -82,7 +59,6 @@ const BookingContact = () => {
                       <span>
                         <img src={icon31} className="w-4" />
                       </span>
->>>>>>> 8a18f0a8e0c8b81815e7982d421f1c7695d06ed4
                     </div>
                     <div className="bg-[#fef4e3] rounded-full flex items-center justify-between px-6 gap-2 h-12">
                       <input

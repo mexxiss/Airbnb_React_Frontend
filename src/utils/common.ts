@@ -22,10 +22,15 @@ export const getDialingCodeByCountry = async (
 export const getCounteriesArr = async () => {
   try {
     const array = await GetCountries();
-    console.log({ array });
-
     return array;
   } catch (error) {
     console.log({ error });
   }
+};
+
+export const makeMonthStr = (date: Date) => {
+  if (!date) {
+    return "";
+  }
+  return date.toLocaleString("default", { month: "long" });
 };
