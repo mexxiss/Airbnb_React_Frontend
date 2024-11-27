@@ -7,7 +7,12 @@ import listPlugin from "@fullcalendar/list";
 import { Box } from "@mui/material";
 import { DateSelectArg, EventClickArg, EventApi } from "@fullcalendar/core";
 
-const Calendar: React.FC = () => {
+interface CalendarProps {
+  dynamicDate: any;
+  setDynamicDate: (value: any) => void;
+}
+
+const Calendar: React.FC<CalendarProps> = ({ dynamicDate, setDynamicDate }) => {
   const calendarRef = useRef<any>(null);
   const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
   const [currentYear, setCurrentYear] = useState<number>(
@@ -57,6 +62,22 @@ const Calendar: React.FC = () => {
     setCurrentYear(currentYear);
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
+    const newDate = new Date(calendarApi.getDate());
+    setDynamicDate(newDate);
+  };
+
+  const handlePrev = () => {
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.prev();
+    const newDate = new Date(calendarApi.getDate());
+    setDynamicDate(newDate);
+  };
+
+  const handleNext = () => {
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.next();
+    const newDate = new Date(calendarApi.getDate());
+    setDynamicDate(newDate);
   };
 
   return (
@@ -74,7 +95,7 @@ const Calendar: React.FC = () => {
               listPlugin,
             ]}
             headerToolbar={{
-              left: "prev,next today",
+              left: "prev,next,today",
               center: "title",
               right: "prevYear,year,nextYear",
             }}
@@ -93,6 +114,14 @@ const Calendar: React.FC = () => {
               today: {
                 text: "today",
                 click: handleToday,
+              },
+              prev: {
+                text: "<",
+                click: handlePrev,
+              },
+              next: {
+                text: ">",
+                click: handleNext,
               },
             }}
             initialView="dayGridMonth"

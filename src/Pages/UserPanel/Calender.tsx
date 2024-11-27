@@ -1,12 +1,16 @@
+import { useState } from "react";
 import Calendar from "../../Components/Calendar/Calendar";
 import MultiMonthCalendar from "../../Components/Calendar/MultiMonthCalendar";
+import { makeMonthStr } from "../../utils/common";
 
 const Calender = () => {
+  const [dynamicDate, setDynamicDate] = useState<Date>(new Date());
+
   return (
     <div>
       <div>
         <div>
-          <Calendar />
+          <Calendar dynamicDate={dynamicDate} setDynamicDate={setDynamicDate} />
         </div>
         <div className="flex items-end gap-6 my-10">
           <p className="text-5xl text-gray-400">Future Occupancy</p>
@@ -22,11 +26,11 @@ const Calender = () => {
         <hr />
         <div>
           <div>
-            <MultiMonthCalendar />
+            <MultiMonthCalendar nextMonthStartDateProps={dynamicDate} />
           </div>
           <div>
             <div className="text-center text-white text-sm tracking-wider bg-primary py-2 uppercase">
-              Details November
+              Details {makeMonthStr(dynamicDate)}
             </div>
             <ul className="mt-2 flex flex-col gap-2 text-sm text-gray-500">
               <li className="flex items-center justify-between">

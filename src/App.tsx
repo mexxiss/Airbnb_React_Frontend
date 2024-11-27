@@ -39,13 +39,6 @@ import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
 import FAQ from "./Pages/UserPanel/FAQ.tsx";
 
 const App = () => {
-  useEffect(() => {
-    fetchGallary({
-      showAll: true, // showAll is a boolean
-      key: "bedrooms", // key is a string
-    });
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -133,21 +126,6 @@ const App = () => {
           element: <Properties />,
         },
         {
-<<<<<<< HEAD
-          path: "calender",
-          element: <Calender />,
-        },
-        {
-          path: "statements",
-          element: <Statements />,
-        },
-        {
-          path: "maintenance",
-          element: <Maintenance />,
-        },
-        {
-          path: "settings",
-=======
           path: "calender/:id",
           element: <Calender />,
         },
@@ -161,7 +139,6 @@ const App = () => {
         },
         {
           path: "settings/:id?",
->>>>>>> 8a18f0a8e0c8b81815e7982d421f1c7695d06ed4
           element: <Settings />,
         },
         {
@@ -180,7 +157,6 @@ const App = () => {
           path: "settings/property-details/update-utility-details",
           element: <UtilityDetails />,
         },
-<<<<<<< HEAD
         {
           path: "help",
           element: <Help />,
@@ -193,12 +169,8 @@ const App = () => {
           path: "help/faq",
           element: <FAQ />,
         },
-      ]
-    }
-=======
       ],
     },
->>>>>>> 8a18f0a8e0c8b81815e7982d421f1c7695d06ed4
   ]);
   return <RouterProvider router={router} />;
 };
