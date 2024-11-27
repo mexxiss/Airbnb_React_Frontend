@@ -26,20 +26,34 @@ interface ITypesResponse {
 
 const Gallery = () => {
   const [isActive, SetIsActive] = useState("All");
+  const [isKey, SetIsKey] = useState("All");
   const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
   const dispatch = useDispatch();
 
-  const queryParams: FetchGalleryParams = isActive !== "All" ? { type: isActive } : {type: ""};
+  const queryParams: FetchGalleryParams =
+    isActive !== "All"
+      ? { type: isKey, id: isActive }
+      : { type: "All", id: "" };
 
-  const { isLoading: isGallaryLoading, isError: isGallaryError, error: gallaryError, data: gallaryData } = useQuery<IResponse>({
+  const {
+    isLoading: isGallaryLoading,
+    isError: isGallaryError,
+    error: gallaryError,
+    data: gallaryData,
+  } = useQuery<IResponse>({
     queryKey: ["gallaryData", queryParams],
     queryFn: () => fetchGallary(queryParams),
   });
 
-  const { isLoading: isTypesLoading, isError: isTypesError, error: typesError, data: typesData } = useQuery<ITypesResponse>({
+  const {
+    isLoading: isTypesLoading,
+    isError: isTypesError,
+    error: typesError,
+    data: typesData,
+  } = useQuery<ITypesResponse>({
     queryKey: ["gallaryTypesData"],
-    queryFn: () => fetchGallaryTypes()
-  })
+    queryFn: () => fetchGallaryTypes(),
+  });
 
   const finalGallaryData = gallaryData?.data;
 
@@ -51,15 +65,17 @@ const Gallery = () => {
     if (typesData?.data) {
       const updatedTypesData = [
         { _id: "All", name: "All", __v: 0 },
-        ...typesData.data, 
+        ...typesData.data,
       ];
-      setFinalTypesData(updatedTypesData); 
-      dispatch(setGallaryTypes(updatedTypesData as IGallaryTypesData[])); 
+      setFinalTypesData(updatedTypesData);
+      dispatch(setGallaryTypes(updatedTypesData as IGallaryTypesData[]));
     }
-  }, [typesData])
+  }, [typesData]);
 
-  if (isGallaryError && gallaryError instanceof Error) return <p>Error: {gallaryError.message}</p>;
-  if (isTypesError && typesError instanceof Error) return <p>Error: {typesError.message}</p>;
+  if (isGallaryError && gallaryError instanceof Error)
+    return <p>Error: {gallaryError.message}</p>;
+  if (isTypesError && typesError instanceof Error)
+    return <p>Error: {typesError.message}</p>;
 
   return (
     <>
@@ -77,7 +93,10 @@ const Gallery = () => {
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
               <span className="">
-                <Link to="/" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
+                <Link
+                  to="/"
+                  className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis"
+                >
                   Home
                 </Link>
               </span>
@@ -94,42 +113,46 @@ const Gallery = () => {
         <div className="container mx-auto">
           <div>
             <ul className="flex overflow-auto justify-between items-center border-b-2 border-[#AEAEAE]">
-              {!isTypesLoading && finalTypesData?.map((e: any, index: any) => (
-                <li key={index}>
-                  <button
-                    className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${isActive === e?._id
-                      ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
-                      : "text-[#1F1607] font-normal"
+              {!isTypesLoading &&
+                finalTypesData?.map((e: any, index: any) => (
+                  <li key={index}>
+                    <button
+                      className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${
+                        isActive === e?._id
+                          ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
+                          : "text-[#1F1607] font-normal"
                       }`}
-                    onClick={() => SetIsActive(e?._id)}
-                  >
-                    {e?.name}
-                  </button>
-                </li>
-              ))}
+                      onClick={() => {
+                        SetIsActive(e?._id), SetIsKey(e?.name);
+                      }}
+                    >
+                      {e?.name}
+                    </button>
+                  </li>
+                ))}
             </ul>
           </div>
           <div className="mt-10">
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {isGallaryLoading
                 ? Array(4)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div key={index}>
-                      <GallerySkeleton />
-                    </div>
-                  ))
+                    .fill(0)
+                    .map((_, index) => (
+                      <div key={index}>
+                        <GallerySkeleton />
+                      </div>
+                    ))
                 : finalGallaryData?.map((e: any, index: any) => (
-                  <div
-                    key={index}
-                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
-                  >
-                    <img
-                      src={e.img_url}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                ))}
+                    <div
+                      key={index}
+                      className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                    >
+                      <img
+                        src={e.img_url}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
+                  ))}
             </div>
           </div>
         </div>

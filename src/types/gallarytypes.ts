@@ -8,6 +8,6 @@ export interface IGallaryData {
 }
 export interface FetchGalleryParams {
   type: string | null;
-  showAll: boolean | null;
-  kay?: string | null;
+  showAll?: boolean | null;
+  id?: string | null;
 }
