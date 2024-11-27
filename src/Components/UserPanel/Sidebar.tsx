@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router-dom";
 import logo from "../../assets/icons/whiteLogo.png";
 import {
   CalendarMonthOutlined,
+  HelpOutline,
   HomeWorkOutlined,
   ReceiptLongOutlined,
   SettingsOutlined,
@@ -13,15 +14,17 @@ const Sidebar = () => {
       <div className="px-5">
         <img src={logo} className="w-32 lg:w-36 xl:w-40" />
       </div>
-      <ul className="mt-8">
+      <div className='px-4'>
+        <hr className='my-8' />
+      </div>
+      <ul className=''>
         <li>
           <NavLink
             to="/user-panel/properties"
             className={({ isActive }) =>
-              `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                isActive
-                  ? "border-[#fff3dd] bg-[#d5b67f]"
-                  : "border-transparent"
+              `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive
+                ? "border-[#fff3dd] bg-[#d5b67f]"
+                : "border-transparent"
               }`
             }
           >
@@ -33,10 +36,9 @@ const Sidebar = () => {
             <NavLink
               to="/user-panel/calender/10"
               className={({ isActive }) =>
-                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                  isActive
-                    ? "border-[#fff3dd] bg-[#d5b67f]"
-                    : "border-transparent"
+                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive
+                  ? "border-[#fff3dd] bg-[#d5b67f]"
+                  : "border-transparent"
                 }`
               }
             >
@@ -49,10 +51,9 @@ const Sidebar = () => {
             <NavLink
               to="/user-panel/statements/10"
               className={({ isActive }) =>
-                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                  isActive
-                    ? "border-[#fff3dd] bg-[#d5b67f]"
-                    : "border-transparent"
+                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive
+                  ? "border-[#fff3dd] bg-[#d5b67f]"
+                  : "border-transparent"
                 }`
               }
             >
@@ -65,10 +66,9 @@ const Sidebar = () => {
             <NavLink
               to="/user-panel/maintenance/10"
               className={({ isActive }) =>
-                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                  isActive
-                    ? "border-[#fff3dd] bg-[#d5b67f]"
-                    : "border-transparent"
+                `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive
+                  ? "border-[#fff3dd] bg-[#d5b67f]"
+                  : "border-transparent"
                 }`
               }
             >
@@ -80,18 +80,23 @@ const Sidebar = () => {
           <NavLink
             to={`/user-panel/settings/${id ?? ""}`}
             className={({ isActive }) =>
-              `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                isActive
-                  ? "border-[#fff3dd] bg-[#d5b67f]"
-                  : "border-transparent"
+              `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive
+                ? "border-[#fff3dd] bg-[#d5b67f]"
+                : "border-transparent"
               }`
             }
           >
             <SettingsOutlined /> Settings
           </NavLink>
         </li>
+        <li className='px-4'>
+          <hr className='my-8' />
+        </li>
+        <li>
+          <NavLink to="/user-panel/help" className={({ isActive }) => `text - sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${isActive ? "border-[#fff3dd] bg-[#d5b67f]" : "border-transparent"}`}><HelpOutline /> Help</NavLink>
+        </li>
       </ul>
-    </div>
+    </div >
   );
 };
 
