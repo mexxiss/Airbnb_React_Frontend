@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 import Layout from "./Layout/Layout.tsx";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.tsx";
