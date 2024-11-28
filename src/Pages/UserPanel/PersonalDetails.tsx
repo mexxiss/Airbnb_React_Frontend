@@ -51,7 +51,7 @@ const PersonalDetails = () => {
                     <div className="mt-6">
                         <FormikProvider value={formik}>
                             <Form onSubmit={formik.handleSubmit}>
-                                <div className="flex flex-col gap-5">
+                                <div className="grid sm:grid-cols-2 gap-5">
                                     <Input name="firstName" type="text" label="First Name" value="Surinder Saini" disabled labelClass="" />
                                     <Input name="lastName" type="text" label="Last Name" value="Harbans" disabled labelClass="" />
                                     <Input name="email" type="email" label="Email" value="mexxstate@gmail.com" disabled labelClass="" />
