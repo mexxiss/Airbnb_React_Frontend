@@ -12,7 +12,7 @@ const Settings = () => {
 
   return (
     <div>
-      <div className="grid sm:grid-cols-2 gap-3">
+      <div className="grid sm:grid-cols-2 gap-x-4 xl:gap-x-10 gap-y-6 md:gap-y-8 mt-8">
         <div className="border border-primary flex justify-between relative">
           <Link
             to="/user-panel/settings/change-password"
