@@ -34,7 +34,7 @@ const PersonalDetails = () => {
                     </li>
                 </ul>
             </div>
-            <div className="mt-8">
+            <div className="mt-5 md:mt-8">
                 <h4 className="text-3xl lg:text-4xl xl:text-5xl text-gray-600">Personal Details</h4>
                 <hr className="my-5 border-primary" />
                 <div className="py-6 px-5 border border-primary bg-primary bg-opacity-5">
@@ -59,9 +59,9 @@ const PersonalDetails = () => {
                                     <Input name="number" type="text" label="Phone Number" value="-" disabled labelClass="" />
                                     <Input name="SecEmail" type="email" label="Secondary Email" value="" disabled labelClass="" />
                                     <Input name="SecNumber" type="text" label="Secondary Phone Number" value="-" disabled labelClass="" />
-                                    <div>
-                                        <button className="btn1 !rounded-none h-10 !px-8 tracking-wider">Save</button>
-                                    </div>
+                                </div>
+                                <div className="mt-6">
+                                    <button className="btn1 !rounded-none h-10 !px-8 tracking-wider">Save</button>
                                 </div>
                             </Form>
                         </FormikProvider>

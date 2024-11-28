@@ -1,4 +1,4 @@
-import { MenuOutlined, NotificationsOutlined } from "@mui/icons-material"
+import { MenuOutlined, NotificationsOutlined, PersonOutlined } from "@mui/icons-material"
 
 interface IsProps {
     isCollapse: boolean;
@@ -30,11 +30,14 @@ const Header = ({ isCollapse, setIsCollapse, isSidebarShow, setSideBarShow }: Is
                 <div>
                     <h5 className="text-lg text-primary">My places</h5>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-5">
                     <button className="relative">
                         <NotificationsOutlined className="text-gray-500 !text-3xl" />
                         <span className="absolute top-0 -right-1 flex items-center justify-center text-white bg-primary rounded-full text-[11px] w-4 h-4">0</span>
                     </button>
+                    <div className="w-7 h-7 rounded-full border border-primary flex items-center justify-center">
+                        <PersonOutlined className="text-gray-700 !text-xl" />
+                    </div>
                 </div>
             </div>
         </div>
