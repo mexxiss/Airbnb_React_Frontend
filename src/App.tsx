@@ -1,5 +1,9 @@
 import { lazy, Suspense, useEffect } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "sweetalert2/dist/sweetalert2.min.css";
@@ -123,6 +127,10 @@ const App = () => {
       element: <UserPanel />,
       children: [
         {
+          index: true,
+          loader: () => redirect("/user-panel/properties"),
+        },
+        {
           path: "properties",
           element: <Properties />,
         },
@@ -170,8 +178,8 @@ const App = () => {
           path: "help/faq",
           element: <FAQ />,
         },
-      ]
-    }
+      ],
+    },
   ]);
   return <RouterProvider router={router} />;
 };
