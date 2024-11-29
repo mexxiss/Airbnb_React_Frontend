@@ -2,6 +2,8 @@ import axiosInstance from "./axiosInstance";
 import { FetchGalleryParams } from "../types/gallarytypes";
 import { ContactResponse } from "../types/contactTypes";
 import { IFaqParams } from "../types/faqTypes";
+import { PricingState } from "../types/priceTypes";
+import axios from "axios";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -44,6 +46,11 @@ export const fetchFaqs = async ({ page }: IFaqParams) => {
   return response.data;
 };
 
+export const fetchPricing = async (): Promise<PricingState> => {
+  const response = await axiosInstance.get(`/pricing`); // Replace with your API endpoint
+  return response.data;
+};
+
 // post contact query api
 
 export const postContactQuery = async (data: {
@@ -62,7 +69,7 @@ export const fetchCountryCode = async (
   lng: number
 ): Promise<string | null> => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${
         import.meta.env.VITE_GOOGLE_API_KEY
       }`
