@@ -1,8 +1,11 @@
 import axios from "axios";
-import { store } from "../store/store"; // Adjust the path based on your folder structure
+import { store } from "../store/store";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api/v1", // Replace with your API base URL
+  baseURL: import.meta.env.VITE_LIVE_API_URL,
+  headers: {
+    "ngrok-skip-browser-warning": "true",
+  },
   timeout: 10000, // Set a timeout limit
 });
 
