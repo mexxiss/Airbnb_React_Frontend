@@ -49,7 +49,7 @@ const CleaningMaintenance = () => {
             Service & Maintenance
           </h4>
           <p className="text-[#60410C] mt-3">
-            Our in-house team of skilled professionals provides meticulous cleaning and maintenance services to guarantee that your properties are impeccably presented for every guest. Their attention to detail ensures a spotless and well-maintained environment, creating a welcoming and comfortable experience for your guests. By entrusting us with these essential services, you can rest assured that your properties will consistently meet the highest standards of cleanliness and functionality, maximizing guest satisfaction and positive reviews.
+          Our in-house team delivers exceptional cleaning and maintenance services, ensuring your properties are spotless and guest-ready. With a focus on detail, we provide a welcoming, well-maintained environment that meets the highest standards, enhancing guest satisfaction and securing positive reviews.
           </p>
         </div>
       </div>
