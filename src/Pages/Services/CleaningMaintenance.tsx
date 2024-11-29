@@ -49,8 +49,7 @@ const CleaningMaintenance = () => {
             Service & Maintenance
           </h4>
           <p className="text-[#60410C] mt-3">
-            In-house cleaning and maintenance services are provided to ensure
-            properties are perfect for guests.
+            Our in-house team of skilled professionals provides meticulous cleaning and maintenance services to guarantee that your properties are impeccably presented for every guest. Their attention to detail ensures a spotless and well-maintained environment, creating a welcoming and comfortable experience for your guests. By entrusting us with these essential services, you can rest assured that your properties will consistently meet the highest standards of cleanliness and functionality, maximizing guest satisfaction and positive reviews.
           </p>
         </div>
       </div>
@@ -92,13 +91,13 @@ const CleaningMaintenance = () => {
               <div className="shadow-[10px_10px_40px_0px_#00092926] bg-white rounded-2xl py-4 px-4 xs:px-8 flex items-center gap-6 xs:gap-8 justify-center -translate-y-1/2  lg:w-full sm:max-w-[80%] mx-auto">
                 <div className="2xl:flex gap-2 mx-auto text-center 2xl:text-left">
                   <p className="text-4xl sm:text-6xl font-semibold text-primary">
-                    {homeContent?.properties_sale}
+                    {homeContent?.properties_sale}+
                   </p>
                   <p className="text-lg text-[#505864] ">Property Sale</p>
                 </div>
                 <div className="2xl:flex gap-2 mx-auto text-center 2xl:text-left">
                   <p className="text-4xl sm:text-6xl font-semibold text-primary">
-                    {homeContent?.apartment_rent}
+                    {homeContent?.apartment_rent}+
                   </p>
                   <p className="text-lg text-[#505864] ">Apartment Rent</p>
                 </div>

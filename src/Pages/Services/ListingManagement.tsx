@@ -129,8 +129,7 @@ const ListingManagement = () => {
                         <h4 className='text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap'>
                             Pricing Your Listing
                         </h4>
-                        <p className='text-[#DCC397] md:text-lg'>Pricing is one of the most important aspects of property management. We use a combination of algorithms and manual changes to ensure your property is always well-priced. Seasonality, supply, holidays, world events – all these things play an important role in the price per night. Our in-house pricing specialist looks at this daily and updates prices when needed.
-                        </p>
+                        <p className='text-[#DCC397] md:text-lg'>Pricing is a critical element of effective property management. We leverage advanced algorithms alongside manual adjustments to keep your property competitively priced. Factors like seasonality, demand, holidays, and global events are carefully considered to determine the optimal nightly rate. Our in-house pricing expert monitors these trends daily, making updates as needed to maximize your property’s revenue.</p>
                     </div>
                     <div className='text-center mt-8'>
                         <button className="btn1">
