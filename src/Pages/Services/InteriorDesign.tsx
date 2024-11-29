@@ -108,7 +108,7 @@ const InteriorDesign = () => {
                         <h4 className='text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap'>
                             Packages & Price
                         </h4>
-                        <p className='text-[#DCC397] md:text-lg'>The Interior Design team works with set packages to ensure projects have the highest turnaround. Our packages include everything except large appliances or any specific specialised items.</p>
+                        <p className='text-[#DCC397] md:text-lg'>Our Interior Design team operates with pre-set packages to ensure swift project completion. These packages cover all essentials, excluding large appliances or specialized items.</p>
                     </div>
                     <div className='text-center mt-8'>
                         <button className="btn1">
