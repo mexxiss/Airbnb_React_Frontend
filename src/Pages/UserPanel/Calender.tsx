@@ -1,10 +1,29 @@
 import { useState } from "react";
 import Calendar from "../../Components/Calendar/Calendar";
 import MultiMonthCalendar from "../../Components/Calendar/MultiMonthCalendar";
-import { makeMonthStr } from "../../utils/common";
+import { dateFormater, makeMonthStr, modifyDates } from "../../utils/common";
+import { useParams } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
+import { useFetchBookedDates } from "../../hooks/react-queries/bookedDates";
 
 const Calender = () => {
   const [dynamicDate, setDynamicDate] = useState<Date>(new Date());
+
+  console.log({ dynamicDate });
+
+  const { id } = useParams();
+  const { data, isLoading, error, isError } = useFetchBookedDates({
+    start_date: dateFormater(dynamicDate?.toISOString()),
+    property: id || "",
+  });
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError && error instanceof Error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <div>
@@ -26,7 +45,10 @@ const Calender = () => {
         <hr />
         <div>
           <div>
-            <MultiMonthCalendar nextMonthStartDateProps={dynamicDate} />
+            <MultiMonthCalendar
+              nextMonthStartDateProps={dynamicDate}
+              modifidedata={modifyDates(data?.documents || [])}
+            />
           </div>
           <div>
             <div className="text-center text-white text-sm tracking-wider bg-primary py-2 uppercase">
