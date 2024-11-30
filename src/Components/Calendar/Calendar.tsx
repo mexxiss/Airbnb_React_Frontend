@@ -87,6 +87,7 @@ const Calendar: React.FC<CalendarProps> = ({ dynamicDate, setDynamicDate }) => {
         <Box flex="1 1 100%" ml="15px">
           <FullCalendar
             ref={calendarRef}
+            initialDate={dynamicDate.toISOString()}
             height="75vh"
             plugins={[
               dayGridPlugin,

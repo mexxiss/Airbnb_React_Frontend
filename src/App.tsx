@@ -159,7 +159,7 @@ const App = () => {
           element: <PersonalDetails />,
         },
         {
-          path: "settings/property-details",
+          path: "settings/property-details/:id",
           element: <PropertyDetails />,
         },
         {

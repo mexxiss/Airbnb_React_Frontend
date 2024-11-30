@@ -2,15 +2,18 @@ import React, { useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import { mockOccupancyData } from "../../utils/mock/mock";
+import { ModifiedDate } from "../../utils/common";
 
 interface MultiMonthCalendarProps {
   monthsToShow?: number;
   nextMonthStartDateProps: Date;
+  modifidedata?: ModifiedDate[];
 }
 
 const MultiMonthCalendar: React.FC<MultiMonthCalendarProps> = ({
   monthsToShow = 3,
   nextMonthStartDateProps,
+  modifidedata,
 }) => {
   const calendarRef = useRef<any>(null);
 
@@ -44,7 +47,7 @@ const MultiMonthCalendar: React.FC<MultiMonthCalendarProps> = ({
         height="auto"
         contentHeight="auto"
         aspectRatio={1.5}
-        events={mockOccupancyData}
+        events={modifidedata}
       />
     </div>
   );

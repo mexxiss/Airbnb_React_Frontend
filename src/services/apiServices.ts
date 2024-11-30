@@ -4,21 +4,19 @@ import { ContactResponse } from "../types/contactTypes";
 import { IFaqParams } from "../types/faqTypes";
 import { PricingState } from "../types/priceTypes";
 import axios from "axios";
+import {
+  PropertiesResponse,
+  PropertyByIdResponse,
+} from "../types/propertiesTypes";
+import {
+  BookedDatesResponse,
+  FilterBookedDatesRequest,
+} from "../types/bookedDates";
 
 export interface FetchPropertiesParams {
   page: number;
   limit: number;
 }
-
-export const fetchProperties = async ({
-  page,
-  limit,
-}: FetchPropertiesParams) => {
-  const response = await axiosInstance.get("/get-properties", {
-    params: { page, limit }, // Add query parameters
-  });
-  return response.data; // Ensure this matches your API response structure
-};
 
 //home content api
 export const fetchHomeContent = async () => {
@@ -84,4 +82,30 @@ export const fetchCountryCode = async (
     console.error("Error fetching country code:", error);
     return null;
   }
+};
+
+/** Get Properties Apis */
+
+export const fetchProperties = async (): Promise<PropertiesResponse> => {
+  const response = await axiosInstance.get(`/properties`);
+  return response.data;
+};
+
+export const fetchPropertyById = async (
+  id: string
+): Promise<PropertyByIdResponse> => {
+  const response = await axiosInstance.get(`/properties/${id}`);
+  return response.data;
+};
+
+/**Booked Details */
+
+export const fetchBookedDates = async (
+  filter: FilterBookedDatesRequest
+): Promise<any> => {
+  const response = await axiosInstance.get<any>("/booked-dates/filter", {
+    params: filter,
+  });
+
+  return response?.data;
 };

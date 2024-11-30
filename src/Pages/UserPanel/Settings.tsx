@@ -1,14 +1,10 @@
 import { KeyboardArrowRightOutlined } from "@mui/icons-material";
-import { Link, matchPath, useLocation, useParams } from "react-router-dom";
+import { Link, matchPath, useParams } from "react-router-dom";
 
 const Settings = () => {
   const { id } = useParams();
-  const location = useLocation();
-
-  console.log({ location });
 
   const match = matchPath("/settings/:id", `/settings/${id}`);
-  console.log({ match });
 
   return (
     <div>
@@ -37,7 +33,7 @@ const Settings = () => {
         </div>
         <div className="border border-primary flex justify-between relative">
           <Link
-            to="/user-panel/settings/personal-details"
+            to={`/user-panel/settings/personal-details`}
             className="absolute w-full h-full"
           ></Link>
           <h6 className="text-xl text-gray-700 py-2.5 pl-3">
@@ -50,7 +46,7 @@ const Settings = () => {
         {match?.params?.id && match.params.id !== "undefined" && (
           <div className="border border-primary flex justify-between relative">
             <Link
-              to="/user-panel/settings/property-details"
+              to={`/user-panel/settings/property-details/${id}`}
               className="absolute w-full h-full"
             ></Link>
             <h6 className="text-xl text-gray-700 py-2.5 pl-3">
