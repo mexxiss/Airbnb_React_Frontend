@@ -65,8 +65,10 @@ const EstimateRevenue = () => {
             <h3 className="text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] md:leading-[50px] 2xl:leading-[58px]">
               Airbnb & Holiday Home Revenue Estimator
             </h3>
-            <p className=" text-[#60410C] lg:text-lg font-montserrat mt-3 text-center">
-              Calculator estimates your potential earnings based on location, property size, and design, giving you an accurate revenue forecast.
+            <p className=" text-[#60410C] lg:text-lg  mt-3 text-center">
+              Calculator estimates your potential earnings based on location,
+              property size, and design, giving you an accurate revenue
+              forecast.
             </p>
           </div>
         </div>
@@ -246,8 +248,15 @@ const EstimateRevenue = () => {
                   <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                     Income
                   </h4>
-                  <p className="mt-3 font-montserrat text-[#60410C]">
-                    As the owner, you’ll earn from guests staying at your property. Income varies based on seasonality, pricing, and occupancy. Short-term rentals often generate higher returns than long-term leases, as the property is fully furnished with working utilities for ease of guest stays. The flexibility of short-term rentals allows you to sell whenever you choose, all while your asset appreciates. Perfect!
+                  <p className="mt-3  text-[#60410C]">
+                    As the owner, you’ll earn from guests staying at your
+                    property. Income varies based on seasonality, pricing, and
+                    occupancy. Short-term rentals often generate higher returns
+                    than long-term leases, as the property is fully furnished
+                    with working utilities for ease of guest stays. The
+                    flexibility of short-term rentals allows you to sell
+                    whenever you choose, all while your asset appreciates.
+                    Perfect!
                   </p>
                 </div>
               </div>
@@ -264,13 +273,12 @@ const EstimateRevenue = () => {
             </h4>
             <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon35} className='w-14' />
-                <p className='mt-3'> 1. Optimize Pricing</p>
+                <img src={icon35} className="w-14" />
+                <p className="mt-3"> 1. Optimize Pricing</p>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-
-                <img src={icon32} className='w-14' />
-                <p className='mt-3'> 2. Enhance Property Appeal</p>
+                <img src={icon32} className="w-14" />
+                <p className="mt-3"> 2. Enhance Property Appeal</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -279,9 +287,8 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-
-                <img src={icon33} className='w-14' />
-                <p className='mt-3'> 3. Increase Occupancy</p>
+                <img src={icon33} className="w-14" />
+                <p className="mt-3"> 3. Increase Occupancy</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -290,9 +297,8 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-
-                <img src={icon36} className='w-14' />
-                <p className='mt-3'> 4. Maintain Excellent Guest Reviews</p>
+                <img src={icon36} className="w-14" />
+                <p className="mt-3"> 4. Maintain Excellent Guest Reviews</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -301,9 +307,8 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-
-                <img src={icon34} className='w-14' />
-                <p className='mt-3'> 5. Regular Property Maintenance</p>
+                <img src={icon34} className="w-14" />
+                <p className="mt-3"> 5. Regular Property Maintenance</p>
               </li>
             </ul>
           </div>

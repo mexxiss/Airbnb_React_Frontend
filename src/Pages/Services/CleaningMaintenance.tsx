@@ -53,7 +53,7 @@ const CleaningMaintenance = () => {
             Airbnb Cleaning <br />
             Service & Maintenance
           </h4>
-          <p className="text-[#60410C] font-montserrat mt-3">
+          <p className="text-[#60410C]  mt-3">
             Our in-house team delivers exceptional cleaning and maintenance
             services, ensuring your properties are spotless and guest-ready.
             With a focus on detail, we provide a welcoming, well-maintained

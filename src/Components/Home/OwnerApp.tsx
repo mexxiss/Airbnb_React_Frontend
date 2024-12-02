@@ -12,16 +12,19 @@ const OwnerApp = () => {
                 <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
                   Owner app
                 </h4>
-                <p className="mt-3 mb-5 font-medium text-secondary font-jakarta">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry.
+                <p className="mt-3 mb-5 font-medium text-secondary ">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
                 </p>
                 <button className="btn1 !rounded-xl !px-5 !capitalize">
                   Browse Properties
                 </button>
               </div>
             </div>
-            <img src={ownerApp} className="hidden sm:inline-block mx-auto w-24 sm:w-32 lg:w-44 absolute bottom-0 right-4 lg:static" />
+            <img
+              src={ownerApp}
+              className="hidden sm:inline-block mx-auto w-24 sm:w-32 lg:w-44 absolute bottom-0 right-4 lg:static"
+            />
           </div>
           <div className="lg:w-[65%] 2xl:w-[62%] mt-10 lg:mt-0">
             <div className="grid grid-cols-2 gap-6 sm:gap-10 xl:gap-x-20 gap-y-10">

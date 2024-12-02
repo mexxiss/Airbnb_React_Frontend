@@ -64,7 +64,7 @@ const ListingManagement = () => {
             <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
               Listing Management
             </h4>
-            <p className="mt-3 font-montserrat text-[#60410C]">
+            <p className="mt-3  text-[#60410C]">
               {homeContent?.listing_management?.description}
             </p>
           </div>
@@ -165,7 +165,7 @@ const ListingManagement = () => {
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Holiday Home Listing FAQs"  img_url={img9} />
+        <FAQ title="Holiday Home Listing FAQs" img_url={img9} />
       </Suspense>
     </>
   );

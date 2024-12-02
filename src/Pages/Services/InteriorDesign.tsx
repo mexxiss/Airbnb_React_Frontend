@@ -39,7 +39,9 @@ const InteriorDesign = () => {
               <span>
                 <img src={icon27} className="w-4" />
               </span>
-              <span className='inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis'>Interior Design</span>
+              <span className="inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
+                Interior Design
+              </span>
             </p>
           </div>
         </div>
@@ -51,7 +53,7 @@ const InteriorDesign = () => {
             <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
               Airbnb Interior Design
             </h4>
-            <p className="mt-3 font-montserrat text-[#60410C]">
+            <p className="mt-3  text-[#60410C]">
               {homeContent?.interior_design_page?.description}
             </p>
           </div>
@@ -93,7 +95,7 @@ const InteriorDesign = () => {
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       <div className="py-14 md:py-16 lg:py-20">
         <div className="container mx-auto">
@@ -150,7 +152,7 @@ const InteriorDesign = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <FAQ title="Interior Design FAQs" img_url={interiorFaq} />
       </Suspense>
-    </div >
+    </div>
   );
 };
 

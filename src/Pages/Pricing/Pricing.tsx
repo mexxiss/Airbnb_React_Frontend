@@ -84,7 +84,7 @@ const Pricing = () => {
             <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]">
               Pricing
             </h3>
-            <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-3 text-center">
+            <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center">
               We ensure your property is strategically listed to achieve maximum
               revenue potential. Our success is tied to yours — we earn when you
               do. It's that straightforward.

@@ -47,7 +47,7 @@ const ContactUs = () => {
           <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px] text-center">
             Get in touch
           </h3>
-          <p className="max-w-[900px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-2 text-center">
+          <p className="max-w-[900px] mx-auto text-[#60410C] lg:text-lg  mt-2 text-center">
             Every home is different, and so is our approach. For more
             information, get in touch with us. Fill out the form below for a
             quick call back, or call/e-mail us directly.
@@ -64,10 +64,7 @@ const ContactUs = () => {
                   </p>
                   <ul className="flex flex-col gap-1">
                     {contactUs?.emails?.map((email) => (
-                      <li
-                        key={email}
-                        className="text-[#AEAEAE] md:text-lg font-montserrat"
-                      >
+                      <li key={email} className="text-[#AEAEAE] md:text-lg ">
                         {email}
                       </li>
                     ))}
@@ -86,10 +83,7 @@ const ContactUs = () => {
                   </p>
                   <ul className="flex flex-col gap-1">
                     {contactUs?.phones.map((phone) => (
-                      <li
-                        key={phone}
-                        className="text-[#AEAEAE] md:text-lg font-montserrat"
-                      >
+                      <li key={phone} className="text-[#AEAEAE] md:text-lg ">
                         {phone}
                       </li>
                     ))}
@@ -107,7 +101,7 @@ const ContactUs = () => {
                     Our Loaction
                   </p>
                   <ul className="flex flex-col gap-1">
-                    <li className="text-[#AEAEAE] md:text-lg font-montserrat">
+                    <li className="text-[#AEAEAE] md:text-lg ">
                       {contactUs?.location?.address}
                     </li>
                   </ul>
