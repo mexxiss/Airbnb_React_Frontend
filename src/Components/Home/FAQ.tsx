@@ -27,7 +27,7 @@ const pathMap: { [key: string]: string } = {
   "/about-us": "home",
 };
 
-const FAQ = ({ title }: { title: string }) => {
+const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -63,7 +63,7 @@ const FAQ = ({ title }: { title: string }) => {
           <div className="lg:w-2/5">
             <div className="hidden lg:block ">
               <img
-                src={img9}
+                src={img_url}
                 className=" mx-auto rounded-bl-[40px] rounded-tr-[40px]"
               />
             </div>

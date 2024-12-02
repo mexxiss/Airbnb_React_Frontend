@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Suspense, lazy, useCallback, useEffect, useMemo } from "react";
 import { icon27, Pointer } from "../../assets/icons/index.ts";
-import { bg1 } from "../../assets/images/index.ts";
+import { bg1, priceFaq } from "../../assets/images/index.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPricing } from "../../services/apiServices.ts";
@@ -163,7 +163,7 @@ const Pricing = () => {
           </div>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <FAQ title="Pricing FAQs" />
+            <FAQ title="Pricing FAQs" img_url={priceFaq} />
           </Suspense>
         </div>
       </div>
