@@ -58,11 +58,10 @@ const EstimateRevenue = () => {
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col text-center">
             <h3 className="text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] md:leading-[50px] 2xl:leading-[58px]">
-              Estimate Revenue for Airbnb & Holiday Home
+              Airbnb & Holiday Home Revenue Estimator
             </h3>
             <p className=" text-[#60410C] lg:text-lg font-montserrat mt-3 text-center">
-              Calculator estimates your revenue potential based on area,
-              property size, and interior design.
+              Calculator estimates your potential earnings based on location, property size, and design, giving you an accurate revenue forecast.
             </p>
           </div>
         </div>
@@ -243,15 +242,7 @@ const EstimateRevenue = () => {
                     Income
                   </h4>
                   <p className="mt-3 font-montserrat md:text-lg text-[#60410C]">
-                    As the owner, you will earn money from guests staying at
-                    your property. The income varies due to seasonality, price,
-                    and occupancy. Guests will always pay above the long-term
-                    rent price, due to the property being 100% equipped for
-                    guests – with full interiors, working utilities and ease of
-                    moving in/out. The best part about short-term rental is that
-                    you can sell whenever you want, as you are not locked into a
-                    long-term let. You earn money while your asset appreciates –
-                    perfect!
+                  As the owner, you’ll earn from guests staying at your property. Income varies based on seasonality, pricing, and occupancy. Short-term rentals often generate higher returns than long-term leases, as the property is fully furnished with working utilities for ease of guest stays. The flexibility of short-term rentals allows you to sell whenever you choose, all while your asset appreciates. Perfect!
                   </p>
                 </div>
               </div>
@@ -268,10 +259,10 @@ const EstimateRevenue = () => {
             </h4>
             <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>1. Research the Area</p>
+                <p>1. Optimize Pricing</p>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>2. Insure property is well-designed</p>
+                <p>2. Enhance Property Appeal</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -280,7 +271,7 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>3. Ensure the listing is well-written</p>
+                <p>3. Increase Occupancy</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -289,7 +280,7 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>4. Ensure property is clean and well-maintained</p>
+                <p>4. Maintain Excellent Guest Reviews</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -298,7 +289,7 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>5. Ensure property is well-priced</p>
+                <p>5. Regular Property Maintenance</p>
               </li>
             </ul>
           </div>

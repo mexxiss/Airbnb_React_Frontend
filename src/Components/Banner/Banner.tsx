@@ -87,7 +87,7 @@ const Banner = () => {
                 Management <span className="text-primary">Dubai</span>
               </h1>
               <p className="sm:text-lg font-medium mt-5">
-                Premier property management for short-term rentals across Dubai
+                Exceptional Property Management for Short-Term Rentals in Dubai
               </p>
               <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 mt-8 mb-16 sm:mb-12">
                 <button className="btn1">MANAGE MY PROPERTY</button>
