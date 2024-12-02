@@ -8,6 +8,7 @@ import { setProperties } from "../../store/features/propertiesSlice";
 import Loader from "../../Components/Loader/Loader";
 import { RootState } from "../../store/store";
 import { isRoomsCountNumber } from "../../utils/common";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
 const Properties = () => {
   const dispatch = useDispatch();
   const { data, isLoading, error, isError } = useFetchProperties();
@@ -34,7 +35,7 @@ const Properties = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   return (

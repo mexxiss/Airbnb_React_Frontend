@@ -6,12 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import { setFaqs } from "../../store/features/faqSlice";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ErrorHandleMessage from "../ErrorHandleComponent/ErrorHandleMessage";
 
 interface IResponse {
-  message: string | null,
-  success: boolean | null,
-  statusCode: number | null,
-  data: IFaqData[] | null
+  message: string | null;
+  success: boolean | null;
+  statusCode: number | null;
+  data: IFaqData[] | null;
 }
 
 const pathMap: { [key: string]: string } = {
@@ -22,7 +23,7 @@ const pathMap: { [key: string]: string } = {
   "/services/management-support": "management support",
   "/": "home",
   "/estimate-revenue": "estimate revenue",
-  "/about-us": "home"
+  "/about-us": "home",
 };
 
 const FAQ = ({ title }: { title: string }) => {
@@ -30,9 +31,9 @@ const FAQ = ({ title }: { title: string }) => {
   const location = useLocation();
 
   const queryParams: IFaqParams = {
-    page: pathMap[location.pathname]
-  }
-  console.log()
+    page: pathMap[location.pathname],
+  };
+  console.log();
   const { isLoading, isError, error, data } = useQuery<IResponse>({
     queryKey: ["faqData", queryParams],
     queryFn: () => fetchFaqs(queryParams),
@@ -44,7 +45,9 @@ const FAQ = ({ title }: { title: string }) => {
     dispatch(setFaqs(finalData as IFaqData[]));
   }, [data]);
 
-  if (isError && error instanceof Error) return <p>Error: {error.message}</p>;
+  if (isError && error instanceof Error) {
+    return <ErrorHandleMessage msg={error.message} />;
+  }
 
   return (
     <div className="py-16 md:py-20">

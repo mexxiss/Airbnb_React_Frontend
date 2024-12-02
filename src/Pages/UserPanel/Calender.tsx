@@ -1,15 +1,22 @@
 import { useState } from "react";
 import Calendar from "../../Components/Calendar/Calendar";
 import MultiMonthCalendar from "../../Components/Calendar/MultiMonthCalendar";
-import { dateFormater, makeMonthStr, modifyDates } from "../../utils/common";
+import {
+  calculateAmountPerNight,
+  calculateNightsPercentage,
+  dateFormater,
+  formatAmountWithCurrency,
+  makeMonthStr,
+  modifyDates,
+} from "../../utils/common";
 import { useParams } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 import { useFetchBookedDates } from "../../hooks/react-queries/bookedDates";
+import moment from "moment";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
 
 const Calender = () => {
   const [dynamicDate, setDynamicDate] = useState<Date>(new Date());
-
-  console.log({ dynamicDate });
 
   const { id } = useParams();
   const { data, isLoading, error, isError } = useFetchBookedDates({
@@ -22,7 +29,7 @@ const Calender = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   return (
@@ -57,23 +64,39 @@ const Calender = () => {
             <ul className="mt-2 flex flex-col gap-2 text-sm text-gray-500">
               <li className="flex items-center justify-between">
                 <span>Projected Earnings:</span>
-                <span>AED 0.00</span>
+                <span>
+                  {formatAmountWithCurrency(
+                    data?.totals?.total_net_charges || 0,
+                    "AED"
+                  )}
+                </span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Average Nighty Rate:</span>
-                <span>AED 0</span>
+                <span>
+                  {calculateAmountPerNight(
+                    data?.totals?.total_net_charges || 0,
+                    data?.totals?.total_nights_count || 1,
+                    "AED"
+                  )}
+                </span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Stays:</span>
-                <span>0</span>
+                <span>{data?.totals?.total_stays || 0}</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Nights:</span>
-                <span>0</span>
+                <span>{data?.totals?.total_nights_count || 0}</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Occupancy Rate:</span>
-                <span>0%</span>
+                <span>
+                  {calculateNightsPercentage(
+                    data?.totals?.total_nights_count || 0,
+                    moment(dynamicDate).daysInMonth()
+                  )}
+                </span>
               </li>
             </ul>
           </div>

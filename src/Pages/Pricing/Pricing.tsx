@@ -9,6 +9,7 @@ import { PricingState } from "../../types/priceTypes.ts";
 import { setPricingData } from "../../store/features/priceSlice.ts";
 import Loader from "../../Components/Loader/Loader.tsx";
 import { RootState } from "../../store/store.ts";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
 
 const FAQ = lazy(() => import("../../Components/Home/FAQ"));
 
@@ -42,7 +43,7 @@ const Pricing = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   return (
@@ -84,7 +85,9 @@ const Pricing = () => {
               Pricing
             </h3>
             <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-3 text-center">
-            We ensure your property is strategically listed to achieve maximum revenue potential. Our success is tied to yours — we earn when you do. It's that straightforward.
+              We ensure your property is strategically listed to achieve maximum
+              revenue potential. Our success is tied to yours — we earn when you
+              do. It's that straightforward.
             </p>
             <div>
               <button className="btn1 mt-8 md:mt-12">Estimate revenue</button>

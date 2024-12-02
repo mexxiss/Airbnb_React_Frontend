@@ -20,6 +20,7 @@ import { fetchContact } from "../../services/apiServices.ts";
 import { RootState } from "../../store/store.ts";
 import ContactForm from "./Form/ContactForm.tsx";
 import GoogleMapsComponent from "../../Components/GoogleMap/GoogleMapsComponent.tsx";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
 
 const ContactUs = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const ContactUs = () => {
   }, [finalData, dispatchContact]);
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   const contactUs = useSelector((state: RootState) => state.contactus.data);
@@ -66,7 +67,10 @@ const ContactUs = () => {
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
               <span className="">
-                <Link to="/" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
+                <Link
+                  to="/"
+                  className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis"
+                >
                   Home
                 </Link>
               </span>

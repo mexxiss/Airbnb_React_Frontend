@@ -12,6 +12,7 @@ import {
   BookedDatesResponse,
   FilterBookedDatesRequest,
 } from "../types/bookedDates";
+import { TestimonialsResponse } from "../types/testimonials";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -108,4 +109,11 @@ export const fetchBookedDates = async (
   });
 
   return response?.data;
+};
+
+export const fetchTestimonials = async (): Promise<TestimonialsResponse> => {
+  const response = await axiosInstance.get<TestimonialsResponse>(
+    "/testimonials"
+  );
+  return response.data;
 };
