@@ -48,9 +48,7 @@ const ContactUs = () => {
             Get in touch
           </h3>
           <p className="max-w-[900px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-2 text-center">
-            Every home is different, and so is our approach. For more
-            information, get in touch with us. Fill out the form below for a
-            quick call back, or call/e-mail us directly.
+            Each home is unique, and so is our approach. To learn more, get in touch with us. Complete the form below for a quick callback, or feel free to call or email us directly.
           </p>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <div className="py-4 sm:py-7 px-6 bg-white rounded-xl shadow-[0px_0px_20px_0px_#0000001A]">

@@ -13,8 +13,7 @@ const OwnerApp = () => {
                   Owner app
                 </h4>
                 <p className="mt-3 mb-5 font-medium text-secondary font-jakarta">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry.
+                  Our intuitive Owner App empowers property owners with real-time insights and complete control over their investments.
                 </p>
                 <button className="btn1 !rounded-xl !px-5 !capitalize">
                   Browse Properties
@@ -33,11 +32,10 @@ const OwnerApp = () => {
                 </div>
                 <div className="mt-3 sm:mt-5">
                   <h6 className="text-xl sm:text-2xl font-medium text-text1">
-                    View your Live Calendar
+                    View Your Live Calendar
                   </h6>
                   <p className=" text-[#4D5461] mt-3">
-                    See occupancy, average nightly net rate, projected earnings
-                    and more
+                    Monitor your property's availability in real time, with insights into occupancy, average nightly rates, projected earnings, and more.
                   </p>
                 </div>
               </div>
@@ -49,10 +47,10 @@ const OwnerApp = () => {
                 </div>
                 <div className="mt-3 sm:mt-5">
                   <h6 className="text-xl sm:text-2xl font-medium text-text1">
-                    View your Monthly Statements
+                  Check Your Monthly Statements
                   </h6>
                   <p className=" text-[#4D5461] mt-3">
-                    Access your statements on the go, and see your payouts
+                    Access your monthly statements instantly and track your payouts with ease.
                   </p>
                 </div>
               </div>
@@ -67,7 +65,7 @@ const OwnerApp = () => {
                     Contact Support
                   </h6>
                   <p className=" text-[#4D5461] mt-3">
-                    Contact the Client Support team directly from the app
+                  Reach our Client Support team directly through the app for any assistance you may need.
                   </p>
                 </div>
               </div>
@@ -79,11 +77,10 @@ const OwnerApp = () => {
                 </div>
                 <div className="mt-3 sm:mt-5">
                   <h6 className="text-xl sm:text-2xl font-medium text-text1">
-                    Block Owner Stays
+                    Block Personal Stays
                   </h6>
                   <p className=" text-[#4D5461] mt-3">
-                    Use the app to block personal stays at your property, any
-                    time
+                    Easily block dates for personal stays at your property, whenever you need, through the app.
                   </p>
                 </div>
               </div>

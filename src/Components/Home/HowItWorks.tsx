@@ -14,34 +14,42 @@ const HowItWorks = () => {
     {
       img: icon18,
       name: "Get in Touch",
+      description: "Reach out to us for an initial consultation and to discuss your property's potential."
     },
     {
       img: icon19,
       name: "Contract Signed",
+      description: "Once the details are finalized, we’ll sign the contract to move forward with the partnership."
     },
     {
       img: icon20,
       name: "Initial Inspection",
+      description: "Our team conducts a thorough inspection to assess your property and plan for the next steps."
     },
     {
       img: icon15,
       name: "Interior Design / Styling",
+      description: "We transform your space with expert styling and design to create an inviting environment for guests."
     },
     {
       img: icon21,
       name: "Maintenance Works",
+      description: "Our maintenance team ensures your property is in top condition, handling any necessary repairs or improvements."
     },
     {
       img: icon22,
       name: "Photography and Listing",
+      description: "Professional photography is done to showcase your property in the best light, followed by listing it on popular platforms."
     },
     {
       img: icon12,
       name: "Guest Management",
+      description: "We handle all aspects of guest interaction, ensuring smooth check-ins, support during their stay, and check-outs."
     },
     {
       img: icon23,
       name: "Relax and Count your Dirhams",
+      description: "Sit back, relax, and watch your earnings grow while we manage everything for you."
     },
   ];
   return (
@@ -71,8 +79,7 @@ const HowItWorks = () => {
                   {item.name}
                 </p>
                 <p className="text-center text-sm">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Totam, deserunt.
+                  {item.description}
                 </p>
               </div>
             ))}
