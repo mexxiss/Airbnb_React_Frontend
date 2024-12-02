@@ -140,7 +140,7 @@ const ListingManagement = () => {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ title='Listing Mangement FAQs' />
+                <FAQ title='Holiday Home Listing FAQs' />
             </Suspense>
         </>
     )
