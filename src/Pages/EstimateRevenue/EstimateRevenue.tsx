@@ -3,6 +3,11 @@ import { Select } from "@mantine/core";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { icon27, icon28, icon29, icon31 } from "../../assets/icons/index.ts";
 import { bg1, img8, img9, calc_Img } from "../../assets/images/index.ts";
+import icon32 from "../../assets/icons/icon32.png";
+import icon33 from "../../assets/icons/icon33.png";
+import icon34 from "../../assets/icons/icon34.png";
+import icon35 from "../../assets/icons/icon35.png";
+import icon36 from "../../assets/icons/icon36.png";
 
 import { Label, Radio } from "flowbite-react";
 import Swal from "sweetalert2";
@@ -14,12 +19,12 @@ const EstimateRevenue = () => {
     Swal.fire({
       html: `
             <p class="text-xl">A <b>Three Bed</b> property in <b>Al Furjan</b> can earn</p>
-            <span class="text-5xl text-primary inline-block mt-4"><b>650 <span style="font-size: 1.5rem;">د.إ</span></b></span>
+            <span class="text-5xl text-[#a58143] inline-block mt-4"><b>650 <span style="font-size: 1.5rem;">د.إ</span></b></span>
             <p style="font-size: 0.9rem; color: gray;">daily on average *</p>
             <p class="mt-3" style="font-size: 0.8rem; color: gray;">*Estimate is based on realistic occupancies and similar listings in your area.</p>
           `,
       confirmButtonText: "Got it!",
-      confirmButtonColor: "#bb9e6c",
+      confirmButtonColor: "#a58143",
     });
   };
   return (
@@ -241,8 +246,8 @@ const EstimateRevenue = () => {
                   <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
                     Income
                   </h4>
-                  <p className="mt-3 font-montserrat md:text-lg text-[#60410C]">
-                  As the owner, you’ll earn from guests staying at your property. Income varies based on seasonality, pricing, and occupancy. Short-term rentals often generate higher returns than long-term leases, as the property is fully furnished with working utilities for ease of guest stays. The flexibility of short-term rentals allows you to sell whenever you choose, all while your asset appreciates. Perfect!
+                  <p className="mt-3 font-montserrat text-[#60410C]">
+                    As the owner, you’ll earn from guests staying at your property. Income varies based on seasonality, pricing, and occupancy. Short-term rentals often generate higher returns than long-term leases, as the property is fully furnished with working utilities for ease of guest stays. The flexibility of short-term rentals allows you to sell whenever you choose, all while your asset appreciates. Perfect!
                   </p>
                 </div>
               </div>
@@ -259,10 +264,13 @@ const EstimateRevenue = () => {
             </h4>
             <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>1. Optimize Pricing</p>
+                <img src={icon35} className='w-14' />
+                <p className='mt-3'> 1. Optimize Pricing</p>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>2. Enhance Property Appeal</p>
+
+                <img src={icon32} className='w-14' />
+                <p className='mt-3'> 2. Enhance Property Appeal</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -271,7 +279,9 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>3. Increase Occupancy</p>
+
+                <img src={icon33} className='w-14' />
+                <p className='mt-3'> 3. Increase Occupancy</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -280,7 +290,9 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>4. Maintain Excellent Guest Reviews</p>
+
+                <img src={icon36} className='w-14' />
+                <p className='mt-3'> 4. Maintain Excellent Guest Reviews</p>
                 <Link
                   to="/"
                   className="text-[#4D5461] underline inline-block mt-2"
@@ -289,7 +301,9 @@ const EstimateRevenue = () => {
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <p>5. Regular Property Maintenance</p>
+
+                <img src={icon34} className='w-14' />
+                <p className='mt-3'> 5. Regular Property Maintenance</p>
               </li>
             </ul>
           </div>

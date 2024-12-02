@@ -88,7 +88,7 @@ const Gallery = () => {
       >
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col gap-4">
-            <h2 className="text-[42px] sm:text-5xl xl:text-[60px] font-bold text-center text-[#1F1607] font-light] ">
+            <h2 className="text-[42px] sm:text-5xl font-bold text-center text-[#1F1607] font-light]">
               Gallery
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
@@ -109,19 +109,24 @@ const Gallery = () => {
         </div>
       </div>
 
-      <div className="py-14 md:py-16 lg:py-20">
+      <div className="py-10">
         <div className="container mx-auto">
-          <div>
+          <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px] text-center">
+            Portfolio
+          </h3>
+          <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-2 text-center">
+            Have a look at our select property portfolio
+          </p>
+          <div className='mt-12'>
             <ul className="flex overflow-auto justify-between items-center border-b-2 border-[#AEAEAE]">
               {!isTypesLoading &&
                 finalTypesData?.map((e: any, index: any) => (
                   <li key={index}>
                     <button
-                      className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${
-                        isActive === e?._id
-                          ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
-                          : "text-[#1F1607] font-normal"
-                      }`}
+                      className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${isActive === e?._id
+                        ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
+                        : "text-[#1F1607] font-normal"
+                        }`}
                       onClick={() => {
                         SetIsActive(e?._id), SetIsKey(e?.name);
                       }}
@@ -136,23 +141,23 @@ const Gallery = () => {
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {isGallaryLoading
                 ? Array(4)
-                    .fill(0)
-                    .map((_, index) => (
-                      <div key={index}>
-                        <GallerySkeleton />
-                      </div>
-                    ))
-                : finalGallaryData?.map((e: any, index: any) => (
-                    <div
-                      key={index}
-                      className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
-                    >
-                      <img
-                        src={e.img_url}
-                        className="w-full h-full object-cover object-center"
-                      />
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index}>
+                      <GallerySkeleton />
                     </div>
-                  ))}
+                  ))
+                : finalGallaryData?.map((e: any, index: any) => (
+                  <div
+                    key={index}
+                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                  >
+                    <img
+                      src={e.img_url}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

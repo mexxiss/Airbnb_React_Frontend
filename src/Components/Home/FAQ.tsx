@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { setFaqs } from "../../store/features/faqSlice";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import img9 from "../../assets/images/img9.png";
 
 interface IResponse {
   message: string | null,
@@ -49,16 +50,19 @@ const FAQ = ({ title }: { title: string }) => {
   return (
     <div className="py-16 md:py-20">
       <div className="container mx-auto">
-        <div className="lg:flex">
+        <div className="text-center">
+          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]">
+            {title}
+          </h4>
+          <p className="text-lg text-primary mt-2">
+            Contact us for more info
+          </p>
+        </div>
+        <div className="lg:flex mt-10 items-center">
           <div className="lg:w-2/5">
-            <div className="text-center lg:text-left">
-              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]">
-                {title}
-              </h4>
-              <p className="text-lg text-primary mt-2">
-                Contact us for more info
-              </p>
-            </div>
+            <div className="hidden lg:block ">
+              <img src={img9} className=" mx-auto rounded-bl-[40px] rounded-tr-[40px]" />
+            </div>  
           </div>
           <div className="lg:w-3/5 lg:pl-6 2xl:pl-10 mt-10 lg:mt-0">
             <div>

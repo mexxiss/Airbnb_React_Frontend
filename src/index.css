@@ -3,60 +3,111 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Light.ttf") format("truetype");
-  /* Adjust the path as needed */
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Light.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
-  /* Adjust the path as needed */
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Medium.ttf") format("truetype");
-  /* Adjust the path as needed */
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Medium.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("truetype");
-  /* Adjust the path as needed */
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
-  /* Adjust the path as needed */
-  font-weight: 700;
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Montserrat", sans-serif;
-  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  /* Variable fonts often support a range of weights */
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Medium.woff2") format("woff2"),
+    url("./assets/fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  src: url("./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: 100 900;
-  /* Variable fonts often support a range of weights */
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/PlusJakartaSans-Regular.woff2") format("woff2"),
+    url("./assets/fonts/PlusJakartaSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/PlusJakartaSans-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/PlusJakartaSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/PlusJakartaSans-Bold.woff2") format("woff2"),
+    url("./assets/fonts/PlusJakartaSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/PlusJakartaSans-Medium.woff2") format("woff2"),
+    url("./assets/fonts/PlusJakartaSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
@@ -135,39 +186,28 @@ body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
-.phoneInput .react-tel-input input {
-  border: none;
-  background-color: transparent;
-}
-.phoneInput .react-tel-input .flag-dropdown {
-  border: none;
-  background-color: transparent;
-}
-.phoneInput .react-tel-input .flag-dropdown .selected-flag,
-.phoneInput .react-tel-input .flag-dropdown.open,
-.phoneInput .react-tel-input .flag-dropdown.open .selected-flag {
-  background: transparent;
-}
-.phoneInput .react-tel-input input:focus {
-  box-shadow: none !important;
-}
+
 [type="radio"] {
   box-shadow: none;
   --tw-ring-shadow: none !important;
 }
+
 [type="radio"]:checked {
   background-color: #bb9e6c !important;
 }
+
 .swal2-actions {
   width: 80%;
   margin: 20px auto 0;
 }
+
 .swal2-actions .swal2-cancel {
   background: transparent !important;
   border: 1px solid #bb9e6c;
   color: #bb9e6c;
   flex: 1;
 }
+
 .swal2-actions .swal2-confirm {
   flex: 1;
 }

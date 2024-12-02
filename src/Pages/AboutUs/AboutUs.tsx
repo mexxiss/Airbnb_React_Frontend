@@ -24,7 +24,7 @@ const AboutUs = () => {
             >
                 <div className="container mx-auto">
                     <div className="flex items-center justify-center flex-col gap-4">
-                        <h2 className="text-[42px] sm:text-5xl xl:text-[60px] font-bold text-center text-[#1F1607] font-light] ">
+                        <h2 className="text-[42px] sm:text-5xl font-bold text-center text-[#1F1607] font-light]">
                             About Us
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
