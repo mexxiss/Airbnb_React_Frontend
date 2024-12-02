@@ -63,7 +63,7 @@ const ContactUs = () => {
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col gap-4">
             <h2 className="text-[42px] sm:text-5xl font-bold text-center text-[#1F1607] font-light]">
-              Get in touch
+              Contact
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
               <span className="">
@@ -85,7 +85,15 @@ const ContactUs = () => {
 
       <div className="pt-14 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px] text-center">
+            Get in touch
+          </h3>
+          <p className="max-w-[900px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-2 text-center">
+            Every home is different, and so is our approach. For more
+            information, get in touch with us. Fill out the form below for a
+            quick call back, or call/e-mail us directly.
+          </p>
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <div className="py-4 sm:py-7 px-6 bg-white rounded-xl shadow-[0px_0px_20px_0px_#0000001A]">
               <div className="flex flex-col h-full">
                 <div className="w-20 h-20 rounded-full flex items-center justify-center bg-[#fff6e7]">

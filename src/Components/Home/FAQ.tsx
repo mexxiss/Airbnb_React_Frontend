@@ -59,7 +59,7 @@ const FAQ = ({ title }: { title: string }) => {
           </h4>
           <p className="text-lg text-primary mt-2">Contact us for more info</p>
         </div>
-        <div className="lg:flex mt-10 items-center">
+        <div className="lg:flex mt-10">
           <div className="lg:w-2/5">
             <div className="hidden lg:block ">
               <img

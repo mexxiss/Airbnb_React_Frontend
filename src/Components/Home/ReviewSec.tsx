@@ -1,13 +1,35 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { img7 } from "../../assets/images/index.ts";
 import Slider from "react-slick";
 import {
   KeyboardArrowLeftOutlined,
   KeyboardArrowRightOutlined,
 } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+import { useFetchTestimonials } from "../../hooks/react-queries/testimonials/useFetchTestimonials.ts";
+import { setTestimonials } from "../../store/features/testimonialsSlice.ts";
+import Loader from "../Loader/Loader.tsx";
+import ErrorHandleMessage from "../ErrorHandleComponent/ErrorHandleMessage.tsx";
 
 const ReviewSec = () => {
-  let sliderRef = useRef<Slider | null>(null);;
+  let sliderRef = useRef<Slider | null>(null);
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, error, data } = useFetchTestimonials();
+
+  const finalData = useMemo(() => data?.data, [data]);
+
+  const memoizedDispatch = useCallback(() => {
+    if (finalData) {
+      dispatch(setTestimonials(finalData));
+    }
+  }, [finalData, dispatch]);
+
+  // Using useEffect to dispatch only when finalData changes
+  useEffect(() => {
+    memoizedDispatch();
+  }, [memoizedDispatch]);
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -41,6 +63,15 @@ const ReviewSec = () => {
       },
     ],
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError && error instanceof Error) {
+    return <ErrorHandleMessage msg={error.message} />;
+  }
+
   return (
     <div
       className="py-16 bg-cover bg-center "
@@ -75,32 +106,19 @@ const ReviewSec = () => {
             </div>
             <div>
               <Slider {...settings} ref={sliderRef}>
-                <div className="px-2">
-                  <div className="text-center text-white">
-                    <p className="text-lg sm:text-xl md:text-2xl font-montserrat tracking-wide md:leading-8">
-                      “Estatery is the platform I go to on almost a daily basis
-                      for 2nd home and vacation condo shopping, or to just look
-                      at dream homes in new areas. Thanks for fun home shopping
-                      and comparative analyzing, Estatery!”
-                    </p>
-                    <p className="text-lg sm:text-xl mt-10">
-                      <span className="font-semibold">Mira Culos</span>, Guest{" "}
-                    </p>
+                {data?.data.map((data, i) => (
+                  <div className="px-2" key={data._id}>
+                    <div className="text-center text-white">
+                      <p className="text-lg sm:text-xl md:text-2xl font-montserrat tracking-wide md:leading-8">
+                        {data.comment}
+                      </p>
+                      <p className="text-lg sm:text-xl mt-10">
+                        <span className="font-semibold">{data?.name}</span>,{" "}
+                        {data?.designation}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="px-2">
-                  <div className="text-center text-white">
-                    <p className="text-lg sm:text-xl md:text-2xl font-montserrat tracking-wide md:leading-8">
-                      “Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nostrum nesciunt delectus maxime, possimus ea facere
-                      fugiat libero, ducimus quod nisi aliquid enim a et aut
-                      harum. Placeat cum veniam recusandae! ”
-                    </p>
-                    <p className="text-lg sm:text-xl mt-10">
-                      <span className="font-semibold">inder</span>, Guest{" "}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </Slider>
             </div>
           </div>

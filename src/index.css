@@ -183,6 +183,22 @@ body {
   font-weight: 500;
 }
 
+.phoneInput .react-tel-input input {
+  border: none;
+  background-color: transparent;
+}
+.phoneInput .react-tel-input .flag-dropdown {
+  border: none;
+  background-color: transparent;
+}
+.phoneInput .react-tel-input .flag-dropdown .selected-flag,
+.phoneInput .react-tel-input .flag-dropdown.open,
+.phoneInput .react-tel-input .flag-dropdown.open .selected-flag {
+  background: transparent;
+}
+.phoneInput .react-tel-input input:focus {
+  box-shadow: none !important;
+}
 .rotate-y-180 {
   transform: rotateY(180deg);
 }

@@ -25,7 +25,10 @@ const CleaningMaintenance = () => {
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
               <span className="">
-                <Link to="/" className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
+                <Link
+                  to="/"
+                  className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis"
+                >
                   Home
                 </Link>
               </span>
@@ -36,7 +39,9 @@ const CleaningMaintenance = () => {
               <span>
                 <img src={icon27} className="w-4" />
               </span>
-              <span className='inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis'>Cleaning & Maintenance</span>
+              <span className="inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis">
+                Cleaning & Maintenance
+              </span>
             </p>
           </div>
         </div>
@@ -48,8 +53,12 @@ const CleaningMaintenance = () => {
             Airbnb Cleaning <br />
             Service & Maintenance
           </h4>
-          <p className="text-[#60410C] mt-3">
-          Our in-house team delivers exceptional cleaning and maintenance services, ensuring your properties are spotless and guest-ready. With a focus on detail, we provide a welcoming, well-maintained environment that meets the highest standards, enhancing guest satisfaction and securing positive reviews.
+          <p className="text-[#60410C] font-montserrat mt-3">
+            Our in-house team delivers exceptional cleaning and maintenance
+            services, ensuring your properties are spotless and guest-ready.
+            With a focus on detail, we provide a welcoming, well-maintained
+            environment that meets the highest standards, enhancing guest
+            satisfaction and securing positive reviews.
           </p>
         </div>
       </div>
@@ -108,16 +117,16 @@ const CleaningMaintenance = () => {
                 What’s Included
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
-                {homeContent?.cleaning_maintenance?.what_inclued.map((item, index) => (
-                  <li key={index}>
-                    <h6 className="text-[#1F1607] text-xl font-medium">
-                      {item.title}
-                    </h6>
-                    <p className="text-[#4D5461] mt-2">
-                      {item.description}
-                    </p>
-                  </li>
-                ))}
+                {homeContent?.cleaning_maintenance?.what_inclued.map(
+                  (item, index) => (
+                    <li key={index}>
+                      <h6 className="text-[#1F1607] text-xl font-medium">
+                        {item.title}
+                      </h6>
+                      <p className="text-[#4D5461] mt-2">{item.description}</p>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
