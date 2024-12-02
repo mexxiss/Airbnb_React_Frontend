@@ -1,6 +1,6 @@
 import React from "react";
 import PhoneInput from "react-phone-input-2";
-import { icon29 } from "../../assets/icons";
+import { icon29 } from "../../assets/icons/index.ts";
 
 import { Controller, Control } from "react-hook-form";
 
