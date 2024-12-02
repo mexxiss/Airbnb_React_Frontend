@@ -61,7 +61,7 @@ const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
         </div>
         <div className="lg:flex mt-10">
           <div className="lg:w-2/5">
-            <div className="hidden lg:block ">
+            <div className="hidden lg:block h-full">
               <img
                 src={img_url}
                 className=" mx-auto rounded-bl-[40px] rounded-tr-[40px]"

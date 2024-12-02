@@ -57,18 +57,23 @@ const HowItWorks = () => {
           </p>
         </div>
         <div className="mt-12">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 md:gap-x-0 md:flex flex-wrap items-center xl:justify-between gap-y-10">
+          <div className="grid xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-3 sm:gap-x-6 gap-y-6 sm:gap-y-8">
             {data.map((item, index) => (
-              <div className="md:w-1/3 xl:w-1/4 md:even:mt-14" key={item.name}>
-                <div className="flex flex-col items-center justify-center gap-3 max-w-[200px] w-full h-[180px] sm:h-[200px] rounded-full rounded-tr-none shadow-xl bg-white mx-auto p-3 lg:p-6 relative">
-                  <span className="absolute right-2 top-2 text-2xl sm:text-3xl font-medium text-primary opacity-20">
-                    0{index + 1}
-                  </span>
-                  <img src={item.img} className="w-12" />
-                  <p className="text-center font-medium text-text1">
-                    {item.name}
-                  </p>
-                </div>
+              <div
+                key={item.name}
+                className="flex flex-col items-center justify-center gap-3 w-full rounded-2xl rounded-tr-none shadow-xl bg-white mx-auto p-3 lg:p-4 relative"
+              >
+                <span className="absolute right-2 top-2 text-2xl sm:text-3xl font-medium text-primary opacity-60">
+                  0{index + 1}
+                </span>
+                <img src={item.img} className="w-12" />
+                <p className="text-center font-semibold text-text1">
+                  {item.name}
+                </p>
+                <p className="text-center text-sm">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Totam, deserunt.
+                </p>
               </div>
             ))}
           </div>

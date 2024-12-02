@@ -22,7 +22,7 @@ const Home = () => {
       <ReviewSec />
       <ShortTerm />
       <WeList />
-      <FAQ title="Airbnd Management Dubai FAQs"  img_url={img9} />
+      <FAQ title="Airbnb Management Dubai FAQs"  img_url={img9} />
     </div>
   );
 };

@@ -94,7 +94,7 @@ const Header = () => {
                   <span className="md:flex items-center justify-center px-2.5 py-2 h-14 bg-primary hidden ">
                     <img src={icon1} className="w-5" />
                   </span>{" "}
-                  {phone}
+                  {phone || "+91-8779043458"}
                 </button>
               </li>
               <li>
@@ -102,7 +102,7 @@ const Header = () => {
                   <span className="md:flex items-center justify-center px-2.5 py-2 h-14 bg-primary hidden ">
                     <img src={icon2} className="w-5" />
                   </span>{" "}
-                  {contactUs?.emails[0]}
+                  {contactUs?.emails[0] || "support@mexxiss.com"}
                 </button>
               </li>
             </ul>

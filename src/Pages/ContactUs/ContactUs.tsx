@@ -1,47 +1,13 @@
 import { Link } from "react-router-dom";
 import { icon27, icon28, icon29, icon30 } from "../../assets/icons/index.ts";
-import { bg1, img8, map } from "../../assets/images/index.ts";
+import { bg1 } from "../../assets/images/index.ts";
 
-import { Select } from "@mantine/core";
-import { KeyboardArrowDownOutlined } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { useQuery } from "@tanstack/react-query";
-import { ContactResponse, ContactData } from "../../types/contactTypes.ts";
-import { useCallback, useEffect, useMemo } from "react";
-import { setContact } from "../../store/features/contactUsSlice.ts";
-import { fetchContact } from "../../services/apiServices.ts";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store.ts";
 import ContactForm from "./Form/ContactForm.tsx";
 import GoogleMapsComponent from "../../Components/GoogleMap/GoogleMapsComponent.tsx";
-import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
 
 const ContactUs = () => {
-  const dispatch = useDispatch();
-
-  const { isLoading, isError, error, data } = useQuery<ContactResponse>({
-    queryKey: ["contact"],
-    queryFn: fetchContact,
-  });
-
-  // Memoizing the finalData to avoid unnecessary recalculations
-  const finalData = useMemo(() => data?.data as ContactData, [data]);
-
-  const dispatchContact = useCallback(() => {
-    if (finalData) {
-      dispatch(setContact(finalData));
-    }
-  }, [dispatch, finalData]);
-
-  useEffect(() => {
-    if (finalData) {
-      dispatchContact();
-    }
-  }, [finalData, dispatchContact]);
-
-  if (isError && error instanceof Error) {
-    return <ErrorHandleMessage msg={error.message} />;
-  }
-
   const contactUs = useSelector((state: RootState) => state.contactus.data);
 
   return (
