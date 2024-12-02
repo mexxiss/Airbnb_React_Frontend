@@ -17,6 +17,7 @@ import logo3 from "./logo3.png";
 import logo4 from "./logo4.png";
 import logo5 from "./logo5.png";
 import logo6 from "./logo6.png";
+import calc_Img from "./calc_Img.png";
 import map from "./map.png";
 
 export {
@@ -40,4 +41,5 @@ export {
   logo5,
   logo6,
   map,
+  calc_Img,
 };
