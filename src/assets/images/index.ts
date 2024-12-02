@@ -24,6 +24,7 @@ import estimateRevFaq from "./estimateRevFaq.png";
 import interiorFaq from "./interiorFaq.jpg";
 import mangeSupportFaq from "./mangeSupportFaq.png";
 import priceFaq from "./priceFaq.png";
+import ownerApp from "./ownerApp.png";
 
 export {
   bg1,
@@ -50,5 +51,6 @@ export {
   cleaningFaq,
   estimateRevFaq,
   interiorFaq,
-  mangeSupportFaq,priceFaq
+  mangeSupportFaq, priceFaq,
+  ownerApp,
 };

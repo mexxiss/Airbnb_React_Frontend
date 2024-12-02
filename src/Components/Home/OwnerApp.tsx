@@ -1,4 +1,4 @@
-import { img6 } from "../../assets/images/index.ts";
+import { ownerApp } from "../../assets/images/index.ts";
 import { icon24 } from "../../assets/icons/index.ts";
 
 const OwnerApp = () => {
@@ -7,19 +7,21 @@ const OwnerApp = () => {
       <div className="container mx-auto">
         <div className="lg:flex justify-between">
           <div className="lg:w-[30%] relative rounded-xl bg-[#F7F7FD] border-2 border-border1 flex flex-col justify-between">
-            <div className="p-4 sm:p-8 lg:mb-8 relative z-10">
-              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
-                Owner app
-              </h4>
-              <p className="mt-3 mb-5 font-medium text-secondary font-jakarta">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
-              </p>
-              <button className="btn1 !rounded-xl !px-5 !capitalize">
-                Browse Properties
-              </button>
+            <div className="p-4 xl:p-8 !pb-10 lg:mb-8 relative z-10">
+              <div className="sm:max-w-[75%] lg:max-w-full">
+                <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
+                  Owner app
+                </h4>
+                <p className="mt-3 mb-5 font-medium text-secondary font-jakarta">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting
+                  industry.
+                </p>
+                <button className="btn1 !rounded-xl !px-5 !capitalize">
+                  Browse Properties
+                </button>
+              </div>
             </div>
-            <img src={img6} className="ml-auto w-32 sm:w-40 md:w-56 absolute bottom-0 right-0 lg:static" />
+            <img src={ownerApp} className="hidden sm:inline-block mx-auto w-24 sm:w-32 lg:w-44 absolute bottom-0 right-4 lg:static" />
           </div>
           <div className="lg:w-[65%] 2xl:w-[62%] mt-10 lg:mt-0">
             <div className="grid grid-cols-2 gap-6 sm:gap-10 xl:gap-x-20 gap-y-10">

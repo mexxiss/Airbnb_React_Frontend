@@ -48,6 +48,42 @@
 }
 
 @font-face {
+  font-family: "Funnel Display";
+  src: url("./assets/fonts/FunnelDisplay-Regular.woff2") format("woff2"),
+    url("./assets/fonts/FunnelDisplay-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Funnel Display";
+  src: url("./assets/fonts/FunnelDisplay-Bold.woff2") format("woff2"),
+    url("./assets/fonts/FunnelDisplay-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Funnel Display";
+  src: url("./assets/fonts/FunnelDisplay-Medium.woff2") format("woff2"),
+    url("./assets/fonts/FunnelDisplay-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Funnel Display";
+  src: url("./assets/fonts/FunnelDisplay-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/FunnelDisplay-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
     url("./assets/fonts/Montserrat-SemiBold.woff") format("woff");
@@ -111,7 +147,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif !important;
+  font-family: "Funnel Display", sans-serif !important;
 }
 
 .container {
