@@ -40,15 +40,11 @@ const ShortTerm = () => {
           </div>
           <div className="lg:pb-10">
             <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-text1">
-              Short term rental Dubai: The facts and figures
+              Short-Term Rentals in Dubai: Key Insights
             </h4>
             <p className="sm:text-lg text-[#505864] mt-5">
-              Dubai combines rich Arabic culture with cutting-edge technology,
-              making it a top destination for tourists. With tourism surpassing
-              pre-pandemic levels, the short-term rental market is booming.
-              Average daily rates are 650 AED, with an 82% occupancy rate,
-              offering exceptional profit potential. Contact us to maximize your
-              returns.
+
+              Dubai’s blend of traditional Arabic charm and modern innovation makes it a global tourism hotspot. With visitor numbers exceeding pre-pandemic levels, the short-term rental market is thriving. The average daily rate is 650 AED, coupled with an impressive 82% occupancy rate, creating unparalleled earning opportunities. Reach out to us to unlock your property’s full potential!
             </p>
             <div className="mt-10 sm:mt-14 shadow-[10px_10px_40px_0px_#00092926] bg-white rounded-2xl py-4 px-4 xs:px-8 flex items-center gap-6 xs:gap-8 justify-center lg:-translate-x-1/2 max-w-[600px] mx-auto lg:w-full">
               <div className="lg:flex gap-2 mx-auto text-center lg:text-left">

@@ -44,10 +44,10 @@ const AboutUs = () => {
             <div className='pt-14 md:pt-16 lg:pt-20'>
                 <div className="container mx-auto">
                     <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607]">
-                        We connect building with people
+                        Bridging Properties with People
                     </h4>
-                    <p className='text-[#60410C] mt-3'>It’s no coincidence that the name means honest concierge – they were born to do this. They make you feel comfortable renting out your home, and make the experience as pleasant as possible.</p>
-                    <p className='text-[#60410C] mt-2'>He is a globetrotter – having traveled and lived all over the world. Fluent in 15 languages, including English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans, and Polish – he understands both your needs and your guests’ needs. And most importantly, he is here to help you make money.</p>
+                    <p className='text-[#60410C] mt-3'>Our name speaks for itself – we’re dedicated to providing honest, top-tier concierge services. Our goal is to ensure you feel at ease while renting your home, making the entire experience smooth and enjoyable.</p>
+                    <p className='text-[#60410C] mt-2'>A true globetrotter, he’s lived and traveled across the world. Fluent in 15 languages, including English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans, and Polish, he understands both your needs and those of your guests. Most importantly, his focus is on helping you maximize your earnings.</p>
                     <div className="mt-10 md:mt-16">
                         <div className='grid grid-cols-3 gap-2 sm:gap-4'>
                             <img src={img1} className="h-full object-cover object-center" />

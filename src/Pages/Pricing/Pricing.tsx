@@ -84,8 +84,7 @@ const Pricing = () => {
               Pricing
             </h3>
             <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg font-montserrat mt-3 text-center">
-              We ensure your property is listed for optimum revenue.We make
-              money when you make money. It’s as simple as that.
+            We ensure your property is strategically listed to achieve maximum revenue potential. Our success is tied to yours — we earn when you do. It's that straightforward.
             </p>
             <div>
               <button className="btn1 mt-8 md:mt-12">Estimate revenue</button>
@@ -130,8 +129,7 @@ const Pricing = () => {
                           : "text-[#282938]"
                       } font-medium text-sm md:text-base`}
                     >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
+                      {data?.description}
                     </p>
                     <ul className="mt-5 lg:mt-8 flex flex-col gap-4">
                       {data.offers.map((off_data) => (

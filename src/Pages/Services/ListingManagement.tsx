@@ -171,11 +171,10 @@ const ListingManagement = () => {
           </div>
         </div>
       </div>
-
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Listing Mangement FAQs" />
-      </Suspense>
-    </>
+                <FAQ title='Holiday Home Listing FAQs' />
+            </Suspense>
+        </>
   );
 };
 

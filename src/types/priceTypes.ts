@@ -1,6 +1,7 @@
 export interface PricingOffer {
   _id: string;
   title: string;
+  description: String;
   figures: string;
   icon: string;
   offers: string[];
