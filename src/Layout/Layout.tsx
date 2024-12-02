@@ -8,6 +8,7 @@ import { fetchHomeContent } from "../services/apiServices.ts";
 import { useEffect, useMemo, useCallback } from "react";
 import { setHomeContent } from "../store/features/homeContentSlice.ts";
 import Loader from "../Components/Loader/Loader.tsx";
+import ErrorHandleMessage from "../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
 
 interface IResp {
   success: boolean;
@@ -42,7 +43,7 @@ const Layout = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   return (

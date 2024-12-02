@@ -70,3 +70,70 @@ export const modifyDates = (
     display: "background",
   }));
 };
+
+/**
+ * Formats the given amount with the specified currency code and symbol.
+ * @param amount - The numeric amount to be formatted.
+ * @param currency - The currency type ("AED", "USD", or "INR").
+ * @returns The formatted amount as a string.
+ */
+export function formatAmountWithCurrency(
+  amount: number,
+  currency: "AED" | "USD" | "INR"
+): string {
+  let formattedAmount: string;
+
+  switch (currency) {
+    case "AED":
+      formattedAmount = `AED ${amount.toLocaleString()} د.إ`;
+      break;
+    case "USD":
+      formattedAmount = `USD ${amount.toLocaleString()} $`;
+      break;
+    case "INR":
+      formattedAmount = `INR ${amount.toLocaleString()} ₹`;
+      break;
+    default:
+      throw new Error("Unsupported currency type");
+  }
+
+  return formattedAmount;
+}
+
+/**
+ * Calculates the amount per night based on the total charges and total nights.
+ * @param totalNetCharges - The total net charges.
+ * @param totalNightsCount - The total number of nights.
+ * @param currency - The currency type ("AED", "USD", or "INR").
+ * @returns The amount per night formatted with currency.
+ */
+export function calculateAmountPerNight(
+  totalNetCharges: number,
+  totalNightsCount: number,
+  currency: "AED" | "USD" | "INR"
+): string {
+  if (totalNightsCount <= 0) {
+    throw new Error("Total nights count must be greater than zero.");
+  }
+
+  const amountPerNight = totalNetCharges / totalNightsCount;
+
+  return formatAmountWithCurrency(amountPerNight, currency);
+}
+/**
+ * Calculates the percentage of nights count out of total days.
+ * @param nightsCount - The number of nights stayed.
+ * @param totalDays - The total number of days.
+ * @returns The calculated percentage as a string with a '%' sign.
+ */
+export function calculateNightsPercentage(
+  nightsCount: number,
+  totalDays: number
+): string {
+  if (totalDays <= 0) {
+    throw new Error("Total days must be greater than zero.");
+  }
+
+  const percentage = (nightsCount / totalDays) * 100;
+  return `${percentage.toFixed(2)}%`;
+}

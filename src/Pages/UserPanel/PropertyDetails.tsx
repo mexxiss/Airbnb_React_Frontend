@@ -9,6 +9,7 @@ import { useFetchPropertyById } from "../../hooks/react-queries/properties";
 import { useCallback, useEffect, useMemo } from "react";
 import { setSelectedProperty } from "../../store/features/propertiesSlice";
 import Loader from "../../Components/Loader/Loader";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -55,7 +56,7 @@ const PropertyDetails = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <p>Error: {error.message}</p>;
+    return <ErrorHandleMessage msg={error.message} />;
   }
 
   return (
