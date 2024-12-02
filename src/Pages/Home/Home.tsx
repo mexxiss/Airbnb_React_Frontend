@@ -21,7 +21,7 @@ const Home = () => {
       <ReviewSec />
       <ShortTerm />
       <WeList />
-      <FAQ title="Airbnd Management Dubai FAQs"/>
+      <FAQ title="Airbnb Management Dubai FAQs" />
     </div>
   );
 };

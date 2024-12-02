@@ -61,10 +61,10 @@ const FAQ = ({ title }: { title: string }) => {
         </div>
         <div className="lg:flex mt-10">
           <div className="lg:w-2/5">
-            <div className="hidden lg:block ">
+            <div className="hidden lg:block h-full">
               <img
                 src={img9}
-                className=" mx-auto rounded-bl-[40px] rounded-tr-[40px]"
+                className=" mx-auto rounded-bl-[40px] rounded-tr-[40px] h-full w-full object-cover object-right"
               />
             </div>
           </div>

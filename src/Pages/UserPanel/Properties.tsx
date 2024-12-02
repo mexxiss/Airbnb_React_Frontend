@@ -1,7 +1,5 @@
 import { CheckCircle } from "@mui/icons-material";
-import img1 from "../../assets/images/img1.png";
 import { Link } from "react-router-dom";
-import { useFetchProperties } from "../../hooks/react-queries/properties";
 import { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProperties } from "../../store/features/propertiesSlice";
@@ -9,6 +7,7 @@ import Loader from "../../Components/Loader/Loader";
 import { RootState } from "../../store/store";
 import { isRoomsCountNumber } from "../../utils/common";
 import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
+import { useFetchProperties } from "../../hooks/react-queries/properties";
 const Properties = () => {
   const dispatch = useDispatch();
   const { data, isLoading, error, isError } = useFetchProperties();

@@ -9,43 +9,79 @@ import { useEffect, useMemo, useCallback } from "react";
 import { setHomeContent } from "../store/features/homeContentSlice.ts";
 import Loader from "../Components/Loader/Loader.tsx";
 import ErrorHandleMessage from "../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
-
-interface IResp {
-  success: boolean;
-  data: IHomeContentData | null;
-  statusCode: number;
-  message: string | null;
-}
+import { useFetchContactDetails } from "../hooks/react-queries/contactus/useFetchContactDetails.ts";
+import { setContact } from "../store/features/contactUsSlice.ts";
+import { useFetchHomeContent } from "../hooks/react-queries/homeContent/useFetchHomeContent.ts";
 
 const Layout = () => {
   const dispatch = useDispatch();
+  const {
+    isLoading: isContactLoading,
+    isError: isContactError,
+    error: contactError,
+    data: contactData,
+  } = useFetchContactDetails();
 
-  const { isLoading, isError, error, data } = useQuery<IResp>({
-    queryKey: ["homeContent"],
-    queryFn: fetchHomeContent,
-  });
+  // Fetching home content data
+  const {
+    isLoading: isHomeContentLoading,
+    isError: isHomeContentError,
+    error: homeContentError,
+    data: homeContentData,
+  } = useFetchHomeContent();
 
-  const finalData = useMemo(() => data?.data, [data]);
+  // Memoize final data
+  const finalContactData = useMemo(() => contactData?.data, [contactData]);
+  const finalHomeContentData = useMemo(
+    () => homeContentData?.data,
+    [homeContentData]
+  );
 
-  const memoizedDispatch = useCallback(() => {
-    if (finalData) {
-      dispatch(setHomeContent(finalData));
+  // Dispatch actions
+  const dispatchContact = useCallback(() => {
+    if (finalContactData) {
+      dispatch(setContact(finalContactData));
     }
-  }, [finalData, dispatch]);
+  }, [dispatch, finalContactData]);
 
-  // Using useEffect to dispatch only when finalData changes
+  const dispatchHomeContent = useCallback(() => {
+    if (finalHomeContentData) {
+      dispatch(setHomeContent(finalHomeContentData));
+    }
+  }, [dispatch, finalHomeContentData]);
+
+  // UseEffects to trigger dispatches
   useEffect(() => {
-    memoizedDispatch();
-  }, [memoizedDispatch]);
+    if (finalContactData) {
+      dispatchContact();
+    }
+  }, [dispatchContact]);
 
-  if (isLoading) {
+  useEffect(() => {
+    if (finalHomeContentData) {
+      dispatchHomeContent();
+    }
+  }, [dispatchHomeContent]);
+
+  // Handle loading and error states
+  if (isContactLoading || isHomeContentLoading) {
     return <Loader />;
   }
 
-  if (isError && error instanceof Error) {
-    return <ErrorHandleMessage msg={error.message} />;
+  if (
+    (isContactError && contactError instanceof Error) ||
+    (isHomeContentError && homeContentError instanceof Error)
+  ) {
+    return (
+      <ErrorHandleMessage
+        msg={
+          contactError?.message ||
+          homeContentError?.message ||
+          "An unexpected error occurred."
+        }
+      />
+    );
   }
-
   return (
     <div className="max-w-[1900px] mx-auto">
       <Header />

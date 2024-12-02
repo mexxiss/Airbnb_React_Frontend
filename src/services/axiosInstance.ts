@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "../store/store";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_LOCAL_API_URL,
+  baseURL: import.meta.env.VITE_LIVE_API_URL,
   headers: {
     "ngrok-skip-browser-warning": "true",
   },
