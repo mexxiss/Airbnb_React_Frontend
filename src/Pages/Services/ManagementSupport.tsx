@@ -20,7 +20,7 @@ const ManagementSupport = () => {
             >
                 <div className="container mx-auto">
                     <div className="flex items-center justify-center flex-col gap-4">
-                        <h2 className="text-4xl sm:text-[42px] md:text-5xl xl:text-[60px] font-bold text-center text-[#1F1607] font-light] ">
+                        <h2 className="text-4xl sm:text-[42px] md:text-5xl font-bold text-center text-[#1F1607] font-light] ">
                             Management Support
                         </h2>
                         <p className="flex items-center gap-4 text-[#4C360E]">
@@ -34,7 +34,7 @@ const ManagementSupport = () => {
                             <span>
                                 <img src={icon27} className="w-4" />
                             </span>
-                            <span>Management Support</span>
+                            <span className='inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis'>Management Support</span>
                         </p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const ManagementSupport = () => {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ title='Management Support FAQs'/>
+                <FAQ title='Management Support FAQs' />
             </Suspense>
         </>
     )

@@ -30,7 +30,7 @@ const ListingManagement = () => {
       >
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col gap-4">
-            <h2 className="text-4xl sm:text-[42px] md:text-5xl xl:text-[60px] font-bold text-center text-[#1F1607] font-light] ">
+            <h2 className="text-4xl sm:text-[42px] md:text-5xl font-bold text-center text-[#1F1607] font-light] ">
               Listing Management
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
@@ -49,75 +49,59 @@ const ListingManagement = () => {
               <span>
                 <img src={icon27} className="w-4" />
               </span>
-              <span>Listing Management</span>
+              <span className='inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis'>Listing Management</span>
             </p>
           </div>
         </div>
       </div>
 
       <div className="pt-14 md:pt-16 lg:pt-20 md:pb-20 relative">
-        <div>
-          <div className="container mx-auto">
-            <div className="md:flex ">
-              <div className="md:w-2/5 order-1 md:order-2">
-                <div className="md:absolute right-0 max-w-[450px] md:max-w-full md:w-[calc(45%)] lg:w-[calc(40%)] md:ml-auto rounded-2xl md:rounded-none md:rounded-bl-[100px] overflow-hidden top-0 h-[60%] 2xl:h-full">
-                  <img
-                    src={img11}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-              <div className="md:w-1/2 lg:w-[55%] order-2 md:order-1 mt-8 md:mt-0">
-                <div>
-                  <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
-                    Listing Management
-                  </h4>
-                  <p className="mt-3 font-montserrat md:text-lg text-[#60410C]">
-                    {homeContent?.listing_management?.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div className="container mx-auto">
+          <div>
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
+              Listing Management
+            </h4>
+            <p className="mt-3 font-montserrat text-[#60410C]">
+              {homeContent?.listing_management?.description}
+            </p>
           </div>
         </div>
+      </div>
 
-        <div className="relative pt-16 lg:pt-0 lg:mt-12 overflow-hidden">
-          <div className="container mx-auto">
-            <div className="relative py-8  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10">
-              <div className="lg:w-1/2">
-                <div>
-                  <h4 className="text-3xl sm:text-[34px] xl:text-[36px] font-semibold text-text1 text-center md:text-left">
-                    Where we list
-                  </h4>
-                </div>
-                <div className="mt-12 space-y-8">
-                  <div className="grid grid-cols-3 lg:flex flex-wrap gap-8 items-start justify-start max-w-[900px] mx-auto">
-                    <img
-                      src={logo1}
-                      className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                    />
-                    <img
-                      src={logo2}
-                      className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                    />
-                    <img
-                      src={logo3}
-                      className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                    />
-                    <img
-                      src={logo4}
-                      className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
-                    />
-                    <img
-                      src={logo5}
-                      className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
-                    />
-                    <img
-                      src={logo6}
-                      className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
-                    />
-                  </div>
-                </div>
+      <div className='py-10 sm:py-14 md:py-16 mt-14 md:mt-16 lg:mt-20 bg-[#fff6e7]'>
+        <div className="container mx-auto">
+          <div className="">
+            <div>
+              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] font-semibold text-text1 text-center ">
+                Where we list
+              </h4>
+            </div>
+            <div className="mt-12 space-y-8">
+              <div className="grid grid-cols-3 gap-8 max-w-[900px] mx-auto">
+                <img
+                  src={logo1}
+                  className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
+                />
+                <img
+                  src={logo2}
+                  className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
+                />
+                <img
+                  src={logo3}
+                  className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
+                />
+                <img
+                  src={logo4}
+                  className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
+                />
+                <img
+                  src={logo5}
+                  className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
+                />
+                <img
+                  src={logo6}
+                  className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
+                />
               </div>
             </div>
           </div>
@@ -126,23 +110,31 @@ const ListingManagement = () => {
 
       <div className="py-14 md:py-16 lg:py-20">
         <div className="container mx-auto">
-          <div>
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
-              What’s Included
-            </h4>
-            <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {homeContent?.listing_management?.what_inclued.map(
-                (item, index) => (
-                  <div key={index}>
-                    <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]">
-                      {item.title}
-                    </h6>
-                    <p className="text-[#4D5461] md:text-lg mt-3">
-                      {item.description}
-                    </p>
-                  </div>
-                )
-              )}
+          <div className="grid lg:grid-cols-2 gap-6 3xl:gap-14">
+            <div>
+              <img
+                src={img11}
+                className="rounded-tr-[30px] rounded-bl-[30px] sm:rounded-tr-[60px] sm:rounded-bl-[60px] h-full object-cover max-w-[600px] lg:max-w-full w-full"
+              />
+            </div>
+            <div>
+              <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]">
+                What’s Included
+              </h4>
+              <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {homeContent?.listing_management?.what_inclued.map(
+                  (item, index) => (
+                    <div key={index}>
+                      <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]">
+                        {item.title}
+                      </h6>
+                      <p className="text-[#4D5461] md:text-lg mt-3">
+                        {item.description}
+                      </p>
+                    </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -172,9 +164,9 @@ const ListingManagement = () => {
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-                <FAQ title='Holiday Home Listing FAQs' />
-            </Suspense>
-        </>
+        <FAQ title='Holiday Home Listing FAQs' />
+      </Suspense>
+    </>
   );
 };
 

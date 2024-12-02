@@ -18,7 +18,6 @@ import logo4 from "./logo4.png";
 import logo5 from "./logo5.png";
 import logo6 from "./logo6.png";
 import map from "./map.png";
-import calc_Img from "./calc_Img.png";
 
 export {
   bg1,
@@ -41,5 +40,4 @@ export {
   logo5,
   logo6,
   map,
-  calc_Img,
 };
