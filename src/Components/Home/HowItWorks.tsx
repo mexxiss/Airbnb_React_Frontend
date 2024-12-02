@@ -59,7 +59,7 @@ const HowItWorks = () => {
           <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
             How it works?
           </h4>
-          <p className="font-montserrat md:text-lg text-[#593B05] mt-2">
+          <p className=" md:text-lg text-[#593B05] mt-2">
             We pride ourselves on our curious minds which make us responsive and
             solution-orientated, determined to approach business challenges
           </p>

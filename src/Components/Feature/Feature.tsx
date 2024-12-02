@@ -1,4 +1,4 @@
-import {icon17, icon5} from "../../assets/icons/index.ts";
+import { icon17, icon5 } from "../../assets/icons/index.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
@@ -33,7 +33,7 @@ const Feature = () => {
                       {item.title}
                     </h4>
                     <p
-                      className={`font-montserrat text-lg font-normal py-2 ${
+                      className={` text-lg font-normal py-2 ${
                         index === 1 ? "text-white" : "text-text2"
                       }`}
                     >

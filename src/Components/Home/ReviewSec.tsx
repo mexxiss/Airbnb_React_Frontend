@@ -109,7 +109,7 @@ const ReviewSec = () => {
                 {data?.data.map((data, i) => (
                   <div className="px-2" key={data._id}>
                     <div className="text-center text-white">
-                      <p className="text-lg sm:text-xl md:text-2xl font-montserrat tracking-wide md:leading-8">
+                      <p className="text-lg sm:text-xl md:text-2xl  tracking-wide md:leading-8">
                         {data.comment}
                       </p>
                       <p className="text-lg sm:text-xl mt-10">

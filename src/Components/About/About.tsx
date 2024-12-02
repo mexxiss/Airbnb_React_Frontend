@@ -18,50 +18,52 @@ const About = () => {
           </div>
           <div className="grid lg:grid-cols-2 gap-8 my-8 sm:my-12">
             {homeContent?.what_people_says?.facts.map((fact, index) => (
-              <div key={index} className="bg-white bg-opacity-20 rounded-3xl p-6 md:p-8">
+              <div
+                key={index}
+                className="bg-white bg-opacity-20 rounded-3xl p-6 md:p-8"
+              >
                 <div className="flex flex-col sm:flex-row gap-5 md:gap-[30px]">
                   <div className="min-w-16 w-16 h-16 md:min-w-20 md:w-20 md:h-20 rounded-full flex items-center justify-center bg-[#3A2705]">
                     <img src={fact.icon} className="w-8 md:w-10" />
                   </div>
                   <div>
-                    <h4 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4 font-jakarta">
+                    <h4 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4 ">
                       {fact.title}
                     </h4>
-                    <p className="md:text-lg text-[#C6C4D6] font-jakarta">
+                    <p className="md:text-lg text-[#C6C4D6] ">
                       {fact.description}
                     </p>
                   </div>
                 </div>
               </div>
             ))}
-
           </div>
           <hr className="border-primary" />
           <div className="mt-8 sm:mt-12">
             <div className="flex items-center justify-center gap-4 sm:gap-10 lg:gap-14 text-center">
               <div>
-                <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
+                <h4 className=" font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
                   {homeContent?.property_return_rate}%
                 </h4>
-                <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
+                <p className=" text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Property Return Rate
                 </p>
               </div>
               <div className="min-w-px w-px h-16 bg-[#b3b1c1] block"></div>
               <div>
-                <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
+                <h4 className=" font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
                   {homeContent?.property_rent}
                 </h4>
-                <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
+                <p className=" text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Property in Rent
                 </p>
               </div>
               <div className="min-w-px w-px h-16 bg-[#b3b1c1] block"></div>
               <div>
-                <h4 className="font-jakarta font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
+                <h4 className=" font-bold text-3xl sm:text-4xl md:text-[42px] text-white">
                   {homeContent?.daily_complete_transactions}
                 </h4>
-                <p className="font-jakarta text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
+                <p className=" text-[#C6C4D6] font-medium mt-1 text-sm sm:text-base">
                   Daily Completed Transactions
                 </p>
               </div>

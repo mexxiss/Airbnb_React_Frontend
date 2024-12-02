@@ -160,7 +160,6 @@ body {
 }
 
 .btn1 {
-  font-family: "Poppins", sans-serif;
   background: #a58143;
   height: 46px;
   border-radius: 32px;
@@ -173,7 +172,6 @@ body {
 }
 
 .btn2 {
-  font-family: "Poppins", sans-serif;
   border: 2px solid #000929;
   background-color: #ffffffa6;
   height: 46px;
