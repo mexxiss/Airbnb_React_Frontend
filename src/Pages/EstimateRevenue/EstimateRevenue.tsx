@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Select } from "@mantine/core";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { icon27, icon28, icon29, icon31 } from "../../assets/icons/index.ts";
-import { bg1, img8, img9, calc_Img } from "../../assets/images/index.ts";
+import { bg1, img8, img9, calc_Img, estimateRevFaq } from "../../assets/images/index.ts";
 import icon32 from "../../assets/icons/icon32.png";
 import icon33 from "../../assets/icons/icon33.png";
 import icon34 from "../../assets/icons/icon34.png";
@@ -316,7 +316,7 @@ const EstimateRevenue = () => {
       </div>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Estimate Revenue FAQs" />
+        <FAQ title="Estimate Revenue FAQs" img_url={estimateRevFaq} />
       </Suspense>
     </>
   );
