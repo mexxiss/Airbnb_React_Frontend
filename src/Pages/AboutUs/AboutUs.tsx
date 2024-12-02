@@ -46,7 +46,7 @@ const AboutUs = () => {
                     <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607]">
                         Bridging Properties with People
                     </h4>
-                    <p className='text-[#60410C] mt-3'>Our name speaks for itself – we’re dedicated to providing honest, top-tier concierge services. Our goal is to ensure you feel at ease while renting your home, making the entire experience smooth and enjoyable.</p>
+                    <p className='text-[#60410C] mt-3 font-semibold'>Our name speaks for itself – we’re dedicated to providing honest, top-tier concierge services. Our goal is to ensure you feel at ease while renting your home, making the entire experience smooth and enjoyable.</p>
                     <p className='text-[#60410C] mt-2'>A true globetrotter, he’s lived and traveled across the world. Fluent in 15 languages, including English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans, and Polish, he understands both your needs and those of your guests. Most importantly, his focus is on helping you maximize your earnings.</p>
                     <div className="mt-10 md:mt-16">
                         <div className='grid grid-cols-3 gap-2 sm:gap-4'>
@@ -62,7 +62,7 @@ const AboutUs = () => {
                 <ReviewSec />
                 <ShortTerm />
                 <WeList />
-                <FAQ title='About Us FAQs' />
+                {/* <FAQ title='About Us FAQs' /> */}
             </Suspense>
         </>
     )

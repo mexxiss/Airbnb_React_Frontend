@@ -4,6 +4,7 @@ import { icon27 } from "../../assets/icons/index.ts";
 import {
   bg1,
   img11,
+  img9,
   logo1,
   logo2,
   logo3,
@@ -164,7 +165,7 @@ const ListingManagement = () => {
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Holiday Home Listing FAQs" />
+        <FAQ title="Holiday Home Listing FAQs"  img_url={img9} />
       </Suspense>
     </>
   );

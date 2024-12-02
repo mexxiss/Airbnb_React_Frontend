@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { icon26, icon27, star } from "../../assets/icons/index.ts";
-import { bg1, img1 } from "../../assets/images/index.ts";
+import { bg1, cleaningFaq, img1 } from "../../assets/images/index.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store.ts";
 const FAQ = lazy(() => import("../../Components/Home/FAQ"));
@@ -133,7 +133,7 @@ const CleaningMaintenance = () => {
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Cleaning & Maintenance FAQs" />
+        <FAQ title="Cleaning & Maintenance FAQs" img_url={cleaningFaq} />
       </Suspense>
     </>
   );
