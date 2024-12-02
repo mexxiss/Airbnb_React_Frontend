@@ -8,6 +8,7 @@ import ReviewSec from "../../Components/Home/ReviewSec.tsx";
 import ShortTerm from "../../Components/Home/ShortTerm.tsx";
 import WeList from "../../Components/Home/WeList.tsx";
 import FAQ from "../../Components/Home/FAQ.tsx";
+import { img9 } from "../../assets/images/index.ts";
 
 const Home = () => {
   return (
@@ -21,7 +22,7 @@ const Home = () => {
       <ReviewSec />
       <ShortTerm />
       <WeList />
-      <FAQ title="Airbnb Management Dubai FAQs" />
+      <FAQ title="Airbnb Management Dubai FAQs"  img_url={img9} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { icon27 } from "../../assets/icons/index.ts";
-import { bg1, img9 } from "../../assets/images/index.ts";
+import { bg1, img9, mangeSupportFaq } from "../../assets/images/index.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store.ts";
 
@@ -91,7 +91,7 @@ const ManagementSupport = () => {
       </div>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <FAQ title="Management Support FAQs" />
+        <FAQ title="Management Support FAQs" img_url={mangeSupportFaq} />
       </Suspense>
     </>
   );

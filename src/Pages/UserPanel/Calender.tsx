@@ -23,7 +23,7 @@ const Calender = () => {
     start_date: dateFormater(dynamicDate?.toISOString()),
     property: id || "",
   });
-
+  console.log(data);
   if (isLoading) {
     return <Loader />;
   }

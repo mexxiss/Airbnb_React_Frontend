@@ -19,6 +19,11 @@ import logo5 from "./logo5.png";
 import logo6 from "./logo6.png";
 import calc_Img from "./calc_Img.png";
 import map from "./map.png";
+import cleaningFaq from "./cleaningFaq.png";
+import estimateRevFaq from "./estimateRevFaq.png";
+import interiorFaq from "./interiorFaq.jpg";
+import mangeSupportFaq from "./mangeSupportFaq.png";
+import priceFaq from "./priceFaq.png";
 
 export {
   bg1,
@@ -42,4 +47,8 @@ export {
   logo6,
   map,
   calc_Img,
+  cleaningFaq,
+  estimateRevFaq,
+  interiorFaq,
+  mangeSupportFaq,priceFaq
 };
