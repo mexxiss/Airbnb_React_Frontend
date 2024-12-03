@@ -7,6 +7,7 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "sweetalert2/dist/sweetalert2.min.css";
+import "aos/dist/aos.css";
 
 import Layout from "./Layout/Layout.tsx";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.tsx";
@@ -42,8 +43,14 @@ import UtilityDetails from "./Pages/UserPanel/UtilityDetails.tsx";
 import Help from "./Pages/UserPanel/Help.tsx";
 import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
 import FAQ from "./Pages/UserPanel/FAQ.tsx";
+import AOS from "aos";
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      once: true
+    });
+  }, []);
   const router = createBrowserRouter([
     {
       path: "/",

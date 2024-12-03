@@ -85,7 +85,7 @@ const Layout = () => {
   return (
     <div className="max-w-[1900px] mx-auto">
       <Header />
-      <main className="mt-[-50px]">
+      <main className="mt-[-50px] overflow-x-hidden">
         <Outlet />
       </main>
       <Footer />

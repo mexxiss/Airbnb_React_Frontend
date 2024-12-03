@@ -56,10 +56,10 @@ const HowItWorks = () => {
     <div className="py-16 bg-[#fff6e7]">
       <div className="container mx-auto">
         <div className="text-center max-w-[640px] mx-auto">
-          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1">
+          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             How it works?
           </h4>
-          <p className=" md:text-lg text-[#593B05] mt-2">
+          <p className=" md:text-lg text-[#593B05] mt-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             We pride ourselves on our curious minds which make us responsive and
             solution-orientated, determined to approach business challenges
           </p>
@@ -67,7 +67,7 @@ const HowItWorks = () => {
         <div className="mt-12">
           <div className="grid xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-3 sm:gap-x-6 gap-y-6 sm:gap-y-8">
             {data.map((item, index) => (
-              <div
+              <div data-aos="zoom-in" data-aos-duration={1000 + index * 100} data-aos-delay={100 + index * 100}
                 key={item.name}
                 className="flex flex-col items-center justify-center gap-3 w-full rounded-2xl rounded-tr-none shadow-xl bg-white mx-auto p-3 lg:p-4 relative"
               >

@@ -81,10 +81,10 @@ const ReviewSec = () => {
     >
       <div className="container mx-auto">
         <div className="text-center max-w-[740px] mx-auto">
-          <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-white">
+          <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-white" data-aos="fade-yp" data-aos-duration="1200" data-aos-delay="50">
             What our clients say about us?
           </h4>
-          <p className="sm:text-lg text-white mt-4 max-w-[490px] mx-auto">
+          <p className="sm:text-lg text-white mt-4 max-w-[490px] mx-auto" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
             See what our property managers, landlords, and tenants have to say
           </p>
         </div>
@@ -109,10 +109,10 @@ const ReviewSec = () => {
                 {data?.data.map((data, i) => (
                   <div className="px-2" key={data._id}>
                     <div className="text-center text-white">
-                      <p className="text-lg sm:text-xl md:text-2xl  tracking-wide md:leading-8">
+                      <p className="text-lg sm:text-xl  tracking-wide md:leading-8">
                         {data.comment}
                       </p>
-                      <p className="text-lg sm:text-xl mt-10">
+                      <p className="text-lg mt-10">
                         <span className="font-semibold">{data?.name}</span>,{" "}
                         {data?.designation}
                       </p>

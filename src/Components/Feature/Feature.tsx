@@ -13,12 +13,12 @@ const Feature = () => {
             {homeContent?.features.map((item, index) => (
               <div
                 key={index}
+                data-aos="flip-left" data-aos-duration={1500 + index * 100} data-aos-delay={50 + index * 50}
                 className={`w-full md:w-[47%] lg:w-[31%] px-6 lg:px-8 rounded-[20px] 
-                ${
-                  index === 1
+                ${index === 1
                     ? "bg-primary text-white"
                     : "bg-[#fff6e7] text-text1"
-                }`}
+                  }`}
               >
                 <div className="h-full flex flex-col justify-between py-6 lg:py-8 border-b-[3px] border-primary">
                   <div>
@@ -26,25 +26,22 @@ const Feature = () => {
                       <img src={item.icon} className="w-[60px]" />
                     </div>
                     <h4
-                      className={`text-2xl font-medium ${
-                        index === 1 ? "text-white" : "text-text1"
-                      }`}
+                      className={`text-2xl font-medium ${index === 1 ? "text-white" : "text-text1"
+                        }`}
                     >
                       {item.title}
                     </h4>
                     <p
-                      className={` text-lg font-normal py-2 ${
-                        index === 1 ? "text-white" : "text-text2"
-                      }`}
+                      className={` text-lg font-normal py-2 ${index === 1 ? "text-white" : "text-text2"
+                        }`}
                     >
                       {item.description}{" "}
                     </p>
                   </div>
                   <button
                     aria-label={`Read more about ${item.title}`}
-                    className={`mt-5 group flex items-center gap-2 py-1 ${
-                      index === 1 ? "text-white" : "text-primary"
-                    }`}
+                    className={`mt-5 group flex items-center gap-2 py-1 ${index === 1 ? "text-white" : "text-primary"
+                      }`}
                   >
                     Read More{" "}
                     <img

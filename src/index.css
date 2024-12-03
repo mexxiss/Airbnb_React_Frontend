@@ -148,6 +148,7 @@
 
 body {
   font-family: "Funnel Display", sans-serif !important;
+  overflow-x: hidden;
 }
 
 .container {

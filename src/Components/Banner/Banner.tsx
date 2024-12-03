@@ -82,19 +82,19 @@ const Banner = () => {
           </div>
           <div className="container mx-auto relative z-10">
             <div className="pt-32 sm:pt-28">
-              <h1 className=" text-3xl xs:text-4xl sm:*:text-5xl md:text-[54px] text-text1 font-bold sm:leading-[60px]">
+              <h1 className=" text-3xl xs:text-4xl sm:*:text-5xl md:text-[54px] text-text1 font-bold sm:leading-[60px]" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50">
                 Airbnb <br />
                 Management <span className="text-primary">Dubai</span>
               </h1>
-              <p className="sm:text-lg font-medium mt-5">
+              <p className="sm:text-lg font-medium mt-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
                 Exceptional Property Management for Short-Term Rentals in Dubai
               </p>
-              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 mt-8 mb-16 sm:mb-12">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 mt-8 mb-16 sm:mb-12" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">
                 <button className="btn1">MANAGE MY PROPERTY</button>
                 <button className="btn2">BOOK A PROPERTY</button>
               </div>
               <div className="mb-12">
-                <div className="bg-white border-2 border-[#c3c3d9] md:border-none rounded-2xl py-5 px-6 md:w-max shadow-xl md:shadow-none">
+                <div className="bg-white border-2 border-[#c3c3d9] md:border-none rounded-2xl py-5 px-6 md:w-max shadow-xl md:shadow-none" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
                   <h2 className="text-2xl xs:text-3xl md:text-[36px] text-text1 font-medium">
                     Estimate your revenue
                   </h2>
@@ -180,7 +180,7 @@ const Banner = () => {
               <div>
                 <div className="flex gap-14">
                   <div>
-                    <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative">
+                    <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="50">
                       <span className="flex items-center justify-center bg-[#e4c38a] rounded-full w-full h-full">
                         <img src={icon6} className="w-8" />
                       </span>
@@ -188,15 +188,15 @@ const Banner = () => {
                         <img src={icon8} className="w-4" />
                       </span>
                     </div>
-                    <h4 className="text-primary font-bold text-2xl mt-4">
+                    <h4 className="text-primary font-bold text-2xl mt-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
                       {homeContent?.total_customers}+ customers
                     </h4>
-                    <p className="text-text1 font-medium">
+                    <p className="text-text1 font-medium" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">
                       believe in our service
                     </p>
                   </div>
                   <div>
-                    <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative">
+                    <div className="w-16 h-16 rounded-full border-2 border-primary lg:border-border1 p-1 relative" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="50">
                       <span className="flex items-center justify-center bg-[#e4c38a] rounded-full w-full h-full">
                         <img src={icon7} className="w-8" />
                       </span>
@@ -204,10 +204,10 @@ const Banner = () => {
                         <img src={icon9} className="w-4" />
                       </span>
                     </div>
-                    <h4 className="text-primary font-bold text-2xl mt-4">
+                    <h4 className="text-primary font-bold text-2xl mt-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
                       {homeContent?.total_properties}+ properties
                     </h4>
-                    <p className="text-text1 font-medium">
+                    <p className="text-text1 font-medium" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">
                       and house ready for occupancy
                     </p>
                   </div>
