@@ -21,7 +21,7 @@ import calc_Img from "./calc_Img.png";
 import map from "./map.png";
 import cleaningFaq from "./cleaningFaq.png";
 import estimateRevFaq from "./estimateRevFaq.png";
-import interiorFaq from "./interiorFaq.jpg";
+import interiorFaq from "./interiorFaq.png";
 import mangeSupportFaq from "./mangeSupportFaq.png";
 import priceFaq from "./priceFaq.png";
 import ownerApp from "./ownerApp.png";
