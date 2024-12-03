@@ -1,4 +1,4 @@
-import {icon25, whiteLogo} from "../../assets/icons/index.ts"
+import { icon25, whiteLogo } from "../../assets/icons/index.ts";
 import { Link } from "react-router-dom";
 import {
   Call,
@@ -9,14 +9,20 @@ import {
   Mail,
   X,
 } from "@mui/icons-material";
+import { RootState } from "../../store/store.ts";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const contactUs = useSelector((state: RootState) => state.contactus.data);
+  const { phone } = useSelector((state: RootState) => state.country);
   return (
     <div className="bg-[#170F00]">
       <div className="py-10 border-b border-white">
         <div className="container mx-auto">
           <div className="flex sm:items-center justify-center flex-col sm:flex-row gap-3 sm:gap-6">
-            <p className="text-[22px] text-white font-bold text-nowrap">Subscribe Us</p>
+            <p className="text-[22px] text-white font-bold text-nowrap">
+              Subscribe Us
+            </p>
             <div className="flex justify-between items-center border border-white h-10 pl-3.5 pr-2 w-full max-w-[420px]">
               <input
                 type="text"
@@ -128,14 +134,13 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">Contact </h6>
               <div className="text-[#B7B7B7] mt-5 space-y-5">
                 <p className="flex gap-3">
-                  <LocationOn /> Sheikha Noora Tower, Office 303, Barsha
-                  Heights, Dubai, United Arab Emirates
+                  <LocationOn /> {contactUs?.location.address}
                 </p>
                 <p className="flex gap-3">
-                  <Call /> +971 4 427 8193
+                  <Call /> {phone || "+91-8779043458"}
                 </p>
                 <p className="flex gap-3">
-                  <Mail /> hello@frankporter.com
+                  <Mail /> {contactUs?.emails[0] || "support@mexxiss.com"}
                 </p>
               </div>
             </div>

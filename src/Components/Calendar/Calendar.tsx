@@ -6,13 +6,19 @@ import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { Box } from "@mui/material";
 import { DateSelectArg, EventClickArg, EventApi } from "@fullcalendar/core";
+import { ModifiedDate } from "../../utils/common";
 
 interface CalendarProps {
   dynamicDate: any;
   setDynamicDate: (value: any) => void;
+  resultdata?: ModifiedDate[];
 }
 
-const Calendar: React.FC<CalendarProps> = ({ dynamicDate, setDynamicDate }) => {
+const Calendar: React.FC<CalendarProps> = ({
+  dynamicDate,
+  setDynamicDate,
+  resultdata = [],
+}) => {
   const calendarRef = useRef<any>(null);
   const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
   const [currentYear, setCurrentYear] = useState<number>(
@@ -49,12 +55,16 @@ const Calendar: React.FC<CalendarProps> = ({ dynamicDate, setDynamicDate }) => {
     setCurrentYear((prevYear) => prevYear - 1);
     const calendarApi = calendarRef.current.getApi();
     calendarApi.prevYear();
+    const newDate = new Date(calendarApi.getDate());
+    setDynamicDate(newDate);
   };
 
   const handleNextYear = () => {
     setCurrentYear((prevYear) => prevYear + 1);
     const calendarApi = calendarRef.current.getApi();
     calendarApi.nextYear();
+    const newDate = new Date(calendarApi.getDate());
+    setDynamicDate(newDate);
   };
 
   const handleToday = () => {
@@ -133,6 +143,7 @@ const Calendar: React.FC<CalendarProps> = ({ dynamicDate, setDynamicDate }) => {
             select={handleDateClick}
             eventClick={handleEventClick}
             eventsSet={(events) => setCurrentEvents(events)}
+            events={resultdata}
             initialEvents={[
               {
                 id: "12315",

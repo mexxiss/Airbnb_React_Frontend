@@ -1,34 +1,47 @@
 import axios from "axios";
 import { store } from "../store/store";
+import { clearLoginData } from "../store/features/authSlice";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_LOCAL_API_URL,
+  baseURL: import.meta.env.VITE_LIVE_API_URL,
   headers: {
     "ngrok-skip-browser-warning": "true",
   },
-  timeout: 10000, // Set a timeout limit
+  timeout: 10000,
 });
 
-// Add a request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Get token from Redux store
     const state = store.getState();
-    const token = state.auth.token;
+    const accessToken = state.auth.accessToken;
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    const { response } = error;
+    if (response && response.status === 401) {
+      store.dispatch(clearLoginData());
+      window.location.href = "/login";
+    } else {
+      return Promise.reject(error);
+    }
+  }
 );
 
 // Add a response interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle errors (e.g., refresh tokens, show notifications)
+    const { response } = error;
+    if (response && response.status === 401) {
+      store.dispatch(clearLoginData());
+      window.location.href = "/login";
+      return Promise.reject(error);
+    }
+
     return Promise.reject(error);
   }
 );
