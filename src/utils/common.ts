@@ -64,8 +64,8 @@ export const modifyDates = (
 ): ModifiedDate[] => {
   return documents.map((doc, index) => ({
     id: doc._id,
-    start: dateFormater(doc.checkin_date), // Format checkin_date
-    end: dateFormater(doc.checkout_date), // Format checkout_date
+    start: dateFormater(doc.checkin_date),
+    end: moment(doc.checkout_date).add(1, "days").format("YYYY-MM-DD"), // Format checkout_date
     color: "#bb9e6c", // Occupied color
     display: "background",
   }));

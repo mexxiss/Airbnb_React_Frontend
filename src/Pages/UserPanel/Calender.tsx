@@ -23,7 +23,6 @@ const Calender = () => {
     start_date: dateFormater(dynamicDate?.toISOString()),
     property: id || "",
   });
-  console.log(data);
   if (isLoading) {
     return <Loader />;
   }
@@ -32,11 +31,17 @@ const Calender = () => {
     return <ErrorHandleMessage msg={error.message} />;
   }
 
+  console.log(data?.documents);
+
   return (
     <div>
       <div>
         <div>
-          <Calendar dynamicDate={dynamicDate} setDynamicDate={setDynamicDate} />
+          <Calendar
+            dynamicDate={dynamicDate}
+            setDynamicDate={setDynamicDate}
+            resultdata={modifyDates(data?.documents || [])}
+          />
         </div>
         <div className="flex items-end gap-6 my-10">
           <p className="text-5xl text-gray-400">Future Occupancy</p>
