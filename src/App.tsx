@@ -3,6 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
   redirect,
+  useNavigate,
 } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -44,6 +45,10 @@ import Help from "./Pages/UserPanel/Help.tsx";
 import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
 import FAQ from "./Pages/UserPanel/FAQ.tsx";
 import AOS from "aos";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute.tsx";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store/store.ts";
+import { isTokenExpired } from "./utils/token/tokenHandler.ts";
 
 const App = () => {
   useEffect(() => {
@@ -51,6 +56,11 @@ const App = () => {
       once: true
     });
   }, []);
+
+  const dispatch = useDispatch();
+  const token = useSelector((state: RootState) => state.auth.accessToken);
+  const isResult = isTokenExpired(token, dispatch);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -130,60 +140,66 @@ const App = () => {
       ],
     },
     {
-      path: "user-panel",
+      path: "/user-panel",
       element: <UserPanel />,
       children: [
         {
-          index: true,
-          loader: () => redirect("/user-panel/properties"),
-        },
-        {
-          path: "properties",
-          element: <Properties />,
-        },
-        {
-          path: "calender/:id",
-          element: <Calender />,
-        },
-        {
-          path: "statements/:id",
-          element: <Statements />,
-        },
-        {
-          path: "maintenance/:id",
-          element: <Maintenance />,
-        },
-        {
-          path: "settings/:id?",
-          element: <Settings />,
-        },
-        {
-          path: "settings/change-password",
-          element: <ChangePassword />,
-        },
-        {
-          path: "settings/personal-details",
-          element: <PersonalDetails />,
-        },
-        {
-          path: "settings/property-details/:id",
-          element: <PropertyDetails />,
-        },
-        {
-          path: "settings/property-details/update-utility-details",
-          element: <UtilityDetails />,
-        },
-        {
-          path: "help",
-          element: <Help />,
-        },
-        {
-          path: "help/contact-support",
-          element: <ContactSupport />,
-        },
-        {
-          path: "help/faq",
-          element: <FAQ />,
+          path: "/user-panel",
+          element: <ProtectedRoute isAuthenticated={!isResult || null} />,
+          children: [
+            {
+              index: true,
+              loader: () => redirect("/user-panel/properties"),
+            },
+            {
+              path: "properties",
+              element: <Properties />,
+            },
+            {
+              path: "calender/:id",
+              element: <Calender />,
+            },
+            {
+              path: "statements/:id",
+              element: <Statements />,
+            },
+            {
+              path: "maintenance/:id",
+              element: <Maintenance />,
+            },
+            {
+              path: "settings/:id?",
+              element: <Settings />,
+            },
+            {
+              path: "settings/change-password",
+              element: <ChangePassword />,
+            },
+            {
+              path: "settings/personal-details",
+              element: <PersonalDetails />,
+            },
+            {
+              path: "settings/property-details/:id",
+              element: <PropertyDetails />,
+            },
+            {
+              path: "settings/property-details/update-utility-details",
+              element: <UtilityDetails />,
+            },
+            {
+              path: "help",
+              element: <Help />,
+            },
+            {
+              path: "help/contact-support",
+              element: <ContactSupport />,
+            },
+            {
+              path: "help/faq",
+              element: <FAQ />,
+            },
+          ],
         },
       ],
     },

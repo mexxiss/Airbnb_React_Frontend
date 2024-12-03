@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
-import { mockOccupancyData } from "../../utils/mock/mock";
 import { ModifiedDate } from "../../utils/common";
 
 interface MultiMonthCalendarProps {
