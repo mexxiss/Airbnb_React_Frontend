@@ -62,3 +62,8 @@ export interface AuthState {
   accessToken: string | null;
   isAuthenticated: boolean | null;
 }
+
+export interface ChangePasswordProps {
+  current_pass: string | null;
+  new_pass: string | null;
+}

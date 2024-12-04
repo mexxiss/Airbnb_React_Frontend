@@ -13,7 +13,7 @@ import {
   FilterBookedDatesRequest,
 } from "../types/bookedDates";
 import { TestimonialsResponse } from "../types/testimonials";
-import { LoginFormInputs } from "../types/loginTypes";
+import { ChangePasswordProps, LoginFormInputs } from "../types/loginTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -101,7 +101,6 @@ export const fetchPropertyById = async (
 };
 
 /**Booked Details */
-
 export const fetchBookedDates = async (
   filter: FilterBookedDatesRequest
 ): Promise<any> => {
@@ -112,6 +111,7 @@ export const fetchBookedDates = async (
   return response?.data;
 };
 
+/** Testimonials  */
 export const fetchTestimonials = async (): Promise<TestimonialsResponse> => {
   const response = await axiosInstance.get<TestimonialsResponse>(
     "/testimonials"
@@ -119,11 +119,22 @@ export const fetchTestimonials = async (): Promise<TestimonialsResponse> => {
   return response.data;
 };
 
+/** Login */
 export const login = async (data: LoginFormInputs): Promise<any> => {
   const response = await axiosInstance.post("/users/login", data);
   return response.data;
 };
-export const logOut = async (data: LoginFormInputs): Promise<any> => {
-  const response = await axiosInstance.post("/users/login", data);
+
+/** Logout */
+export const logOut = async (): Promise<any> => {
+  const response = await axiosInstance.post("/users/logout");
+  return response.data;
+};
+
+/** Change Password */
+export const changePassword = async (
+  data: ChangePasswordProps
+): Promise<any> => {
+  const response = await axiosInstance.post("/users/change-pass", data);
   return response.data;
 };
