@@ -49,11 +49,11 @@ const CleaningMaintenance = () => {
 
       <div className="pt-14 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
-          <h4 className=" text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607] sm:leading-[48px]">
+          <h4 className=" text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607] sm:leading-[48px]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
             Airbnb Cleaning <br />
             Service & Maintenance
           </h4>
-          <p className="text-[#60410C]  mt-3">
+          <p className="text-[#60410C]  mt-3" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
             Our in-house team delivers exceptional cleaning and maintenance
             services, ensuring your properties are spotless and guest-ready.
             With a focus on detail, we provide a welcoming, well-maintained
@@ -66,7 +66,7 @@ const CleaningMaintenance = () => {
       <div className="pt-16 md:pt-20 lg:pt-24">
         <div className="container mx-auto">
           <div className="pl-12 xs:pl-20 relative z-20">
-            <div className="max-w-max sm:max-w-[200px] bg-white w-full rounded-b-xl sm:rounded-b-[20px] shadow-[40.05px_40.05px_74.38px_0px_#7065F026] border-2 border-[#ecebf5] px-4 pt-4 sm:pt-10 pb-4 sm:pb-7 flex items-center justify-center relative">
+            <div className="max-w-max sm:max-w-[200px] bg-white w-full rounded-b-xl sm:rounded-b-[20px] shadow-[40.05px_40.05px_74.38px_0px_#7065F026] border-2 border-[#ecebf5] px-4 pt-4 sm:pt-10 pb-4 sm:pb-7 flex items-center justify-center relative" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
               <span className="absolute left-1/2 -translate-x-1/2 -top-4 inline-block">
                 <img src={icon26} className="w-6 sm:w-8 h-6 sm:h-8" />
               </span>
@@ -113,17 +113,17 @@ const CleaningMaintenance = () => {
               </div>
             </div>
             <div className="lg:pb-10">
-              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1">
+              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
                 What’s Included
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
                 {homeContent?.cleaning_maintenance?.what_inclued.map(
                   (item, index) => (
                     <li key={index}>
-                      <h6 className="text-[#1F1607] text-xl font-medium">
+                      <h6 className="text-[#1F1607] text-xl font-medium" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
                         {item.title}
                       </h6>
-                      <p className="text-[#4D5461] mt-2">{item.description}</p>
+                      <p className="text-[#4D5461] mt-2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">{item.description}</p>
                     </li>
                   )
                 )}
