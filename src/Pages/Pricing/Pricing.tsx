@@ -81,16 +81,16 @@ const Pricing = () => {
       <div className="pt-10 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col">
-            <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]">
+            <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
               Pricing
             </h3>
-            <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center">
+            <p className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
               We ensure your property is strategically listed to achieve maximum
               revenue potential. Our success is tied to yours — we earn when you
               do. It's that straightforward.
             </p>
             <div>
-              <button className="btn1 mt-8 md:mt-12">Estimate revenue</button>
+              <button className="btn1 mt-8 md:mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Estimate revenue</button>
             </div>
           </div>
 
@@ -101,55 +101,49 @@ const Pricing = () => {
                 {price.data.map((data) => (
                   <div
                     key={data.title}
-                    className={`py-6 lg:py-10 px-5 lg:px-8 ${
-                      data.title === "Full Management Fee"
-                        ? "bg-[#1F1607]"
-                        : "bg-[#fff6e7]"
-                    }  rounded-3xl`}
+                    className={`py-6 lg:py-10 px-5 lg:px-8 overflow-x-hidden ${data.title === "Full Management Fee"
+                      ? "bg-[#1F1607]"
+                      : "bg-[#fff6e7]"
+                      }  rounded-3xl`}
                   >
                     <h4
-                      className={`text-2xl font-semibold ${
-                        data.title === "Full Management Fee"
-                          ? "text-white"
-                          : "text-[#282938]"
-                      } `}
+                      className={`text-2xl font-semibold ${data.title === "Full Management Fee"
+                        ? "text-white"
+                        : "text-[#282938]"
+                        } `} data-aos="fade-right" data-aos-duration="800" data-aos-delay="50"
                     >
                       {data.title}
                     </h4>
                     <p
-                      className={`my-4 text-2xl xl:text-3xl 2xl:text-4xl ${
-                        data.title === "Full Management Fee"
-                          ? "text-white"
-                          : "text-[#282938]"
-                      } font-medium`}
+                      className={`my-4 text-2xl xl:text-3xl 2xl:text-4xl ${data.title === "Full Management Fee"
+                        ? "text-white"
+                        : "text-[#282938]"
+                        } font-medium`} data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50"
                     >
                       {data.figures}
                     </p>
                     <p
-                      className={`${
-                        data.title === "Full Management Fee"
-                          ? "text-white"
-                          : "text-[#282938]"
-                      } font-medium text-sm md:text-base`}
+                      className={`${data.title === "Full Management Fee"
+                        ? "text-white"
+                        : "text-[#282938]"
+                        } font-medium text-sm md:text-base`} data-aos="fade-right" data-aos-duration="1200" data-aos-delay="100"
                     >
                       {data?.description}
                     </p>
                     <ul className="mt-5 lg:mt-8 flex flex-col gap-4">
-                      {data.offers.map((off_data) => (
+                      {data.offers.map((off_data, index) => (
                         <li
                           className="flex gap-3 text-sm md:text-base"
-                          key={off_data}
-                        >
+                          key={off_data} data-aos="fade-right" data-aos-duration={400 + index * 50} data-aos-delay={50 + index * 20}                        >
                           <img
                             src={Pointer}
                             className="w-3 h-3.5 mt-1 lg:mt-1.5"
                           />{" "}
                           <span
-                            className={`${
-                              data.title === "Full Management Fee"
-                                ? "text-white"
-                                : "text-[#1F1607]"
-                            } font-light`}
+                            className={`${data.title === "Full Management Fee"
+                              ? "text-white"
+                              : "text-[#1F1607]"
+                              } font-light`}
                           >
                             {off_data}
                           </span>
