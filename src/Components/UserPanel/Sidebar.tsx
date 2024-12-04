@@ -8,8 +8,10 @@ import {
   ReceiptLongOutlined,
   SettingsOutlined,
 } from "@mui/icons-material";
+import { usePostLogOut } from "../../hooks/react-queries/auth/usePostLogOut";
 const Sidebar = () => {
   const { id } = useParams();
+  const { mutate: logOut, isPending } = usePostLogOut();
   return (
     <div className="bg-primary py-6 h-full">
       <div className="px-5">
@@ -113,18 +115,12 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/logout"
-            className={({ isActive }) =>
-              `text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px] ${
-                isActive
-                  ? "border-[#fff3dd] bg-[#d5b67f]"
-                  : "border-transparent"
-              }`
-            }
+          <button
+            onClick={() => logOut()}
+            className={`w-full text-sm duration-300 px-5 py-2.5 text-white tracking-wider hover:bg-[#d5b67f] uppercase flex items-center gap-3 border-l-[6px]`}
           >
-            <Logout /> Logout
-          </NavLink>
+            <Logout /> {isPending ? "Logging out..." : "Log Out"}
+          </button>
         </li>
       </ul>
     </div>

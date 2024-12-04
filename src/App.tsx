@@ -53,7 +53,7 @@ import { isTokenExpired } from "./utils/token/tokenHandler.ts";
 const App = () => {
   useEffect(() => {
     AOS.init({
-      once: true
+      once: true,
     });
   }, []);
 
@@ -172,11 +172,11 @@ const App = () => {
               element: <Settings />,
             },
             {
-              path: "settings/change-password",
+              path: "settings/change-password/:id?",
               element: <ChangePassword />,
             },
             {
-              path: "settings/personal-details",
+              path: "settings/personal-details/:id?",
               element: <PersonalDetails />,
             },
             {
