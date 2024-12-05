@@ -5,5 +5,6 @@ export const useFetchHomeContent = () => {
   return useQuery({
     queryKey: ["homeContent"],
     queryFn: fetchHomeContent,
+    refetchOnWindowFocus: false,
   });
 };

@@ -9,6 +9,9 @@ import gallaryTypesReducer from "./features/gallaryTypesSlice";
 import countryReducer from "./features/countrySlice";
 import priceReducer from "./features/priceSlice";
 import testimonialsReducer from "./features/testimonialsSlice";
+import guideReducer from "./features/guidesSlice";
+import articlesReducer from "./features/articlesSlice";
+import blogReducer from "./features/blogSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -21,6 +24,9 @@ const rootReducer = combineReducers({
   country: countryReducer,
   price: priceReducer,
   testimonials: testimonialsReducer,
+  guides: guideReducer,
+  articles: articlesReducer,
+  blogs: blogReducer,
 });
 
 export default rootReducer;
