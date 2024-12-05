@@ -21,7 +21,6 @@ import Home from "./Pages/Home/Home.tsx";
 import Pricing from "./Pages/Pricing/Pricing.tsx";
 import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
 import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
-import Gallery from "./Pages/Gallery/Gallery.tsx";
 import EstimateRevenue from "./Pages/EstimateRevenue/EstimateRevenue.tsx";
 import Media from "./Pages/Media/Media.tsx";
 import HowToVideos from "./Pages/HowToVideos/HowToVideos.tsx";
@@ -54,6 +53,8 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store.ts";
 import { isTokenExpired } from "./utils/token/tokenHandler.ts";
+import Gallery from "./Pages/Gallery/Gallery.tsx";
+import GalleryNew from "./Pages/Gallery/GalleryNew.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -94,7 +95,7 @@ const App = () => {
         },
         {
           path: "/gallery",
-          element: <Gallery />,
+          element: <GalleryNew />,
         },
         {
           path: "/estimate-revenue",
