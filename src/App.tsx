@@ -95,7 +95,7 @@ const App = () => {
         },
         {
           path: "/gallery",
-          element: <GalleryNew />,
+          element: <Gallery />,
         },
         {
           path: "/estimate-revenue",
