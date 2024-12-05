@@ -26,8 +26,15 @@ export const fetchHomeContent = async () => {
   return response.data;
 };
 
-export const fetchGallary = async ({ type, id }: FetchGalleryParams) => {
-  const response = await axiosInstance.get(`/gallery?id=${id}&type=${type}`);
+export const fetchGallary = async ({
+  type,
+  id,
+  limit,
+  page,
+}: FetchGalleryParams) => {
+  const response = await axiosInstance.get(
+    `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
+  );
   return response.data;
 };
 
