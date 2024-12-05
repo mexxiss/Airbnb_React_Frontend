@@ -23,6 +23,11 @@ import AboutUs from "./Pages/AboutUs/AboutUs.tsx";
 import ContactUs from "./Pages/ContactUs/ContactUs.tsx";
 import Gallery from "./Pages/Gallery/Gallery.tsx";
 import EstimateRevenue from "./Pages/EstimateRevenue/EstimateRevenue.tsx";
+import Media from "./Pages/Media/Media.tsx";
+import HowToVideos from "./Pages/HowToVideos/HowToVideos.tsx";
+import Videos from "./Pages/Videos/Videos.tsx";
+import Blogs from "./Pages/Blog/Blogs.tsx";
+import BlogDetails from "./Pages/Blog/BlogDetails.tsx";
 
 // Lazy loading services
 import CleaningMaintenance from "./Pages/Services/CleaningMaintenance.tsx";
@@ -110,6 +115,26 @@ const App = () => {
         {
           path: "/services/listing-management",
           element: <ListingManagement />,
+        },
+        {
+          path: "/media",
+          element: <Media />,
+        },
+        {
+          path: "/howtovideos",
+          element: <HowToVideos />,
+        },
+        {
+          path: "/videos",
+          element: <Videos />,
+        },
+        {
+          path: "/blogs",
+          element: <Blogs />,
+        },
+        {
+          path: "/blog/:id",
+          element: <BlogDetails />,
         },
       ],
     },

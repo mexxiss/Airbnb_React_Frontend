@@ -53,22 +53,19 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">About Us</h6>
               <ul className="mt-5 space-y-4 text-[#B7B7B7]">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Media</Link>
+                  <Link to="/media">Media</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Blog</Link>
+                  <Link to="/blogs">Blog</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Retirement Visa UAE</Link>
+                  <Link to="/videos">Videos</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Videos</Link>
+                  <Link to="/">Airbnb Dubai</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">airbnb dubai</Link>
-                </li>
-                <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">terms & conditions</Link>
+                  <Link to="/">Terms & Conditions</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
                   <Link to="/">Airbnb Requirements and Fees Dubai</Link>
@@ -97,7 +94,7 @@ const Footer = () => {
                   <Link to="/contact-us">Contact</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">How to Videos</Link>
+                  <Link to="/howtovideos">How to Videos</Link>
                 </li>
               </ul>
             </div>
