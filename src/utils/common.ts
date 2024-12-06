@@ -137,3 +137,9 @@ export function calculateNightsPercentage(
   const percentage = (nightsCount / totalDays) * 100;
   return `${percentage.toFixed(2)}%`;
 }
+
+export function htmlDecode(content: string): string {
+  const e = document.createElement("div");
+  e.innerHTML = content;
+  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue || "";
+}

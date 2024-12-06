@@ -19,7 +19,7 @@ const Blogs = () => {
   const limit = 4;
   const { data, isLoading, isError, error } = useBlogs(page, limit);
 
-  const finalData = useMemo(() => data?.data, [data]);
+  const finalData = useMemo<any>(() => data?.data, [data]);
 
   const memoizedDispatch = useCallback(() => {
     if (finalData) {
@@ -46,8 +46,6 @@ const Blogs = () => {
   if (isError && error instanceof Error) {
     return <ErrorHandleMessage msg={error.message} />;
   }
-
-  console.log({ data });
 
   return (
     <>

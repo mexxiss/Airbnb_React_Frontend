@@ -30,8 +30,6 @@ const Media = () => {
     (state: RootState) => state.articles.articles
   );
 
-  console.log({ articlesData });
-
   if (isLoading) {
     return <Loader />;
   }

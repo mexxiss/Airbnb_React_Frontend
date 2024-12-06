@@ -44,7 +44,9 @@ const Footer = () => {
                 <img src={whiteLogo} className="max-w-[164px] w-full" />
               </div>
               <p className="text-[#B7B7B7]">
-                Experience top-tier Airbnb management services that eliminate the complexities of renting out your property. Sit back, relax, and watch your earnings grow effortlessly!
+                Experience top-tier Airbnb management services that eliminate
+                the complexities of renting out your property. Sit back, relax,
+                and watch your earnings grow effortlessly!
               </p>
             </div>
             <div className="order-2 md:order-3 lg:order-2">
@@ -100,25 +102,41 @@ const Footer = () => {
               <h6 className="text-white text-lg font-semibold">Follow us</h6>
               <ul className="mt-5 text-[#B7B7B7] flex sm:flex-col items-center sm:items-start gap-4">
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link
+                    to="https://www.facebook.com/login/"
+                    className="flex items-center gap-2"
+                    target="_blank"
+                  >
                     <FacebookOutlined />{" "}
                     <span className="hidden sm:inline-block">Facebook</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link
+                    to="https://www.linkedin.com/login/in"
+                    className="flex items-center gap-2"
+                    target="_blank"
+                  >
                     <LinkedIn />{" "}
                     <span className="hidden sm:inline-block">LinkedIn</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link
+                    to="https://x.com/"
+                    className="flex items-center gap-2"
+                    target="_blank"
+                  >
                     <X />{" "}
                     <span className="hidden sm:inline-block">Twitter</span>
                   </Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link
+                    to="https://www.instagram.com/accounts/login/?hl=en"
+                    className="flex items-center gap-2"
+                    target="_blank"
+                  >
                     <Instagram />{" "}
                     <span className="hidden sm:inline-block">Instagram</span>
                   </Link>
