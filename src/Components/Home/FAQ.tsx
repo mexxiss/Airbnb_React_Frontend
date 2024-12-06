@@ -25,6 +25,7 @@ const pathMap: { [key: string]: string } = {
   "/": "home",
   "/estimate-revenue": "estimate revenue",
   "/about-us": "home",
+  "/airbnb-requirements": "requirements"
 };
 
 const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
