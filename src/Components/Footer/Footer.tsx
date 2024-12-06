@@ -65,7 +65,7 @@ const Footer = () => {
                   <Link to="/">Airbnb Dubai</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Terms & Conditions</Link>
+                  <Link to="/terms-and-conditions">Terms & Conditions</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
                   <Link to="/">Airbnb Requirements and Fees Dubai</Link>
