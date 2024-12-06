@@ -12,6 +12,7 @@ import testimonialsReducer from "./features/testimonialsSlice";
 import guideReducer from "./features/guidesSlice";
 import articlesReducer from "./features/articlesSlice";
 import blogReducer from "./features/blogSlice";
+import legalsReducer from "./features/blogSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   guides: guideReducer,
   articles: articlesReducer,
   blogs: blogReducer,
+  legals: legalsReducer,
 });
 
 export default rootReducer;

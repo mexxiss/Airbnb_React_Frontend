@@ -28,3 +28,11 @@ export interface BlogsResponse {
   message: string;
   success: boolean;
 }
+
+export interface RelatedBlog {
+  _id: string;
+  title: string;
+  subtitle: string;
+  thumbnail: string;
+  added_on: string;
+}
