@@ -40,7 +40,7 @@ const BlogDetails = () => {
                             <span>
                                 <img src={icon27} className="w-4" />
                             </span>
-                            <span className=' inline-block max-w-[120px] sm:max-w-[250px] overflow-hidden text-nowrap text-ellipsis'>How to furnish your AirbnbAirbnbAirbnbAirbnbAirbnb</span>
+                            <span className=' inline-block max-w-[120px] sm:max-w-[250px] overflow-hidden text-nowrap text-ellipsis'>How to furnish your Airbnb</span>
                         </p>
                     </div>
                 </div>
