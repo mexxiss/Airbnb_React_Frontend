@@ -44,9 +44,7 @@ const Footer = () => {
                 <img src={whiteLogo} className="max-w-[164px] w-full" />
               </div>
               <p className="text-[#B7B7B7]">
-                world-class Airbnb management services, takes the hassle out of
-                renting out your property on Airbnb and similar platforms, so
-                you can sit back, relax and count your dirhams.
+                Experience top-tier Airbnb management services that eliminate the complexities of renting out your property. Sit back, relax, and watch your earnings grow effortlessly!
               </p>
             </div>
             <div className="order-2 md:order-3 lg:order-2">

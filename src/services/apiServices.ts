@@ -14,6 +14,9 @@ import {
 } from "../types/bookedDates";
 import { TestimonialsResponse } from "../types/testimonials";
 import { ChangePasswordProps, LoginFormInputs } from "../types/loginTypes";
+import { IGuideResponse } from "../types/guideTypes";
+import { ArticlesResponse } from "../types/articleTypes";
+import { BlogsResponse } from "../types/blogTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -26,8 +29,15 @@ export const fetchHomeContent = async () => {
   return response.data;
 };
 
-export const fetchGallary = async ({ type, id }: FetchGalleryParams) => {
-  const response = await axiosInstance.get(`/gallery?id=${id}&type=${type}`);
+export const fetchGallary = async ({
+  type,
+  id,
+  limit,
+  page,
+}: FetchGalleryParams) => {
+  const response = await axiosInstance.get(
+    `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
+  );
   return response.data;
 };
 
@@ -137,4 +147,24 @@ export const changePassword = async (
 ): Promise<any> => {
   const response = await axiosInstance.post("/users/change-pass", data);
   return response.data;
+};
+
+export const fetchGuides = async (): Promise<IGuideResponse> => {
+  const response = await axiosInstance.get(`/guides`);
+  return response.data;
+};
+
+export const fetchArticles = async (): Promise<ArticlesResponse> => {
+  const response = await axiosInstance.get("/featured-articles");
+  return response.data;
+};
+
+export const fetchBlogs = async (
+  page: number,
+  limit: number = 10
+): Promise<BlogsResponse> => {
+  const { data } = await axiosInstance.get(
+    `/blogs?limit=${limit}&page=${page}`
+  );
+  return data;
 };
