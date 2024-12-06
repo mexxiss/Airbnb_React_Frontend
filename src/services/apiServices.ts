@@ -17,6 +17,7 @@ import { ChangePasswordProps, LoginFormInputs } from "../types/loginTypes";
 import { IGuideResponse } from "../types/guideTypes";
 import { ArticlesResponse } from "../types/articleTypes";
 import { BlogsResponse } from "../types/blogTypes";
+import { LegalResponse } from "../types/legalTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -167,4 +168,14 @@ export const fetchBlogs = async (
     `/blogs?limit=${limit}&page=${page}`
   );
   return data;
+};
+
+export const fetchBlogsById = async (id: string): Promise<any> => {
+  const response = await axiosInstance.get(`/blogs/${id}`);
+  return response.data;
+};
+
+export const fetchLegals = async (): Promise<LegalResponse> => {
+  const response = await axiosInstance.get<LegalResponse>("/legals");
+  return response.data;
 };
