@@ -12,7 +12,7 @@ import testimonialsReducer from "./features/testimonialsSlice";
 import guideReducer from "./features/guidesSlice";
 import articlesReducer from "./features/articlesSlice";
 import blogReducer from "./features/blogSlice";
-import legalsReducer from "./features/blogSlice";
+import legalsReducer from "./features/legalsSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
