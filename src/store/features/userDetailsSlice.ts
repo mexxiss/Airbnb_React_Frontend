@@ -13,12 +13,12 @@ const userDetailsSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    userFetched(state, action: PayloadAction<UserDetails>) {
+    setUserDetails(state, action: PayloadAction<UserDetails>) {
       state.user = action.payload;
     },
   },
 });
 
-export const { userFetched } = userDetailsSlice.actions;
+export const { setUserDetails } = userDetailsSlice.actions;
 
 export default userDetailsSlice.reducer;

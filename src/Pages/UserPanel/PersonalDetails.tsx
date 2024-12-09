@@ -6,20 +6,40 @@ import { useToggle } from "../../hooks/custom-hook/useToggle";
 import { useUserDetails } from "../../hooks/react-queries/userdetails";
 import { useUpdateUserdetails } from "../../hooks/react-queries/userdetails/useUpdateUserdetails";
 import { UserDetails } from "../../types/userDetailsTypes";
+import { useCallback, useEffect, useMemo } from "react";
+import { setUserDetails } from "../../store/features/userDetailsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import Loader from "../../Components/Loader/Loader";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
 
 const PersonalDetails = () => {
   const [isOpen, toggleOpen] = useToggle();
-  const { data: user, isLoading, error } = useUserDetails();
+  const { data: user, isLoading, error, isError } = useUserDetails();
+  const dispatch = useDispatch();
+  const finalData = useMemo(() => user, [user]);
   const updateUserMutation = useUpdateUserdetails();
 
+  const memoizedDispatch = useCallback(() => {
+    if (finalData) {
+      dispatch(setUserDetails(finalData));
+    }
+  }, [finalData, dispatch]);
+
+  useEffect(() => {
+    memoizedDispatch();
+  }, [memoizedDispatch]);
+
+  const userData = useSelector((state: RootState) => state.userdetails.user);
+
   const initialValues = {
-    firstName: user?.first_name || "",
-    lastName: user?.last_name || "",
-    email: user?.email[0] || "",
-    address: user?.address?.street || "",
-    number: user?.phone[0] || "",
-    SecEmail: user?.email[1] || "",
-    SecNumber: user?.phone[1] || "",
+    firstName: userData?.first_name || "",
+    lastName: userData?.last_name || "",
+    email: userData?.email[0] || "",
+    address: userData?.address?.street || "",
+    number: userData?.phone[0] || "",
+    SecEmail: userData?.email[1] || "",
+    SecNumber: userData?.phone[1] || "",
   };
 
   const formik = useFormik({
@@ -27,7 +47,7 @@ const PersonalDetails = () => {
     onSubmit: async (values) => {
       try {
         const updates = {
-          ...user,
+          ...userData,
           first_name: values.firstName,
           last_name: values.lastName,
           email: [values.email, values.SecEmail].filter(Boolean), // Remove empty secondary email
@@ -38,7 +58,7 @@ const PersonalDetails = () => {
         };
 
         updateUserMutation.mutate(updates as UserDetails);
-        console.log("Updated user details:", updateUserMutation.data);
+        setUserDetails(updates as UserDetails);
       } catch (error) {
         console.error("Failed to update user details:", error);
         alert("Failed to update details. Please try again.");
@@ -46,10 +66,13 @@ const PersonalDetails = () => {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading user details: {error.message}</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  console.log({ values: formik.values });
+  if (isError && error instanceof Error) {
+    return <ErrorHandleMessage msg={error.message} />;
+  }
 
   return (
     <div>
@@ -117,7 +140,6 @@ const PersonalDetails = () => {
                     value={formik.values.firstName}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="lastName"
@@ -126,7 +148,6 @@ const PersonalDetails = () => {
                     value={formik.values.lastName}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="email"
@@ -135,7 +156,6 @@ const PersonalDetails = () => {
                     value={formik.values.email}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="address"
@@ -144,7 +164,6 @@ const PersonalDetails = () => {
                     value={formik.values.address}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="number"
@@ -153,7 +172,6 @@ const PersonalDetails = () => {
                     value={formik.values.number}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="SecEmail"
@@ -162,7 +180,6 @@ const PersonalDetails = () => {
                     value={formik.values.SecEmail}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                   <Input
                     name="SecNumber"
@@ -171,7 +188,6 @@ const PersonalDetails = () => {
                     value={formik.values.SecNumber}
                     disabled={!isOpen}
                     labelClass=""
-                    onChange={formik.handleChange} // Formik's onChange handler
                   />
                 </div>
                 <div className="mt-6">
@@ -188,7 +204,7 @@ const PersonalDetails = () => {
                         : "btn1 !rounded-none h-10 !px-8 tracking-wider"
                     }
                   >
-                    Save
+                    {updateUserMutation.isPending ? "Saveing..." : "Save"}
                   </button>
                 </div>
               </Form>
