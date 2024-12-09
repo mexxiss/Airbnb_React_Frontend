@@ -14,6 +14,7 @@ import articlesReducer from "./features/articlesSlice";
 import blogReducer from "./features/blogSlice";
 import legalsReducer from "./features/legalsSlice";
 import requirementReducer from "./features/requirementSlice";
+import userDetailsReducer from "./features/userDetailsSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   blogs: blogReducer,
   legals: legalsReducer,
   requirements: requirementReducer,
+  userdetails: userDetailsReducer,
 });
 
 export default rootReducer;

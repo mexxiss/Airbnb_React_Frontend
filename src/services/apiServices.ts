@@ -19,6 +19,7 @@ import { ArticlesResponse } from "../types/articleTypes";
 import { BlogsResponse } from "../types/blogTypes";
 import { LegalResponse } from "../types/legalTypes";
 import { ApiResponse, Requirement } from "../types/requirementTypes";
+import { UserDetails } from "../types/userDetailsTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -184,4 +185,22 @@ export const fetchLegals = async (): Promise<LegalResponse> => {
 export const fetchRequirements = async (): Promise<Requirement[]> => {
   const response = await axiosInstance.get<ApiResponse>("/requirements");
   return response.data.data;
+};
+
+export const fetchUserDetails = async (): Promise<UserDetails> => {
+  const response = await axiosInstance.get(`/users`);
+  return response.data.user;
+};
+
+export const updateUserDetails = async (updates: any) => {
+  try {
+    const response = await axiosInstance.put(`/users`, { updates });
+    return response.data; // Return the updated user details
+  } catch (error: any) {
+    console.error(
+      "Error updating user details:",
+      error.response || error.message
+    );
+    throw error;
+  }
 };

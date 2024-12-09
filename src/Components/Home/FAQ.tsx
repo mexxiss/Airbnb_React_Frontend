@@ -25,10 +25,11 @@ const pathMap: { [key: string]: string } = {
   "/": "home",
   "/estimate-revenue": "estimate revenue",
   "/about-us": "home",
-  "/airbnb-requirements": "requirements"
+  "/airbnb-requirements": "requirements",
+  "/airbnb-dubai": "airbnb dubai",
 };
 
-const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
+const FAQ = ({ title, img_url }: { title: string; img_url: string }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -55,10 +56,22 @@ const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
     <div className="py-16 md:py-20">
       <div className="container mx-auto">
         <div className="text-center">
-          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="50">
+          <h4
+            className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]"
+            data-aos="fade-down"
+            data-aos-duration="1200"
+            data-aos-delay="50"
+          >
             {title}
           </h4>
-          <p className="text-lg text-primary mt-2" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="100">Contact us for more info</p>
+          <p
+            className="text-lg text-primary mt-2"
+            data-aos="fade-down"
+            data-aos-duration="1200"
+            data-aos-delay="100"
+          >
+            Contact us for more info
+          </p>
         </div>
         <div className="lg:flex mt-4 sm:mt-6 lg:mt-10">
           <div className="lg:w-2/5">
