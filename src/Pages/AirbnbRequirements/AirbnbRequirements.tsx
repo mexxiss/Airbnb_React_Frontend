@@ -9,6 +9,7 @@ import { setRequirements } from "../../store/features/requirementSlice.ts";
 import { RootState } from "../../store/store.ts";
 import Loader from "../../Components/Loader/Loader.tsx";
 import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
+import './AirbnbRequirements.css'
 
 const AirbnbRequirements = () => {
   const dispatch = useDispatch();
@@ -90,8 +91,8 @@ const AirbnbRequirements = () => {
           </div>
         </div>
       </div>
-      {requirementData[0].points?.map((point) => (
-        <div key={point._id} className="pt-14 md:pt-16 lg:pt-20">
+      {requirementData[0]?.points?.map((point) => (
+        <div key={point._id} className="pt-14 md:pt-16 lg:pt-20 airbnbRequirements">
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-6 3xl:gap-14">
               {/* Image */}

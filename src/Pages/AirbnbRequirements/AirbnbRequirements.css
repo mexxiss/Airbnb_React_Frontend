@@ -1,27 +1,27 @@
-.termAndCondition p {
+.airbnbRequirements p {
   /* mt-3 text-sm md:text-base opacity-80 */
   font-size: 14px;
   opacity: 80%;
   line-height: 1.5;
-  margin-top: 12px;
+  margin-top: 8px;
 }
-.termAndCondition h5 {
+.airbnbRequirements h5 {
   font-size: 18px;
   margin-top: 24px;
   font-weight: 500;
 }
-.termAndCondition ul{
-    list-style: disc;
-    padding-left: 18px;
+.airbnbRequirements ul {
+  list-style: disc;
+  padding-left: 18px;
 }
 
 @media (min-width: 768px) {
-  .termAndCondition p {
+  .airbnbRequirements p {
     font-size: 16px;
   }
 }
 @media (min-width: 992px) {
-  .termAndCondition h5 {
+  .airbnbRequirements h5 {
     font-size: 20px;
   }
 }

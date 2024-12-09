@@ -62,7 +62,7 @@ const Footer = () => {
                   <Link to="/videos">Videos</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
-                  <Link to="/">Airbnb Dubai</Link>
+                  <Link to="/airbnb-dubai">Airbnb Dubai</Link>
                 </li>
                 <li className="text-sm hover:text-primary hover:translate-x-1.5 duration-300">
                   <Link to="/terms-and-conditions">Terms & Conditions</Link>
