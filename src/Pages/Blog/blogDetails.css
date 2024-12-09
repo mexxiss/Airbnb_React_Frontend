@@ -1,11 +1,9 @@
 .blogDetails p {
-  /* mt-3 text-sm md:text-base opacity-80 */
   margin-top: 12px;
   font-size: 14px;
   opacity: 80;
 }
 .blogDetails h6 {
-  /* text-lg sm:text-xl md:text-2xl font-semibold text-text1 mt-6 md:mt-10 */
   font-size: 18px;
   font-weight: 600;
   margin-top: 24px;
@@ -25,5 +23,5 @@
     font-size: 24px;
     margin-top: 40px;
   }
-  
+
 }

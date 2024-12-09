@@ -66,7 +66,7 @@ const AirbnbRequirements = () => {
                             <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
                                 What is the DET?
                             </h4>
-                            <div className="text-[#4D5461 mt-3">
+                            <div className="text-[#4D5461 mt-3 flex flex-col gap-4">
                                 <p data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">The DET (formerly the DTCM) is the Department of Economy and Tourism in Dubai, which acts as the principal authority for short-term property rental in the city. This body is responsible for the provision of all event, holiday home and tour guide permits, as well as hotel classification.</p>
                                 <p data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">In order to lease your property as a holiday home, you’ll first need to provide all of your important documentation to the DET for approval. Permits are issued on an annual basis and will need to be renewed each year.</p>
                             </div>
