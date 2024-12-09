@@ -33,8 +33,6 @@ const AirbnbRequirements = () => {
   if (isError && error instanceof Error)
     return <ErrorHandleMessage msg={error.message} />;
 
-  const { head, points } = requirementData[0];
-
   return (
     <>
       {/* banner */}
@@ -78,11 +76,13 @@ const AirbnbRequirements = () => {
               data-aos-duration="1000"
               data-aos-delay="50"
             >
-              {head?.title}
+              {requirementData[0]?.head?.title}
             </h4>
             <div
               className="mt-3 text-[#60410C]"
-              dangerouslySetInnerHTML={{ __html: head?.body }}
+              dangerouslySetInnerHTML={{
+                __html: requirementData[0]?.head?.body,
+              }}
               data-aos="fade-right"
               data-aos-duration="1000"
               data-aos-delay="150"
@@ -90,7 +90,7 @@ const AirbnbRequirements = () => {
           </div>
         </div>
       </div>
-      {points?.map((point) => (
+      {requirementData[0].points?.map((point) => (
         <div key={point._id} className="pt-14 md:pt-16 lg:pt-20">
           <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-6 3xl:gap-14">
