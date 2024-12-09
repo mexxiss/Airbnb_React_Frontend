@@ -18,6 +18,7 @@ import { IGuideResponse } from "../types/guideTypes";
 import { ArticlesResponse } from "../types/articleTypes";
 import { BlogsResponse } from "../types/blogTypes";
 import { LegalResponse } from "../types/legalTypes";
+import { ApiResponse, Requirement } from "../types/requirementTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -178,4 +179,9 @@ export const fetchBlogsById = async (id: string): Promise<any> => {
 export const fetchLegals = async (): Promise<LegalResponse> => {
   const response = await axiosInstance.get<LegalResponse>("/legals");
   return response.data;
+};
+
+export const fetchRequirements = async (): Promise<Requirement[]> => {
+  const response = await axiosInstance.get<ApiResponse>("/requirements");
+  return response.data.data;
 };
