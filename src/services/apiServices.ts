@@ -204,3 +204,16 @@ export const updateUserDetails = async (updates: any) => {
     throw error;
   }
 };
+
+export const fetchAirbnbDubai = async () => {
+  try {
+    const response = await axiosInstance.get(`/airbnb-dubai`);
+    return response.data; 
+  } catch (error: any) {
+    console.error(
+      "Error updating user details:",
+      error.response || error.message
+    );
+    throw error;
+  }
+}
