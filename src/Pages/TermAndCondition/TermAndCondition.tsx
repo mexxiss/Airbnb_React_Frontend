@@ -8,6 +8,7 @@ import { setLegals } from "../../store/features/legalsSlice.ts";
 import { RootState } from "../../store/store.ts";
 import Loader from "../../Components/Loader/Loader.tsx";
 import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
+import './TermAndCondition.css'
 
 interface TabsPropes {
   id?: string;
@@ -55,7 +56,7 @@ const TermAndCondition = () => {
   const finalData = legalData.find((data: any) => data?.title === isActive);
 
   return (
-    <>
+    <div>
       {/* banner */}
       <div
         className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
@@ -111,7 +112,7 @@ const TermAndCondition = () => {
             </ul>
             <div>
               {finalData && (
-                <div className="pt-10" id={`${idSelected}`}>
+                <div className="pt-10 termAndCondition" id={`${idSelected}`}>
                   <h4 className="text-xl sm:text-2xl font-medium text-primary">
                     {finalData.title}
                   </h4>
@@ -276,7 +277,7 @@ const TermAndCondition = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

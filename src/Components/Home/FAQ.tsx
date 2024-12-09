@@ -60,7 +60,7 @@ const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
           </h4>
           <p className="text-lg text-primary mt-2" data-aos="fade-down" data-aos-duration="1200" data-aos-delay="100">Contact us for more info</p>
         </div>
-        <div className="lg:flex mt-10">
+        <div className="lg:flex mt-4 sm:mt-6 lg:mt-10">
           <div className="lg:w-2/5">
             <div className="hidden lg:block h-full">
               <img
@@ -69,7 +69,7 @@ const FAQ = ({ title, img_url }: { title: string, img_url: string }) => {
               />
             </div>
           </div>
-          <div className="lg:w-3/5 lg:pl-6 2xl:pl-10 mt-10 lg:mt-0">
+          <div className="lg:w-3/5 lg:pl-6 2xl:pl-10">
             <div>
               <Accordion className="rounded-none last:border-b-0 border-t-0 border-x-0">
                 {(finalData || []).map((item: any, index: any) => (
