@@ -9,10 +9,26 @@ import {
   img3,
   img12,
 } from "../../assets/images/index.ts";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import FAQ from "../../Components/Home/FAQ.tsx";
+import { AirbnbDubaiResponse } from "../../types/airbnbDubaiTypes.ts";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAirbnbDubai } from "../../services/apiServices.ts";
+
+interface IResponse {
+  success: boolean | null;
+  data: AirbnbDubaiResponse | null;
+  statusCode: number | null;
+  message: string | null;
+}
 
 const AirbnbDubai = () => {
+  const [content, useContent] = useState<AirbnbDubaiResponse>();
+
+  // const {isLoading, isError, error, data} = useQuery<IResponse>({
+  //   queryKey: ["airbnb dubai"],
+  //   queryFn: () => fetchAirbnbDubai()
+  // })
   return (
     <>
       {/* banner */}
