@@ -143,3 +143,68 @@ export function htmlDecode(content: string): string {
   e.innerHTML = content;
   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue || "";
 }
+
+type FormatType =
+  | "DD-MM-YYYY"
+  | "MM/DD/YYYY"
+  | "YYYY/MM/DD"
+  | "YYYY-MM-DD HH:mm:ss"; // Add formats as needed
+
+export const formatDate = (
+  date: string,
+  format: FormatType = "DD-MM-YYYY"
+): string => {
+  // Ensure date is parsed by moment
+  const parsedDate = moment(new Date(date));
+
+  // Check if the date is valid
+  if (!parsedDate.isValid()) {
+    throw new Error("Invalid date format");
+  }
+
+  return parsedDate.format(format);
+};
+
+// export const handleDownload = (url: string) => {
+//   const link = document.createElement("a");
+//   link.href = url;
+//   const fileName = decodeURIComponent(url.split("/").pop() || "document.pdf");
+//   link.download = fileName;
+//   link.target = "_blank";
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+// };
+
+export const handleDownload = (url: string) => {
+  // Fetch the file as a blob to force download
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.blob();
+    })
+    .then((blob) => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+
+      // Extract the file name or use a default
+      const fileName = decodeURIComponent(
+        url.split("/").pop() || "document.pdf"
+      );
+      link.download = fileName;
+
+      // Append the link, simulate click, and remove it
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Revoke the blob URL
+      window.URL.revokeObjectURL(blobUrl);
+    })
+    .catch((error) => {
+      console.error("Download failed:", error);
+    });
+};

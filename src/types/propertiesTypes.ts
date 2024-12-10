@@ -6,6 +6,9 @@ export interface PropertyDetails {
   bathrooms_count?: number;
   furnishing?: string;
   utilities?: string[];
+  parking_no?: string;
+  wifi?: { name: string; password: string };
+  permit?: { permit_code: string; permit_expiry_date: string };
 }
 
 // Address details

@@ -20,6 +20,8 @@ import { BlogsResponse } from "../types/blogTypes";
 import { LegalResponse } from "../types/legalTypes";
 import { ApiResponse, Requirement } from "../types/requirementTypes";
 import { UserDetails } from "../types/userDetailsTypes";
+import { PaymentDetails } from "../types/paymentsTypes";
+import { DocumentState } from "../types/documentTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -205,6 +207,61 @@ export const updateUserDetails = async (updates: any) => {
   }
 };
 
+
+export const getPaymentDetails = async (): Promise<any> => {
+  const response = await axiosInstance.get(`/payment-details`);
+  return response.data;
+};
+
+export const updatePaymentDetails = async (
+  updates: PaymentDetails
+): Promise<PaymentDetails> => {
+  const response = await axiosInstance.put(`/payment-details/${updates._id}`, {
+    updates,
+  });
+  return response.data;
+};
+
+export const getUserDocuments = async (propertyId: string): Promise<any> => {
+  const response = await axiosInstance.get(
+    `/user-documents?property=${propertyId}`
+  );
+  return response.data;
+};
+
+export const updateDocument = async (
+  documentId: string,
+  updates: any
+): Promise<any> => {
+  const response = await axiosInstance.put(`/user-documents/${documentId}`, {
+    updates,
+  });
+  return response.data;
+};
+
+export const uploadFile = async (
+  file: File | string,
+  folder: string
+): Promise<any> => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await axiosInstance.post(
+      `/upload/single?folder=${folder}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data; // This returns the response from the API after uploading the file
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
 export const fetchAirbnbDubai = async () => {
   try {
     const response = await axiosInstance.get(`/airbnb-dubai`);
@@ -217,3 +274,4 @@ export const fetchAirbnbDubai = async () => {
     throw error;
   }
 }
+

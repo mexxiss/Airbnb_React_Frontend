@@ -58,7 +58,7 @@ const PersonalDetails = () => {
         };
 
         updateUserMutation.mutate(updates as UserDetails);
-        setUserDetails(updates as UserDetails);
+        dispatch(setUserDetails(updates as UserDetails));
       } catch (error) {
         console.error("Failed to update user details:", error);
         alert("Failed to update details. Please try again.");
