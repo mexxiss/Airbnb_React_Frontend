@@ -15,6 +15,7 @@ import blogReducer from "./features/blogSlice";
 import legalsReducer from "./features/legalsSlice";
 import requirementReducer from "./features/requirementSlice";
 import userDetailsReducer from "./features/userDetailsSlice";
+import airbnbDubaiReducer from "./features/airbnbDubaiSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   legals: legalsReducer,
   requirements: requirementReducer,
   userdetails: userDetailsReducer,
+  airbnbdubai: airbnbDubaiReducer,
 });
 
 export default rootReducer;
