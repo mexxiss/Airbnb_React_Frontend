@@ -225,7 +225,7 @@ const App = () => {
               element: <PropertyDetails />,
             },
             {
-              path: "settings/property-details/update-utility-details",
+              path: "settings/property-details/update-utility-details/:id?",
               element: <UtilityDetails />,
             },
             {

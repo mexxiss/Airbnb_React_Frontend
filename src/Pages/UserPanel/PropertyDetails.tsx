@@ -10,6 +10,9 @@ import { useCallback, useEffect, useMemo } from "react";
 import { setSelectedProperty } from "../../store/features/propertiesSlice";
 import Loader from "../../Components/Loader/Loader";
 import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
+import { formatDate } from "../../utils/common";
+import BankDetailsForm from "../../Components/BankDetailsForms/BankDetailsForm";
+import DocumentBill from "../../Components/DocumentBills/DocumentBill";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -18,6 +21,7 @@ const PropertyDetails = () => {
   const { data, isLoading, error, isError } = useFetchPropertyById(id || "");
 
   const finalData = useMemo(() => data, [data]);
+
   const memoizedDispatch = useCallback(() => {
     if (finalData) {
       dispatch(setSelectedProperty(finalData));
@@ -30,10 +34,8 @@ const PropertyDetails = () => {
   }, [memoizedDispatch]);
 
   const propertiyData = useSelector(
-    (state: RootState) => state.properties.selectedProperty
+    (state: RootState) => state.properties.selectedProperty?.data
   );
-
-  console.log({ propertiyData });
 
   const initialValues = {
     //+
@@ -56,7 +58,7 @@ const PropertyDetails = () => {
   }
 
   if (isError && error instanceof Error) {
-    return <ErrorHandleMessage msg={error.message} />;
+    return <ErrorHandleMessage msg={error?.message} />;
   }
 
   return (
@@ -85,13 +87,13 @@ const PropertyDetails = () => {
 
       <div className="mt-8">
         <h4 className="text-xl xs:text-2xl sm:text-3xl xl:text-4xl text-gray-600">
-          B110 - B202 Wavez Residence, Dubai Land, Dubai, UAE.
+          {propertiyData?.properties?.title}
         </h4>
         <hr className="my-5 border-primary" />
         <div className="">
           <div>
             <h6 className="text-lg sm:text-xl md:text-2xl text-primary uppercase tracking-wide">
-              Personal Details
+              Property Details
             </h6>
             <div className="py-6 px-5 border border-primary bg-primary bg-opacity-5 mt-2">
               <FormikProvider value={formik}>
@@ -102,7 +104,7 @@ const PropertyDetails = () => {
                         name="fullAddress"
                         type="text"
                         label="Full Address"
-                        value="-"
+                        value={`${propertiyData?.properties?.address?.building_no},${propertiyData?.properties?.address?.street},${propertiyData?.properties?.address?.city},${propertiyData?.properties?.address?.country},(${propertiyData?.properties?.address?.pincode})`}
                         disabled
                       />
                     </div>
@@ -110,35 +112,39 @@ const PropertyDetails = () => {
                       name="parkNum"
                       type="text"
                       label="Parking Number"
-                      value="-"
+                      value={`${propertiyData?.properties?.property_details.parking_no}`}
                       disabled
                     />
                     <Input
                       name="permitCode"
                       type="text"
                       label="Permit Code"
-                      value="-"
+                      value={`${propertiyData?.properties?.property_details.permit?.permit_code}`}
                       disabled
                     />
                     <Input
                       name="permitExpDate"
                       type="text"
                       label="Permit Expiry Date"
-                      value="-"
+                      value={`${formatDate(
+                        propertiyData?.properties?.property_details.permit
+                          ?.permit_expiry_date || "",
+                        "YYYY/MM/DD"
+                      )}`}
                       disabled
                     />
                     <Input
                       name="wifiName"
                       type="text"
                       label="Wifi Name"
-                      value="-"
+                      value={`${propertiyData?.properties?.property_details.wifi?.name}`}
                       disabled
                     />
                     <Input
                       name="wifiPassword"
                       type="text"
                       label="Wifi Password"
-                      value="-"
+                      value={`${propertiyData?.properties?.property_details.wifi?.password}`}
                       disabled
                     />
                   </div>
@@ -152,7 +158,7 @@ const PropertyDetails = () => {
                 Utilities Details
               </h6>
               <Link
-                to="/user-panel/settings/property-details/update-utility-details"
+                to={`/user-panel/settings/property-details/update-utility-details/${id}`}
                 className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center"
               >
                 <EditOutlined className="!text-lg" />
@@ -160,142 +166,9 @@ const PropertyDetails = () => {
             </div>
           </div>
           <div className="mt-10">
-            <div className="flex items-center gap-4">
-              <h6 className="text-lg sm:text-xl md:text-2xl text-primary uppercase tracking-wide">
-                Bank Details
-              </h6>
-              <button className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center">
-                <EditOutlined className="!text-lg" />
-              </button>
-            </div>
-            <div className="py-6 px-5 border border-primary bg-primary bg-opacity-5 mt-2">
-              <FormikProvider value={formik}>
-                <Form onSubmit={formik.handleSubmit}>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                    <Input
-                      name="accName"
-                      type="text"
-                      label="Account Name"
-                      value="Surinder Paul Saini"
-                      disabled
-                    />
-                    <Input
-                      name="bankName"
-                      type="text"
-                      label="Bank Name"
-                      value="Mashreq Bank"
-                      disabled
-                    />
-                    <Input
-                      name="currency"
-                      type="text"
-                      label="Currency"
-                      value="AED"
-                      disabled
-                    />
-                    <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
-                      <Input
-                        name="iban"
-                        type="text"
-                        label="IBAN"
-                        value="ABCD1234567"
-                        disabled
-                      />
-                    </div>
-                    <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
-                      <Input
-                        name="accNumber"
-                        type="text"
-                        label="Account Number"
-                        value="123456789"
-                        disabled
-                      />
-                    </div>
-                    <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
-                      <Input
-                        name="bankAddress"
-                        type="text"
-                        label="Bank Address"
-                        value="-"
-                        disabled
-                      />
-                    </div>
-                  </div>
-                </Form>
-              </FormikProvider>
-            </div>
+            <BankDetailsForm />
           </div>
-          <div className="mt-10">
-            <h6 className="text-lg sm:text-xl md:text-2xl text-primary uppercase tracking-wide">
-              Documents
-            </h6>
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 4xl:grid-cols-4 gap-5 mt-3">
-              <div className="border border-primary rounded-xl flex flex-col justify-between pb-3">
-                <div>
-                  <div className="border-b border-primary text-primary text-xl py-2 px-3">
-                    Deva Bill
-                  </div>
-                  <div className="mt-4 flex flex-col gap-3 px-3">
-                    <div>
-                      <p className="text-lg text-gray-600">Expiry Date</p>
-                      <p className="text-primary">-</p>
-                    </div>
-                    <div>
-                      <p className="text-lg text-gray-600">Note</p>
-                      <p className="text-primary">-</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="px-3 mt-6 grid grid-cols-2 gap-3 ">
-                  <button className="h-9 rounded-md uppercase text-sm bg-primary text-white">
-                    Upload
-                  </button>
-                </div>
-              </div>
-              <div className="border border-primary rounded-xl flex flex-col justify-between pb-3">
-                <div>
-                  <div className="border-b border-primary text-primary text-xl py-2 px-3">
-                    Passport
-                  </div>
-                  <div className="mt-4 flex flex-col gap-3 px-3">
-                    <div>
-                      <p className="text-lg text-gray-600">Expiry Date</p>
-                      <p className="text-primary">-</p>
-                    </div>
-                    <div>
-                      <p className="text-lg text-gray-600">Note</p>
-                      <p className="text-primary">-</p>
-                    </div>
-                    <div>
-                      <p className="text-lg text-gray-600">Document</p>
-                      <p className="text-primary">qwertyui.png</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="px-3 mt-6 grid grid-cols-2 gap-3 ">
-                  <button className="h-9 rounded-md uppercase text-sm bg-primary text-white">
-                    Upload
-                  </button>
-                  <button className="h-9 rounded-md uppercase text-sm border border-primary text-primary">
-                    Download
-                  </button>
-                </div>
-              </div>
-              <div className="border border-primary rounded-xl flex flex-col justify-between pb-3">
-                <div>
-                  <div className="border-b border-primary text-primary text-xl py-2 px-3">
-                    Title Deed
-                  </div>
-                  <div className="mt-4 flex flex-col gap-3 px-3"></div>
-                </div>
-                <div className="px-3 mt-6 grid grid-cols-2 gap-3 ">
-                  <button className="h-9 rounded-md uppercase text-sm bg-primary text-white">
-                    Upload
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <DocumentBill />
         </div>
       </div>
     </div>
