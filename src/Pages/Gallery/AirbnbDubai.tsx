@@ -9,10 +9,37 @@ import {
   img3,
   img12,
 } from "../../assets/images/index.ts";
-import { Suspense } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import FAQ from "../../Components/Home/FAQ.tsx";
+import { useFetchContent } from "../../hooks/react-queries/airbnbDubai/useFetchContent.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { setAirbnbDubai } from "../../store/features/airbnbDubaiSlice.ts";
+import { RootState } from "../../store/store.ts";
+import Loader from "../../Components/Loader/Loader.tsx";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
+import "./AirbnbDubai.css";
 
 const AirbnbDubai = () => {
+  const dispatch = useDispatch();
+  const { data, isLoading, isError, error } = useFetchContent();
+  const content = useMemo<any>(() => data, [data]);
+
+  const memoizedDispatch = useCallback(() => {
+    if (content) {
+      dispatch(setAirbnbDubai(content));
+    }
+  }, [content]);
+
+  useEffect(() => {
+    memoizedDispatch();
+  }, [memoizedDispatch]);
+
+  const contentData = useSelector((state: RootState) => state.airbnbdubai.data)
+
+  if (isLoading) return <Loader />;
+  if (isError && error instanceof Error)
+    return <ErrorHandleMessage msg={error.message} />;
+
   return (
     <>
       {/* banner */}
@@ -54,37 +81,14 @@ const AirbnbDubai = () => {
               data-aos-duration="1000"
               data-aos-delay="50"
             >
-              Airbnb Dubai
+              {contentData?.section1.title}
             </h4>
-            <p
-              className="mt-3  text-[#60410C]"
-              data-aos="fade-right"
-              data-aos-duration="1000"
-              data-aos-delay="100"
-            >
-              For a few years, Airbnb felt like a delightful secret for people
-              letting out holiday homes around the world. Those using the
-              platform enjoyed excellent returns, easy bookings, high occupancy,
-              and a feeling of ‘insider’ knowledge about this short-term rental
-              platform. But it wouldn’t last forever, and now the secret’s out!
-              Worldwide, Airbnb usage and hosting is growing in every market,
-              and for every type of holiday home rental.
-            </p>
-            <p
-              className="mt-3  text-[#60410C]"
-              data-aos="fade-right"
-              data-aos-duration="1000"
-              data-aos-delay="100"
-            >
-              Dubai is no exception to this trend. More and more guests are
-              discovering that Airbnb is the best way to stay in Dubai —
-              holidaymakers get to enjoy exclusive properties, a variety of
-              amenities, personal touches, and better rates than traditional
-              hotel stays. Property owners in Dubai are happy to rent out their
-              house or apartment to guests from around the world who treat their
-              property with the care and appreciation that they would their own
-              home.
-            </p>
+
+            {contentData?.section1?.body ? (
+              <div className="airbnb-dubai mt-3 text-[#60410C]" dangerouslySetInnerHTML={{ __html: contentData.section1.body }} />
+            ) : (
+              <p>...</p>
+            )}
           </div>
         </div>
       </div>
@@ -94,7 +98,7 @@ const AirbnbDubai = () => {
           <div className="grid lg:grid-cols-2 gap-6 3xl:gap-14">
             <div>
               <img
-                src={img10}
+                src={contentData?.section2?.image}
                 className="rounded-tr-[30px] rounded-bl-[30px] sm:rounded-tr-[60px] sm:rounded-bl-[60px] max-h-[400px] h-full object-cover max-w-[600px] lg:max-w-full w-full"
               />
             </div>
@@ -105,55 +109,13 @@ const AirbnbDubai = () => {
                 data-aos-duration="1000"
                 data-aos-delay="50"
               >
-                Why are investors flocking to Dubai to own Airbnb properties?
+                {contentData?.section2?.title}
               </h4>
-              <ul className="text-[#4D5461 mt-6 flex flex-col gap-6">
-                <li>
-                  <h6
-                    className="text-[#1F1607] text-xl font-medium"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-delay="100"
-                  >
-                    Dubai is a top holiday location
-                  </h6>
-                  <p
-                    className="text-[#4D5461] mt-2"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-delay="150"
-                  >
-                    Dubai is an incredibly popular holiday location — some say
-                    the world’s most popular. With its luxurious lifestyle,
-                    abundance of activities, warm weather and beautiful beaches,
-                    the city welcomes around 15 million tourists a year.
-                    Consequently, there’s massive demand for places to stay in
-                    Dubai, making Airbnb properties all the rage.
-                  </p>
-                </li>
-                <li>
-                  <h6
-                    className="text-[#1F1607] text-xl font-medium"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-delay="100"
-                  >
-                    Dubai is hugely profitable
-                  </h6>
-                  <p
-                    className="text-[#4D5461] mt-2"
-                    data-aos="fade-left"
-                    data-aos-duration="1000"
-                    data-aos-delay="150"
-                  >
-                    Dubai has been named the world’s most profitable city for an
-                    Airbnb landlord, with those based near the Burj Khalifa
-                    earning an average of £930 ($1,150) per night, or £339,450
-                    per year. As a result, they stand to make enormous profits
-                    over time.
-                  </p>
-                </li>
-              </ul>
+              {contentData?.section2?.body ? (
+                <div className="airbnb-dubai section2" dangerouslySetInnerHTML={{ __html: contentData.section2.body }} />
+              ) : (
+                <p>...</p>
+              )}
             </div>
           </div>
         </div>
@@ -167,171 +129,29 @@ const AirbnbDubai = () => {
             data-aos-duration="1000"
             data-aos-delay="50"
           >
-            Why are investors flocking to Dubai to own Airbnb properties?
+            {contentData?.section3?.title}
           </h4>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 3xl:gap-x-10 gap-y-6 md:gap-y-12 mt-8">
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Dubai Marina and JBR
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Dubai Marina and JBR (Jumeirah Beach Residences) is one of the
-                city’s most sought-after locations. Featuring a mile-long beach,
-                a boulevard stacked with restaurants, bars and shops, and a
-                marina packed with luxury yachts, all in the backdrop of Dubai’s
-                futuristic skyscrapers, the area is the ideal location for an
-                Airbnb property.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Dubai Sports City
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Home to the Manchester United Soccer School facility, the ICC's
-                Global Cricket Academy, the inaugural World Hockey Academy, a
-                David Lloyd Tennis Academy, and the Els Club championship golf
-                course, Dubai Sports City is a bustling location popular with
-                fitness fanatics. With a mix of villa compounds and apartment
-                complexes and plenty of amenities close by, it’s no wonder the
-                area is attractive for Airbnb hosts.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Dubai Motor City
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Situated opposite is Dubai Motor City, a motor sport themed
-                property development featuring a 3.3 mile FIA certified race
-                track and F1-X Dubai, a Formula One theme park. The region is
-                also home to residential buildings and commercial properties, as
-                well as various other amenities, from shops and restaurants, to
-                healthcare centres and educational institutions.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Downtown Dubai
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Downtown Dubai covers an area of 0.77 square miles and is home
-                to some of the city’s most famous landmarks, including the Burj
-                Khalifa, the Dubai Mall and the Dubai Fountain. As such, it’s an
-                immensely popular location for Airbnb properties, particularly
-                considering how profitable being near to the Burj Khalifa is.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Dubai International Financial Centre
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Located near Downtown is the Dubai International Financial
-                Centre (DIFC), a special economic zone that’s become a financial
-                hub for the Middle East, Africa and South Asia (MEASA) markets.
-                The region not only houses hundreds of financial institutions,
-                but boasts retail outlets, restaurants, residential buildings,
-                public green spaces, hotels and art galleries too.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Business Bay
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Business Bay is a trendy commercial and residential hub situated
-                next door to Dubai Downtown. Offering a respite from the city’s
-                biggest tourist hot spot, the region is still bustling in its
-                own right, with the amenities you need to live a fulfilling city
-                life. It’s also close by to City Walk, a region home to hundreds
-                of exclusive shops, restaurants and leisure activities.
-              </p>
-            </div>
-            <div className="">
-              <h6
-                className="text-[#1F1607] text-xl sm:text-2xl font-medium"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                JVT and JRC
-              </h6>
-              <p
-                className="text-[#4D5461] mt-2"
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="150"
-              >
-                Dubai’s JVT (Jumeirah Village Triangle) and JRC (Jumeirah
-                Village Circle) are two residential districts located next to
-                each other, both of which are shaped like their names. The
-                communities are among the most tranquil in Dubai, making them
-                ideal for families. However, they’re still within close
-                proximity to attractions like Dubai Marina, Sports City and
-                Motor City, making JVT and JRC prime Airbnb spots.
-              </p>
-            </div>
+            {contentData?.section3?.points.map((point, index) => (
+              <div className="">
+                <h6
+                  className="text-[#1F1607] text-xl sm:text-2xl font-medium"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                >
+                  {point.title}
+                </h6>
+                <p
+                  className="text-[#4D5461] mt-2"
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                  data-aos-delay="150"
+                >
+                  {point.body}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -341,7 +161,7 @@ const AirbnbDubai = () => {
           <div className="grid lg:grid-cols-2 gap-6 3xl:gap-14">
             <div className="order-1 lg:order-2">
               <img
-                src={img11}
+                src={contentData?.section4?.image}
                 className="rounded-tr-[30px] rounded-bl-[30px] sm:rounded-tr-[60px] sm:rounded-bl-[60px]  h-full object-cover max-w-[600px] lg:max-w-full w-full"
               />
             </div>
@@ -352,49 +172,13 @@ const AirbnbDubai = () => {
                 data-aos-duration="1000"
                 data-aos-delay="50"
               >
-                Airbnb Dubai Property Management
+                {contentData?.section4?.title}
               </h4>
-              <div className="text-[#4D5461 mt-3 flex flex-col gap-4">
-                <p
-                  data-aos="fade-right"
-                  data-aos-duration="1000"
-                  data-aos-delay="150"
-                >
-                  Here at Frank Porter, we assist our clients in listing,
-                  renting and hosting their properties. With our Airbnb
-                  management services, you can sit back while we take care of
-                  everything for you. We not only help you find tenants by
-                  creating your profile and capturing aesthetic pictures of your
-                  property, but we also manage the prices, promotions and
-                  listings to help you maximise your revenue. We’ll also help
-                  you cater to your guests’ needs by renovating and cleaning
-                  your property.
-                </p>
-                <p
-                  data-aos="fade-right"
-                  data-aos-duration="1000"
-                  data-aos-delay="150"
-                >
-                  Frank Porter is a name for quality and trust. We strive to
-                  offer credible services to our clients by providing
-                  reliability and dependability. Our team is focused on meeting
-                  the growing demand for complete expert services in Airbnb
-                  management, hosting and short term rental property management.
-                </p>
-                <p
-                  data-aos="fade-right"
-                  data-aos-duration="1000"
-                  data-aos-delay="150"
-                >
-                  Renting local residences as holiday accommodation for short
-                  stays is a great option for both tourists and residents, with
-                  locals earning significantly by using their property as a
-                  holiday home. If this is what interests you, then connect with
-                  us at Frank Porter to make short term rental property
-                  management easier and more effective. Feel free to get in
-                  touch if you have any questions..
-                </p>
-              </div>
+              {contentData?.section4?.body ? (
+                <div className="airbnb-dubai section4" dangerouslySetInnerHTML={{ __html: contentData.section4.body }} />
+              ) : (
+                <p>...</p>
+              )}
             </div>
           </div>
         </div>
@@ -408,27 +192,17 @@ const AirbnbDubai = () => {
             data-aos-duration="1000"
             data-aos-delay="50"
           >
-            Some of the most amazing properties we manage in Dubai
+            {contentData?.section5?.title}
           </h4>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-6 md:mt-10">
-            <div>
-              <img
-                src={img1}
-                className="w-full max-h-[300px] h-full object-cover"
-              />
-            </div>
-            <div>
-              <img
-                src={img2}
-                className="w-full max-h-[300px] h-full object-cover"
-              />
-            </div>
-            <div>
-              <img
-                src={img3}
-                className="w-full max-h-[300px] h-full object-cover"
-              />
-            </div>
+            {contentData?.section5.images.map((image, index) => (
+              <div>
+                <img
+                  src={image}
+                  className="w-full max-h-[300px] h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
