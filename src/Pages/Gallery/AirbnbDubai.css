@@ -1,0 +1,11 @@
+.airbnb-dubai p {
+    margin-top: 12px;
+}
+.airbnb-dubai h5 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 1.5rem
+}
+.airbnb-dubai.section2 p {
+    color: #4d5461;
+}
