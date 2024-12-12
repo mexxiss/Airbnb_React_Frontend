@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosInstance";
-import { FetchGalleryParams } from "../types/gallarytypes";
+import { FetchGalleryParams, IPageResponse } from "../types/gallarytypes";
 import { ContactResponse } from "../types/contactTypes";
 import { IFaqParams } from "../types/faqTypes";
 import { PricingState } from "../types/priceTypes";
@@ -41,25 +41,22 @@ export const fetchGallary = async ({
   limit,
   page,
 }: FetchGalleryParams) => {
-  console.log({ type }, { id }, { limit }, { page });
-
   const response = await axiosInstance.get(
     `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
   );
   return response.data;
 };
+
 export const fetchGallaryInfinite = async ({
   type,
   id,
   limit,
   page,
-}: FetchGalleryParams) => {
-  console.log({ type }, { id }, { limit }, { page });
-
+}: FetchGalleryParams): Promise<IPageResponse> => {
   const response = await axiosInstance.get(
     `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
   );
-  return response.data;
+  return response.data as IPageResponse;
 };
 
 export const fetchGallaryTypes = async () => {
