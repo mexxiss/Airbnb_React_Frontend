@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { icon27 } from "../../assets/icons/index.ts";
 import { bg1 } from "../../assets/images/index.ts";
 import { Link } from "react-router-dom";
 import { FetchGalleryParams, IGallaryData } from "../../types/gallarytypes";
 import { useDispatch } from "react-redux";
-import { useQuery } from "@tanstack/react-query";
-import { fetchGallary, fetchGallaryTypes } from "../../services/apiServices";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import {
+  fetchGallary,
+  fetchGallaryInfinite,
+  fetchGallaryTypes,
+} from "../../services/apiServices";
 import { setGallary } from "../../store/features/gallarySlice";
 import GallerySkeleton from "../../Components/LoadingShimmers/GallerySkeleton.tsx";
 import { IGallaryTypesData } from "../../types/gallaryTabTypes.ts";
@@ -55,6 +60,33 @@ const Gallery = () => {
     queryFn: () => fetchGallaryTypes(),
   });
 
+  const {
+    data: infiniteData,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["galleryinfa", queryParams],
+    queryFn: ({ pageParam = 1 }) =>
+      fetchGallaryInfinite({ ...queryParams, page: pageParam, limit: 8 }),
+    getNextPageParam: (lastPage, allPage) => {
+      return lastPage?.data?.length === 8
+        ? allPage?.data?.length + 1
+        : undefined;
+    },
+  });
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [hasNextPage, inView, fetchNextPage]);
+
   const finalGallaryData = gallaryData?.data;
 
   useEffect(() => {
@@ -76,6 +108,8 @@ const Gallery = () => {
     return <p>Error: {gallaryError.message}</p>;
   if (isTypesError && typesError instanceof Error)
     return <p>Error: {typesError.message}</p>;
+
+  console.log({ infiniteData });
 
   return (
     <>
@@ -169,6 +203,7 @@ const Gallery = () => {
                       />
                     </div>
                   ))}
+              <div ref={ref}>{isFetchingNextPage && <div>Loading...</div>}</div>
             </div>
           </div>
         </div>
