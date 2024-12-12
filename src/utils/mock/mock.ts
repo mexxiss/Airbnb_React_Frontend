@@ -33,3 +33,42 @@ export const mockOccupancyData = [
     display: "background",
   },
 ];
+
+export const apiData = [
+  {
+    name: "Internet",
+    account_no: "aacsasfaf",
+    paid_by: "Frankporter",
+    provider_name: "Du",
+    web_login: "amansekhon.mexxiss@gmail.com",
+    web_pass: "hello@1234",
+    already_have_account: true,
+  },
+  {
+    name: "Electricity/Water",
+    account_no: "aacsasfaf",
+    paid_by: "Frankporter",
+    provider_name: "ADDC",
+    web_login: "amansekhon.mexxiss@gmail.com",
+    web_pass: "hello@1234",
+    already_have_account: true,
+  },
+  {
+    account_no: "asfasfasf",
+    name: "Gas",
+    paid_by: "Owner",
+    provider_name: "Aqua Cool",
+    web_login: "nbcvbcvbcv",
+    web_pass: "hello@1234",
+    already_have_account: true,
+  },
+  {
+    account_no: "bccvbcvbc",
+    name: "Chiller",
+    paid_by: "Owner",
+    provider_name: "Emi Cool",
+    web_login: "vbcbvcbvc",
+    web_pass: "cvbcvbcvbcvbcv",
+    already_have_account: false,
+  },
+];

@@ -22,6 +22,7 @@ import { ApiResponse, Requirement } from "../types/requirementTypes";
 import { UserDetails } from "../types/userDetailsTypes";
 import { PaymentDetails } from "../types/paymentsTypes";
 import { DocumentState } from "../types/documentTypes";
+import { ProvidersResponse } from "../types/serviceProviderTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -40,6 +41,21 @@ export const fetchGallary = async ({
   limit,
   page,
 }: FetchGalleryParams) => {
+  console.log({ type }, { id }, { limit }, { page });
+
+  const response = await axiosInstance.get(
+    `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
+  );
+  return response.data;
+};
+export const fetchGallaryInfinite = async ({
+  type,
+  id,
+  limit,
+  page,
+}: FetchGalleryParams) => {
+  console.log({ type }, { id }, { limit }, { page });
+
   const response = await axiosInstance.get(
     `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
   );
@@ -207,7 +223,6 @@ export const updateUserDetails = async (updates: any) => {
   }
 };
 
-
 export const getPaymentDetails = async (): Promise<any> => {
   const response = await axiosInstance.get(`/payment-details`);
   return response.data;
@@ -256,7 +271,7 @@ export const uploadFile = async (
         },
       }
     );
-    return response.data; // This returns the response from the API after uploading the file
+    return response.data;
   } catch (error) {
     console.log({ error });
   }
@@ -265,7 +280,7 @@ export const uploadFile = async (
 export const fetchAirbnbDubai = async () => {
   try {
     const response = await axiosInstance.get(`/airbnb-dubai`);
-    return response.data; 
+    return response.data;
   } catch (error: any) {
     console.error(
       "Error updating user details:",
@@ -273,5 +288,9 @@ export const fetchAirbnbDubai = async () => {
     );
     throw error;
   }
-}
+};
 
+export const getServiceProviders = async (): Promise<ProvidersResponse> => {
+  const response = await axiosInstance.get<ProvidersResponse>("/providers");
+  return response.data;
+};

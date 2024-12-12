@@ -1,12 +1,44 @@
-import { KeyboardArrowRightOutlined } from "@mui/icons-material";
+import { DeleteOutline, KeyboardArrowRightOutlined } from "@mui/icons-material";
 import { Label, Radio } from "flowbite-react";
 import { Link } from "react-router-dom";
 import ConfirmDialog from "../../Components/Dialogs/ConfirmDialog";
 import Input from "../../Components/CommonField/Input";
 import { Form, FormikProvider, useFormik } from "formik";
 import Select from "../../Components/CommonField/Select";
+import { useServicesProviders } from "../../hooks/react-queries/providersservices/useServicesProviders";
+import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { setProvidersServices } from "../../store/features/providersSlice";
+import { RootState } from "../../store/store";
+import DynamicUtilites from "../../Components/dynamicuitilities/DynamicUtilites";
 
 const UtilityDetails = () => {
+  const { data, isLoading, error, isError } = useServicesProviders();
+  console.log({ data });
+
+  const finalData = useMemo(() => data?.data[0], [data]);
+
+  const dispatch = useDispatch();
+
+  const memoizedDispatch = useCallback(() => {
+    if (finalData) {
+      dispatch(
+        setProvidersServices({
+          internet: finalData.internet,
+          electricity_water: finalData.electricity_water,
+          gas: finalData.gas,
+          chiller: finalData.chiller,
+          other: finalData.other,
+        })
+      );
+    }
+  }, [finalData, dispatch]);
+
+  useEffect(() => {
+    memoizedDispatch();
+  }, [memoizedDispatch]);
+  // useServicesProviders
+
   const handleInternetConfirmation = () => {
     ConfirmDialog({
       title: "Existing Internet Account",
@@ -36,6 +68,7 @@ const UtilityDetails = () => {
       // Handle form submission//+
     }, //+
   });
+
   const options = [
     {
       value: "Yes",
@@ -106,7 +139,7 @@ const UtilityDetails = () => {
         <hr className="my-5 border-primary" />
         <div className="">
           <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-5">
-            <div className="border border-primary px-4 pt-4 pb-6">
+            {/* <div className="border border-primary px-4 pt-4 pb-6">
               <h6 className="text-2xl text-gray-800">Internet</h6>
               <hr className="my-3 border-primary" />
               <p>Do you already have an account?</p>
@@ -131,8 +164,8 @@ const UtilityDetails = () => {
                   <Label htmlFor="no">No - please organize this for me</Label>
                 </div>
               </div>
-            </div>
-            <div className="border border-primary px-4 pt-4 pb-6">
+            </div> */}
+            {/* <div className="border border-primary px-4 pt-4 pb-6">
               <h6 className="text-2xl text-gray-800">Electricity/water</h6>
               <hr className="my-3 border-primary" />
               <p>Do you already have an account?</p>
@@ -184,7 +217,7 @@ const UtilityDetails = () => {
                   <Label htmlFor="no">No - please organize this for me</Label>
                 </div>
               </div>
-              {/* If No */}
+
               <div className="mt-5">
                 <FormikProvider value={formik}>
                   <Form onSubmit={formik.handleSubmit}>
@@ -212,11 +245,11 @@ const UtilityDetails = () => {
                   </Form>
                 </FormikProvider>
               </div>
-            </div>
-            <div className="border border-primary px-4 pt-4 pb-6">
+            </div> */}
+            {/* <div className="border border-primary px-4 pt-4 pb-6">
               <h6 className="text-2xl text-gray-800">Chiller</h6>
               <hr className="my-3 border-primary" />
-              {/* If Yes */}
+
               <div>
                 <FormikProvider value={formik}>
                   <Form onSubmit={formik.handleSubmit}>
@@ -258,17 +291,18 @@ const UtilityDetails = () => {
                   </Form>
                 </FormikProvider>
               </div>
-            </div>
-            <div className="border border-primary px-4 pt-4 pb-6 flex items-center justify-center">
+            </div> */}
+            {/* <div className="border border-primary px-4 pt-4 pb-6 flex items-center justify-center">
               <button className="btn1 w-full !rounded-none">
                 Add New Utility
               </button>
-            </div>
+            </div> */}
           </div>
+          <DynamicUtilites />
         </div>
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <button className="btn1 !rounded-none">Save Section</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
