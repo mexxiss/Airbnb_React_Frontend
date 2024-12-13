@@ -73,8 +73,6 @@ const DynamicUtilites = () => {
         <Form onSubmit={formik.handleSubmit} onChange={handleChange}>
           <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-5">
             {utilities.map((utility: any) => {
-              console.log({ utility });
-
               return (
                 <div
                   key={utility.id}

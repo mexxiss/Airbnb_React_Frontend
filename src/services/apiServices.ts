@@ -23,6 +23,7 @@ import { UserDetails } from "../types/userDetailsTypes";
 import { PaymentDetails } from "../types/paymentsTypes";
 import { DocumentState } from "../types/documentTypes";
 import { ProvidersResponse } from "../types/serviceProviderTypes";
+import { UtilityUpdate } from "../types/uiltiliyProvidersTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -293,4 +294,32 @@ export const fetchAirbnbDubai = async () => {
 export const getServiceProviders = async (): Promise<ProvidersResponse> => {
   const response = await axiosInstance.get<ProvidersResponse>("/providers");
   return response.data;
+};
+
+export const updatePropertyUtilities = async (
+  propertyId: string,
+  updates: UtilityUpdate[]
+): Promise<any> => {
+  try {
+    const response = await axiosInstance.put(
+      `/property-utilities/${propertyId}`,
+      {
+        updates,
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error updating property utilities:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+export const fetchUtilities = async (propertyId: string) => {
+  const response = await axiosInstance.get(
+    `/property-utilities?property=${propertyId}`
+  );
+  return response.data.utilities;
 };
