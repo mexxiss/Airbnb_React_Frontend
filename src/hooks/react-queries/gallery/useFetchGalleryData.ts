@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { FetchGalleryParams, IGallaryData } from "../../../types/gallarytypes";
+import { FetchGalleryParams } from "../../../types/gallarytypes";
 import { fetchGallary } from "../../../services/apiServices";
 
 interface UseFetchGalleryParams {

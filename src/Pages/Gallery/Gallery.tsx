@@ -3,35 +3,18 @@ import { useInView } from "react-intersection-observer";
 import { icon27 } from "../../assets/icons/index.ts";
 import { bg1 } from "../../assets/images/index.ts";
 import { Link } from "react-router-dom";
-import { FetchGalleryParams, IGallaryData } from "../../types/gallarytypes";
+import { FetchGalleryParams, IGallaryData, IPageResponse } from "../../types/gallarytypes";
 import { useDispatch } from "react-redux";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import {
-  fetchGallary,
-  fetchGallaryInfinite,
-  fetchGallaryTypes,
-} from "../../services/apiServices";
+import { fetchGallaryInfinite, fetchGallaryTypes } from "../../services/apiServices";
 import { setGallary } from "../../store/features/gallarySlice";
 import GallerySkeleton from "../../Components/LoadingShimmers/GallerySkeleton.tsx";
 import { IGallaryTypesData } from "../../types/gallaryTabTypes.ts";
 import { setGallaryTypes } from "../../store/features/gallaryTypesSlice.ts";
 
-interface IResponse {
-  success: boolean | null;
-  data: IGallaryData[] | null;
-  statusCode: number | null;
-  message: string | null;
-}
-interface ITypesResponse {
-  success: boolean | null;
-  data: IGallaryTypesData[] | null;
-  statusCode: number | null;
-  message: string | null;
-}
-
 const Gallery = () => {
-  const [isActive, SetIsActive] = useState("All");
-  const [isKey, SetIsKey] = useState("All");
+  const [isActive, setIsActive] = useState("All");
+  const [isKey, setIsKey] = useState("All");
   const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
   const dispatch = useDispatch();
 
@@ -41,45 +24,27 @@ const Gallery = () => {
       : { type: "All", id: "" };
 
   const {
-    isLoading: isGallaryLoading,
-    isError: isGallaryError,
-    error: gallaryError,
-    data: gallaryData,
-  } = useQuery<IResponse>({
-    queryKey: ["gallaryData", queryParams],
-    queryFn: () => fetchGallary(queryParams),
-  });
-
-  const {
-    isLoading: isTypesLoading,
-    isError: isTypesError,
-    error: typesError,
-    data: typesData,
-  } = useQuery<ITypesResponse>({
-    queryKey: ["gallaryTypesData"],
-    queryFn: () => fetchGallaryTypes(),
-  });
-
-  const {
     data: infiniteData,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
+    isLoading: isGalleryLoading,
+    isError: isGalleryError,
+    error: galleryError,
   } = useInfiniteQuery({
-    queryKey: ["galleryinfa", queryParams],
-    queryFn: ({ pageParam = 1 }) =>
+    queryKey: ["galleryData", queryParams],
+    queryFn: ({ pageParam = 1 }: {pageParam: number}) =>
       fetchGallaryInfinite({ ...queryParams, page: pageParam, limit: 8 }),
-    getNextPageParam: (lastPage, allPage) => {
-      return lastPage?.data?.length === 8
-        ? allPage?.data?.length + 1
-        : undefined;
+    getNextPageParam: (lastPage: IPageResponse, allPages: IPageResponse[]) => {
+      return lastPage.data.length === 8 ? allPages.length + 1 : undefined;
     },
+    initialPageParam: 1,
+    enabled: !!queryParams,
   });
 
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 1,
-  });
+  console.log(infiniteData);
+  
+  const { ref, inView } = useInView({ threshold: 1 });
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -87,11 +52,21 @@ const Gallery = () => {
     }
   }, [hasNextPage, inView, fetchNextPage]);
 
-  const finalGallaryData = gallaryData?.data;
+  const finalGalleryData: IGallaryData[] = infiniteData?.pages?.flatMap((page) => page.data ) || []
 
   useEffect(() => {
-    dispatch(setGallary(finalGallaryData as IGallaryData[]));
-  }, [gallaryData]);
+    dispatch(setGallary(finalGalleryData as IGallaryData[]));
+  }, [finalGalleryData, dispatch]);
+
+  const {
+    isLoading: isTypesLoading,
+    isError: isTypesError,
+    error: typesError,
+    data: typesData,
+  } = useQuery({
+    queryKey: ["galleryTypesData"],
+    queryFn: fetchGallaryTypes,
+  });
 
   useEffect(() => {
     if (typesData?.data) {
@@ -102,18 +77,15 @@ const Gallery = () => {
       setFinalTypesData(updatedTypesData);
       dispatch(setGallaryTypes(updatedTypesData as IGallaryTypesData[]));
     }
-  }, [typesData]);
+  }, [typesData, dispatch]);
 
-  if (isGallaryError && gallaryError instanceof Error)
-    return <p>Error: {gallaryError.message}</p>;
+  if (isGalleryError && galleryError instanceof Error)
+    return <p>Error: {galleryError.message}</p>;
   if (isTypesError && typesError instanceof Error)
     return <p>Error: {typesError.message}</p>;
 
-  console.log({ infiniteData });
-
   return (
     <>
-      {/* banner */}
       <div
         className="pt-20 sm:pt-28 pb-10 sm:pb-14 lg:pt-32 lg:pb-20 bg-cover bg-bottom"
         style={{
@@ -126,7 +98,7 @@ const Gallery = () => {
               Gallery
             </h2>
             <p className="flex items-center gap-4 text-[#4C360E]">
-              <span className="">
+              <span>
                 <Link
                   to="/"
                   className="hover:underline inline-block max-w-[80px] sm:max-w-full overflow-hidden text-nowrap text-ellipsis"
@@ -164,16 +136,16 @@ const Gallery = () => {
           <div className="mt-12">
             <ul className="flex overflow-auto justify-between items-center border-b-2 border-[#AEAEAE]">
               {!isTypesLoading &&
-                finalTypesData?.map((e: any, index: any) => (
+                finalTypesData?.map((e, index) => (
                   <li key={index}>
                     <button
-                      className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${
-                        isActive === e?._id
+                      className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${isActive === e?._id
                           ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
                           : "text-[#1F1607] font-normal"
-                      }`}
+                        }`}
                       onClick={() => {
-                        SetIsActive(e?._id), SetIsKey(e?.name);
+                        setIsActive(e?._id);
+                        setIsKey(e?.name);
                       }}
                     >
                       {e?.name}
@@ -184,26 +156,32 @@ const Gallery = () => {
           </div>
           <div className="mt-10">
             <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {isGallaryLoading
+              {isGalleryLoading
                 ? Array(4)
-                    .fill(0)
-                    .map((_, index) => (
-                      <div key={index}>
-                        <GallerySkeleton />
-                      </div>
-                    ))
-                : finalGallaryData?.map((e: any, index: any) => (
-                    <div
-                      key={index}
-                      className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
-                    >
-                      <img
-                        src={e.img_url}
-                        className="w-full h-full object-cover object-center"
-                      />
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index}>
+                      <GallerySkeleton />
                     </div>
-                  ))}
-              <div ref={ref}>{isFetchingNextPage && <div>Loading...</div>}</div>
+                  ))
+                : finalGalleryData?.map((e, index) => (
+                  <div
+                    key={index}
+                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                  >
+                    <img
+                      src={e.img_url}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                ))}
+              <div ref={ref}>{isFetchingNextPage && 
+                Array(4).fill(0).map((_, index) => (
+                  <div key={index}>
+                    <GallerySkeleton />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
