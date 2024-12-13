@@ -52,7 +52,7 @@ const Select: React.FC<ISelect> = ({
         <option value="" disabled>
           Select {placeholder}
         </option>
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <option value={option.value} key={index}>
             {option.label}
           </option>

@@ -1,6 +1,6 @@
 import { DeleteOutline, KeyboardArrowRightOutlined } from "@mui/icons-material";
 import { Label, Radio } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ConfirmDialog from "../../Components/Dialogs/ConfirmDialog";
 import Input from "../../Components/CommonField/Input";
 import { Form, FormikProvider, useFormik } from "formik";
@@ -11,14 +11,42 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { setProvidersServices } from "../../store/features/providersSlice";
 import { RootState } from "../../store/store";
 import DynamicUtilites from "../../Components/dynamicuitilities/DynamicUtilites";
+import { useUtilities } from "../../hooks/react-queries/providersservices/useUtilities";
+import { setFetchUtilities } from "../../store/features/utilitiesSlice";
+
+interface UtilityManage {
+  utility_name: string;
+  manage_allow: boolean;
+  property: string;
+  user_id: string;
+}
 
 const UtilityDetails = () => {
+  const { id } = useParams();
+  const user_id = useSelector((state: RootState) => state.auth.user?._id);
+  const dispatch = useDispatch();
+
   const { data, isLoading, error, isError } = useServicesProviders();
-  console.log({ data });
+
+  const [utilityManage, setUtilityManage] = useState<UtilityManage>({
+    utility_name: "",
+    manage_allow: false,
+    property: id || "",
+    user_id: user_id || "",
+  });
+
+  console.log({ utilityManage });
+
+  const {
+    data: utilities,
+    isLoading: isLoadingUtility,
+    error: errorUtility,
+    isError: isErrorUtility,
+  } = useUtilities(id || "");
 
   const finalData = useMemo(() => data?.data[0], [data]);
 
-  const dispatch = useDispatch();
+  const utilitiesData = useMemo(() => utilities, [utilities]);
 
   const memoizedDispatch = useCallback(() => {
     if (finalData) {
@@ -34,12 +62,25 @@ const UtilityDetails = () => {
     }
   }, [finalData, dispatch]);
 
+  const memoizedDispatchUtility = useCallback(() => {
+    if (utilitiesData) {
+      dispatch(setFetchUtilities(utilitiesData));
+    }
+  }, [utilitiesData, dispatch]);
+
   useEffect(() => {
     memoizedDispatch();
   }, [memoizedDispatch]);
+
+  useEffect(() => {
+    memoizedDispatchUtility();
+  }, [memoizedDispatchUtility]);
   // useServicesProviders
 
-  const handleInternetConfirmation = () => {
+  const handleInternetConfirmation = (
+    manage_allow: boolean,
+    service: string
+  ) => {
     ConfirmDialog({
       title: "Existing Internet Account",
       text: "Are you sure?",
@@ -53,6 +94,7 @@ const UtilityDetails = () => {
       },
     });
   };
+
   const initialValues = {
     //+
     name: "", //+
@@ -97,6 +139,7 @@ const UtilityDetails = () => {
       label: "Owner",
     },
   ];
+
   return (
     <div>
       {/* Breadcrumb */}
@@ -139,7 +182,7 @@ const UtilityDetails = () => {
         <hr className="my-5 border-primary" />
         <div className="">
           <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-5">
-            {/* <div className="border border-primary px-4 pt-4 pb-6">
+            <div className="border border-primary px-4 pt-4 pb-6">
               <h6 className="text-2xl text-gray-800">Internet</h6>
               <hr className="my-3 border-primary" />
               <p>Do you already have an account?</p>
@@ -150,7 +193,14 @@ const UtilityDetails = () => {
                     name="countries"
                     value="Yes"
                     className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
-                    onClick={handleInternetConfirmation}
+                    onClick={() => {
+                      handleInternetConfirmation(true, "internet"),
+                        setUtilityManage((prev) => ({
+                          ...prev,
+                          utility_name: "internet",
+                          manage_allow: true,
+                        }));
+                    }}
                   />
                   <Label htmlFor="yes">Yes</Label>
                 </div>
@@ -160,11 +210,19 @@ const UtilityDetails = () => {
                     name="countries"
                     value="No"
                     className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
+                    onClick={() => {
+                      handleInternetConfirmation(false, "internet"),
+                        setUtilityManage((prev) => ({
+                          ...prev,
+                          utility_name: "internet",
+                          manage_allow: false,
+                        }));
+                    }}
                   />
                   <Label htmlFor="no">No - please organize this for me</Label>
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* <div className="border border-primary px-4 pt-4 pb-6">
               <h6 className="text-2xl text-gray-800">Electricity/water</h6>
               <hr className="my-3 border-primary" />
@@ -300,9 +358,6 @@ const UtilityDetails = () => {
           </div>
           <DynamicUtilites />
         </div>
-        {/* <div className="mt-8">
-          <button className="btn1 !rounded-none">Save Section</button>
-        </div> */}
       </div>
     </div>
   );
