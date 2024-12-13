@@ -33,7 +33,7 @@ const Gallery = () => {
     error: galleryError,
   } = useInfiniteQuery({
     queryKey: ["galleryData", queryParams],
-    queryFn: ({ pageParam = 1 }) =>
+    queryFn: ({ pageParam = 1 }: {pageParam: number}) =>
       fetchGallaryInfinite({ ...queryParams, page: pageParam, limit: 8 }),
     getNextPageParam: (lastPage: IPageResponse, allPages: IPageResponse[]) => {
       return lastPage.data.length === 8 ? allPages.length + 1 : undefined;
@@ -42,6 +42,8 @@ const Gallery = () => {
     enabled: !!queryParams,
   });
 
+  console.log(infiniteData);
+  
   const { ref, inView } = useInView({ threshold: 1 });
 
   useEffect(() => {

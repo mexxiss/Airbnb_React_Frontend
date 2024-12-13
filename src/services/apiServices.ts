@@ -9,7 +9,7 @@ import {
   PropertyByIdResponse,
 } from "../types/propertiesTypes";
 import {
-  BookedDatesResponse,
+  // BookedDatesResponse,
   FilterBookedDatesRequest,
 } from "../types/bookedDates";
 import { TestimonialsResponse } from "../types/testimonials";
@@ -21,7 +21,7 @@ import { LegalResponse } from "../types/legalTypes";
 import { ApiResponse, Requirement } from "../types/requirementTypes";
 import { UserDetails } from "../types/userDetailsTypes";
 import { PaymentDetails } from "../types/paymentsTypes";
-import { DocumentState } from "../types/documentTypes";
+// import { DocumentState } from "../types/documentTypes";
 import { ProvidersResponse } from "../types/serviceProviderTypes";
 import { UtilityUpdate } from "../types/uiltiliyProvidersTypes";
 
