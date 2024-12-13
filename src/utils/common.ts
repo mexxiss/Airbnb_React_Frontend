@@ -208,3 +208,23 @@ export const handleDownload = (url: string) => {
       console.error("Download failed:", error);
     });
 };
+
+export const paidOptions = [
+  { value: "Company", label: "Company" },
+  { value: "Owner", label: "Owner" },
+];
+export const createUtilityFields = (type: string, providerData: any) => [
+  {
+    name: "provider_name",
+    type: "select",
+    label: "Select Provider",
+    options: providerData?.[type]?.service_providers?.map((provider: any) => ({
+      label: provider.name,
+      value: provider.name,
+    })),
+  },
+  { name: "account_no", type: "text", label: "Account Number" },
+  { name: "paid_by", type: "select", label: "Paid By", options: paidOptions },
+  { name: "web_login", type: "text", label: "Web Login" },
+  { name: "web_pass", type: "password", label: "Web Password" },
+];
