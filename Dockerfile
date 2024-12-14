@@ -23,4 +23,5 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 COPY --from=build /app/dist .
 EXPOSE 80
+COPY nginx.conf /etc/nginx/nginx.conf
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
