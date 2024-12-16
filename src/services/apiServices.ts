@@ -116,9 +116,8 @@ export const fetchCountryCode = async (
 };
 
 /** Get Properties Apis */
-
 export const fetchProperties = async (): Promise<PropertiesResponse> => {
-  const response = await axiosInstance.get(`/properties`);
+  const response = await axiosInstance.get(`/users/properties`);
   return response.data;
 };
 
@@ -133,7 +132,7 @@ export const fetchPropertyById = async (
 export const fetchBookedDates = async (
   filter: FilterBookedDatesRequest
 ): Promise<any> => {
-  const response = await axiosInstance.get<any>("/booked-dates/filter", {
+  const response = await axiosInstance.get<any>("/users/booked-dates/filter", {
     params: filter,
   });
 
@@ -150,7 +149,8 @@ export const fetchTestimonials = async (): Promise<TestimonialsResponse> => {
 
 /** Login */
 export const login = async (data: LoginFormInputs): Promise<any> => {
-  const response = await axiosInstance.post("/users/login", data);
+  const response = await axiosInstance.post("/login", data);
+  console.log(response);
   return response.data;
 };
 
@@ -222,14 +222,14 @@ export const updateUserDetails = async (updates: any) => {
 };
 
 export const getPaymentDetails = async (): Promise<any> => {
-  const response = await axiosInstance.get(`/payment-details`);
+  const response = await axiosInstance.get(`/users/payment-details`);
   return response.data;
 };
 
 export const updatePaymentDetails = async (
   updates: PaymentDetails
 ): Promise<PaymentDetails> => {
-  const response = await axiosInstance.put(`/payment-details/${updates._id}`, {
+  const response = await axiosInstance.put(`/users/payment-details/${updates._id}`, {
     updates,
   });
   return response.data;
@@ -237,7 +237,7 @@ export const updatePaymentDetails = async (
 
 export const getUserDocuments = async (propertyId: string): Promise<any> => {
   const response = await axiosInstance.get(
-    `/user-documents?property=${propertyId}`
+    `/users/user-documents?property=${propertyId}`
   );
   return response.data;
 };
@@ -246,7 +246,7 @@ export const updateDocument = async (
   documentId: string,
   updates: any
 ): Promise<any> => {
-  const response = await axiosInstance.put(`/user-documents/${documentId}`, {
+  const response = await axiosInstance.put(`/users/user-documents/${documentId}`, {
     updates,
   });
   return response.data;
@@ -261,7 +261,7 @@ export const uploadFile = async (
 
   try {
     const response = await axiosInstance.post(
-      `/upload/single?folder=${folder}`,
+      `/users/upload/single?folder=${folder}`,
       formData,
       {
         headers: {
@@ -289,7 +289,7 @@ export const fetchAirbnbDubai = async () => {
 };
 
 export const getServiceProviders = async (): Promise<ProvidersResponse> => {
-  const response = await axiosInstance.get<ProvidersResponse>("/providers");
+  const response = await axiosInstance.get<ProvidersResponse>("/users/providers");
   return response.data;
 };
 
@@ -299,7 +299,7 @@ export const updatePropertyUtilities = async (
 ): Promise<any> => {
   try {
     const response = await axiosInstance.put(
-      `/property-utilities/${propertyId}`,
+      `/users/property-utilities/${propertyId}`,
       {
         updates,
       }
@@ -316,7 +316,7 @@ export const updatePropertyUtilities = async (
 
 export const fetchUtilities = async (propertyId: string) => {
   const response = await axiosInstance.get(
-    `/property-utilities?property=${propertyId}`
+    `/users/property-utilities?property=${propertyId}`
   );
   return response.data.utilities;
 };
