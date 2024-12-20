@@ -1,13 +1,11 @@
-import { DeleteOutline, KeyboardArrowRightOutlined } from "@mui/icons-material";
+import { KeyboardArrowRightOutlined } from "@mui/icons-material";
 import { Label, Radio } from "flowbite-react";
 import { Link, useParams } from "react-router-dom";
 import ConfirmDialog from "../../Components/Dialogs/ConfirmDialog";
-import Input from "../../Components/CommonField/Input";
-import { Form, FormikProvider, useFormik } from "formik";
-import Select from "../../Components/CommonField/Select";
+import { useFormik } from "formik";
 import { useServicesProviders } from "../../hooks/react-queries/providersservices/useServicesProviders";
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { setProvidersServices } from "../../store/features/providersSlice";
 import { RootState } from "../../store/store";
 import DynamicUtilites from "../../Components/dynamicuitilities/DynamicUtilites";
@@ -27,6 +25,7 @@ const UtilityDetails = () => {
   const dispatch = useDispatch();
 
   const { data, isLoading, error, isError } = useServicesProviders();
+  const { data: utilities, isLoading: isLoadingUtility, error: errorUtility, isError: isErrorUtility } = useUtilities(id || "");
 
   const [utilityManage, setUtilityManage] = useState<UtilityManage>({
     utility_name: "",
@@ -35,52 +34,26 @@ const UtilityDetails = () => {
     user_id: user_id || "",
   });
 
-  console.log({ utilityManage });
-
-  const {
-    data: utilities,
-    isLoading: isLoadingUtility,
-    error: errorUtility,
-    isError: isErrorUtility,
-  } = useUtilities(id || "");
-
-  const finalData = useMemo(() => data?.data[0], [data]);
-
-  const utilitiesData = useMemo(() => utilities, [utilities]);
-
-  const memoizedDispatch = useCallback(() => {
-    if (finalData) {
-      dispatch(
-        setProvidersServices({
-          internet: finalData.internet,
-          electricity_water: finalData.electricity_water,
-          gas: finalData.gas,
-          chiller: finalData.chiller,
-          other: finalData.other,
-        })
-      );
+  useEffect(() => {
+    if (data) {
+      const finalData = data.data[0];
+      dispatch(setProvidersServices({
+        internet: finalData.internet,
+        electricity_water: finalData.electricity_water,
+        gas: finalData.gas,
+        chiller: finalData.chiller,
+        other: finalData.other,
+      }));
     }
-  }, [finalData, dispatch]);
-
-  const memoizedDispatchUtility = useCallback(() => {
-    if (utilitiesData) {
-      dispatch(setFetchUtilities(utilitiesData));
-    }
-  }, [utilitiesData, dispatch]);
+  }, [data, dispatch]);
 
   useEffect(() => {
-    memoizedDispatch();
-  }, [memoizedDispatch]);
+    if (utilities) {
+      dispatch(setFetchUtilities(utilities));
+    }
+  }, [utilities, dispatch]);
 
-  useEffect(() => {
-    memoizedDispatchUtility();
-  }, [memoizedDispatchUtility]);
-  // useServicesProviders
-
-  const handleInternetConfirmation = (
-    manage_allow: boolean,
-    service: string
-  ) => {
+  const handleInternetConfirmation = (manage_allow: boolean, service: string) => {
     ConfirmDialog({
       title: "Existing Internet Account",
       text: "Are you sure?",
@@ -96,48 +69,27 @@ const UtilityDetails = () => {
   };
 
   const initialValues = {
-    //+
-    name: "", //+
-  }; //+
+    name: "",
+  };
 
   const formik = useFormik({
-    //+
-    initialValues, //+
+    initialValues,
     onSubmit: (values) => {
-      //+
       console.log(values);
-
-      // Handle form submission//+
-    }, //+
+      // Handle form submission
+    },
   });
 
   const options = [
-    {
-      value: "Yes",
-      label: "Yes",
-    },
-    {
-      value: "No",
-      label: "No",
-    },
-    {
-      value: "Unknown",
-      label: "Unknown",
-    },
-    {
-      value: "No Internet",
-      label: "No Internet",
-    },
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+    { value: "Unknown", label: "Unknown" },
+    { value: "No Internet", label: "No Internet" },
   ];
+
   const paidOptions = [
-    {
-      value: "Frankporter",
-      label: "Frankporter",
-    },
-    {
-      value: "Owner",
-      label: "Owner",
-    },
+    { value: "Frankporter", label: "Frankporter" },
+    { value: "Owner", label: "Owner" },
   ];
 
   return (
@@ -195,11 +147,11 @@ const UtilityDetails = () => {
                     className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
                     onClick={() => {
                       handleInternetConfirmation(true, "internet"),
-                        setUtilityManage((prev) => ({
-                          ...prev,
-                          utility_name: "internet",
-                          manage_allow: true,
-                        }));
+                      setUtilityManage((prev) => ({
+                        ...prev,
+                        utility_name: "internet",
+                        manage_allow: true,
+                      }));
                     }}
                   />
                   <Label htmlFor="yes">Yes</Label>
@@ -212,149 +164,17 @@ const UtilityDetails = () => {
                     className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
                     onClick={() => {
                       handleInternetConfirmation(false, "internet"),
-                        setUtilityManage((prev) => ({
-                          ...prev,
-                          utility_name: "internet",
-                          manage_allow: false,
-                        }));
+                      setUtilityManage((prev) => ({
+                        ...prev,
+                        utility_name: "internet",
+                        manage_allow: false,
+                      }));
                     }}
                   />
                   <Label htmlFor="no">No - please organize this for me</Label>
                 </div>
               </div>
             </div>
-            {/* <div className="border border-primary px-4 pt-4 pb-6">
-              <h6 className="text-2xl text-gray-800">Electricity/water</h6>
-              <hr className="my-3 border-primary" />
-              <p>Do you already have an account?</p>
-              <div className="radio flex flex-col gap-2 mt-3">
-                <div className="flex items-center gap-2">
-                  <Radio
-                    id="yes"
-                    name="countries"
-                    value="Yes"
-                    className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
-                    onClick={handleInternetConfirmation}
-                  />
-                  <Label htmlFor="yes">Yes</Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Radio
-                    id="no"
-                    name="countries"
-                    value="No"
-                    className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
-                  />
-                  <Label htmlFor="no">No - please organize this for me</Label>
-                </div>
-              </div>
-            </div>
-            <div className="border border-primary px-4 pt-4 pb-6">
-              <h6 className="text-2xl text-gray-800">Gas</h6>
-              <hr className="my-3 border-primary" />
-              <p>Do you already have an account?</p>
-              <div className="radio flex flex-col gap-2 mt-3">
-                <div className="flex items-center gap-2">
-                  <Radio
-                    id="yes"
-                    name="countries"
-                    value="Yes"
-                    className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
-                    onClick={handleInternetConfirmation}
-                  />
-                  <Label htmlFor="yes">Yes</Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Radio
-                    id="no"
-                    name="countries"
-                    value="No"
-                    className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
-                    defaultChecked
-                  />
-                  <Label htmlFor="no">No - please organize this for me</Label>
-                </div>
-              </div>
-
-              <div className="mt-5">
-                <FormikProvider value={formik}>
-                  <Form onSubmit={formik.handleSubmit}>
-                    <div className="grid grid-cols-1 gap-4">
-                      <div>
-                        <Input
-                          inputClass="!py-2"
-                          name="email"
-                          type="email"
-                          label="Email"
-                          value=""
-                        />
-                        <p className="text-xs mt-2 text-gray-500">
-                          Please upload your documents in the document section
-                          so we can proceed with the application
-                        </p>
-                      </div>
-                      <Select
-                        options={paidOptions}
-                        name="paidBy"
-                        label="Paid By"
-                        value=""
-                      />
-                    </div>
-                  </Form>
-                </FormikProvider>
-              </div>
-            </div> */}
-            {/* <div className="border border-primary px-4 pt-4 pb-6">
-              <h6 className="text-2xl text-gray-800">Chiller</h6>
-              <hr className="my-3 border-primary" />
-
-              <div>
-                <FormikProvider value={formik}>
-                  <Form onSubmit={formik.handleSubmit}>
-                    <div className="grid grid-cols-1 gap-4">
-                      <Select
-                        options={options}
-                        name="selectProvider"
-                        label="Select Provider"
-                        value=""
-                      />
-                      <Input
-                        inputClass="!py-2"
-                        name="accNo"
-                        type="text"
-                        label="Account Number"
-                        value=""
-                      />
-                      <Select
-                        options={paidOptions}
-                        name="paidBy"
-                        label="Paid By"
-                        value=""
-                      />
-                      <Input
-                        inputClass="!py-2"
-                        name="webLogin"
-                        type="text"
-                        label="Web Login"
-                        value=""
-                      />
-                      <Input
-                        inputClass="!py-2"
-                        name="webPassword"
-                        type="text"
-                        label="Web Password"
-                        value=""
-                      />
-                    </div>
-                  </Form>
-                </FormikProvider>
-              </div>
-            </div> */}
-            {/* <div className="border border-primary px-4 pt-4 pb-6 flex items-center justify-center">
-              <button className="btn1 w-full !rounded-none">
-                Add New Utility
-              </button>
-            </div> */}
           </div>
           <DynamicUtilites />
         </div>

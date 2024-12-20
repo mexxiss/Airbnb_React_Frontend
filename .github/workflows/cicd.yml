@@ -50,7 +50,8 @@ jobs:
             # Step 2: Stop and remove the existing container (if it exists)
             docker stop airbnb-management-user-frontend-container || true
             docker rm airbnb-management-user-frontend-container || true
-      
+            docker system prune -f 
+            
             # Step 3: Run a new container with environment variables
             docker run -d \
               -p 5173:80 \

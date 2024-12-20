@@ -59,6 +59,7 @@ import { RootState } from "./store/store.ts";
 import { isTokenExpired } from "./utils/token/tokenHandler.ts";
 import Gallery from "./Pages/Gallery/Gallery.tsx";
 import GalleryNew from "./Pages/Gallery/GalleryNew.tsx";
+import Utilities from "./Components/dynamicuitilities/Utilities.tsx";
 
 const App = () => {
   useEffect(() => {
@@ -231,7 +232,7 @@ const App = () => {
             },
             {
               path: "settings/property-details/update-utility-details/:id?",
-              element: <UtilityDetails />,
+              element: <Utilities />,
             },
             {
               path: "help",

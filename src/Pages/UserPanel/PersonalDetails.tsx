@@ -32,18 +32,17 @@ const PersonalDetails = () => {
 
   const userData = useSelector((state: RootState) => state.userdetails.user);
 
-  const initialValues = {
-    firstName: userData?.first_name || "",
-    lastName: userData?.last_name || "",
-    email: userData?.email[0] || "",
-    address: userData?.address?.street || "",
-    number: userData?.phone[0] || "",
-    SecEmail: userData?.email[1] || "",
-    SecNumber: userData?.phone[1] || "",
-  };
-
   const formik = useFormik({
-    initialValues,
+    initialValues: {
+      firstName: userData?.first_name || "",
+      lastName: userData?.last_name || "",
+      email: userData?.email[0] || "",
+      address: userData?.address?.street || "",
+      number: userData?.phone[0] || "",
+      SecEmail: userData?.email[1] || "",
+      SecNumber: userData?.phone[1] || "",
+    },
+    enableReinitialize: true, // Add this line to enable reinitialization
     onSubmit: async (values) => {
       try {
         const updates = {
