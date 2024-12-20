@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosInstance";
-import { FetchGalleryParams } from "../types/gallarytypes";
+import { FetchGalleryParams, IPageResponse } from "../types/gallarytypes";
 import { ContactResponse } from "../types/contactTypes";
 import { IFaqParams } from "../types/faqTypes";
 import { PricingState } from "../types/priceTypes";
@@ -9,7 +9,7 @@ import {
   PropertyByIdResponse,
 } from "../types/propertiesTypes";
 import {
-  BookedDatesResponse,
+  // BookedDatesResponse,
   FilterBookedDatesRequest,
 } from "../types/bookedDates";
 import { TestimonialsResponse } from "../types/testimonials";
@@ -19,6 +19,11 @@ import { ArticlesResponse } from "../types/articleTypes";
 import { BlogsResponse } from "../types/blogTypes";
 import { LegalResponse } from "../types/legalTypes";
 import { ApiResponse, Requirement } from "../types/requirementTypes";
+import { UserDetails } from "../types/userDetailsTypes";
+import { PaymentDetails } from "../types/paymentsTypes";
+// import { DocumentState } from "../types/documentTypes";
+import { ProvidersResponse } from "../types/serviceProviderTypes";
+import { UtilityUpdate } from "../types/uiltiliyProvidersTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -41,6 +46,18 @@ export const fetchGallary = async ({
     `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
   );
   return response.data;
+};
+
+export const fetchGallaryInfinite = async ({
+  type,
+  id,
+  limit,
+  page,
+}: FetchGalleryParams): Promise<IPageResponse> => {
+  const response = await axiosInstance.get(
+    `/gallery?id=${id}&type=${type}&page=${page}&limit=${limit}`
+  );
+  return response.data as IPageResponse;
 };
 
 export const fetchGallaryTypes = async () => {
@@ -99,9 +116,8 @@ export const fetchCountryCode = async (
 };
 
 /** Get Properties Apis */
-
 export const fetchProperties = async (): Promise<PropertiesResponse> => {
-  const response = await axiosInstance.get(`/properties`);
+  const response = await axiosInstance.get(`/users/properties`);
   return response.data;
 };
 
@@ -116,7 +132,7 @@ export const fetchPropertyById = async (
 export const fetchBookedDates = async (
   filter: FilterBookedDatesRequest
 ): Promise<any> => {
-  const response = await axiosInstance.get<any>("/booked-dates/filter", {
+  const response = await axiosInstance.get<any>("/users/booked-dates/filter", {
     params: filter,
   });
 
@@ -133,7 +149,8 @@ export const fetchTestimonials = async (): Promise<TestimonialsResponse> => {
 
 /** Login */
 export const login = async (data: LoginFormInputs): Promise<any> => {
-  const response = await axiosInstance.post("/users/login", data);
+  const response = await axiosInstance.post("/login", data);
+  console.log(response);
   return response.data;
 };
 
@@ -184,4 +201,122 @@ export const fetchLegals = async (): Promise<LegalResponse> => {
 export const fetchRequirements = async (): Promise<Requirement[]> => {
   const response = await axiosInstance.get<ApiResponse>("/requirements");
   return response.data.data;
+};
+
+export const fetchUserDetails = async (): Promise<UserDetails> => {
+  const response = await axiosInstance.get(`/users`);
+  return response.data.user;
+};
+
+export const updateUserDetails = async (updates: any) => {
+  try {
+    const response = await axiosInstance.put(`/users`, { updates });
+    return response.data; // Return the updated user details
+  } catch (error: any) {
+    console.error(
+      "Error updating user details:",
+      error.response || error.message
+    );
+    throw error;
+  }
+};
+
+export const getPaymentDetails = async (): Promise<any> => {
+  const response = await axiosInstance.get(`/users/payment-details`);
+  return response.data;
+};
+
+export const updatePaymentDetails = async (
+  updates: PaymentDetails
+): Promise<PaymentDetails> => {
+  const response = await axiosInstance.put(`/users/payment-details/${updates._id}`, {
+    updates,
+  });
+  return response.data;
+};
+
+export const getUserDocuments = async (propertyId: string): Promise<any> => {
+  const response = await axiosInstance.get(
+    `/users/user-documents?property=${propertyId}`
+  );
+  return response.data;
+};
+
+export const updateDocument = async (
+  documentId: string,
+  updates: any
+): Promise<any> => {
+  const response = await axiosInstance.put(`/users/user-documents/${documentId}`, {
+    updates,
+  });
+  return response.data;
+};
+
+export const uploadFile = async (
+  file: File | string,
+  folder: string
+): Promise<any> => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await axiosInstance.post(
+      `/users/upload/single?folder=${folder}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
+export const fetchAirbnbDubai = async () => {
+  try {
+    const response = await axiosInstance.get(`/airbnb-dubai`);
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error updating user details:",
+      error.response || error.message
+    );
+    throw error;
+  }
+};
+
+export const getServiceProviders = async (): Promise<ProvidersResponse> => {
+  const response = await axiosInstance.get<ProvidersResponse>("/users/providers");
+  return response.data;
+};
+
+export const updatePropertyUtilities = async (
+  propertyId: string,
+  updates: UtilityUpdate[]
+): Promise<any> => {
+  try {
+    const response = await axiosInstance.put(
+      `/users/property-utilities/${propertyId}`,
+      {
+        updates,
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error updating property utilities:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+export const fetchUtilities = async (propertyId: string) => {
+  const response = await axiosInstance.get(
+    `/users/property-utilities?property=${propertyId}`
+  );
+  return response.data.utilities;
 };

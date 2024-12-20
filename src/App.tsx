@@ -30,6 +30,7 @@ import BlogDetails from "./Pages/Blog/BlogDetails.tsx";
 import TermAndCondition from "./Pages/TermAndCondition/TermAndCondition.tsx";
 import AirbnbRequirements from "./Pages/AirbnbRequirements/AirbnbRequirements.tsx";
 import AirbnbDubai from "./Pages/Gallery/AirbnbDubai.tsx";
+import OwnerApp from "./Pages/Gallery/OwnerApp.tsx";
 
 // Lazy loading services
 import CleaningMaintenance from "./Pages/Services/CleaningMaintenance.tsx";
@@ -152,6 +153,10 @@ const App = () => {
           path: "/airbnb-dubai",
           element: <AirbnbDubai />,
         },
+        {
+          path: "/owner-app",
+          element: <OwnerApp />,
+        },
       ],
     },
     {
@@ -225,7 +230,7 @@ const App = () => {
               element: <PropertyDetails />,
             },
             {
-              path: "settings/property-details/update-utility-details",
+              path: "settings/property-details/update-utility-details/:id?",
               element: <UtilityDetails />,
             },
             {

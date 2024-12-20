@@ -14,6 +14,12 @@ import articlesReducer from "./features/articlesSlice";
 import blogReducer from "./features/blogSlice";
 import legalsReducer from "./features/legalsSlice";
 import requirementReducer from "./features/requirementSlice";
+import userDetailsReducer from "./features/userDetailsSlice";
+import paymentDetailsReducer from "./features/paymentDetailsSlice";
+import userDocumentsReducer from "./features/userDocumentsSlice";
+import airbnbDubaiReducer from "./features/airbnbDubaiSlice";
+import providerseducer from "./features/providersSlice";
+import utilitiesrseducer from "./features/utilitiesSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -31,6 +37,12 @@ const rootReducer = combineReducers({
   blogs: blogReducer,
   legals: legalsReducer,
   requirements: requirementReducer,
+  userdetails: userDetailsReducer,
+  userDocuments: userDocumentsReducer,
+  paymentDetails: paymentDetailsReducer,
+  airbnbdubai: airbnbDubaiReducer,
+  providers: providerseducer,
+  utilities: utilitiesrseducer,
 });
 
 export default rootReducer;
