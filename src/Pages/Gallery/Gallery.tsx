@@ -33,7 +33,7 @@ const Gallery = () => {
     error: galleryError,
   } = useInfiniteQuery({
     queryKey: ["galleryData", queryParams],
-    queryFn: ({ pageParam = 1 }: {pageParam: number}) =>
+    queryFn: ({ pageParam = 1 }: { pageParam: number }) =>
       fetchGallaryInfinite({ ...queryParams, page: pageParam, limit: 8 }),
     getNextPageParam: (lastPage: IPageResponse, allPages: IPageResponse[]) => {
       return lastPage.data.length === 8 ? allPages.length + 1 : undefined;
@@ -43,7 +43,7 @@ const Gallery = () => {
   });
 
   console.log(infiniteData);
-  
+
   const { ref, inView } = useInView({ threshold: 1 });
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Gallery = () => {
     }
   }, [hasNextPage, inView, fetchNextPage]);
 
-  const finalGalleryData: IGallaryData[] = infiniteData?.pages?.flatMap((page) => page.data ) || []
+  const finalGalleryData: IGallaryData[] = infiniteData?.pages?.flatMap((page) => page.data) || []
 
   useEffect(() => {
     dispatch(setGallary(finalGalleryData as IGallaryData[]));
@@ -140,8 +140,8 @@ const Gallery = () => {
                   <li key={index}>
                     <button
                       className={`px-8 py-1 text-nowrap text-center capitalize md:text-lg ${isActive === e?._id
-                          ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
-                          : "text-[#1F1607] font-normal"
+                        ? "border-b-[3.5px] border-[#DCC397] font-medium text-[#DCC397]"
+                        : "text-[#1F1607] font-normal"
                         }`}
                       onClick={() => {
                         setIsActive(e?._id);
@@ -174,14 +174,18 @@ const Gallery = () => {
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
-                ))}
-              <div ref={ref}>{isFetchingNextPage && 
+                ))
+              }
+
+            </div>
+            <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" ref={ref}>
+              {isFetchingNextPage &&
                 Array(4).fill(0).map((_, index) => (
                   <div key={index}>
                     <GallerySkeleton />
                   </div>
-                ))}
-              </div>
+                ))
+              }
             </div>
           </div>
         </div>

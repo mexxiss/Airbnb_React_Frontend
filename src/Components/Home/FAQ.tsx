@@ -27,6 +27,7 @@ const pathMap: { [key: string]: string } = {
   "/about-us": "home",
   "/airbnb-requirements": "requirements",
   "/airbnb-dubai": "airbnb dubai",
+  "/owner-app": "owner app",
 };
 
 const FAQ = ({ title, img_url }: { title: string; img_url: string }) => {

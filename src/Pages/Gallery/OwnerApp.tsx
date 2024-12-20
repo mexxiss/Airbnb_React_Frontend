@@ -118,7 +118,7 @@ const OwnerApp = () => {
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-                <FAQ title="Interior Design FAQs" img_url={interiorFaq} />
+                <FAQ title="Owner App FAQs" img_url={interiorFaq} />
             </Suspense>
         </div>
     )
