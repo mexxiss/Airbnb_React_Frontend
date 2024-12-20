@@ -20,6 +20,7 @@ import userDocumentsReducer from "./features/userDocumentsSlice";
 import airbnbDubaiReducer from "./features/airbnbDubaiSlice";
 import providerseducer from "./features/providersSlice";
 import utilitiesrseducer from "./features/utilitiesSlice";
+import propertyUtilitiesReducer from "./features/propertyUtilities";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   airbnbdubai: airbnbDubaiReducer,
   providers: providerseducer,
   utilities: utilitiesrseducer,
+  propertyUtilities: propertyUtilitiesReducer,
 });
 
 export default rootReducer;

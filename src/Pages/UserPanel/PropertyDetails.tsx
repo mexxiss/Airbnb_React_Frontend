@@ -2,9 +2,7 @@ import { EditOutlined, KeyboardArrowRightOutlined } from "@mui/icons-material";
 import { Form, FormikProvider, useFormik } from "formik";
 import { Link, useParams } from "react-router-dom";
 import Input from "../../Components/CommonField/Input";
-import { useDispatch, useSelector } from "react-redux";
-
-import { RootState } from "../../store/store";
+import { useDispatch } from "react-redux";
 import { useFetchPropertyById } from "../../hooks/react-queries/properties";
 import { useCallback, useEffect, useMemo } from "react";
 import { setSelectedProperty } from "../../store/features/propertiesSlice";
@@ -33,24 +31,17 @@ const PropertyDetails = () => {
     memoizedDispatch();
   }, [memoizedDispatch]);
 
-  const propertiyData = useSelector(
-    (state: RootState) => state.properties.selectedProperty?.data
-  );
+  const propertiyData = useMemo(() => finalData?.data, [finalData]);
 
   const initialValues = {
-    //+
-    name: "", //+
-  }; //+
+    name: propertiyData?.properties?.title || "",
+  };
 
   const formik = useFormik({
-    //+
-    initialValues, //+
+    initialValues,
     onSubmit: (values) => {
-      //+
       console.log(values);
-
-      // Handle form submission//+
-    }, //+
+    },
   });
 
   if (isLoading) {
@@ -127,8 +118,8 @@ const PropertyDetails = () => {
                       type="text"
                       label="Permit Expiry Date"
                       value={`${formatDate(
-                        propertiyData?.properties?.property_details.permit
-                          ?.permit_expiry_date || "",
+                        (propertiyData?.properties?.property_details.permit
+                          ?.permit_expiry_date)?.toString() || "",
                         "YYYY/MM/DD"
                       )}`}
                       disabled
