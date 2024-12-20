@@ -58,6 +58,18 @@ const MobileMenu = ({ menuShow, setMenuShow }: Iprops) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink
+                  to="/owner-App"
+                  className={({ isActive }) =>
+                    `text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 block ${isActive && "bg-[#060c260f]"
+                    }`
+                  }
+                  onClick={closeMenu}
+                >
+                  <span className="opacity-80">Owner App</span>
+                </NavLink>
+              </li>
+              <li>
                 <button
                   className={`w-full text-left text-lg py-2 duration-300 hover:bg-[#060c260f] px-4 flex items-center justify-between 
                   ${isOpen && "bg-[#060c260f]"}

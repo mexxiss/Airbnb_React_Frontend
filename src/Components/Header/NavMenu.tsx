@@ -29,12 +29,12 @@ const NavMenu = () => {
 
   return (
     <>
-      <ul className="xl:flex items-center gap-6 2xl:gap-8 hidden">
+      <ul className="xl:flex items-center gap-4 3xl:gap-8 hidden">
         <li className="group">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
@@ -43,13 +43,26 @@ const NavMenu = () => {
             Home
           </NavLink>
         </li>
+        <li className="group">
+          <NavLink
+            to="/owner-app"
+            className={({ isActive }) =>
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+                ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
+                : " text-text1"
+              }`
+            }
+          >
+            Owner App
+          </NavLink>
+        </li>
         <li
           className="relative group"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <button
-            className={`py-1 tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:!text-primary py-2flex items-center ${isOpen || isServiceActive ? 'text-primary text-shadow-custom' : ""} ${isServiceActive && 'text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary'}`}
+            className={`tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:!text-primary py-2 flex items-center ${isOpen || isServiceActive ? 'text-primary text-shadow-custom' : ""} ${isServiceActive && 'text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary'}`}
           >
             Services{" "}
             <span>
@@ -93,7 +106,7 @@ const NavMenu = () => {
           <NavLink
             to="/gallery"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
@@ -106,7 +119,7 @@ const NavMenu = () => {
           <NavLink
             to="/pricing"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
@@ -119,7 +132,7 @@ const NavMenu = () => {
           <NavLink
             to="/about-us"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
@@ -132,7 +145,7 @@ const NavMenu = () => {
           <NavLink
             to="/estimate-revenue"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
@@ -145,7 +158,7 @@ const NavMenu = () => {
           <NavLink
             to="/contact-us"
             className={({ isActive }) =>
-              `tracking-wide text-sm xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
+              `tracking-wide text-sm 2xl:text-base duration-300 relative hover:text-shadow-custom hover:text-primary py-2  ${isActive
                 ? "text-primary text-shadow-custom after:absolute after:left-1/2 after:-translate-y-1/5 after:-bottom-[3px] after:min-w-1.5 after:w-1.5 after:h-1.5 after:rounded-full after:bg-primary"
                 : " text-text1"
               }`
