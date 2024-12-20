@@ -169,7 +169,7 @@ const Header = () => {
               <Link to="/" className="logo">
                 <img
                   src={logo}
-                  className="max-w-[80px] sm:max-w-[120px] md:max-w-[150px]"
+                  className="max-w-[80px] sm:max-w-[120px] 2xl:max-w-[150px]"
                 />
               </Link>
             </div>
@@ -177,7 +177,7 @@ const Header = () => {
               <NavMenu />
             </div>
             <div>
-              <Link to="/booking/home" className="btn1 flex items-center">
+              <Link to="/booking/home" className="btn1 flex items-center ">
                 BOOK NOW
               </Link>
             </div>
