@@ -11,10 +11,11 @@ import icon36 from "../../assets/icons/icon36.png";
 
 import { Label, Radio } from "flowbite-react";
 import Swal from "sweetalert2";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 const FAQ = lazy(() => import("../../Components/Home/FAQ"));
 
 const EstimateRevenue = () => {
+  const [showMsg, setShowMsg] = useState(false)
   const showAlert = () => {
     Swal.fire({
       html: `
@@ -77,7 +78,7 @@ const EstimateRevenue = () => {
       <div className="mt-10 md:mt-16 py-14 lg:mt-20 bg-[#fff6e7]">
         <div className="container mx-auto">
           <div className="max-w-[1080px] mx-auto">
-            <div className="grid md:grid-cols-2 gap-y-6 gap-x-4 md:gap-10 items-center">
+            <div className="grid md:grid-cols-2 gap-y-6 gap-x-4 md:gap-10 ">
               <div data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
                 <div className="bg-white px-5 py-8 rounded-xl shadow-xl">
                   <h3 className="text-xl xs:text-2xl lg:text-3xl font-semibold text-[#1F1607]">
@@ -143,7 +144,7 @@ const EstimateRevenue = () => {
                           className="btn1 min-w-[250px] w-full sm:w-auto"
                           onClick={(e) => {
                             e.preventDefault();
-                            showAlert();
+                            setShowMsg(true);
                           }}
                         >
                           Calculate
@@ -153,8 +154,19 @@ const EstimateRevenue = () => {
                   </form>
                 </div>
               </div>
-              <div className="hidden md:block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
-                <img src={calc_Img} className="max-w-[400px] w-full ml-auto" />
+              <div className="" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+                <div className="pt-8 md:pt-24 text-center md:text-left">
+                  {!showMsg ?
+                    <p className="text-2xl">Count <b>how much</b> you <br /> <b>can earn</b> daily on average</p>
+                    :
+                    <div>
+                      <p className="text-2xl">A <b>Three Bed</b> property in <b>Al Furjan</b> can earn</p>
+                      <span className="text-6xl text-[#a58143] inline-block mt-6 mb-2"><b>650 <span style={{ fontSize: "1.5rem" }}>د.إ</span></b></span>
+                      <p style={{ fontSize: "1.2em", color: "gray" }}>daily on average *</p>
+                      <p className="mt-6" style={{ fontSize: "0.8rem", color: "gray" }}>*Estimate is based on realistic occupancies and similar listings in your area.</p>
+                    </div>
+                  }
+                </div>
               </div>
             </div>
           </div>

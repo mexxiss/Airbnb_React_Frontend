@@ -27,6 +27,7 @@ import priceFaq from "./priceFaq.png";
 import ownerApp from "./ownerApp.png";
 import image30 from "./image30.png";
 import image31 from "./image31.png";
+import userImg from "./userImg.png";
 
 export {
   bg1,
@@ -57,4 +58,5 @@ export {
   ownerApp,
   image30, 
   image31, 
+  userImg, 
 };

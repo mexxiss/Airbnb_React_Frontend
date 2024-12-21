@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
-import { img7 } from "../../assets/images/index.ts";
+import { img7,userImg, img12 } from "../../assets/images/index.ts";
 import Slider from "react-slick";
 import {
   KeyboardArrowLeftOutlined,
@@ -49,7 +49,7 @@ const ReviewSec = () => {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
@@ -61,6 +61,12 @@ const ReviewSec = () => {
         breakpoint: 1200,
         settings: {},
       },
+      {
+        breakpoint: 992,
+        settings: {
+          dots: true,
+        },
+      }
     ],
   };
 
@@ -84,13 +90,13 @@ const ReviewSec = () => {
           <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-white" data-aos="fade-yp" data-aos-duration="1200" data-aos-delay="50">
             What our clients say about us?
           </h4>
-          <p className="sm:text-lg text-white mt-4 max-w-[490px] mx-auto" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+          <p className="sm:text-lg text-white mt-2 mx-auto" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
             See what our property managers, landlords, and tenants have to say
           </p>
         </div>
         <div className="mt-10 md:mt-14">
-          <div className="md:px-20 relative">
-            <div>
+          <div className="lg:px-20 relative">
+            <div className="hidden lg:block">
               <button
                 className="border border-white w-8 md:w-12 h-8 md:h-12 rounded-full flex items-center justify-center text-white bg-[#1F1607] hover:bg-primary hover:border-primary duration-300 absolute z-30 left-0 bottom-0 md:top-1/2 md:-translate-y-1/2"
                 onClick={previous}
@@ -104,18 +110,30 @@ const ReviewSec = () => {
                 <KeyboardArrowRightOutlined className=" md:!text-3xl" />
               </button>
             </div>
-            <div>
+            <div className="reviewSec">
               <Slider {...settings} ref={sliderRef}>
                 {data?.data.map((data, i) => (
                   <div className="px-2" key={data._id}>
-                    <div className="text-center text-white">
-                      <p className="text-lg sm:text-xl  tracking-wide md:leading-8">
-                        {data.comment}
-                      </p>
-                      <p className="text-lg mt-10">
-                        <span className="font-semibold">{data?.name}</span>,{" "}
-                        {data?.designation}
-                      </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 items-end md:items-center gap-6">
+                      <div className="text-white col-span-2">
+                        <div className="mb-4 flex gap-4 items-center">
+                          <div className="w-20 h-20 rounded-full border-[3px] border-primary p-1">
+                            <span><img src={userImg} alt="" /></span>
+                          </div>
+                          <p className="flex flex-col gap-1">
+                            <span className="text-xl font-semibold leading-4">{data?.name}</span>{" "}
+                            <span>{data?.designation}</span>
+                          </p>
+                        </div>
+                        <p className="text-sm md:text-base lg:text-lg tracking-wider lg:leading-7">
+                          {data.comment}
+                        </p>
+                      </div>
+                      <div>
+                        <div>
+                          <img src={img12} className="w-full object-cover rounded-2xl max-h-[150px] sm:max-h-[250px] min-h-full" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}

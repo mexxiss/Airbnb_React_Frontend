@@ -262,6 +262,17 @@ body {
 .swal2-actions .swal2-confirm {
   flex: 1;
 }
+.reviewSec .slick-dots {
+  bottom: -35px;
+}
+.reviewSec .slick-dots li button:before{
+  color: white;
+  opacity: .30;
+}
+.reviewSec .slick-dots li.slick-active button:before{
+  color: #dcb97c;
+  font-size: 8px;
+}
 
 @media (max-width: 768px) {
   .container {
