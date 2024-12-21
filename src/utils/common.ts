@@ -154,6 +154,7 @@ export const formatDate = (
   date: string,
   format: FormatType = "DD-MM-YYYY"
 ): string => {
+  console.log({ date, format });
   // Ensure date is parsed by moment
   const parsedDate = moment(new Date(date));
 

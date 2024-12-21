@@ -320,3 +320,8 @@ export const fetchUtilities = async (propertyId: string) => {
   );
   return response.data.utilities;
 };
+
+export const fetchAllPropertyUtilities = async (id: String) => {
+  const response = await axiosInstance.get(`/users/utilities?id=${id}`);
+  return response.data;
+}
