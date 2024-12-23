@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useServicesProviders } from '../../hooks/react-queries/providersservices';
 import { useQuery } from '@tanstack/react-query';
-import { fetchAllPropertyUtilities } from '../../services/apiServices';
-import { addUtility, deleteUtility, setUtilities} from '../../store/features/propertyUtilities';
+import { fetchAllPropertyUtilities, updateAllPropertyUtilitiesById } from '../../services/apiServices';
+import { addUtility, deleteUtility, setUtilities} from '../../store/features/propertyUtilitiesSlice';
 import RequiredUtilityForm from './RequiredUtilityForm';
 import OtherUtilityForm from './OtherUtilityForm';
 import { KeyboardArrowRightOutlined } from '@mui/icons-material';
@@ -28,13 +28,13 @@ const Utilities: React.FC = () => {
         }
     }, [utilitiesData, dispatch]);
     
-    if (isError && error instanceof Error)
-        return <p>Error: {error.message}</p>;
+    if ((isError && error instanceof Error) || (isUtilsError && utilsError instanceof Error))
+        return <p>Error: {error ? error.message : utilsError?.message}</p>
 
     if (isLoading || isUtilsLoading) return <p>Loading...</p>;
 
     const handleAddNewUtility = () => {
-        const newUtility: OtherUtilities = {temp_id: Date.now(), field_name: "other", service_name: "Other", service_provider: "", account_no: "", paid_by: "", web_login: "", web_pass: "", link: "", already_have_account: true};
+        const newUtility: OtherUtilities = {temp_id: Date.now(), field_name: "other", service_name: "Other", service_provider: "", account_no: "", paid_by: "Owner", web_login: "", web_pass: "", link: "", already_have_account: true};
         dispatch(addUtility(newUtility));
     };
 
@@ -42,8 +42,24 @@ const Utilities: React.FC = () => {
         dispatch(deleteUtility(temp_id));
     };
 
-    const handleSaveUtilities = () => {
-        console.log(utilities);
+    const handleSaveUtilities = async () => {
+        try {
+            if (id && utilities) {
+                await updateAllPropertyUtilitiesById(utilities._id, { 
+                    internet: utilities.internet, 
+                    electricity_water: utilities.electricity_water,
+                    gas: utilities.gas,
+                    chiller: utilities.chiller,
+                    other: utilities.other,
+                }); // Correctly pass id and updates
+                alert("Utilities saved successfully!");
+            } else {
+                alert("Failed to save utilities: Missing id or utilities.");
+            }
+        } catch (error) {
+            console.error("Failed to save utilities:", error);
+            alert("Failed to save utilities.");
+        }
     };
 
     return (

@@ -33,7 +33,8 @@ const propertyUtilitiesSlice = createSlice({
         },
         updateOtherUtility(state, action: PayloadAction<OtherUtilities | undefined>) {
             if (!action.payload || !state.utilities?.other) return;
-            state.utilities.other = state.utilities.other.map((utility) =>
+            console.log("Other Utility: ", action.payload)
+            state.utilities.other = state.utilities.other.map((utility) => 
                 utility.temp_id === action.payload!.temp_id ? action.payload! : utility
             );
         }

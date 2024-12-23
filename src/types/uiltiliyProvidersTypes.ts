@@ -38,6 +38,7 @@ export interface OtherUtilities {
   web_login?: string;
   web_pass?: string;
   link?: string;
+  uploaded_docs?: string;
   already_have_account?: boolean;
 }
 
