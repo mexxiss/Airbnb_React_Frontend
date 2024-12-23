@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RequiredUtility } from '../../types/uiltiliyProvidersTypes';
 import { RootState } from '../../store/store';
-import { updateRequiredUtility } from '../../store/features/propertyUtilities';
+import { updateRequiredUtility } from '../../store/features/propertyUtilitiesSlice';
 
 const RequiredUtilityForm = ({ service, options }: { service: string | undefined; options: any }) => {
     const dispatch = useDispatch();
@@ -13,8 +13,6 @@ const RequiredUtilityForm = ({ service, options }: { service: string | undefined
         const utilities = state.propertyUtilities.utilities;
         return utilities ? utilities[service as keyof typeof utilities] : undefined;
     }) as RequiredUtility | undefined;
-
-    console.log(localUtility?.field_name);
 
     const [utility, setLocalUtility] = useState<RequiredUtility | undefined>(localUtility);
 
@@ -30,8 +28,10 @@ const RequiredUtilityForm = ({ service, options }: { service: string | undefined
     }, [utility, dispatch]);
 
     useEffect(() => {
-        if (!utility?.service_provider || utility.service_provider === "") {
+        if (!utility || !utility?.service_provider || utility.service_provider === "") {
             setHaveAccount(false);
+        } else {
+            setHaveAccount(true);
         }
     }, [utility]);
 

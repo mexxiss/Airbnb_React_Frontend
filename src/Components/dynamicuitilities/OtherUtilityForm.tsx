@@ -4,18 +4,56 @@ import { useEffect, useState } from 'react';
 import { OtherUtilities } from '../../types/uiltiliyProvidersTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { updateOtherUtility } from '../../store/features/propertyUtilities';
+import { updateOtherUtility } from '../../store/features/propertyUtilitiesSlice';
+import { toDataURL, uploadFile } from '../../services/apiServices';
 
 const OtherUtilityForm = ({ temp_id, options, handleDelete }: { temp_id: number, options: any, handleDelete: () => void }) => {
     const dispatch = useDispatch();
     const [uploadBill, setUploadBill] = useState<Boolean | null>(null);
-    const [localUtility, setLocalUtility] = useState<OtherUtilities | undefined>(useSelector((state: RootState) => 
+    const [localUtility, setLocalUtility] = useState<OtherUtilities | undefined>(useSelector((state: RootState) =>
         state.propertyUtilities.utilities?.other.find(utility => utility.temp_id === temp_id)
     ));
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [uploading, setUploading] = useState(false);
+    const [filePreview, setFilePreview] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setLocalUtility((prev) => prev ? { ...prev, [name]: value } : undefined);
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            setSelectedFile(file);
+            setFilePreview(URL.createObjectURL(file));
+        }
+    };
+
+    const handleFileUpload = async () => {
+        if (!selectedFile) return;
+
+        setUploading(true);
+
+        try {
+            const data = await uploadFile(selectedFile, "bills");
+            setLocalUtility((prev) => prev ? { ...prev, uploaded_docs: data.imageUrl } : prev);
+            setFilePreview(null);
+            setSelectedFile(null);
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const handleDownload = async (url: string) => {
+        const a = document.createElement("a");
+        a.href = await toDataURL(url);
+        a.download = "Your Bill";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     };
 
     useEffect(() => {
@@ -109,6 +147,15 @@ const OtherUtilityForm = ({ temp_id, options, handleDelete }: { temp_id: number,
                 onChange={handleChange}
                 className="mt-1 px-4 py-3 leading-4 text-gray-600 placeholder:text-[#8B8B8B] border-[#c3c3c7] w-full rounded bg-[#F7F8FF]"
             />
+            {localUtility?.uploaded_docs && (
+                <button
+                    type="button"
+                    className="mt-3 w-full py-2 bg-primary text-white rounded"
+                    onClick={() => handleDownload(localUtility?.uploaded_docs as string)}
+                >
+                    Download Uploaded Bill
+                </button>
+            )}
 
             <p className='my-5 text-center'>OR</p>
 
@@ -121,6 +168,7 @@ const OtherUtilityForm = ({ temp_id, options, handleDelete }: { temp_id: number,
                         value="Yes"
                         className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
                         onChange={() => setUploadBill(true)}
+                        disabled={!localUtility?.service_provider}
                     />
                     <Label htmlFor="yes">Yes</Label>
                 </div>
@@ -131,10 +179,53 @@ const OtherUtilityForm = ({ temp_id, options, handleDelete }: { temp_id: number,
                         value="No"
                         className="focus:ring-offset-0 focus:shadow-none !focus:ring-0"
                         onChange={() => setUploadBill(false)}
+                        disabled={!localUtility?.service_provider}
                     />
                     <Label htmlFor="no">No - please organize this for me</Label>
                 </div>
             </div>
+
+            {localUtility?.service_provider && uploadBill && (
+                <div className="mt-5">
+                    <label htmlFor="fileDocs" className="mt-2 w-full py-2 flex items-center justify-center border border-primary rounded cursor-pointer">
+                        {selectedFile ? "Upload New Bill" : "Upload Bill"}
+                    </label>
+                    <input
+                        type='file'
+                        id="fileDocs"
+                        name="bill"
+                        className="hidden mt-1 px-4 py-3 leading-4 text-gray-600 placeholder:text-[#8B8B8B] border-[#c3c3c7] w-full rounded bg-[#F7F8FF]"
+                        onChange={handleFileChange}
+                    />
+                    {filePreview && (
+                        <img src={filePreview} alt="Selected file preview" className="mt-2 w-full h-32 object-cover shadow-md" />
+                    )}
+                    <p className='text-sm w-full text-nowrap text-ellipsis overflow-hidden mt-2'>
+                        {selectedFile ? selectedFile.name : 'No file selected'}
+                    </p>
+
+                    {selectedFile && (
+                        <div className='flex gap-2'>
+                            <button
+                                type="button"
+                                className="mt-3 w-full py-2 bg-primary text-white rounded"
+                                onClick={handleFileUpload}
+                                disabled={uploading}
+                            >
+                                {uploading ? 'Uploading...' : 'Confirm and Upload'}
+                            </button>
+                            <button
+                                type="button"
+                                className="mt-3 w-full py-2 bg-[#e5e5e5] text-black rounded"
+                                onClick={() => { setSelectedFile(null); setFilePreview(null) }}
+                                disabled={uploading}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    )}
+                </div>
+            )}
         </form>
     )
 }

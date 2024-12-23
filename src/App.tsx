@@ -48,7 +48,6 @@ import Settings from "./Pages/UserPanel/Settings.tsx";
 import ChangePassword from "./Pages/UserPanel/ChangePassword.tsx";
 import PersonalDetails from "./Pages/UserPanel/PersonalDetails.tsx";
 import PropertyDetails from "./Pages/UserPanel/PropertyDetails.tsx";
-import UtilityDetails from "./Pages/UserPanel/UtilityDetails.tsx";
 import Help from "./Pages/UserPanel/Help.tsx";
 import ContactSupport from "./Pages/UserPanel/ContactSupport.tsx";
 import FAQ from "./Pages/UserPanel/FAQ.tsx";
@@ -58,7 +57,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store.ts";
 import { isTokenExpired } from "./utils/token/tokenHandler.ts";
 import Gallery from "./Pages/Gallery/Gallery.tsx";
-import GalleryNew from "./Pages/Gallery/GalleryNew.tsx";
 import Utilities from "./Components/dynamicuitilities/Utilities.tsx";
 
 const App = () => {

@@ -23,7 +23,6 @@ import { UserDetails } from "../types/userDetailsTypes";
 import { PaymentDetails } from "../types/paymentsTypes";
 // import { DocumentState } from "../types/documentTypes";
 import { ProvidersResponse } from "../types/serviceProviderTypes";
-import { UtilityUpdate } from "../types/uiltiliyProvidersTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -293,35 +292,19 @@ export const getServiceProviders = async (): Promise<ProvidersResponse> => {
   return response.data;
 };
 
-export const updatePropertyUtilities = async (
-  propertyId: string,
-  updates: UtilityUpdate[]
-): Promise<any> => {
-  try {
-    const response = await axiosInstance.put(
-      `/users/property-utilities/${propertyId}`,
-      {
-        updates,
-      }
-    );
-    return response.data;
-  } catch (error: any) {
-    console.error(
-      "Error updating property utilities:",
-      error.response?.data || error.message
-    );
-    throw error;
-  }
-};
-
-export const fetchUtilities = async (propertyId: string) => {
-  const response = await axiosInstance.get(
-    `/users/property-utilities?property=${propertyId}`
-  );
-  return response.data.utilities;
-};
-
 export const fetchAllPropertyUtilities = async (id: String) => {
   const response = await axiosInstance.get(`/users/utilities?id=${id}`);
   return response.data;
 }
+
+export const updateAllPropertyUtilitiesById = async (id: String, updates: any) => {
+  const response = await axiosInstance.put(`/users/utilities/${id}`, { updates });
+  return response.data;
+}
+
+export const toDataURL = async (url: string) => {
+  const response = await axiosInstance.get(url, { responseType: "blob" });
+  const imageDataUrl = URL.createObjectURL(response.data);
+
+  return imageDataUrl;
+};
