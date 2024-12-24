@@ -50,9 +50,12 @@ jobs:
             # Step 2: Stop and remove the existing container (if it exists)
             docker stop airbnb-management-user-frontend-container || true
             docker rm airbnb-management-user-frontend-container || true
-            docker system prune -f 
             
-            # Step 3: Run a new container with environment variables
+            # Step 3: Prune unused Docker data
+            echo "Removing all unused Docker resources..."
+            docker system prune -a --volumes -f
+            
+            # Step 4: Run a new container with environment variables
             docker run -d \
               -p 5173:80 \
               --name airbnb-management-user-frontend-container \
