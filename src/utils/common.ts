@@ -57,6 +57,12 @@ export interface ModifiedDate {
   end: string;
   color: string;
   display: string;
+  guest_name: string;
+  nights: number;
+  source: string;
+  revenue_gross: number; // including taxes
+  maintenance_fee: number;
+  total_gross: number;
 }
 
 export const modifyDates = (
@@ -68,6 +74,12 @@ export const modifyDates = (
     end: moment(doc.checkout_date).add(1, "days").format("YYYY-MM-DD"), // Format checkout_date
     color: "#bb9e6c", // Occupied color
     display: "background",
+    guest_name: `${doc.first_name} ${doc.last_name}`,
+    nights: doc.nights_count_dynamic,
+    source: doc.source,
+    revenue_gross: doc.revenue_gross,
+    maintenance_fee: doc.maintenance_fee,
+    total_gross: doc.total_gross,
   }));
 };
 

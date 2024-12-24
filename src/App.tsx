@@ -1,9 +1,8 @@
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import {
   RouterProvider,
   createBrowserRouter,
   redirect,
-  useNavigate,
 } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,7 +14,6 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.tsx";
 import BookingLayout from "./Layout/BookingLayout.tsx";
 import Login from "./Pages/Auth/Login.tsx";
 import ForgotPassword from "./Pages/Auth/ForgotPassword.tsx";
-import { fetchGallary } from "./services/apiServices.ts";
 
 import Home from "./Pages/Home/Home.tsx";
 import Pricing from "./Pages/Pricing/Pricing.tsx";

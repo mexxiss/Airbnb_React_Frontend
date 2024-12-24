@@ -4,6 +4,7 @@ export interface IGallaryData {
   _id: string;
   type: IGallaryTypesData;
   img_url: string;
+  property: string;
   __v: number,
 }
 export interface FetchGalleryParams {
