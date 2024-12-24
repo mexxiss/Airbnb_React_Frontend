@@ -11,8 +11,12 @@ import { setGallary } from "../../store/features/gallarySlice";
 import GallerySkeleton from "../../Components/LoadingShimmers/GallerySkeleton.tsx";
 import { IGallaryTypesData } from "../../types/gallaryTabTypes.ts";
 import { setGallaryTypes } from "../../store/features/gallaryTypesSlice.ts";
+import { VisibilityOutlined } from "@mui/icons-material";
+import { Tooltip } from "flowbite-react";
+import PropertyQuickView from "../../Components/Modals/PropertyQuickView.tsx";
 
 const Gallery = () => {
+  const [openModal, setOpenModal] = useState(false);
   const [isActive, setIsActive] = useState("All");
   const [isKey, setIsKey] = useState("All");
   const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
@@ -155,7 +159,7 @@ const Gallery = () => {
             </ul>
           </div>
           <div className="mt-10">
-            <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-4">
               {isGalleryLoading
                 ? Array(4)
                   .fill(0)
@@ -167,12 +171,17 @@ const Gallery = () => {
                 : finalGalleryData?.map((e, index) => (
                   <div
                     key={index}
-                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden"
+                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden relative shadow-xl"
                   >
                     <img
                       src={e.img_url}
                       className="w-full h-full object-cover object-center"
                     />
+                    <div className="absolute top-3 right-3 ">
+                      <Tooltip content="Quick View" placement="left">
+                        <button className="rounded-full bg-primary bg-opacity-60 hover:bg-opacity-100 duration-300 text-white flex items-center justify-center w-8 h-8" onClick={() => setOpenModal(true)}><VisibilityOutlined className="!text-lg" /></button>
+                      </Tooltip>
+                    </div>
                   </div>
                 ))
               }
@@ -190,6 +199,7 @@ const Gallery = () => {
           </div>
         </div>
       </div>
+      <PropertyQuickView openModal={openModal} setOpenModal={setOpenModal} />
     </>
   );
 };
