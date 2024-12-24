@@ -7,6 +7,7 @@ import listPlugin from "@fullcalendar/list";
 import { Box } from "@mui/material";
 import { DateSelectArg, EventClickArg, EventApi } from "@fullcalendar/core";
 import { ModifiedDate } from "../../utils/common";
+import BookingDetails from "../Modals/BookingDetails"; // Add this line
 import "./Calendar.css"
 
 interface CalendarProps {
@@ -21,10 +22,11 @@ const Calendar: React.FC<CalendarProps> = ({
   resultdata = [],
 }) => {
   const calendarRef = useRef<any>(null);
-  // const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
   const [currentYear, setCurrentYear] = useState<number>(
     new Date().getFullYear()
   );
+  const [openModal, setOpenModal] = useState<boolean>(false); // Add this line
+  const [eventDetails, setEventDetails] = useState<any>(null); // Add this line
 
   console.log(resultdata);
 
@@ -46,6 +48,15 @@ const Calendar: React.FC<CalendarProps> = ({
     const calendarApi = calendarRef.current.getApi();
     direction === 'prev' ? calendarApi.prev() : calendarApi.next();
     setDynamicDate(new Date(calendarApi.getDate()));
+  };
+
+  const handleEventClick = (clickInfo: EventClickArg) => {
+    setEventDetails({
+      ...clickInfo.event.extendedProps,
+      start: clickInfo.event.start,
+      end: clickInfo.event.end,
+    });
+    setOpenModal(true);
   };
 
   return (
@@ -81,9 +92,11 @@ const Calendar: React.FC<CalendarProps> = ({
               display: 'block', // Ensure each event is displayed as a block
               title: `${event.source} | ${event.guest_name} ` // Display guest_name and source
             }))}
+            eventClick={handleEventClick} // Add this line
           />
         </Box>
       </Box>
+      <BookingDetails openModal={openModal} setOpenModal={setOpenModal} eventDetails={eventDetails} /> {/* Fix this line */}
     </Box>
   );
 };
