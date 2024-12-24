@@ -1,0 +1,9 @@
+.fc-daygrid-event.fc-event-start {
+    margin-left: 40px !important
+}
+.fc-daygrid-event.fc-event-end {
+    margin-right: 40px !important
+}
+.fc-event-title.fc-sticky {
+    margin-left: 10px !important;
+}

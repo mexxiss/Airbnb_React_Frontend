@@ -3,7 +3,14 @@ export interface BookedDateDocument {
   checkin_date: string;
   checkout_date: string;
   property: string;
-  nights_count: number;
+  nights_count_dynamic: number;
+  first_name: string;
+  last_name: string;
+  guest_count: number;
+  source: string;
+  revenue_gross: number;
+  maintenance_fee: number;
+  total_gross: number
 }
 
 export interface BookedDatesTotals {

@@ -7,6 +7,7 @@ import listPlugin from "@fullcalendar/list";
 import { Box } from "@mui/material";
 import { DateSelectArg, EventClickArg, EventApi } from "@fullcalendar/core";
 import { ModifiedDate } from "../../utils/common";
+import "./Calendar.css"
 
 interface CalendarProps {
   dynamicDate: any;
@@ -20,142 +21,66 @@ const Calendar: React.FC<CalendarProps> = ({
   resultdata = [],
 }) => {
   const calendarRef = useRef<any>(null);
-  const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
+  // const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
   const [currentYear, setCurrentYear] = useState<number>(
     new Date().getFullYear()
   );
 
-  const handleDateClick = (selected: DateSelectArg | any) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selected.view.calendar;
-    calendarApi.unselect();
+  console.log(resultdata);
 
-    if (title) {
-      calendarApi.addEvent({
-        id: `${selected?.dateStr}-${title}`,
-        title,
-        start: selected.startStr,
-        end: selected.endStr,
-        allDay: selected.allDay,
-      });
-    }
-  };
-
-  const handleEventClick = (selected: EventClickArg) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'`
-      )
-    ) {
-      selected.event.remove();
-    }
-  };
-
-  const handlePrevYear = () => {
-    setCurrentYear((prevYear) => prevYear - 1);
+  const handleYearChange = (increment: number) => {
+    setCurrentYear((prevYear) => prevYear + increment);
     const calendarApi = calendarRef.current.getApi();
-    calendarApi.prevYear();
-    const newDate = new Date(calendarApi.getDate());
-    setDynamicDate(newDate);
-  };
-
-  const handleNextYear = () => {
-    setCurrentYear((prevYear) => prevYear + 1);
-    const calendarApi = calendarRef.current.getApi();
-    calendarApi.nextYear();
-    const newDate = new Date(calendarApi.getDate());
-    setDynamicDate(newDate);
+    increment > 0 ? calendarApi.nextYear() : calendarApi.prevYear();
+    setDynamicDate(new Date(calendarApi.getDate()));
   };
 
   const handleToday = () => {
-    const currentYear = new Date().getFullYear();
-    setCurrentYear(currentYear);
+    setCurrentYear(new Date().getFullYear());
     const calendarApi = calendarRef.current.getApi();
     calendarApi.today();
-    const newDate = new Date(calendarApi.getDate());
-    setDynamicDate(newDate);
+    setDynamicDate(new Date(calendarApi.getDate()));
   };
 
-  const handlePrev = () => {
+  const handleNavigation = (direction: 'prev' | 'next') => {
     const calendarApi = calendarRef.current.getApi();
-    calendarApi.prev();
-    const newDate = new Date(calendarApi.getDate());
-    setDynamicDate(newDate);
-  };
-
-  const handleNext = () => {
-    const calendarApi = calendarRef.current.getApi();
-    calendarApi.next();
-    const newDate = new Date(calendarApi.getDate());
-    setDynamicDate(newDate);
+    direction === 'prev' ? calendarApi.prev() : calendarApi.next();
+    setDynamicDate(new Date(calendarApi.getDate()));
   };
 
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between">
-        {/* CALENDAR */}
         <Box flex="1 1 100%" ml="15px">
           <FullCalendar
             ref={calendarRef}
             initialDate={dynamicDate.toISOString()}
             height="75vh"
-            plugins={[
-              dayGridPlugin,
-              timeGridPlugin,
-              interactionPlugin,
-              listPlugin,
-            ]}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
             headerToolbar={{
               left: "prev,next,today",
               center: "title",
               right: "prevYear,year,nextYear",
             }}
             customButtons={{
-              prevYear: {
-                text: "<<",
-                click: handlePrevYear,
-              },
-              year: {
-                text: `${currentYear}`,
-              },
-              nextYear: {
-                text: ">>",
-                click: handleNextYear,
-              },
-              today: {
-                text: "today",
-                click: handleToday,
-              },
-              prev: {
-                text: "<",
-                click: handlePrev,
-              },
-              next: {
-                text: ">",
-                click: handleNext,
-              },
+              prevYear: { text: "<<", click: () => handleYearChange(-1) },
+              year: { text: `${currentYear}` },
+              nextYear: { text: ">>", click: () => handleYearChange(1) },
+              today: { text: "today", click: handleToday },
+              prev: { text: "<", click: () => handleNavigation('prev') },
+              next: { text: ">", click: () => handleNavigation('next') },
             }}
             initialView="dayGridMonth"
             editable={true}
-            selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
-            select={handleDateClick}
-            eventClick={handleEventClick}
-            eventsSet={(events) => setCurrentEvents(events)}
-            events={resultdata}
-            initialEvents={[
-              {
-                id: "12315",
-                title: "All-day event",
-                date: "2022-09-14",
-              },
-              {
-                id: "5123",
-                title: "Timed event",
-                date: "2022-09-28",
-              },
-            ]}
+            eventDisplay="block" // Ensure events are displayed as bars
+            eventClassNames="custom-event" // Add a custom class to events
+            events={resultdata.map(event => ({
+              ...event,
+              display: 'block', // Ensure each event is displayed as a block
+              title: `${event.source} | ${event.guest_name} ` // Display guest_name and source
+            }))}
           />
         </Box>
       </Box>
