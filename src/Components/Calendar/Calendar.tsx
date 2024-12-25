@@ -84,15 +84,17 @@ const Calendar: React.FC<CalendarProps> = ({
             initialView="dayGridMonth"
             editable={true}
             selectMirror={true}
-            dayMaxEvents={true}
-            eventDisplay="block" // Ensure events are displayed as bars
-            eventClassNames="custom-event" // Add a custom class to events
+            dayMaxEvents={false}
+            eventDisplay="block"
+            eventClassNames="custom-event"
+            eventOverlap={true}
+            slotEventOverlap={true}
             events={resultdata.map(event => ({
               ...event,
-              display: 'block', // Ensure each event is displayed as a block
-              title: `${event.source} | ${event.guest_name} ` // Display guest_name and source
+              display: 'block',
+              title: `${event.source} | ${event.guest_name} `
             }))}
-            eventClick={handleEventClick} // Add this line
+            eventClick={handleEventClick}
           />
         </Box>
       </Box>
