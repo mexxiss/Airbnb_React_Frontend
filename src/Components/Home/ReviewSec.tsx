@@ -51,7 +51,8 @@ const ReviewSec = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 300,
+    speed: 500,
+    lazyLoad: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
