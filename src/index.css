@@ -265,13 +265,28 @@ body {
 .reviewSec .slick-dots {
   bottom: -35px;
 }
-.reviewSec .slick-dots li button:before{
+.reviewSec .slick-dots li button:before {
   color: white;
-  opacity: .30;
+  opacity: 0.3;
 }
-.reviewSec .slick-dots li.slick-active button:before{
+.reviewSec .slick-dots li.slick-active button:before {
   color: #dcb97c;
   font-size: 8px;
+}
+.quickView .slider div {
+  height: 100%;
+}
+.quickView .slider .slick-dots {
+  bottom: 10px;
+}
+.quickView .slider .slick-next {
+  right: 8px;
+}
+.quickView .slider .slick-prev {
+  left: 8px;
+}
+div[data-testid="modal-overlay"] {
+  background-color: rgb(17 24 39 / 65%) !important;
 }
 .fc-event-title.fc-sticky {
   margin-left: 10px !important;
