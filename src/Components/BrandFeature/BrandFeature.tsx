@@ -11,7 +11,7 @@ const BrandFeature = () => {
         </div>
         <div className="mt-10 md:mt-12 space-y-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-12 items-center justify-center max-w-[1200px] mx-auto opacity-50">
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="100">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/khaleejTimes.svg"
@@ -19,7 +19,7 @@ const BrandFeature = () => {
                 />
               </span>
             </div>
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="150">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/dubaiEye.svg"
@@ -27,7 +27,7 @@ const BrandFeature = () => {
                 />
               </span>
             </div>
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="200">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/forbesMiddleEast.svg"
@@ -35,7 +35,7 @@ const BrandFeature = () => {
                 />
               </span>
             </div>
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="250">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/ahlan.svg"
@@ -44,7 +44,7 @@ const BrandFeature = () => {
               </span>
             </div>
 
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="300">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/arabianBusiness.svg"
@@ -52,7 +52,7 @@ const BrandFeature = () => {
                 />
               </span>
             </div>
-            <div data-aos="zoom-in-up" data-aos-duration="600" data-aos-delay="350">
+            <div data-aos="zoom-in-up" data-aos-duration="600" >
               <span>
                 <img
                   src="https://web-api.frankporter.com/wp-content/uploads/2022/07/zawya.svg"

@@ -9,14 +9,14 @@ const OwnerApp = () => {
           <div className="lg:w-[30%] relative rounded-xl bg-[#F7F7FD] border-2 border-border1 flex flex-col justify-between overflow-hidden">
             <div className="p-4 xl:p-8 !pb-10 lg:mb-8 relative z-10">
               <div className="sm:max-w-[75%] lg:max-w-full">
-                <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="50">
+                <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1200" >
                   Owner app
                 </h4>
-                <p className="mt-3 mb-5 font-medium text-secondary" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">
+                <p className="mt-3 mb-5 font-medium text-secondary" data-aos="fade-right" data-aos-duration="1200" >
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry.
                 </p>
-                <button className="btn1 !rounded-xl !px-5 !capitalize" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+                <button className="btn1 !rounded-xl !px-5 !capitalize" data-aos="fade-right" data-aos-duration="1200" >
                   Browse Properties
                 </button>
               </div>
@@ -30,64 +30,64 @@ const OwnerApp = () => {
             <div className="grid grid-cols-2 gap-6 sm:gap-10 xl:gap-x-20 gap-y-10">
               <div>
                 <div className="min-w-14 w-14 h-14 sm:min-w-20 sm:w-20 sm:h-20 rounded-full border border-border1 p-1 relative"
-                  data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100">
+                  data-aos="fade-left" data-aos-duration="1200" >
                   <span className="flex items-center justify-center bg-[#f7eddd] rounded-full w-full h-full">
                     <img src={icon24} className="w-6 sm:w-9" />
                   </span>
                 </div>
                 <div className="mt-3 sm:mt-5">
-                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" >
                     View Your Live Calendar
                   </h6>
-                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" >
                     Monitor your property's availability in real time, with insights into occupancy, average nightly rates, projected earnings, and more.
                   </p>
                 </div>
               </div>
               <div>
                 <div className="min-w-14 w-14 h-14 sm:min-w-20 sm:w-20 sm:h-20 rounded-full border border-border1 p-1 relative"
-                  data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100">
+                  data-aos="fade-left" data-aos-duration="1200" >
                   <span className="flex items-center justify-center bg-[#f7eddd] rounded-full w-full h-full">
                     <img src={icon24} className="w-6 sm:w-9" />
                   </span>
                 </div>
                 <div className="mt-3 sm:mt-5">
-                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" >
                     Check Your Monthly Statements
                   </h6>
-                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" >
                     Access your monthly statements instantly and track your payouts with ease.
                   </p>
                 </div>
               </div>
               <div>
                 <div className="min-w-14 w-14 h-14 sm:min-w-20 sm:w-20 sm:h-20 rounded-full border border-border1 p-1 relative"
-                  data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100">
+                  data-aos="fade-left" data-aos-duration="1200" >
                   <span className="flex items-center justify-center bg-[#f7eddd] rounded-full w-full h-full">
                     <img src={icon24} className="w-6 sm:w-9" />
                   </span>
                 </div>
                 <div className="mt-3 sm:mt-5">
-                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" >
                     Contact Support
                   </h6>
-                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" >
                     Reach our Client Support team directly through the app for any assistance you may need.
                   </p>
                 </div>
               </div>
               <div>
                 <div className="min-w-14 w-14 h-14 sm:min-w-20 sm:w-20 sm:h-20 rounded-full border border-border1 p-1 relative"
-                  data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100">
+                  data-aos="fade-left" data-aos-duration="1200" >
                   <span className="flex items-center justify-center bg-[#f7eddd] rounded-full w-full h-full">
                     <img src={icon24} className="w-6 sm:w-9" />
                   </span>
                 </div>
                 <div className="mt-3 sm:mt-5">
-                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                  <h6 className="text-xl sm:text-2xl font-medium text-text1" data-aos="fade-left" data-aos-duration="1200" >
                     Block Personal Stays
                   </h6>
-                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                  <p className=" text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1200" >
                     Easily block dates for personal stays at your property, whenever you need, through the app.
                   </p>
                 </div>

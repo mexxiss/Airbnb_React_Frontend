@@ -42,10 +42,10 @@ const OwnerApp = () => {
             <div className="py-14 md:py-16 relative">
                 <div className="container mx-auto">
                     <div className="text-center">
-                        <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                        <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                             Owner App
                         </h4>
-                        <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
+                        <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" >
                             Start your AIRBNB journey, and view your property stats on the go.
                         </p>
                         <button className="btn1 mt-5">
@@ -59,14 +59,14 @@ const OwnerApp = () => {
                 <div className="container mx-auto">
                     <div className="py-14 sm:py-16 md:py-20 relative">
                         <div className="lg:max-w-[50%] xl:max-w-[60%]">
-                            <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] xl:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                            <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] xl:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" >
                                 Your Bookings Anytime, Anywhere
                             </h4>
                             <div className="mt-4">
-                                <h6 className="text-lg md:text-xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+                                <h6 className="text-lg md:text-xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                                     Calendar with Bookings Overview, Number of Stays, Booked Nights and Availability
                                 </h6>
-                                <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150" className="text-[#4D5461] mt-3">Our Owner App provides you full transparency about your property’s bookings – in real time. You can check the calendar, current and future occupancy, access your property details and view your monthly statements</p>
+                                <p data-aos="fade-right" data-aos-duration="1000"  className="text-[#4D5461] mt-3">Our Owner App provides you full transparency about your property’s bookings – in real time. You can check the calendar, current and future occupancy, access your property details and view your monthly statements</p>
                             </div>
                             <div className="lg:hidden">
                                 <img src={image30} className="w-full max-w-[500px] mx-auto" />
@@ -90,14 +90,14 @@ const OwnerApp = () => {
                 <div className="container mx-auto">
                     <div className="lg:pb-16 relative">
                         <div className="lg:max-w-[50%] xl:max-w-[60%] ml-auto">
-                            <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] xl:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                            <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] xl:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" >
                                 Manage your Property your way
                             </h4>
                             <div className="mt-4">
-                                <h6 className="text-lg md:text-xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+                                <h6 className="text-lg md:text-xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                                     We provide FULL flexibility straight from your phone
                                 </h6>
-                                <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150" className="text-[#4D5461] mt-3">Book your personal Owner Stay by blocking dates directly on the calendar. For any support, you can contact us via the Support Form.</p>
+                                <p data-aos="fade-right" data-aos-duration="1000"  className="text-[#4D5461] mt-3">Book your personal Owner Stay by blocking dates directly on the calendar. For any support, you can contact us via the Support Form.</p>
                             </div>
                             <div className="lg:hidden">
                                 <img src={image31} className="w-full max-w-[500px] mx-auto" />

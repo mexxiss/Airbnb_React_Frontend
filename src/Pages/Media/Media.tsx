@@ -77,7 +77,7 @@ const Media = () => {
               className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]"
               data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="50"
+              
             >
               Media
             </h3>
@@ -85,7 +85,7 @@ const Media = () => {
               className="max-w-[950px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center"
               data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="100"
+              
             >
               Frank Porter world-class Airbnb management services, takes the
               hassle out of renting out your property on Airbnb and similar
@@ -101,7 +101,7 @@ const Media = () => {
               className="text-center text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]"
               data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="50"
+              
             >
               Our Features
             </h3>

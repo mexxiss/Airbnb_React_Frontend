@@ -46,10 +46,10 @@ const HowToVideos = () => {
             <div className="pt-10 md:pt-16">
                 <div className="container mx-auto">
                     <div className="flex items-center justify-center flex-col">
-                        <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+                        <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" >
                             Settle In: Easy Tutorials
                         </h3>
-                        <p className="max-w-[950px] mx-auto text-[#60410C] lg:text-lg  text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                        <p className="max-w-[950px] mx-auto text-[#60410C] lg:text-lg  text-center" data-aos="fade-up" data-aos-duration="1000" >
                             Welcome to your guide on using the appliances and features in your Frank Porter property. These videos provide all the essential information you need for a seamless experience.
                         </p>
                     </div>

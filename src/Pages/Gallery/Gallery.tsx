@@ -125,7 +125,7 @@ const Gallery = () => {
             className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px] text-center"
             data-aos="fade-down"
             data-aos-duration="1000"
-            data-aos-delay="50"
+            
           >
             Portfolio
           </h3>
@@ -133,7 +133,7 @@ const Gallery = () => {
             className="max-w-[550px] mx-auto text-[#60410C] lg:text-lg  mt-2 text-center"
             data-aos="fade-down"
             data-aos-duration="1000"
-            data-aos-delay="50"
+            
           >
             Have a look at our select property portfolio
           </p>

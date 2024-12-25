@@ -49,7 +49,7 @@ const ContactForm: React.FC = () => {
     <div className="py-14 md:py-16 lg:py-20">
       <div className="container mx-auto">
         <div className="flex items-center">
-          <div className="w-full lg:w-3/5 lg:pr-16" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+          <div className="w-full lg:w-3/5 lg:pr-16" data-aos="fade-right" data-aos-duration="1000" >
             <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:[42px] font-semibold text-[#1F1607]">
               Send Us Message
             </h4>
@@ -187,7 +187,7 @@ const ContactForm: React.FC = () => {
               </form>
             </div>
           </div>
-          <div className="lg:block hidden w-2/5 pl-6 lg:pl-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+          <div className="lg:block hidden w-2/5 pl-6 lg:pl-0" data-aos="fade-left" data-aos-duration="1000" >
             <img src={img8} alt="Contact Us" />
           </div>
         </div>

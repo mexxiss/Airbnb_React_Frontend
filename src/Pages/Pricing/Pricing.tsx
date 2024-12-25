@@ -81,16 +81,16 @@ const Pricing = () => {
       <div className="pt-10">
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col">
-            <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+            <h3 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" >
               Pricing
             </h3>
-            <p className="max-w-[950px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <p className="max-w-[950px] mx-auto text-[#60410C] lg:text-lg  mt-3 text-center" data-aos="fade-up" data-aos-duration="1000" >
               We ensure your property is strategically listed to achieve maximum
               revenue potential. Our success is tied to yours — we earn when you
               do. It's that straightforward.
             </p>
             <div>
-              <button className="btn1 mt-8 md:mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Estimate revenue</button>
+              <button className="btn1 mt-8 md:mt-12" data-aos="fade-up" data-aos-duration="1000" >Estimate revenue</button>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ const Pricing = () => {
                       className={`text-2xl font-semibold ${data.title === "Full Management Fee"
                         ? "text-white"
                         : "text-[#282938]"
-                        } `} data-aos="fade-right" data-aos-duration="800" data-aos-delay="50"
+                        } `} data-aos="fade-right" data-aos-duration="800" 
                     >
                       {data.title}
                     </h4>
@@ -118,7 +118,7 @@ const Pricing = () => {
                       className={`my-4 text-2xl xl:text-3xl 2xl:text-4xl ${data.title === "Full Management Fee"
                         ? "text-white"
                         : "text-[#282938]"
-                        } font-medium`} data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50"
+                        } font-medium`} data-aos="fade-right" data-aos-duration="1000" 
                     >
                       {data.figures}
                     </p>
@@ -126,7 +126,7 @@ const Pricing = () => {
                       className={`${data.title === "Full Management Fee"
                         ? "text-white"
                         : "text-[#282938]"
-                        } font-medium text-sm md:text-base`} data-aos="fade-right" data-aos-duration="1200" data-aos-delay="100"
+                        } font-medium text-sm md:text-base`} data-aos="fade-right" data-aos-duration="1200" 
                     >
                       {data?.description}
                     </p>

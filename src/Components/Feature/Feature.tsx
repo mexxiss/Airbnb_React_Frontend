@@ -13,7 +13,7 @@ const Feature = () => {
             {homeContent?.features.map((item, index) => (
               <div
                 key={index}
-                data-aos="flip-left" data-aos-duration={1500 + index * 100} data-aos-delay={50 + index * 50}
+                data-aos="flip-left" data-aos-duration={1500 + index * 100} 
                 className={`w-full md:w-[47%] lg:w-[31%] px-6 lg:px-8 rounded-[20px] 
                 ${index === 1
                     ? "bg-primary text-white"

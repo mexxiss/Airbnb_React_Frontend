@@ -55,6 +55,7 @@ const ReviewSec = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    fade: true,
     arrows: false,
     responsive: [
       {
@@ -87,10 +88,10 @@ const ReviewSec = () => {
     >
       <div className="container mx-auto">
         <div className="text-center max-w-[740px] mx-auto">
-          <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-white" data-aos="fade-yp" data-aos-duration="1200" data-aos-delay="50">
+          <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] sm:leading-[50px] font-semibold text-white" data-aos="fade-yp" data-aos-duration="1200" >
             What our clients say about us?
           </h4>
-          <p className="sm:text-lg text-white mt-2 mx-auto" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+          <p className="sm:text-lg text-white mt-2 mx-auto" data-aos="fade-up" data-aos-duration="1200" >
             See what our property managers, landlords, and tenants have to say
           </p>
         </div>
