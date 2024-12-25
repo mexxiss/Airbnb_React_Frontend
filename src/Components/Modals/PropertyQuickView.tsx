@@ -40,7 +40,7 @@ const PropertyQuickView = ({ openModal, setOpenModal, property }: IProps) => {
         infinite: true,
         speed: 500,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 1800,
         arrows: false,
         slidesToShow: 1,
         slidesToScroll: 1,
