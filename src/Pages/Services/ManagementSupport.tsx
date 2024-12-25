@@ -57,10 +57,10 @@ const ManagementSupport = () => {
             </div>
             <div className="md:w-1/2 lg:w-[50%] order-2 md:order-1 mt-8 md:mt-0">
               <div>
-                <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                   {homeContent?.management_support?.title}
                 </h4>
-                <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+                <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" >
                   {homeContent?.management_support?.description}
                 </p>
               </div>
@@ -76,10 +76,10 @@ const ManagementSupport = () => {
               {homeContent?.management_support?.bottom_content.map(
                 (item, index) => (
                   <div key={index}>
-                    <h6 className="text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                    <h6 className="text-xl md:text-2xl lg:text-3xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                       {item.title}
                     </h6>
-                    <p className="text-[#4D5461] mt-3 leading-6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+                    <p className="text-[#4D5461] mt-3 leading-6" data-aos="fade-right" data-aos-duration="1000" >
                       {item.description}
                     </p>
                   </div>

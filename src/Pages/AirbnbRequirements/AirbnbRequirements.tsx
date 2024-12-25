@@ -75,7 +75,7 @@ const AirbnbRequirements = () => {
               className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]"
               data-aos="fade-right"
               data-aos-duration="1000"
-              data-aos-delay="50"
+              
             >
               {requirementData[0]?.head?.title}
             </h4>
@@ -86,7 +86,7 @@ const AirbnbRequirements = () => {
               }}
               data-aos="fade-right"
               data-aos-duration="1000"
-              data-aos-delay="150"
+              
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ const AirbnbRequirements = () => {
                       : "fade-left"
                   }
                   data-aos-duration="1000"
-                  data-aos-delay="50"
+                  
                 >
                   {point.title}
                 </h4>
@@ -139,7 +139,7 @@ const AirbnbRequirements = () => {
                       : "fade-left"
                   }
                   data-aos-duration="1000"
-                  data-aos-delay="50"
+                  
                 />
               </div>
             </div>

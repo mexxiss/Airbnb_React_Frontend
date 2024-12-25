@@ -61,7 +61,7 @@ const FAQ = ({ title, img_url }: { title: string; img_url: string }) => {
             className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1 xl:leading-[50px]"
             data-aos="fade-down"
             data-aos-duration="1200"
-            data-aos-delay="50"
+            
           >
             {title}
           </h4>
@@ -69,7 +69,7 @@ const FAQ = ({ title, img_url }: { title: string; img_url: string }) => {
             className="text-lg text-primary mt-2"
             data-aos="fade-down"
             data-aos-duration="1200"
-            data-aos-delay="100"
+            
           >
             Contact us for more info
           </p>

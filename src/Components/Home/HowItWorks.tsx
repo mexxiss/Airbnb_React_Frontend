@@ -56,10 +56,10 @@ const HowItWorks = () => {
     <div className="py-16 bg-[#fff6e7]">
       <div className="container mx-auto">
         <div className="text-center max-w-[640px] mx-auto">
-          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <h4 className="text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-text1" data-aos="fade-up" data-aos-duration="800" >
             How it works?
           </h4>
-          <p className=" md:text-lg text-[#593B05] mt-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <p className=" md:text-lg text-[#593B05] mt-2" data-aos="fade-up" data-aos-duration="800" >
             We pride ourselves on our curious minds which make us responsive and
             solution-orientated, determined to approach business challenges
           </p>

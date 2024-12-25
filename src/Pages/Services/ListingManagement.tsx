@@ -61,10 +61,10 @@ const ListingManagement = () => {
       <div className="pt-14 md:pt-16 lg:pt-20 relative">
         <div className="container mx-auto">
           <div>
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
               Listing Management
             </h4>
-            <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+            <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" >
               {homeContent?.listing_management?.description}
             </p>
           </div>
@@ -75,7 +75,7 @@ const ListingManagement = () => {
         <div className="container mx-auto">
           <div className="">
             <div>
-              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] font-semibold text-text1 text-center" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
+              <h4 className="text-3xl sm:text-[34px] xl:text-[36px] font-semibold text-text1 text-center" data-aos="fade-down" data-aos-duration="1000" >
                 Where we list
               </h4>
             </div>
@@ -84,17 +84,17 @@ const ListingManagement = () => {
                 <img
                   src={logo1}
                   className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                  data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="50"
+                  data-aos="zoom-in" data-aos-duration="1000" 
                 />
                 <img
                   src={logo2}
                   className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                  data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="150"
+                  data-aos="zoom-in" data-aos-duration="1000" 
                 />
                 <img
                   src={logo3}
                   className="max-h-[40px] lg:h-[60px] w-auto mx-auto"
-                  data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200"
+                  data-aos="zoom-in" data-aos-duration="1000" 
                 />
                 <img
                   src={logo4}
@@ -104,7 +104,7 @@ const ListingManagement = () => {
                 <img
                   src={logo5}
                   className="max-h-[40px] lg:h-[48px] w-auto mx-auto"
-                  data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="250"
+                  data-aos="zoom-in" data-aos-duration="1400" 
                 />
                 <img
                   src={logo6}
@@ -127,17 +127,17 @@ const ListingManagement = () => {
               />
             </div>
             <div>
-              <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+              <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-left" data-aos-duration="1000" >
                 What’s Included
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
                 {homeContent?.listing_management?.what_inclued.map(
                   (item, index) => (
                     <li key={index}>
-                      <h6 className="text-[#1F1607] text-xl font-medium" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
+                      <h6 className="text-[#1F1607] text-xl font-medium" data-aos="fade-left" data-aos-duration="1000" >
                         {item.title}
                       </h6>
-                      <p className="text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">{item.description}</p>
+                      <p className="text-[#4D5461] mt-3" data-aos="fade-left" data-aos-duration="1000" >{item.description}</p>
                     </li>
                   )
                 )}
@@ -150,10 +150,10 @@ const ListingManagement = () => {
       <div className="bg-[#1F1607] py-16">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row  gap-3 md:gap-20 text-center md:text-left">
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap" data-aos="fade-right" data-aos-duration="1000" >
               Pricing Your Listing
             </h4>
-            <p className="text-[#DCC397] md:text-lg" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+            <p className="text-[#DCC397] md:text-lg" data-aos="fade-left" data-aos-duration="1000" >
               Pricing is a critical element of effective property management. We
               leverage advanced algorithms alongside manual adjustments to keep
               your property competitively priced. Factors like seasonality,
@@ -164,7 +164,7 @@ const ListingManagement = () => {
             </p>
           </div>
           <div className="text-center mt-8">
-            <button className="btn1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <button className="btn1" data-aos="fade-up" data-aos-duration="1000" >
               <Link to={"/contact-us"}>Contact us</Link>
             </button>
           </div>

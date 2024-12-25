@@ -50,10 +50,10 @@ const InteriorDesign = () => {
       <div className="pt-14 md:pt-16 lg:pt-20 relative">
         <div className="container mx-auto">
           <div>
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
               Airbnb Interior Design
             </h4>
-            <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
+            <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" >
               {homeContent?.interior_design_page?.description}
             </p>
           </div>
@@ -70,21 +70,21 @@ const InteriorDesign = () => {
               />
             </div>
             <div className="">
-              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-left" data-aos-duration="1000" >
                 What’s Included
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
                 {homeContent?.interior_design_page?.what_inclued.map(
                   (item, index) => (
                     <li key={index}>
-                      <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
+                      <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]" data-aos="fade-left" data-aos-duration="1000" >
                         {item.title}
                       </h6>
                       <div className="text-[#4D5461 mt-3">
-                        <p data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">{item.description}</p>
+                        <p data-aos="fade-left" data-aos-duration="1000" >{item.description}</p>
                         <ul className="mt-3 list-disc pl-6 flex flex-col gap-1">
                           {item?.others?.map((other, key) => (
-                            <li key={key} data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200"> {other}</li>
+                            <li key={key} data-aos="fade-left" data-aos-duration="1000" > {other}</li>
                           ))}
                         </ul>
                       </div>
@@ -107,17 +107,17 @@ const InteriorDesign = () => {
               />
             </div>
             <div className="order-2 lg:order-1">
-              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+              <h4 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1" data-aos="fade-right" data-aos-duration="1000" >
                 How it works?
               </h4>
               <ul className="list-decimal pl-6 mt-6 flex flex-col gap-6">
                 {homeContent?.interior_design_page?.how_it_works.map(
                   (item, index) => (
                     <li key={index}>
-                      <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
+                      <h6 className="text-xl md:text-2xl font-medium text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                         {index + 1}. {item.title}
                       </h6>
-                      <p className="text-[#4D5461] mt-3 leading-6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+                      <p className="text-[#4D5461] mt-3 leading-6" data-aos="fade-right" data-aos-duration="1000" >
                         {item.description}
                       </p>
                     </li>
@@ -132,17 +132,17 @@ const InteriorDesign = () => {
       <div className="bg-[#1F1607] py-16">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row  gap-3 md:gap-20 text-center md:text-left">
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-white text-nowrap" data-aos="fade-right" data-aos-duration="1000" >
               Packages & Price
             </h4>
-            <p className="text-[#DCC397] md:text-lg" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+            <p className="text-[#DCC397] md:text-lg" data-aos="fade-left" data-aos-duration="1000" >
               Our Interior Design team operates with pre-set packages to ensure
               swift project completion. These packages cover all essentials,
               excluding large appliances or specialized items.
             </p>
           </div>
           <div className="text-center mt-8">
-            <button className="btn1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <button className="btn1" data-aos="fade-up" data-aos-duration="1000" >
               <Link to={"/contact-us"}>Contact us</Link>
             </button>
           </div>

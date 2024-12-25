@@ -63,10 +63,10 @@ const EstimateRevenue = () => {
       <div className="pt-10 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
           <div className="flex items-center justify-center flex-col text-center">
-            <h3 className="text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] md:leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+            <h3 className="text-[26px] xs:text-3xl sm:text-[34px] xl:text-[36px] 2xl:text-[42px] font-semibold text-[#1F1607] font-light] md:leading-[50px] 2xl:leading-[58px]" data-aos="fade-up" data-aos-duration="1000" >
               Airbnb & Holiday Home Revenue Estimator
             </h3>
-            <p className=" text-[#60410C] lg:text-lg  mt-3 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+            <p className=" text-[#60410C] lg:text-lg  mt-3 text-center" data-aos="fade-up" data-aos-duration="1000" >
               Calculator estimates your potential earnings based on location,
               property size, and design, giving you an accurate revenue
               forecast.
@@ -79,7 +79,7 @@ const EstimateRevenue = () => {
         <div className="container mx-auto">
           <div className="max-w-[1080px] mx-auto">
             <div className="grid md:grid-cols-2 gap-y-6 gap-x-4 md:gap-10 ">
-              <div data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+              <div data-aos="fade-right" data-aos-duration="1000" >
                 <div className="bg-white px-5 py-8 rounded-xl shadow-xl">
                   <h3 className="text-xl xs:text-2xl lg:text-3xl font-semibold text-[#1F1607]">
                     Vacation Rental Calculator
@@ -154,7 +154,7 @@ const EstimateRevenue = () => {
                   </form>
                 </div>
               </div>
-              <div className="" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+              <div className="" data-aos="fade-left" data-aos-duration="1000" >
                 <div className="pt-8 md:pt-24 text-center md:text-left">
                   {!showMsg ?
                     <p className="text-2xl">Count <b>how much</b> you <br /> <b>can earn</b> daily on average</p>
@@ -176,10 +176,10 @@ const EstimateRevenue = () => {
       <div className="pt-14 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
           <div className="flex items-center max-w-[1080px] mx-auto">
-            <div className="md:block hidden w-1/2 lg:w-2/5 pr-10" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <div className="md:block hidden w-1/2 lg:w-2/5 pr-10" data-aos="fade-right" data-aos-duration="1000" >
               <img src={img8} className="transform rotate-y-180" />
             </div>
-            <div className="w-full md:w-1/2 lg:w-3/5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="50">
+            <div className="w-full md:w-1/2 lg:w-3/5" data-aos="fade-left" data-aos-duration="1000" >
               <div className="bg-[#fff6e7] rounded-xl md:shadow-[8px_8px_10px_2px_#c4903738]">
                 <div className="px-5 py-8 rounded-xl shadow-[5px_4px_#fff6e7_inset]">
                   <h4 className="text-xl xs:text-2xl lg:text-3xl font-semibold text-[#1F1607]">
@@ -254,10 +254,10 @@ const EstimateRevenue = () => {
               </div>
               <div className="lg:w-[55%] order-2 lg:order-1 mt-8 lg:mt-0">
                 <div>
-                  <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                  <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
                     Income
                   </h4>
-                  <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+                  <p className="mt-3  text-[#60410C]" data-aos="fade-right" data-aos-duration="1000" >
                     As the owner, you’ll earn from guests staying at your
                     property. Income varies based on seasonality, pricing, and
                     occupancy. Short-term rentals often generate higher returns
@@ -277,47 +277,47 @@ const EstimateRevenue = () => {
       <div className="relative pt-16 lg:pt-0 lg:-mt-14 overflow-hidden">
         <div className="container mx-auto">
           <div className="relative py-12  before:absolute before:bg-[#fff6e7] before:w-[calc(100%_+_2000px)] before:-left-10 before:rounded-l-[40px] before:top-0 before:h-full before:-z-10">
-            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="50">
+            <h4 className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]" data-aos="fade-right" data-aos-duration="1000" >
               How to maximise returns
             </h4>
             <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon35} className="w-14" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50" />
-                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"> 1. Optimize Pricing</p>
+                <img src={icon35} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 1. Optimize Pricing</p>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon32} className="w-14" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50" />
-                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"> 2. Enhance Property Appeal</p>
+                <img src={icon32} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 2. Enhance Property Appeal</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100"
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
                 >
                   check interior design
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon33} className="w-14" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50" />
-                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"> 3. Increase Occupancy</p>
+                <img src={icon33} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 3. Increase Occupancy</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100"
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
                 >
                   check listings page
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon36} className="w-14" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50" />
-                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"> 4. Maintain Excellent Guest Reviews</p>
+                <img src={icon36} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 4. Maintain Excellent Guest Reviews</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100"
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
                 >
                   check cleaning & maintenance
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon34} className="w-14" data-aos="fade-right" data-aos-duration="800" data-aos-delay="50" />
-                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"> 5. Regular Property Maintenance</p>
+                <img src={icon34} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 5. Regular Property Maintenance</p>
               </li>
             </ul>
           </div>

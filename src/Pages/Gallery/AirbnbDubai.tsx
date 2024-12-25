@@ -79,7 +79,7 @@ const AirbnbDubai = () => {
               className="text-[26px] xs:text-3xl lg:text-[34px] font-semibold text-[#1F1607]"
               data-aos="fade-right"
               data-aos-duration="1000"
-              data-aos-delay="50"
+              
             >
               {contentData?.section1.title}
             </h4>
@@ -107,7 +107,7 @@ const AirbnbDubai = () => {
                 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1"
                 data-aos="fade-left"
                 data-aos-duration="1000"
-                data-aos-delay="50"
+                
               >
                 {contentData?.section2?.title}
               </h4>
@@ -127,7 +127,7 @@ const AirbnbDubai = () => {
             className="text-center text-2xl xs:text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-delay="50"
+            
           >
             {contentData?.section3?.title}
           </h4>
@@ -138,7 +138,7 @@ const AirbnbDubai = () => {
                   className="text-[#1F1607] text-xl sm:text-2xl font-medium"
                   data-aos="fade-left"
                   data-aos-duration="1000"
-                  data-aos-delay="100"
+                  
                 >
                   {point.title}
                 </h6>
@@ -146,7 +146,7 @@ const AirbnbDubai = () => {
                   className="text-[#4D5461] mt-2"
                   data-aos="fade-left"
                   data-aos-duration="1000"
-                  data-aos-delay="150"
+                  
                 >
                   {point.body}
                 </p>
@@ -170,7 +170,7 @@ const AirbnbDubai = () => {
                 className=" text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1"
                 data-aos="fade-right"
                 data-aos-duration="1000"
-                data-aos-delay="50"
+                
               >
                 {contentData?.section4?.title}
               </h4>
@@ -190,7 +190,7 @@ const AirbnbDubai = () => {
             className="text-center text-2xl xs:text-3xl sm:text-[34px] xl:text-[36px] sm:leading-[50px] font-semibold text-text1"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-delay="50"
+            
           >
             {contentData?.section5?.title}
           </h4>
