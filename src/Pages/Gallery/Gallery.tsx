@@ -159,7 +159,7 @@ const Gallery = () => {
             </ul>
           </div>
           <div className="mt-10">
-            <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-4">
+            <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-6">
               {isGalleryLoading
                 ? Array(4)
                   .fill(0)
@@ -171,7 +171,7 @@ const Gallery = () => {
                 : finalGalleryData?.map((e, index) => (
                   <div
                     key={index}
-                    className="max-h-60 lg:h-64 rounded-xl overflow-hidden relative shadow-xl"
+                    className="max-h-60 lg:h-64 rounded overflow-hidden relative"
                   >
                     <img
                       src={e.img_url}

@@ -276,6 +276,15 @@ body {
 .quickView .slider div {
   height: 100%;
 }
+.quickView .slider .slick-dots {
+  bottom: 10px;
+}
+.quickView .slider .slick-next {
+  right: 8px;
+}
+.quickView .slider .slick-prev {
+  left: 8px;
+}
 div[data-testid="modal-overlay"] {
   background-color: rgb(17 24 39 / 65%) !important;
 }
