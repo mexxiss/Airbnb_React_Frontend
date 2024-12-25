@@ -14,7 +14,7 @@ const UserPanel = () => {
     <div>
       <div className='flex h-screen'>
         <div
-          className={`h-screen duration-300 w-[200px] fixed z-[99] md:static ${isCollapse ? 'md:-ml-[200px]' : 'm-0'
+          className={`h-screen duration-300 w-[200px] fixed z-[30] md:static ${isCollapse ? 'md:-ml-[200px]' : 'm-0'
             } ${isSidebarShow ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
           <Sidebar />
         </div>
