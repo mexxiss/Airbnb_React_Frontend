@@ -288,6 +288,9 @@ body {
 div[data-testid="modal-overlay"] {
   background-color: rgb(17 24 39 / 65%) !important;
 }
+.fc-event-title.fc-sticky {
+  margin-left: 10px !important;
+}
 
 @media (max-width: 768px) {
   .container {
