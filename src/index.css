@@ -273,6 +273,9 @@ body {
   color: #dcb97c;
   font-size: 8px;
 }
+.fc-event-title.fc-sticky {
+  margin-left: 10px !important;
+}
 
 @media (max-width: 768px) {
   .container {
