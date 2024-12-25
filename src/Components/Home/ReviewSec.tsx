@@ -58,6 +58,7 @@ const ReviewSec = () => {
     autoplay: true,
     fade: true,
 
+
     arrows: false,
     responsive: [
       {

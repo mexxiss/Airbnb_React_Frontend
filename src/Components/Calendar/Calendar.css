@@ -1,8 +1,10 @@
 .fc-daygrid-event.fc-event-start {
     border-radius: 50px 0px 0px 50px;
+    cursor: pointer;
 }
 .fc-daygrid-event.fc-event-end {
     border-radius: 0px 50px 50px 0;
+    cursor: pointer;
 }
 .fc-daygrid-event.fc-event-end.fc-event-start {
     border-radius: 50px !important;

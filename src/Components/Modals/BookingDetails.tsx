@@ -1,5 +1,6 @@
 import { CloseOutlined } from "@mui/icons-material";
 import { Modal } from "flowbite-react";
+import { useEffect, useState } from "react";
 
 interface IProps {
     openModal: boolean;
@@ -7,11 +8,20 @@ interface IProps {
     eventDetails: any;
 }
 const BookingDetails = ({ openModal, setOpenModal, eventDetails }: IProps) => {
+    const [isVisible, setIsVisible] = useState(false);
     console.log(eventDetails);
+    useEffect(() => {
+        if (openModal) {
+            setTimeout(() => setIsVisible(true), 100);
+        } else {
+            setIsVisible(false);
+        }
+    }, [openModal]);
 
     return (
         <>
-            <Modal show={openModal} onClose={() => setOpenModal(false)}>
+            <Modal show={openModal} onClose={() => setOpenModal(false)}
+                className={`transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>
                 <Modal.Body>
                     <button className="absolute right-3 top-2" onClick={() => setOpenModal(false)}><CloseOutlined className="!text-xl" /></button>
                     <div className="">
@@ -60,7 +70,7 @@ const BookingDetails = ({ openModal, setOpenModal, eventDetails }: IProps) => {
                                 </li>
                                 <li className="flex items-center justify-between text-gray-700 text-xl">
                                     <span>Total Amount:</span>
-                                    <span className="font-medium">{eventDetails?.revenue_gross-eventDetails?.maintenance_fee}</span>
+                                    <span className="font-medium">{eventDetails?.revenue_gross - eventDetails?.maintenance_fee}</span>
                                 </li>
                             </ul>
                         </div>
