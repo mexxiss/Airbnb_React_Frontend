@@ -20,6 +20,8 @@ const Gallery = () => {
   const [isActive, setIsActive] = useState("All");
   const [isKey, setIsKey] = useState("All");
   const [finalTypesData, setFinalTypesData] = useState<IGallaryTypesData[]>([]);
+  const [property, setProperty] = useState<any>(null);
+
   const dispatch = useDispatch();
 
   const queryParams: FetchGalleryParams =
@@ -45,8 +47,6 @@ const Gallery = () => {
     initialPageParam: 1,
     enabled: !!queryParams,
   });
-
-  console.log(infiniteData);
 
   const { ref, inView } = useInView({ threshold: 1 });
 
@@ -179,7 +179,7 @@ const Gallery = () => {
                     />
                     <div className="absolute top-3 right-3 ">
                       <Tooltip content="Quick View" placement="left">
-                        <button className="rounded-full bg-primary bg-opacity-60 hover:bg-opacity-100 duration-300 text-white flex items-center justify-center w-8 h-8" onClick={() => setOpenModal(true)}><VisibilityOutlined className="!text-lg" /></button>
+                        <button className="rounded-full bg-primary bg-opacity-60 hover:bg-opacity-100 duration-300 text-white flex items-center justify-center w-8 h-8" onClick={() => {setOpenModal(true); setProperty(e.property)}}><VisibilityOutlined className="!text-lg" /></button>
                       </Tooltip>
                     </div>
                   </div>
@@ -199,7 +199,7 @@ const Gallery = () => {
           </div>
         </div>
       </div>
-      <PropertyQuickView openModal={openModal} setOpenModal={setOpenModal} />
+      <PropertyQuickView openModal={openModal} setOpenModal={setOpenModal} property={property} />
     </>
   );
 };
