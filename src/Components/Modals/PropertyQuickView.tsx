@@ -58,7 +58,7 @@ const PropertyQuickView = ({ openModal, setOpenModal, property }: IProps) => {
                     <div className="quickView md:h-[450px]">
                         <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                             <div className="slider relative h-[300px] md:h-[450px]">    
-                                <div className="absolute right-2 top-3 z-10 !h-max"><p className="px-4 py-1 bg-white text-primary rounded-full text-sm flex items-center justify-center gap-1"><span><LocationOnOutlined className="!text-lg" /></span> {property?.address?.city}, {property?.address?.country}</p></div>
+                                <div className="absolute right-2 top-3 z-10 !h-max"><p className="px-4 py-1 bg-white text-primary rounded-full text-sm flex items-center justify-center gap-1"><span><LocationOnOutlined className="!text-lg" /></span> {property?.address?.city}, {property?.address?.country}</p></div> 
                                 <button className="absolute top-1/2 -translate-y-1/2 z-50 left-2 w-6 h-6 border flex items-center justify-center border-primary rounded-full text-primary hover:bg-primary hover:text-white duration-300" onClick={prev}><KeyboardArrowLeftOutlined /></button>
                                 <button className="absolute top-1/2 -translate-y-1/2 z-50 right-2 w-6 h-6 border flex items-center justify-center border-primary rounded-full text-primary hover:bg-primary  hover:text-white duration-300" onClick={next}><KeyboardArrowRightOutlined /></button>
                                 <div className="*:h-full">

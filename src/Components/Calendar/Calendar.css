@@ -4,6 +4,15 @@
 .fc-daygrid-event.fc-event-end {
     border-radius: 0px 50px 50px 0;
 }
+.fc-daygrid-event.fc-event-end.fc-event-start {
+    border-radius: 50px !important;
+}
 .fc-event-title.fc-sticky {
     margin-left: 10px !important;
+}
+.fc .fc-daygrid-day.fc-day-today{
+    background-color: #bb9e6c53;
+}
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number{
+    color: #a58143;
 }

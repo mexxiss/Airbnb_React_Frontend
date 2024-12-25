@@ -81,8 +81,9 @@ const Calendar: React.FC<CalendarProps> = ({
               prev: { text: "<", click: () => handleNavigation('prev') },
               next: { text: ">", click: () => handleNavigation('next') },
             }}
+            droppable={false}
             initialView="dayGridMonth"
-            editable={true}
+            editable={false}
             selectMirror={true}
             dayMaxEvents={false}
             eventDisplay="block"
