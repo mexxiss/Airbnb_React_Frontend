@@ -155,20 +155,18 @@ body {
   max-width: 1420px;
   padding: 0 24px;
 }
-::-webkit-scrollbar-track
-{
-	background-color: #F5F5F5;
+
+::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar
-{
-	width: 8px;
-	background-color: #F5F5F5;
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar-thumb
-{
-	background-color: #aaaaaa;
+::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa;
 }
 
 .bgGradient {
@@ -237,18 +235,22 @@ body {
   border: none;
   background-color: transparent;
 }
+
 .phoneInput .react-tel-input .flag-dropdown {
   border: none;
   background-color: transparent;
 }
+
 .phoneInput .react-tel-input .flag-dropdown .selected-flag,
 .phoneInput .react-tel-input .flag-dropdown.open,
 .phoneInput .react-tel-input .flag-dropdown.open .selected-flag {
   background: transparent;
 }
+
 .phoneInput .react-tel-input input:focus {
   box-shadow: none !important;
 }
+
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
@@ -277,34 +279,51 @@ body {
 .swal2-actions .swal2-confirm {
   flex: 1;
 }
+
 .reviewSec .slick-dots {
   bottom: -35px;
 }
+
 .reviewSec .slick-dots li button:before {
   color: white;
   opacity: 0.3;
 }
+
 .reviewSec .slick-dots li.slick-active button:before {
   color: #dcb97c;
   font-size: 8px;
 }
+
 .quickView .slider div {
   height: 100%;
 }
+
 .quickView .slider .slick-dots {
   bottom: 10px;
 }
+
 .quickView .slider .slick-next {
   right: 8px;
 }
+
 .quickView .slider .slick-prev {
   left: 8px;
 }
+
 div[data-testid="modal-overlay"] {
   background-color: rgb(17 24 39 / 65%) !important;
 }
+
 .fc-event-title.fc-sticky {
   margin-left: 10px !important;
+}
+
+.fullCalender .MuiBox-root.css-zwiamn {
+  margin: 0;
+}
+
+.fullCalender .css-1q3omop {
+  margin-left: 0 !important;
 }
 
 @media (max-width: 768px) {

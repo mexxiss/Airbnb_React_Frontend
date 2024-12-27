@@ -14,6 +14,8 @@ import Loader from "../../Components/Loader/Loader";
 import { useFetchBookedDates } from "../../hooks/react-queries/bookedDates";
 import moment from "moment";
 import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage";
+import OccupancyCard from "../../Components/Calendar/OccupancyCard";
+import { array } from "yup";
 
 const Calender = () => {
   const [dynamicDate, setDynamicDate] = useState<Date>(new Date());
@@ -31,20 +33,18 @@ const Calender = () => {
     return <ErrorHandleMessage msg={error.message} />;
   }
 
-  console.log(data?.documents);
-
   return (
     <div>
       <div>
-        <div>
+        <div className="fullCalender">
           <Calendar
             dynamicDate={dynamicDate}
             setDynamicDate={setDynamicDate}
-            resultdata={modifyDates(data?.documents || [])}
+            resultdata={modifyDates(data?.dates?.documents || [])}
           />
         </div>
-        <div className="flex items-end gap-6 my-10">
-          <p className="text-5xl text-gray-400">Future Occupancy</p>
+        <div className="flex flex-col lg:flex-row lg:items-end gap-3 sm:gap-6 my-10">
+          <p className="text-3xl xs:text-4xl md:text-5xl text-gray-400">Future Occupancy</p>
           <div className="flex items-center gap-6 ">
             <span className="inline-block py-1 px-4 text-sm tracking-wider text-white bg-primary rounded-full uppercase">
               Occupied
@@ -59,7 +59,7 @@ const Calender = () => {
           <div>
             <MultiMonthCalendar
               nextMonthStartDateProps={dynamicDate}
-              modifidedata={modifyDates(data?.documents || [])}
+              modifidedata={modifyDates(data?.dates?.documents || [])}
             />
           </div>
           <div>
@@ -71,7 +71,7 @@ const Calender = () => {
                 <span>Projected Earnings:</span>
                 <span>
                   {formatAmountWithCurrency(
-                    data?.totals?.total_net_charges || 0,
+                    data?.dates?.totals?.total_net_charges || 0,
                     "AED"
                   )}
                 </span>
@@ -80,25 +80,25 @@ const Calender = () => {
                 <span>Average Nighty Rate:</span>
                 <span>
                   {calculateAmountPerNight(
-                    data?.totals?.total_net_charges || 0,
-                    data?.totals?.total_nights_count || 1,
+                    data?.dates?.totals?.total_net_charges || 0,
+                    data?.dates?.totals?.total_nights_count || 1,
                     "AED"
                   )}
                 </span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Stays:</span>
-                <span>{data?.totals?.total_stays || 0}</span>
+                <span>{data?.dates?.totals?.total_stays || 0}</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Nights:</span>
-                <span>{data?.totals?.total_nights_count || 0}</span>
+                <span>{data?.dates?.totals?.total_nights_count || 0}</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Occupancy Rate:</span>
                 <span>
                   {calculateNightsPercentage(
-                    data?.totals?.total_nights_count || 0,
+                    data?.dates?.totals?.total_nights_count || 0,
                     moment(dynamicDate).daysInMonth()
                   )}
                 </span>
@@ -106,10 +106,15 @@ const Calender = () => {
             </ul>
           </div>
         </div>
-        <div className="mt-10">
-          <p className="text-5xl text-gray-400">Occupancy Rate</p>
-        </div>
         <hr className="my-5" />
+        <div className="mt-10 pb-8">
+          <p className="text-3xl xs:text-4xl md:text-5xl text-gray-400">Occupancy Rate</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 gap-y-6 mt-8">
+            {data?.occupancy.map((item, index) => (
+              <OccupancyCard month={item?._id?.month} percentage={item?.occupancy_percentage} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
