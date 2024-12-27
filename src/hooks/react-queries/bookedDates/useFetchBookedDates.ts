@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { BookedDatesResponse } from "../../../types/bookedDates";
+import { BookedDatesFilter } from "../../../types/bookedDates";
 import { fetchBookedDates } from "../../../services/apiServices";
 
 interface UseFetchBookedDatesParams {
@@ -11,7 +11,7 @@ export const useFetchBookedDates = ({
   start_date,
   property,
 }: UseFetchBookedDatesParams) => {
-  return useQuery<BookedDatesResponse>({
+  return useQuery<BookedDatesFilter>({
     queryKey: ["booked-dates", { start_date, property }],
     queryFn: () => fetchBookedDates({ start_date, property }),
     enabled: !!start_date && !!property,

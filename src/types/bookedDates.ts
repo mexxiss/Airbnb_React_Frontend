@@ -33,6 +33,20 @@ export interface BookedDatesResponse {
   totals: BookedDatesTotals;
 }
 
+export interface OccupancyResponse {
+  _id: {
+    year: number;
+    month: number;
+  };
+  total_nights_booked: number;
+  days_in_month: number;
+  occupancy_percentage: number;
+}
+
+export interface BookedDatesFilter {
+  dates: BookedDatesResponse;
+  occupancy: OccupancyResponse[];
+}
 // filter
 
 export interface FilterBookedDatesRequest {

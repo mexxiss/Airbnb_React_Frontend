@@ -97,7 +97,7 @@ export function formatAmountWithCurrency(
 
   switch (currency) {
     case "AED":
-      formattedAmount = `AED ${amount.toLocaleString()} د.إ`;
+      formattedAmount =`AED ${amount.toLocaleString()}`;
       break;
     case "USD":
       formattedAmount = `USD ${amount.toLocaleString()} $`;
@@ -241,3 +241,15 @@ export const createUtilityFields = (type: string, providerData: any) => [
   { name: "web_login", type: "text", label: "Web Login" },
   { name: "web_pass", type: "password", label: "Web Password" },
 ];
+
+/**
+ * Converts a numeric month to its string representation.
+ * @param {number} month - The numeric month (1 for January, 12 for December).
+ * @returns {string} - The full name of the month (e.g., "January").
+ */
+export function getMonthName(month: number) {
+  if (month < 1 || month > 12) {
+      throw new Error("Invalid month number. Must be between 1 and 12.");
+  }
+  return moment().month(month - 1).format('MMMM');
+}
