@@ -192,8 +192,10 @@ export const fetchBlogsById = async (id: string): Promise<any> => {
   return response.data;
 };
 
-export const fetchLegals = async (): Promise<LegalResponse> => {
-  const response = await axiosInstance.get<LegalResponse>("/legals");
+export const fetchLegals = async (type: string): Promise<LegalResponse> => {
+  const response = await axiosInstance.get<LegalResponse>(
+    `/content?type=${type}`
+  );
   return response.data;
 };
 
@@ -228,9 +230,12 @@ export const getPaymentDetails = async (): Promise<any> => {
 export const updatePaymentDetails = async (
   updates: PaymentDetails
 ): Promise<PaymentDetails> => {
-  const response = await axiosInstance.put(`/users/payment-details/${updates._id}`, {
-    updates,
-  });
+  const response = await axiosInstance.put(
+    `/users/payment-details/${updates._id}`,
+    {
+      updates,
+    }
+  );
   return response.data;
 };
 
@@ -245,9 +250,12 @@ export const updateDocument = async (
   documentId: string,
   updates: any
 ): Promise<any> => {
-  const response = await axiosInstance.put(`/users/user-documents/${documentId}`, {
-    updates,
-  });
+  const response = await axiosInstance.put(
+    `/users/user-documents/${documentId}`,
+    {
+      updates,
+    }
+  );
   return response.data;
 };
 
@@ -288,19 +296,26 @@ export const fetchAirbnbDubai = async () => {
 };
 
 export const getServiceProviders = async (): Promise<ProvidersResponse> => {
-  const response = await axiosInstance.get<ProvidersResponse>("/users/providers");
+  const response = await axiosInstance.get<ProvidersResponse>(
+    "/users/providers"
+  );
   return response.data;
 };
 
 export const fetchAllPropertyUtilities = async (id: String) => {
   const response = await axiosInstance.get(`/users/utilities?id=${id}`);
   return response.data;
-}
+};
 
-export const updateAllPropertyUtilitiesById = async (id: String, updates: any) => {
-  const response = await axiosInstance.put(`/users/utilities/${id}`, { updates });
+export const updateAllPropertyUtilitiesById = async (
+  id: String,
+  updates: any
+) => {
+  const response = await axiosInstance.put(`/users/utilities/${id}`, {
+    updates,
+  });
   return response.data;
-}
+};
 
 export const toDataURL = async (url: string) => {
   const response = await axiosInstance.get(url, { responseType: "blob" });
