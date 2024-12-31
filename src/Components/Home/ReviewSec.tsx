@@ -57,6 +57,8 @@ const ReviewSec = () => {
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
+
+
     arrows: false,
     responsive: [
       {
