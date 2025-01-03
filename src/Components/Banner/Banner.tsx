@@ -3,13 +3,40 @@ import { icon6, icon7, icon8, icon9 } from "../../assets/icons/index.ts";
 import Slider from "react-slick";
 import { Select } from "@mantine/core";
 import { GetCountries, GetState, GetCity } from "react-country-state-city";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { IEstimateRevenueDoc } from "../../types/estimateRevenueTypes.ts";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCalculatedRevenue, fetchEstimateRevenue } from "../../services/apiServices.ts";
+import { setEstimateRevenueData } from "../../store/features/estimateRevenueSlice.ts";
+import { useNavigate } from "react-router-dom";
+
+interface IEstimateRevenueQuery {
+  data: IEstimateRevenueDoc[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  error: Error | null;
+}
 
 const Banner = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [cities, setCities] = useState<string[]>([]);
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null); 
+  const [selectedBedId, setSelectedBedId] = useState<string | null>(null);
+  const [selectedFurnishingId, setSelectedFurnishingId] = useState<string | null>(null);
   const homeContent = useSelector((state: RootState) => state.homeContent.data);
+
+  const { data, isLoading, isError, error } = useQuery<IEstimateRevenueQuery>({
+    queryKey: ['estimateRevenue'],
+    queryFn: fetchEstimateRevenue,
+  });
+
+  const revenueDocs = useMemo<IEstimateRevenueDoc[]>(() => {
+    return data ? (Array.isArray(data) ? data : []) : [];
+  }, [data]);
+
   useEffect(() => {
     const fetchCities = async () => {
       try {
@@ -46,6 +73,64 @@ const Banner = () => {
     fetchCities();
   }, []);
 
+  const memoizedDispatch = useCallback(() => {
+    if (revenueDocs.length) {
+      dispatch(setEstimateRevenueData(revenueDocs));
+    }
+  }, [revenueDocs]);
+
+  useEffect(() => memoizedDispatch(), [memoizedDispatch]);
+
+  const content = useSelector((state: RootState) => state.estimateRevenue.data);
+
+  const areaOptions =
+    content?.map((item: { _id: string; area_name: string }) => ({
+      label: item.area_name,
+      value: item._id,
+    })) || [];
+
+  const selectedAreaData = content?.find(
+    (item: { _id: string }) => item._id === selectedAreaId
+  );
+
+  const bedsOptions =
+    selectedAreaData?.beds.map((bed: { _id: string; title: string }) => ({
+      label: bed.title,
+      value: bed._id,
+    })) || [];
+
+  const furnishingOptions = selectedAreaData?.furnishing.map((f_type: { _id: string; title: string }) => ({
+    label: f_type.title,
+    value: f_type._id,
+  })) || [];
+
+  const handleCalculate = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (selectedAreaId && selectedFurnishingId && selectedBedId) {
+      try {
+        const response = await fetchCalculatedRevenue(
+          selectedAreaId,
+          selectedFurnishingId,
+          selectedBedId
+        );
+        
+        navigate(`/estimate-revenue?area=${response.areaName}&beds=${response.bedTitle}&furnishing=${response.furnishingTitle}`, {
+          state: {
+            areaId: selectedAreaId,
+            furnishingId: selectedFurnishingId,
+            bedId: selectedBedId,
+            revenue: response
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching calculated revenue:", error);
+      }
+    } else {
+      alert("Please select all options before calculating.");
+    }
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -64,6 +149,7 @@ const Banner = () => {
       },
     ],
   };
+
   return (
     <>
       <div className="banner bgGradient min-h-[80vh] pb-10">
@@ -111,11 +197,13 @@ const Banner = () => {
                           <div className="">
                             <Select
                               placeholder="Select City"
-                              data={cities}
+                              data={areaOptions || []}
                               className=""
                               rightSection={
                                 <KeyboardArrowDownOutlined className="text-black" />
                               }
+                              value={selectedAreaId}
+                              onChange={(value) => setSelectedAreaId(value)}
                             />
                           </div>
                         </div>
@@ -130,22 +218,13 @@ const Banner = () => {
                           <div className="">
                             <Select
                               placeholder="Select Bedrooms"
-                              data={[
-                                "One Bed",
-                                "Two Beds",
-                                "Three Beds",
-                                "Four Beds",
-                                "Five Beds",
-                                "six Beds",
-                                "Seven Beds",
-                                "Eight Beds",
-                                "Nine Beds",
-                                "Ten Beds",
-                              ]}
+                              data={bedsOptions}
                               className=""
                               rightSection={
                                 <KeyboardArrowDownOutlined className="text-black" />
                               }
+                              value={selectedBedId}
+                              onChange={(value) => setSelectedBedId(value)}
                             />
                           </div>
                         </div>
@@ -160,17 +239,19 @@ const Banner = () => {
                           <div className="">
                             <Select
                               placeholder="Furnishing"
-                              data={["Premium", "Standard"]}
+                              data={furnishingOptions}
                               className=""
                               rightSection={
                                 <KeyboardArrowDownOutlined className="text-black" />
                               }
+                              value={selectedFurnishingId}
+                              onChange={(value) => setSelectedFurnishingId(value)}
                             />
                           </div>
                         </div>
                         <div className="min-w-px w-full md:w-px h-px md:h-10 bg-[#b3b1c1] md:hidden lg:block"></div>
                       </div>
-                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto">
+                      <button className="btn1 mt-5 lg:mt-0 w-full lg:w-auto" onClick={handleCalculate}>
                         Calculate
                       </button>
                     </div>
