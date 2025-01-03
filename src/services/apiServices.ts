@@ -329,3 +329,13 @@ export const fetchAboutData = async (): Promise<AboutUsTypes> => {
   const response = await axiosInstance.get<AboutUsTypes>(`/ui-content`);
   return response.data;
 };
+
+export const fetchEstimateRevenue = async () => {
+  const response = await axiosInstance.get(`/estimate-revenue`);
+  return response.data;
+};
+
+export const fetchCalculatedRevenue = async (id: string, furnishing_id: string, beds: string): Promise<any> => {
+  const response = await axiosInstance.get(`/estimate-revenue/${id}?beds=${beds}&furnishing_id=${furnishing_id}`);
+  return response.data;
+}
