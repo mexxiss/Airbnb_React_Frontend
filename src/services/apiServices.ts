@@ -23,6 +23,7 @@ import { UserDetails } from "../types/userDetailsTypes";
 import { PaymentDetails } from "../types/paymentsTypes";
 // import { DocumentState } from "../types/documentTypes";
 import { ProvidersResponse } from "../types/serviceProviderTypes";
+import { AboutUsTypes } from "../types/aboutUsTypes";
 
 export interface FetchPropertiesParams {
   page: number;
@@ -323,3 +324,18 @@ export const toDataURL = async (url: string) => {
 
   return imageDataUrl;
 };
+
+export const fetchAboutData = async (): Promise<AboutUsTypes> => {
+  const response = await axiosInstance.get<AboutUsTypes>(`/ui-content`);
+  return response.data;
+};
+
+export const fetchEstimateRevenue = async () => {
+  const response = await axiosInstance.get(`/estimate-revenue`);
+  return response.data;
+};
+
+export const fetchCalculatedRevenue = async (id: string, furnishing_id: string, beds: string): Promise<any> => {
+  const response = await axiosInstance.get(`/estimate-revenue/${id}?beds=${beds}&furnishing_id=${furnishing_id}`);
+  return response.data;
+}

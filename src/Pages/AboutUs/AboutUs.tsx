@@ -10,9 +10,18 @@ const BrandFeature = lazy(
 );
 import { icon27 } from "../../assets/icons/index.ts";
 import { bg1, img1, img2, img3 } from "../../assets/images/index.ts";
+import { useFetchAboutData } from "../../hooks/react-queries/aboutus/useFetchAboutData.ts";
+import Loader from "../../Components/Loader/Loader.tsx";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
 // import img4 from "../../assets/images/img4.png";
 
 const AboutUs = () => {
+  const { data, error, isError, isLoading } = useFetchAboutData();
+
+  if (isLoading) return <Loader />;
+  if (isError && error instanceof Error)
+    return <ErrorHandleMessage msg={error.message} />;
+
   return (
     <>
       {/* banner */}
@@ -53,9 +62,10 @@ const AboutUs = () => {
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            Bridging Properties with People
+            {data?.title}
           </h4>
-          <p
+          <div dangerouslySetInnerHTML={{ __html: data?.body || "" }} />
+          {/* <p
             className="text-[#60410C] mt-3 font-semibold"
             data-aos="fade-right"
             data-aos-duration="1000"
@@ -76,27 +86,18 @@ const AboutUs = () => {
             Swahili, Afrikaans, and Polish, he understands both your needs and
             those of your guests. Most importantly, his focus is on helping you
             maximize your earnings.
-          </p>
+          </p> */}
           <div className="mt-10 md:mt-16">
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
-              <img
-                src={img1}
-                className="h-full object-cover object-center"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-              <img
-                src={img2}
-                className="h-full object-cover object-center"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
-              <img
-                src={img3}
-                className="h-full object-cover object-center"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              />
+              {data?.images.map((img, i) => (
+                <img
+                  src={img}
+                  key={i}
+                  className="h-full object-cover object-center"
+                  data-aos="zoom-in"
+                  data-aos-duration="1000"
+                />
+              ))}
             </div>
           </div>
         </div>
