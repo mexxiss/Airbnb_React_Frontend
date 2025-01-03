@@ -5,7 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { Box } from "@mui/material";
-import { DateSelectArg, EventClickArg, EventApi } from "@fullcalendar/core";
+import { EventClickArg } from "@fullcalendar/core";
 import { ModifiedDate } from "../../utils/common";
 import BookingDetails from "../Modals/BookingDetails"; // Add this line
 import "./Calendar.css"

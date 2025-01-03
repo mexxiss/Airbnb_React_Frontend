@@ -10,7 +10,7 @@ interface IProps {
 const BookingDetails = ({ openModal, setOpenModal, eventDetails }: IProps) => {
     const [isVisible, setIsVisible] = useState(false);
     console.log(eventDetails);
-    useEffect(() => {
+    useEffect (() => {
         if (openModal) {
             setTimeout(() => setIsVisible(true), 100);
         } else {

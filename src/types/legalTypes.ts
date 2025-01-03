@@ -8,7 +8,7 @@ export interface Legal {
 
 export interface LegalResponse {
   statusCode: number;
-  data: Legal[];
+  data: Legal;
   message: string;
   success: boolean;
 }
