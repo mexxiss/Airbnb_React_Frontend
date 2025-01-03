@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Select } from "@mantine/core";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { icon27, icon28, icon29, icon31 } from "../../assets/icons/index.ts";
@@ -30,11 +30,14 @@ interface IEstimateRevenueQuery {
 
 const EstimateRevenue = () => {
   const dispatch = useDispatch();
-  const [showMsg, setShowMsg] = useState(false);
-  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null); // State for selected area ID
-  const [selectedBedId, setSelectedBedId] = useState<string | null>(null);
-  const [selectedFurnishingId, setSelectedFurnishingId] = useState<string | null>(null); // State for selected furnishing
-  const [calculatedData, setCalculatedData] = useState<any | null>(null); // State for fetched data
+  const navigate = useNavigate()
+  const location = useLocation();
+  const { areaId, furnishingId, bedId, revenue } = location.state || {};
+  const [showMsg, setShowMsg] = useState((areaId && furnishingId && bedId));
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(areaId || null);
+  const [selectedBedId, setSelectedBedId] = useState<string | null>(bedId || null);
+  const [selectedFurnishingId, setSelectedFurnishingId] = useState<string | null>(furnishingId || null);
+  const [calculatedData, setCalculatedData] = useState<any>(revenue || null);
 
   const { data, isLoading, isError, error } = useQuery<IEstimateRevenueQuery>({
     queryKey: ['estimateRevenue'],
@@ -71,6 +74,12 @@ const EstimateRevenue = () => {
       value: bed._id,
     })) || [];
 
+  const furnishingOptions: { label: string; value: string }[] =
+    selectedAreaData?.furnishing.map((f_type: { _id: string; title: string }) => ({
+      label: f_type.title,
+      value: f_type._id,
+    })) || [];
+
   const handleCalculate = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -82,7 +91,15 @@ const EstimateRevenue = () => {
           selectedBedId
         );
         setCalculatedData(response);
-        setShowMsg(true);
+        setShowMsg(true); 
+        navigate(`/estimate-revenue?area=${response.areaName}&beds=${response.bedTitle}&furnishing=${response.furnishingTitle}`, {
+          state: {
+            areaId: selectedAreaId,
+            furnishingId: selectedFurnishingId,
+            bedId: selectedBedId,
+            revenue: response
+          },
+        });
       } catch (error) {
         console.error("Error fetching calculated revenue:", error);
       }
@@ -178,22 +195,20 @@ const EstimateRevenue = () => {
                         />
                       </div>
 
-
-                      <div>
-                        <div className="radio flex gap-8">
-                          {selectedAreaData?.furnishing?.map((item: { _id: string; title: string }) => (
-                            <div key={item._id} className="flex items-center gap-2">
-                              <Radio
-                                id={item._id}
-                                name="furnishing"
-                                value={item._id}
-                                onChange={() => setSelectedFurnishingId(item._id)}
-                                className="focus:ring-offset-0 focus:shadow-none !focus:ring-0 border border-primary"
-                              />
-                              <Label htmlFor="Standard">{item.title}</Label>
-                            </div>
-                          ))}
-                        </div>
+                      <div className="radio flex gap-8">
+                        {furnishingOptions.map((item, index) => (
+                          <div key={index} className="flex items-center gap-2">
+                            <Radio
+                              id={item.label}
+                              name="furnishing"
+                              value={item.value}
+                              checked={selectedFurnishingId === item.value}
+                              onChange={(e) => setSelectedFurnishingId(e.target.value)}
+                              className="focus:ring-offset-0 focus:shadow-none !focus:ring-0 border border-primary"
+                            />
+                            <Label htmlFor={item.label}>{item.label}</Label>
+                          </div>
+                        ))}
                       </div>
 
                       <div className="text-right">
@@ -210,16 +225,18 @@ const EstimateRevenue = () => {
               </div>
               <div className="" data-aos="fade-left" data-aos-duration="1000" >
                 <div className="pt-8 md:pt-24 text-center md:text-left">
-                  {!showMsg ?
+                  {!showMsg ? (
                     <p className="text-2xl">Count <b>how much</b> you <br /> <b>can earn</b> daily on average</p>
-                    :
-                    <div>
-                      <p className="text-2xl">A <b>{calculatedData.bedTitle}</b> property in <b>{calculatedData.areaName}</b> can earn</p>
-                      <span className="text-6xl text-[#a58143] inline-block mt-6 mb-2"><b>{calculatedData.revenue} <span style={{ fontSize: "1.5rem" }}>د.إ</span></b></span>
-                      <p style={{ fontSize: "1.2em", color: "gray" }}>daily on average *</p>
-                      <p className="mt-6" style={{ fontSize: "0.8rem", color: "gray" }}>*Estimate is based on realistic occupancies and similar listings in your area.</p>
-                    </div>
-                  }
+                  ) : (
+                    calculatedData && (
+                      <div>
+                        <p className="text-2xl">A <b>{calculatedData.bedTitle}</b> property in <b>{calculatedData.areaName}</b> can earn</p>
+                        <span className="text-6xl text-[#a58143] inline-block mt-6 mb-2"><b>{calculatedData.revenue} <span style={{ fontSize: "1.5rem" }}>د.إ</span></b></span>
+                        <p style={{ fontSize: "1.2em", color: "gray" }}>daily on average *</p>
+                        <p className="mt-6" style={{ fontSize: "0.8rem", color: "gray" }}>*Estimate is based on realistic occupancies and similar listings in your area.</p>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             </div>
