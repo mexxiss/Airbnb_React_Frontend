@@ -89,9 +89,9 @@ const Pricing = () => {
               revenue potential. Our success is tied to yours — we earn when you
               do. It's that straightforward.
             </p>
-            <div>
+            <Link to="/estimate-revenue">
               <button className="btn1 mt-8 md:mt-12" data-aos="fade-up" data-aos-duration="1000" >Estimate revenue</button>
-            </div>
+            </Link>
           </div>
 
           {/* plans */}
