@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Select } from "@mantine/core";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { icon27, icon28, icon29, icon31 } from "../../assets/icons/index.ts";
-import { bg1, img8, img9, calc_Img, estimateRevFaq } from "../../assets/images/index.ts";
+import { bg1, img8, img9, estimateRevFaq } from "../../assets/images/index.ts";
 import icon32 from "../../assets/icons/icon32.png";
 import icon33 from "../../assets/icons/icon33.png";
 import icon34 from "../../assets/icons/icon34.png";
@@ -10,24 +10,91 @@ import icon35 from "../../assets/icons/icon35.png";
 import icon36 from "../../assets/icons/icon36.png";
 
 import { Label, Radio } from "flowbite-react";
-import Swal from "sweetalert2";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCalculatedRevenue, fetchEstimateRevenue } from "../../services/apiServices.ts";
+import { IEstimateRevenueDoc } from "../../types/estimateRevenueTypes.ts";
+import ErrorHandleMessage from "../../Components/ErrorHandleComponent/ErrorHandleMessage.tsx";
+import Loader from "../../Components/Loader/Loader.tsx";
+import { setEstimateRevenueData } from "../../store/features/estimateRevenueSlice.ts";
+import { RootState } from "../../store/store.ts";
 const FAQ = lazy(() => import("../../Components/Home/FAQ"));
 
+interface IEstimateRevenueQuery {
+  data: IEstimateRevenueDoc[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  error: Error | null;
+}
+
 const EstimateRevenue = () => {
-  const [showMsg, setShowMsg] = useState(false)
-  const showAlert = () => {
-    Swal.fire({
-      html: `
-            <p class="text-xl">A <b>Three Bed</b> property in <b>Al Furjan</b> can earn</p>
-            <span class="text-5xl text-[#a58143] inline-block mt-4"><b>650 <span style="font-size: 1.5rem;">د.إ</span></b></span>
-            <p style="font-size: 0.9rem; color: gray;">daily on average *</p>
-            <p class="mt-3" style="font-size: 0.8rem; color: gray;">*Estimate is based on realistic occupancies and similar listings in your area.</p>
-          `,
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#a58143",
-    });
+  const dispatch = useDispatch();
+  const [showMsg, setShowMsg] = useState(false);
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null); // State for selected area ID
+  const [selectedBedId, setSelectedBedId] = useState<string | null>(null);
+  const [selectedFurnishingId, setSelectedFurnishingId] = useState<string | null>(null); // State for selected furnishing
+  const [calculatedData, setCalculatedData] = useState<any | null>(null); // State for fetched data
+
+  const { data, isLoading, isError, error } = useQuery<IEstimateRevenueQuery>({
+    queryKey: ['estimateRevenue'],
+    queryFn: fetchEstimateRevenue,
+  });
+
+  const revenueDocs = useMemo<IEstimateRevenueDoc[]>(() => {
+    return data ? (Array.isArray(data) ? data : []) : [];
+  }, [data]);
+
+  const memoizedDispatch = useCallback(() => {
+    if (revenueDocs.length) {
+      dispatch(setEstimateRevenueData(revenueDocs));
+    }
+  }, [revenueDocs]);
+
+  useEffect(() => memoizedDispatch(), [memoizedDispatch]);
+
+  const content = useSelector((state: RootState) => state.estimateRevenue.data);
+
+  const areaOptions =
+    content?.map((item: { _id: string; area_name: string }) => ({
+      label: item.area_name,
+      value: item._id,
+    })) || [];
+
+  const selectedAreaData = content?.find(
+    (item: { _id: string }) => item._id === selectedAreaId
+  );
+
+  const bedsOptions =
+    selectedAreaData?.beds.map((bed: { _id: string; title: string }) => ({
+      label: bed.title,
+      value: bed._id,
+    })) || [];
+
+  const handleCalculate = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (selectedAreaId && selectedFurnishingId && selectedBedId) {
+      try {
+        const response = await fetchCalculatedRevenue(
+          selectedAreaId,
+          selectedFurnishingId,
+          selectedBedId
+        );
+        setCalculatedData(response);
+        setShowMsg(true);
+      } catch (error) {
+        console.error("Error fetching calculated revenue:", error);
+      }
+    } else {
+      alert("Please select all options before calculating.");
+    }
   };
+
+  if (isLoading) return <Loader />;
+  if (isError && error instanceof Error)
+    return <ErrorHandleMessage msg={error.message} />;
+
   return (
     <>
       {/* banner */}
@@ -89,63 +156,50 @@ const EstimateRevenue = () => {
                       <div>
                         <Select
                           placeholder="Area"
-                          data={[
-                            "Dubai",
-                            "Al Furjan",
-                            "Dubai South",
-                            "Dubai Hills",
-                          ]}
+                          data={areaOptions || []}
                           className="bg-white border border-primary rounded-full flex items-center justify-between px-6 gap-2 h-12"
                           rightSection={
                             <KeyboardArrowDownOutlined className="text-[#DCC397]" />
                           }
+                          value={selectedAreaId}
+                          onChange={(value) => setSelectedAreaId(value)}
                         />
                       </div>
                       <div>
                         <Select
                           placeholder="Bedrooms"
-                          data={[
-                            "One Bed",
-                            "Two Beds",
-                            "Three Beds",
-                            "Four Beds",
-                          ]}
+                          data={bedsOptions}
                           className="bg-white border border-primary rounded-full flex items-center justify-between px-6 gap-2 h-12"
                           rightSection={
                             <KeyboardArrowDownOutlined className="text-[#DCC397]" />
                           }
+                          value={selectedBedId}
+                          onChange={(value) => setSelectedBedId(value)}
                         />
                       </div>
+
+
                       <div>
-                        {/* <p className='text-gray-800'>Furnishing</p> */}
                         <div className="radio flex gap-8">
-                          <div className="flex items-center gap-2">
-                            <Radio
-                              id="Standard"
-                              name="countries"
-                              value="Standard"
-                              className="focus:ring-offset-0 focus:shadow-none !focus:ring-0 border border-primary"
-                            />
-                            <Label htmlFor="Standard">Standard</Label>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Radio
-                              id="Premium"
-                              name="countries"
-                              value="Premium"
-                              className="focus:ring-offset-0 focus:shadow-none !focus:ring-0 border border-primary"
-                            />
-                            <Label htmlFor="Premium">Premium</Label>
-                          </div>
+                          {selectedAreaData?.furnishing?.map((item: { _id: string; title: string }) => (
+                            <div key={item._id} className="flex items-center gap-2">
+                              <Radio
+                                id={item._id}
+                                name="furnishing"
+                                value={item._id}
+                                onChange={() => setSelectedFurnishingId(item._id)}
+                                className="focus:ring-offset-0 focus:shadow-none !focus:ring-0 border border-primary"
+                              />
+                              <Label htmlFor="Standard">{item.title}</Label>
+                            </div>
+                          ))}
                         </div>
                       </div>
+
                       <div className="text-right">
                         <button
                           className="btn1 min-w-[250px] w-full sm:w-auto"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setShowMsg(true);
-                          }}
+                          onClick={handleCalculate}
                         >
                           Calculate
                         </button>
@@ -160,8 +214,8 @@ const EstimateRevenue = () => {
                     <p className="text-2xl">Count <b>how much</b> you <br /> <b>can earn</b> daily on average</p>
                     :
                     <div>
-                      <p className="text-2xl">A <b>Three Bed</b> property in <b>Al Furjan</b> can earn</p>
-                      <span className="text-6xl text-[#a58143] inline-block mt-6 mb-2"><b>650 <span style={{ fontSize: "1.5rem" }}>د.إ</span></b></span>
+                      <p className="text-2xl">A <b>{calculatedData.bedTitle}</b> property in <b>{calculatedData.areaName}</b> can earn</p>
+                      <span className="text-6xl text-[#a58143] inline-block mt-6 mb-2"><b>{calculatedData.revenue} <span style={{ fontSize: "1.5rem" }}>د.إ</span></b></span>
                       <p style={{ fontSize: "1.2em", color: "gray" }}>daily on average *</p>
                       <p className="mt-6" style={{ fontSize: "0.8rem", color: "gray" }}>*Estimate is based on realistic occupancies and similar listings in your area.</p>
                     </div>
@@ -170,8 +224,8 @@ const EstimateRevenue = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
 
       <div className="pt-14 md:pt-16 lg:pt-20">
         <div className="container mx-auto">
@@ -282,41 +336,41 @@ const EstimateRevenue = () => {
             </h4>
             <ul className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon35} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <img src={icon35} className="w-14" data-aos="fade-right" data-aos-duration="800" />
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 1. Optimize Pricing</p>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon32} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <img src={icon32} className="w-14" data-aos="fade-right" data-aos-duration="800" />
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 2. Enhance Property Appeal</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200"
                 >
                   check interior design
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon33} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <img src={icon33} className="w-14" data-aos="fade-right" data-aos-duration="800" />
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 3. Increase Occupancy</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200"
                 >
                   check listings page
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon36} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <img src={icon36} className="w-14" data-aos="fade-right" data-aos-duration="800" />
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 4. Maintain Excellent Guest Reviews</p>
                 <Link
                   to="/"
-                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200" 
+                  className="text-[#4D5461] underline inline-block mt-2" data-aos="fade-up" data-aos-duration="1200"
                 >
                   check cleaning & maintenance
                 </Link>
               </li>
               <li className="text-[#1F1607] lg:text-lg lg:max-w-[250px]">
-                <img src={icon34} className="w-14" data-aos="fade-right" data-aos-duration="800"  />
+                <img src={icon34} className="w-14" data-aos="fade-right" data-aos-duration="800" />
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="1000" > 5. Regular Property Maintenance</p>
               </li>
             </ul>
